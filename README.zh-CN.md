@@ -4,6 +4,21 @@
 
 面向 pi coding agent / Codex / Claude Code 等 agents 的技能集合。
 
+## 仓库包含内容
+
+- 按目录组织的可复用技能（`<skill-name>/SKILL.md`）。
+- 技能所需的可选参考资料、脚本、许可证文件。
+- 中英文双语概览文档（`README.md` + `README.zh-CN.md`）。
+
+## 快速开始
+
+1. 克隆本仓库。
+2. 将需要的技能目录复制到本地技能目录（例如：`~/.codex/skills` 或 `~/.agents/skills`）。
+3. 在项目说明文件（如 `AGENTS.md`）中定义技能触发条件。
+4. 通过技能名显式调用，或自然描述需求让 agent 自动匹配技能。
+
+本仓库无需构建即可使用。
+
 ## 技能列表
 
 | 技能                                                                | 说明                                                                |
@@ -18,6 +33,30 @@
 | [planning-with-files](planning-with-files/SKILL.md)                 | 面向复杂任务的文件化规划（task_plan/findings/progress）。           |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 高级提示工程方法，提升生产环境的可靠性与可控性。                    |
 | [skill-creator](skill-creator/SKILL.md)                             | 创建或更新技能，聚焦专业知识、工作流与工具集成。                    |
+| [taste-skill](taste-skill/SKILL.md)                                 | 面向高质量前端界面设计的 UI/UX 工程技能，强调有意图的视觉与实现。   |
 | [test-driven-development](test-driven-development/SKILL.md)         | TDD 流程指引：任何功能或修复先写测试。                              |
 | [xlsx](xlsx/SKILL.md)                                               | 覆盖表格创建、编辑与分析，支持公式、格式和可视化图表。              |
 
+## 目录结构
+
+```text
+ok-skills/
+  README.md
+  README.zh-CN.md
+  <skill-name>/
+    SKILL.md
+    references / scripts / examples（可选）
+```
+
+## 贡献指南
+
+欢迎为现有技能改进或新增技能。
+
+1. 触发条件要明确且可验证。
+2. 示例尽量简洁，强调可执行性。
+3. 若依赖外部工具，请在 `SKILL.md` 中明确标注依赖。
+
+## 许可证
+
+本仓库主许可证见 [LICENSE](LICENSE)。
+部分技能目录可能包含额外许可证文件（例如 `xlsx/`、`skill-creator/`）。
