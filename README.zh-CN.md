@@ -26,6 +26,7 @@
 | [agent-browser](agent-browser/SKILL.md)                             | 自动化浏览器操作，用于网页测试、表单填写、截图与数据提取。          |
 | [brainstorming](brainstorming/SKILL.md)                             | 在任何创造性工作前使用，用于澄清意图、需求与设计。                  |
 | [context7](context7/SKILL.md)                                       | 通过 Context7 获取最新库/框架文档，用于 API、示例与正确用法。       |
+| [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用并产出可复现的问题报告，附步骤截图与录屏证据。   |
 | [electron](electron/SKILL.md)                                       | 通过 agent-browser + Chrome DevTools Protocol（CDP）自动化 Electron 桌面应用。 |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 进行网页/代码/公司调研，含参数与示例；需要联网搜索时使用。 |
 | [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，用于发现和安装现成技能。                      |
