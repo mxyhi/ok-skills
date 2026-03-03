@@ -26,6 +26,7 @@ No build step is required.
 | [agent-browser](agent-browser/SKILL.md)                             | Automates browser interactions for web testing, form filling, screenshots, and data extraction. |
 | [brainstorming](brainstorming/SKILL.md)                             | Use before any creative work to clarify intent, requirements, and design.                       |
 | [context7](context7/SKILL.md)                                       | Fetch up-to-date library docs via Context7 for APIs, examples, and correct usage.               |
+| [electron](electron/SKILL.md)                                       | Automate Electron desktop apps via agent-browser and Chrome DevTools Protocol (CDP).            |
 | [exa-search](exa-search/SKILL.md)                                   | Use Exa for web/code/company research with parameters and examples; for online search.          |
 | [find-skills](find-skills/SKILL.md)                                 | Discover and install existing skills when users ask for specialized capabilities.               |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | Address PR review/issue comments with gh CLI after verifying auth.                              |
