@@ -1,6 +1,7 @@
 ---
 name: planning-with-files
-description: Implements Manus-style file-based planning for complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when starting complex multi-step tasks, research projects, or any task requiring >5 tool calls.
+description: Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring >5 tool calls. Supports automatic session recovery after /clear.
+license: MIT
 ---
 
 # Planning with Files
@@ -24,7 +25,7 @@ Before ANY complex task, create these three files:
 2. **findings.md** — Store research and discoveries
 3. **progress.md** — Session log and test results
 
-See [templates/](./templates/) for starting templates.
+See references/ for starting templates.
 
 ## File Purposes
 
@@ -55,14 +56,6 @@ After completing any phase:
 
 ### 5. Log ALL Errors
 Every error goes in the plan file. This builds knowledge and prevents repetition.
-
-```markdown
-## Errors Encountered
-| Error | Attempt | Resolution |
-|-------|---------|------------|
-| FileNotFoundError | 1 | Created default config |
-| API timeout | 2 | Added retry logic |
-```
 
 ### 6. Never Repeat Failures
 ```
@@ -95,17 +88,6 @@ AFTER 3 FAILURES: Escalate to User
   → Ask for guidance
 ```
 
-## Read vs Write Decision Matrix
-
-| Situation | Action | Reason |
-|-----------|--------|--------|
-| Just wrote a file | DON'T read | Content still in context |
-| Viewed image/PDF | Write findings NOW | Multimodal → text before lost |
-| Browser returned data | Write to file | Screenshots don't persist |
-| Starting new phase | Read plan/findings | Re-orient if context stale |
-| Error occurred | Read relevant file | Need current state to fix |
-| Resuming after gap | Read all planning files | Recover state |
-
 ## When to Use This Pattern
 
 **Use for:**
@@ -113,24 +95,22 @@ AFTER 3 FAILURES: Escalate to User
 - Research tasks
 - Building/creating projects
 - Tasks spanning many tool calls
-- Anything requiring organization
 
 **Skip for:**
 - Simple questions
 - Single-file edits
 - Quick lookups
 
-## The 5-Question Reboot Test
+## Templates
 
-If you can answer these, your context management is solid:
+- references/task_plan.md — Phase tracking template
+- references/findings.md — Research storage template
+- references/progress.md — Session logging template
 
-| Question | Answer Source |
-|----------|---------------|
-| Where am I? | Current phase in task_plan.md |
-| Where am I going? | Remaining phases |
-| What's the goal? | Goal statement in plan |
-| What have I learned? | findings.md |
-| What have I done? | progress.md |
+## Advanced Topics
+
+- **Manus Principles:** See references.md for complete context engineering patterns
+- **Real Examples:** See examples.md for practical implementations
 
 ## Anti-Patterns
 
@@ -141,11 +121,6 @@ If you can answer these, your context management is solid:
 | Stuff everything in context | Store large content in files |
 | Start executing immediately | Create plan file FIRST |
 | Repeat failed actions | Track attempts, mutate approach |
-
-## Advanced Topics
-
-- **Manus Principles:** See [references.md](./references.md)
-- **Real Examples:** See [examples.md](./examples.md)
 
 ---
 
