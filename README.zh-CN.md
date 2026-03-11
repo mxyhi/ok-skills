@@ -31,6 +31,7 @@
 | [electron](electron/SKILL.md)                                       | 通过 agent-browser + Chrome DevTools Protocol（CDP）自动化 Electron 桌面应用。 |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 进行网页/代码/公司调研，含参数与示例；需要联网搜索时使用。 |
 | [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，用于发现和安装现成技能。                      |
+| [get-api-docs](get-api-docs/SKILL.md)                               | 在编写第三方 API 或 SDK 相关代码前，用 `chub` 拉取当前文档再继续。 |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 使用 gh CLI 处理当前分支 PR 的评审/issue 评论，并先验证登录状态。   |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 检查 GitHub Actions 失败项，提取日志并制定修复方案。                |
 | [pdf](pdf/SKILL.md)                                                 | 处理 PDF 的读取、生成与审查，强调渲染后的视觉检查和 Python PDF 工具链。 |

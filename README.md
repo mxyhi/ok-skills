@@ -31,6 +31,7 @@ No build step is required.
 | [electron](electron/SKILL.md)                                       | Automate Electron desktop apps via agent-browser and Chrome DevTools Protocol (CDP).            |
 | [exa-search](exa-search/SKILL.md)                                   | Use Exa for web/code/company research with parameters and examples; for online search.          |
 | [find-skills](find-skills/SKILL.md)                                 | Discover and install existing skills when users ask for specialized capabilities.               |
+| [get-api-docs](get-api-docs/SKILL.md)                               | Fetch current third-party API or SDK docs with `chub` before writing code against them.         |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | Address PR review/issue comments with gh CLI after verifying auth.                              |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Inspect failing GitHub Actions checks, summarize logs, and plan fixes.                          |
 | [pdf](pdf/SKILL.md)                                                 | Read, create, and review PDF files with visual rendering checks and Python PDF tooling.         |
