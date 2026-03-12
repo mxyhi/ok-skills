@@ -4,7 +4,7 @@ English | [简体中文](README.zh-CN.md)
 
 Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, Trae, and other SKILL.md-compatible tools.
 
-This repo currently bundles **38 reusable skills**: **20 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md). The repository layout already matches the skills convention, so you can clone it directly into `~/.agents/skills` and trigger skills from `AGENTS.md`.
+This repo currently bundles **39 reusable skills**: **21 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md). The repository layout already matches the skills convention, so you can clone it directly into `~/.agents/skills` and trigger skills from `AGENTS.md`.
 
 ## Who This Repo Is For
 
@@ -81,6 +81,7 @@ Then ask naturally:
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): browser automation for navigation, forms, screenshots, and scraping.
+- [pinchtab](pinchtab/SKILL.md): control Chrome through Pinchtab's local HTTP API using stable accessibility refs.
 - [electron](electron/SKILL.md): automate Electron desktop apps over Chrome DevTools Protocol.
 - [dogfood](dogfood/SKILL.md): structured exploratory testing with reproducible evidence.
 
@@ -135,6 +136,7 @@ Attribution and legal files are preserved in [`impeccable/NOTICE.md`](impeccable
 | [gh-address-comments](gh-address-comments/SKILL.md) | Address PR review and issue comments on the current branch with `gh`. |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | Inspect failing GitHub Actions checks, pull logs, and plan fixes. |
 | [pdf](pdf/SKILL.md) | Read, create, and review PDF files with rendering checks and Python tooling. |
+| [pinchtab](pinchtab/SKILL.md) | Control a headless or headed Chrome browser via Pinchtab's HTTP API for web automation, scraping, form filling, navigation, screenshots, and extraction with stable accessibility refs. |
 | [planning-with-files](planning-with-files/SKILL.md) | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`. |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Advanced prompt engineering patterns for reliable, production LLM workflows. |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Best practices for building videos in React with Remotion. |

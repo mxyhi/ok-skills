@@ -4,7 +4,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **38 个可复用技能**：其中 **20 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。仓库目录本身就符合 skills 规范，因此可以直接 `git clone` 到 `~/.agents/skills`，再通过 `AGENTS.md` 定义触发规则。
+当前仓库共收录 **39 个可复用技能**：其中 **21 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。仓库目录本身就符合 skills 规范，因此可以直接 `git clone` 到 `~/.agents/skills`，再通过 `AGENTS.md` 定义触发规则。
 
 ## 适合谁
 
@@ -81,6 +81,7 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 ### 自动化与 QA
 
 - [agent-browser](agent-browser/SKILL.md)：浏览器导航、表单、截图、抓取和网页测试。
+- [pinchtab](pinchtab/SKILL.md)：通过 Pinchtab 本地 HTTP API 控制 Chrome，使用稳定的 accessibility refs 做自动化与提取。
 - [electron](electron/SKILL.md)：通过 Chrome DevTools Protocol 自动化 Electron 桌面应用。
 - [dogfood](dogfood/SKILL.md)：系统化探索测试，并输出可复现证据。
 
@@ -135,6 +136,7 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 | [gh-address-comments](gh-address-comments/SKILL.md) | 用 `gh` 处理当前分支 PR 的评审和 issue 评论。 |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | 检查 GitHub Actions 失败项、提取日志并制定修复方案。 |
 | [pdf](pdf/SKILL.md) | 处理 PDF 的读取、生成与审查，强调渲染后的视觉检查。 |
+| [pinchtab](pinchtab/SKILL.md) | 通过 Pinchtab 的 HTTP API 控制 headless 或 headed Chrome，用于网页自动化、抓取、表单填写、导航、截图和基于稳定 accessibility refs 的内容提取。 |
 | [planning-with-files](planning-with-files/SKILL.md) | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。 |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 面向生产环境的高级提示工程模式。 |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | 用于 React + Remotion 视频开发的最佳实践。 |
