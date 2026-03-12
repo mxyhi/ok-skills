@@ -1,97 +1,182 @@
-# OK Skills
+# OK Skills：面向 Codex、Claude Code、Cursor 等工具的 AI Agent Skills 集合
 
 简体中文 | [English](README.md)
 
-面向 pi coding agent / Codex / Claude Code 等 agents 的技能集合。
+这是一个面向 Codex、Claude Code、Cursor、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-## 仓库包含内容
+当前仓库共收录 **38 个可复用技能**：其中 **20 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。仓库目录本身就符合 skills 规范，因此可以直接 `git clone` 到 `~/.agents/skills`，再通过 `AGENTS.md` 定义触发规则。
 
-- 按目录组织的可复用技能（`<skill-name>/SKILL.md`）。
-- 部分上游 skill 包会放在命名空间目录下（例如 `impeccable/`）。
-- 技能所需的可选参考资料、脚本、许可证文件。
-- 中英文双语概览文档（`README.md` + `README.zh-CN.md`）。
+## 适合谁
 
-## 快速开始
+- 你在用 Codex、Claude Code、Cursor、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
+- 你在维护 `AGENTS.md` / `SKILL.md` 体系，希望不同项目之间可以迁移同一套工作流。
+- 你需要现成的文档查询、浏览器自动化、GitHub 工作流、规划、提示工程、前端设计、PDF、表格类技能。
 
-1. 克隆本仓库。
-2. 将需要的技能目录复制到本地技能目录（例如：`~/.codex/skills` 或 `~/.agents/skills`）。
-3. 在项目说明文件（如 `AGENTS.md`）中定义技能触发条件。
-4. 通过技能名显式调用，或自然描述需求让 agent 自动匹配技能。
+## 建议先装这几个
 
-本仓库无需构建即可使用。
+如果你第一次用这个仓库，优先从下面几个技能开始：
 
-## 技能列表
+- [planning-with-files](planning-with-files/SKILL.md)：复杂任务、调研任务、多轮推进任务的文件化规划。
+- [ctx7-cli](ctx7-cli/SKILL.md)：查询最新库文档、Context7 资料和 MCP 相关内容。
+- [agent-browser](agent-browser/SKILL.md)：浏览器自动化、截图、抓取、表单填写、Web QA。
+- [gh-fix-ci](gh-fix-ci/SKILL.md)：读取 GitHub Actions 失败日志并产出修复方案。
+- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：更稳定、可控的生产级提示工程模式。
+- [impeccable/frontend-design](impeccable/frontend-design/SKILL.md)：高质量前端界面设计技能，以及一整套配套设计命令。
 
-| 技能                                                                | 说明                                                                |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| [agent-browser](agent-browser/SKILL.md)                             | 自动化浏览器操作，用于网页测试、表单填写、截图与数据提取。          |
-| [ai-elements](ai-elements/SKILL.md)                                 | 为 ai-elements 组件库创建新的 AI 聊天界面组件，遵循可组合模式与 shadcn/ui 约定。 |
-| [brainstorming](brainstorming/SKILL.md)                             | 在任何创造性工作前使用，用于澄清意图、需求与设计。                  |
-| [ctx7-cli](ctx7-cli/SKILL.md)                                       | 使用官方 Context7 CLI 完成文档查询、skills 管理和 MCP 配置。        |
-| [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用并产出可复现的问题报告，附步骤截图与录屏证据。   |
-| [electron](electron/SKILL.md)                                       | 通过 agent-browser + Chrome DevTools Protocol（CDP）自动化 Electron 桌面应用。 |
-| [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 进行网页/代码/公司调研，含参数与示例；需要联网搜索时使用。 |
-| [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，用于发现和安装现成技能。                      |
-| [get-api-docs](get-api-docs/SKILL.md)                               | 在编写第三方 API 或 SDK 相关代码前，用 `chub` 拉取当前文档再继续。 |
-| [gh-address-comments](gh-address-comments/SKILL.md)                 | 使用 gh CLI 处理当前分支 PR 的评审/issue 评论，并先验证登录状态。   |
-| [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 检查 GitHub Actions 失败项，提取日志并制定修复方案。                |
-| [pdf](pdf/SKILL.md)                                                 | 处理 PDF 的读取、生成与审查，强调渲染后的视觉检查和 Python PDF 工具链。 |
-| [planning-with-files](planning-with-files/SKILL.md)                 | 面向复杂任务的文件化规划（task_plan/findings/progress）。           |
-| [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 高级提示工程方法，提升生产环境的可靠性与可控性。                    |
-| [remotion-best-practices](remotion-best-practices/SKILL.md)         | Remotion 最佳实践：在 React 中创建视频。                           |
-| [skill-creator](skill-creator/SKILL.md)                             | 创建或更新技能，聚焦专业知识、工作流与工具集成。                    |
-| [design-taste-frontend](design-taste-frontend/SKILL.md)             | 面向高质量前端界面设计的 UI/UX 工程技能，强调有意图的视觉与实现。   |
-| [adapt](impeccable/adapt/SKILL.md)                                  | 让设计适配不同屏幕尺寸、设备、上下文或平台，确保跨环境体验一致。    |
-| [animate](impeccable/animate/SKILL.md)                              | 审视某个功能，并用有目的的动画、微交互和动效增强可用性与愉悦感。    |
-| [audit](impeccable/audit/SKILL.md)                                  | 全面审计界面质量，覆盖可访问性、性能、主题与响应式设计，并输出带严重级别与建议的详细报告。 |
-| [bolder](impeccable/bolder/SKILL.md)                                | 强化过于安全或平淡的设计，让它更有视觉张力，同时保持可用性。        |
-| [clarify](impeccable/clarify/SKILL.md)                              | 改善不清晰的 UX 文案、错误信息、微文案、标签与说明，让界面更易理解和使用。 |
-| [colorize](impeccable/colorize/SKILL.md)                            | 为过于单色或缺乏趣味的功能加入有策略的色彩，让界面更有表现力和吸引力。 |
-| [critique](impeccable/critique/SKILL.md)                            | 从 UX 视角评估设计效果，审视视觉层级、信息架构、情绪表达和整体质量，并给出可执行反馈。 |
-| [delight](impeccable/delight/SKILL.md)                              | 加入愉悦、个性和意外之喜，让界面更难忘、更好用，把“可用”提升到“令人喜欢”。 |
-| [distill](impeccable/distill/SKILL.md)                              | 移除不必要的复杂度，把设计提炼到本质。好设计应当简洁、有力、干净。   |
-| [extract](impeccable/extract/SKILL.md)                              | 抽取并整合可复用组件、设计 tokens 和模式进入设计系统，丰富组件库并提升系统化复用。 |
-| [frontend-design](impeccable/frontend-design/SKILL.md)              | 创建有辨识度、生产级的高质量前端界面，适用于构建 Web 组件、页面、artifact、海报或应用。 |
-| [harden](impeccable/harden/SKILL.md)                                | 通过更好的错误处理、i18n、文本溢出和边界情况处理，提升界面韧性，使其更稳健、更适合生产。 |
-| [normalize](impeccable/normalize/SKILL.md)                          | 将设计规范化到你的设计系统并确保一致性。                            |
-| [onboard](impeccable/onboard/SKILL.md)                              | 设计或改进引导流程、空状态和首次使用体验，帮助用户更快上手并理解价值。 |
-| [optimize](impeccable/optimize/SKILL.md)                            | 优化界面性能，包括加载速度、渲染、动画、图片和包体积，让体验更快更顺滑。 |
-| [polish](impeccable/polish/SKILL.md)                                | 上线前的最终质量打磨，修复对齐、间距、一致性和细节问题，把“不错”提升到“出色”。 |
-| [quieter](impeccable/quieter/SKILL.md)                              | 降低过于张扬或视觉攻击性强的设计强度，在保持影响力的同时减少噪音。   |
-| [teach-impeccable](impeccable/teach-impeccable/SKILL.md)            | 一次性收集项目的设计上下文并保存到 AI 配置文件中，建立持久的设计指南。 |
-| [test-driven-development](test-driven-development/SKILL.md)         | TDD 流程指引：任何功能或修复先写测试。                              |
-| [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 来自 Vercel Engineering 的 React / Next.js 性能优化实践，适用于编写、审查和重构前端代码。 |
-| [xlsx](xlsx/SKILL.md)                                               | 覆盖表格创建、编辑与分析，支持公式、格式和可视化图表。              |
+## 1 分钟快速开始
 
-`frontend-design` 及其关联设计命令技能（`adapt` 到 `teach-impeccable`）以 `impeccable/` 目录形式收录，来源于 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的提交 `0df1ba59dc80b8b1891ee42eed0ef4e03d7ef165`。来源归属保存在 `impeccable/NOTICE.md`。
-
-## 目录结构
-
-```text
-ok-skills/
-  README.md
-  README.zh-CN.md
-  <skill-name>/
-    SKILL.md
-    references / scripts / examples（可选）
-  impeccable/
-    README.md
-    LICENSE
-    NOTICE.md
-    <skill-name>/
-      SKILL.md
-      reference（可选）
+```bash
+git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 ```
 
-## 贡献指南
+这样可行，是因为仓库根目录已经符合预期布局：
+
+```text
+~/.agents/skills/
+  planning-with-files/
+    SKILL.md
+  ctx7-cli/
+    SKILL.md
+  agent-browser/
+    SKILL.md
+  ...
+```
+
+然后在 `AGENTS.md` 里加最小触发规则：
+
+```md
+## Skills
+- planning-with-files: 复杂任务、调研任务、或者预计会有 5 次以上工具调用时使用。
+- ctx7-cli: 需要最新库文档、API 参考或 Context7 示例时使用。
+- agent-browser: 需要浏览器自动化、截图、抓取、网页测试或表单填写时使用。
+```
+
+之后就可以自然触发：
+
+- `在重构这个模块之前先用 planning-with-files。`
+- `用 ctx7-cli 查一下这个 SDK 的最新文档。`
+- `用 agent-browser 复现这个 UI 问题。`
+
+## 按场景浏览技能
+
+### 调研与文档
+
+- [ctx7-cli](ctx7-cli/SKILL.md)：官方 Context7 CLI 的文档查询、skill 管理与 MCP 配置工作流。
+- [exa-search](exa-search/SKILL.md)：用 Exa 做网页、代码、公司调研。
+- [get-api-docs](get-api-docs/SKILL.md)：写第三方 API / SDK 代码前先拉当前文档。
+- [find-skills](find-skills/SKILL.md)：当用户提出能力诉求时，先查有没有现成 skill 可用。
+
+### 规划与提示工程
+
+- [brainstorming](brainstorming/SKILL.md)：在实现前澄清意图、需求和设计。
+- [planning-with-files](planning-with-files/SKILL.md)：通过 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。
+- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：生产环境可用的高级提示工程模式。
+- [test-driven-development](test-driven-development/SKILL.md)：任何功能或修复先写测试。
+
+### GitHub 工作流
+
+- [gh-address-comments](gh-address-comments/SKILL.md)：用 `gh` 处理当前分支 PR 的 review / issue 评论。
+- [gh-fix-ci](gh-fix-ci/SKILL.md)：读取 GitHub Actions 失败日志并制定修复计划。
+
+### 自动化与 QA
+
+- [agent-browser](agent-browser/SKILL.md)：浏览器导航、表单、截图、抓取和网页测试。
+- [electron](electron/SKILL.md)：通过 Chrome DevTools Protocol 自动化 Electron 桌面应用。
+- [dogfood](dogfood/SKILL.md)：系统化探索测试，并输出可复现证据。
+
+### 前端与设计
+
+- [ai-elements](ai-elements/SKILL.md)：为 `ai-elements` 组件库创建 AI 聊天界面组件。
+- [design-taste-frontend](design-taste-frontend/SKILL.md)：强调有意图视觉表达的前端设计工程技能。
+- [vercel-react-best-practices](vercel-react-best-practices/SKILL.md)：来自 Vercel Engineering 的 React / Next.js 性能实践。
+- [remotion-best-practices](remotion-best-practices/SKILL.md)：基于 React 的 Remotion 视频开发实践。
+- [`impeccable/`](impeccable/README.md)：18 个 vendored 前端设计技能，包含 `frontend-design`、`adapt`、`audit`、`polish` 等。
+
+### 工具与内容生产
+
+- [pdf](pdf/SKILL.md)：读取、生成、审查 PDF，强调渲染后的视觉检查。
+- [xlsx](xlsx/SKILL.md)：表格创建、编辑、公式、格式和分析。
+- [skill-creator](skill-creator/SKILL.md)：创建或更新技能，补齐结构、文档和工具集成。
+
+## Vendored Skill Packs
+
+[`impeccable/`](impeccable/README.md) 目录收录了来自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端设计技能包，当前同步基于提交 `0df1ba59dc80b8b1891ee42eed0ef4e03d7ef165`。
+
+其中包括：
+
+- `frontend-design` 主技能
+- `adapt`、`animate`、`audit`、`bolder`、`clarify`、`colorize`、`critique`、`delight`、`distill`
+- `extract`、`harden`、`normalize`、`onboard`、`optimize`、`polish`、`quieter`、`teach-impeccable`
+
+归属和法律文件保存在 [`impeccable/NOTICE.md`](impeccable/NOTICE.md) 与 [`impeccable/LICENSE`](impeccable/LICENSE)。
+
+## 常见前置条件
+
+- 部分 GitHub 相关技能默认你已经安装并登录 `gh`。
+- 浏览器类技能通常需要可用的 Chrome/CDP 环境。
+- 文档查询类技能可能依赖额外 CLI 或 MCP 工具，请以各自的 `SKILL.md` 为准。
+
+## 完整技能索引
+
+### 顶层技能
+
+| 技能 | 说明 |
+| --- | --- |
+| [agent-browser](agent-browser/SKILL.md) | 面向 AI agents 的浏览器自动化：导航、表单、截图、数据提取、网页测试。 |
+| [ai-elements](ai-elements/SKILL.md) | 为 ai-elements 组件库创建新的 AI 聊天界面组件，遵循可组合模式与 shadcn/ui 约定。 |
+| [brainstorming](brainstorming/SKILL.md) | 在任何实现前先澄清意图、需求与设计。 |
+| [ctx7-cli](ctx7-cli/SKILL.md) | 使用 Context7 CLI 完成文档查询、skill 管理和 MCP 配置。 |
+| [design-taste-frontend](design-taste-frontend/SKILL.md) | 面向高质量前端界面设计的 UI/UX 工程技能。 |
+| [dogfood](dogfood/SKILL.md) | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。 |
+| [electron](electron/SKILL.md) | 通过 agent-browser 和 Chrome DevTools Protocol 自动化 Electron 桌面应用。 |
+| [exa-search](exa-search/SKILL.md) | 使用 Exa 做网页、代码和公司调研。 |
+| [find-skills](find-skills/SKILL.md) | 当用户需要特定能力时，发现已有技能。 |
+| [get-api-docs](get-api-docs/SKILL.md) | 在写第三方 API / SDK 代码前先抓当前文档。 |
+| [gh-address-comments](gh-address-comments/SKILL.md) | 用 `gh` 处理当前分支 PR 的评审和 issue 评论。 |
+| [gh-fix-ci](gh-fix-ci/SKILL.md) | 检查 GitHub Actions 失败项、提取日志并制定修复方案。 |
+| [pdf](pdf/SKILL.md) | 处理 PDF 的读取、生成与审查，强调渲染后的视觉检查。 |
+| [planning-with-files](planning-with-files/SKILL.md) | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。 |
+| [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 面向生产环境的高级提示工程模式。 |
+| [remotion-best-practices](remotion-best-practices/SKILL.md) | 用于 React + Remotion 视频开发的最佳实践。 |
+| [skill-creator](skill-creator/SKILL.md) | 创建或更新技能，补齐专业知识、工作流与工具集成。 |
+| [test-driven-development](test-driven-development/SKILL.md) | 实现任何功能或修复前先使用。 |
+| [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 来自 Vercel Engineering 的 React / Next.js 性能优化实践。 |
+| [xlsx](xlsx/SKILL.md) | 覆盖表格创建、编辑、公式、格式和分析。 |
+
+### Vendored `impeccable/` 技能
+
+| 技能 | 说明 |
+| --- | --- |
+| [frontend-design](impeccable/frontend-design/SKILL.md) | 创建有辨识度、生产级的高质量前端界面。 |
+| [adapt](impeccable/adapt/SKILL.md) | 让设计适配不同屏幕尺寸、设备和上下文。 |
+| [animate](impeccable/animate/SKILL.md) | 用有目的的动画和微交互增强界面。 |
+| [audit](impeccable/audit/SKILL.md) | 审计界面的可访问性、性能、主题与响应式表现。 |
+| [bolder](impeccable/bolder/SKILL.md) | 让过于保守或平淡的设计更有张力。 |
+| [clarify](impeccable/clarify/SKILL.md) | 改善不清晰的 UX 文案与说明。 |
+| [colorize](impeccable/colorize/SKILL.md) | 为过于单色的界面加入策略性色彩。 |
+| [critique](impeccable/critique/SKILL.md) | 从 UX 视角评估设计效果。 |
+| [delight](impeccable/delight/SKILL.md) | 为界面加入个性和让人记住的细节。 |
+| [distill](impeccable/distill/SKILL.md) | 把设计提炼到本质，去掉多余复杂度。 |
+| [extract](impeccable/extract/SKILL.md) | 抽取并整合可复用组件、tokens 和模式。 |
+| [harden](impeccable/harden/SKILL.md) | 提升错误处理、i18n、溢出和边界情况的韧性。 |
+| [normalize](impeccable/normalize/SKILL.md) | 让功能对齐到设计系统并保持一致性。 |
+| [onboard](impeccable/onboard/SKILL.md) | 改进引导流程、空状态和首次使用体验。 |
+| [optimize](impeccable/optimize/SKILL.md) | 优化加载、渲染、动画、图片和包体积。 |
+| [polish](impeccable/polish/SKILL.md) | 上线前打磨对齐、间距、一致性和细节。 |
+| [quieter](impeccable/quieter/SKILL.md) | 降低过强的视觉攻击性，同时保持质量。 |
+| [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | 收集设计上下文并保存为后续工作的长期指导。 |
+
+## 贡献
 
 欢迎为现有技能改进或新增技能。
 
 1. 触发条件要明确且可验证。
 2. 示例尽量简洁，强调可执行性。
 3. 若依赖外部工具，请在 `SKILL.md` 中明确标注依赖。
+4. 新增或重命名技能时，请同步更新 `README.md` 与 `README.zh-CN.md`。
 
 ## 许可证
 
 本仓库主许可证见 [LICENSE](LICENSE)。
-部分技能目录可能包含额外许可证或归属声明文件（例如 `xlsx/`、`skill-creator/`、`impeccable/`）。
+
+部分技能目录包含额外许可证或归属说明文件，包括 [`impeccable/`](impeccable/README.md)、[`skill-creator/`](skill-creator/) 和 [`xlsx/`](xlsx/)。
