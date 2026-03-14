@@ -4,7 +4,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **41 skill có thể tái sử dụng**: **23 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **42 skill có thể tái sử dụng**: **24 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -95,6 +95,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 ### Frontend và thiết kế
 
 - [ai-elements](ai-elements/SKILL.md): xây dựng các thành phần UI chat AI cho thư viện `ai-elements`.
+- [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): hướng dẫn hiệu năng React và Next.js từ Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): hướng dẫn Remotion cho công việc video dựa trên React.
 - [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `frontend-design`, `adapt`, `audit`, `polish` và nhiều skill khác.
@@ -135,6 +136,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | --- | --- | --- |
 | [agent-browser](agent-browser/SKILL.md) | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web. | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser) |
 | [ai-elements](ai-elements/SKILL.md) | Tạo các thành phần giao diện chat AI mới cho thư viện ai-elements với mô hình composable và quy ước shadcn/ui. | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements) |
+| [better-icons](better-icons/SKILL.md) | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP. | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills) |
 | [brainstorming](brainstorming/SKILL.md) | Làm rõ ý định, yêu cầu và thiết kế trước khi triển khai. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming) |
 | [context7-cli](context7-cli/SKILL.md) | Dùng Context7 CLI để tra cứu tài liệu, quản lý skill và thiết lập MCP. | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli) |
 | [docx](docx/SKILL.md) | Tạo, đọc, chỉnh sửa và xử lý tài liệu Word với định dạng, bình luận, tracked changes và cập nhật hình ảnh. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/docx) |
