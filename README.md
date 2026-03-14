@@ -127,8 +127,8 @@ Attribution and legal files are preserved in [`impeccable/NOTICE.md`](impeccable
 | Skill | Description | Source URL |
 | --- | --- | --- |
 | [agent-browser](agent-browser/SKILL.md) | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing. | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser) |
-| [ai-elements](ai-elements/SKILL.md) | Create new AI chat interface components for the ai-elements library with composable patterns and shadcn/ui conventions. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/ai-elements) |
-| [brainstorming](brainstorming/SKILL.md) | Clarify intent, requirements, and design before implementation work. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/brainstorming) |
+| [ai-elements](ai-elements/SKILL.md) | Create new AI chat interface components for the ai-elements library with composable patterns and shadcn/ui conventions. | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements) |
+| [brainstorming](brainstorming/SKILL.md) | Clarify intent, requirements, and design before implementation work. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming) |
 | [ctx7-cli](ctx7-cli/SKILL.md) | Use the Context7 CLI for docs lookup, skill management, and MCP setup. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/ctx7-cli) |
 | [design-taste-frontend](design-taste-frontend/SKILL.md) | Senior UI/UX engineering guidance for intentional, high-quality frontend design. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/design-taste-frontend) |
 | [dogfood](dogfood/SKILL.md) | Systematically test web apps and produce reproducible issue reports with screenshots and videos. | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/dogfood) |
@@ -144,7 +144,7 @@ Attribution and legal files are preserved in [`impeccable/NOTICE.md`](impeccable
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Advanced prompt engineering patterns for reliable, production LLM workflows. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/prompt-engineering-patterns) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Best practices for building videos in React with Remotion. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | Guide for creating or updating skills with specialized knowledge and tool integrations. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/skill-creator) |
-| [test-driven-development](test-driven-development/SKILL.md) | Use before implementing any feature or bugfix. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/test-driven-development) |
+| [test-driven-development](test-driven-development/SKILL.md) | Use before implementing any feature or bugfix. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidance from Vercel Engineering. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/vercel-react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | Spreadsheet creation, editing, formulas, formatting, and analysis. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/xlsx) |
 | [yeet](yeet/SKILL.md) | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet) |

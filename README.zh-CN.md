@@ -127,8 +127,8 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 | 技能 | 说明 | Source URL |
 | --- | --- | --- |
 | [agent-browser](agent-browser/SKILL.md) | 面向 AI agents 的浏览器自动化：导航、表单、截图、数据提取、网页测试。 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser) |
-| [ai-elements](ai-elements/SKILL.md) | 为 ai-elements 组件库创建新的 AI 聊天界面组件，遵循可组合模式与 shadcn/ui 约定。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/ai-elements) |
-| [brainstorming](brainstorming/SKILL.md) | 在任何实现前先澄清意图、需求与设计。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/brainstorming) |
+| [ai-elements](ai-elements/SKILL.md) | 为 ai-elements 组件库创建新的 AI 聊天界面组件，遵循可组合模式与 shadcn/ui 约定。 | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements) |
+| [brainstorming](brainstorming/SKILL.md) | 在任何实现前先澄清意图、需求与设计。 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming) |
 | [ctx7-cli](ctx7-cli/SKILL.md) | 使用 Context7 CLI 完成文档查询、skill 管理和 MCP 配置。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/ctx7-cli) |
 | [design-taste-frontend](design-taste-frontend/SKILL.md) | 面向高质量前端界面设计的 UI/UX 工程技能。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/design-taste-frontend) |
 | [dogfood](dogfood/SKILL.md) | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/dogfood) |
@@ -144,7 +144,7 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 面向生产环境的高级提示工程模式。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/prompt-engineering-patterns) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | 用于 React + Remotion 视频开发的最佳实践。 | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | 创建或更新技能，补齐专业知识、工作流与工具集成。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/skill-creator) |
-| [test-driven-development](test-driven-development/SKILL.md) | 实现任何功能或修复前先使用。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/test-driven-development) |
+| [test-driven-development](test-driven-development/SKILL.md) | 实现任何功能或修复前先使用。 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 来自 Vercel Engineering 的 React / Next.js 性能优化实践。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/vercel-react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | 覆盖表格创建、编辑、公式、格式和分析。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/xlsx) |
 | [yeet](yeet/SKILL.md) | 仅在用户明确要求用 `gh` 一次性完成 stage、commit、push 并创建 GitHub PR 时使用。 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet) |
