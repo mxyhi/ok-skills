@@ -4,7 +4,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **39 个可复用技能**：其中 **21 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。仓库目录本身就符合 skills 规范，因此可以直接 `git clone` 到 `~/.agents/skills`，再通过 `AGENTS.md` 定义触发规则。
+当前仓库共收录 **40 个可复用技能**：其中 **22 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。仓库目录本身就符合 skills 规范，因此可以直接 `git clone` 到 `~/.agents/skills`，再通过 `AGENTS.md` 定义触发规则。
 
 ## 适合谁
 
@@ -77,6 +77,7 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 
 - [gh-address-comments](gh-address-comments/SKILL.md)：用 `gh` 处理当前分支 PR 的 review / issue 评论。
 - [gh-fix-ci](gh-fix-ci/SKILL.md)：读取 GitHub Actions 失败日志并制定修复计划。
+- [yeet](yeet/SKILL.md)：仅在用户明确要求用 `gh` 一次性完成 stage、commit、push 并创建 GitHub PR 时使用。
 
 ### 自动化与 QA
 
@@ -144,6 +145,7 @@ git clone https://github.com/mxyhi/ok-skills.git ~/.agents/skills
 | [test-driven-development](test-driven-development/SKILL.md) | 实现任何功能或修复前先使用。 |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 来自 Vercel Engineering 的 React / Next.js 性能优化实践。 |
 | [xlsx](xlsx/SKILL.md) | 覆盖表格创建、编辑、公式、格式和分析。 |
+| [yeet](yeet/SKILL.md) | 仅在用户明确要求用 `gh` 一次性完成 stage、commit、push 并创建 GitHub PR 时使用。 |
 
 ### Vendored `impeccable/` 技能
 

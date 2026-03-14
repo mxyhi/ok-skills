@@ -4,7 +4,7 @@ English | [简体中文](README.zh-CN.md)
 
 Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, Trae, and other SKILL.md-compatible tools.
 
-This repo currently bundles **39 reusable skills**: **21 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md). The repository layout already matches the skills convention, so you can clone it directly into `~/.agents/skills` and trigger skills from `AGENTS.md`.
+This repo currently bundles **40 reusable skills**: **22 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md). The repository layout already matches the skills convention, so you can clone it directly into `~/.agents/skills` and trigger skills from `AGENTS.md`.
 
 ## Who This Repo Is For
 
@@ -77,6 +77,7 @@ Then ask naturally:
 
 - [gh-address-comments](gh-address-comments/SKILL.md): address review and issue comments on the current PR with `gh`.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): inspect failing GitHub Actions checks, summarize logs, and plan fixes.
+- [yeet](yeet/SKILL.md): use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one `gh`-driven flow.
 
 ### Automation & QA
 
@@ -144,6 +145,7 @@ Attribution and legal files are preserved in [`impeccable/NOTICE.md`](impeccable
 | [test-driven-development](test-driven-development/SKILL.md) | Use before implementing any feature or bugfix. |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidance from Vercel Engineering. |
 | [xlsx](xlsx/SKILL.md) | Spreadsheet creation, editing, formulas, formatting, and analysis. |
+| [yeet](yeet/SKILL.md) | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`. |
 
 ### Vendored `impeccable/` Skills
 
