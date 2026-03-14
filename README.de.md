@@ -4,7 +4,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **44 wiederverwendbare Skills**: **26 Top-Level-Skills**, die direkt hier gepflegt werden, plus **18 vendorte Design-Skills** unter [`impeccable/`](impeccable/README.md). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
+Dieses Repository bündelt aktuell **41 wiederverwendbare Skills**: **23 Top-Level-Skills**, die direkt hier gepflegt werden, plus **18 vendorte Design-Skills** unter [`impeccable/`](impeccable/README.md). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -76,7 +76,6 @@ Danach kannst du natürlich formulieren:
 
 - [brainstorming](brainstorming/SKILL.md): Absicht, Anforderungen und Design vor der Implementierung klären.
 - [planning-with-files](planning-with-files/SKILL.md): persistente Markdown-Planung mit `task_plan.md`, `findings.md` und `progress.md`.
-- [output-skill](output-skill/SKILL.md): vollständige, ungekürzte Ausgaben erzwingen und Platzhalter-Muster verbieten.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): fortgeschrittene Prompt-Design-Muster für produktive LLM-Systeme.
 - [test-driven-development](test-driven-development/SKILL.md): Tests vor der Implementierungsarbeit durchsetzen.
 
@@ -96,9 +95,7 @@ Danach kannst du natürlich formulieren:
 ### Frontend und Design
 
 - [ai-elements](ai-elements/SKILL.md): AI-Chat-UI-Komponenten für die Bibliothek `ai-elements` erstellen.
-- [redesign-skill](redesign-skill/SKILL.md): bestehende Websites und Apps auf Premium-Niveau anheben, ohne alles neu zu schreiben.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): React- und Next.js-Performanceleitlinien von Vercel Engineering.
-- [taste-skill](taste-skill/SKILL.md): Senior-UI/UX-Design-Skill für Frontend-Output mit hoher Eigenständigkeit, stärkeren Design-Systemen und Motion.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): Remotion-Leitfaden für videobasierte Arbeit mit React.
 - [`impeccable/`](impeccable/README.md): 18 vendorte Frontend-Design-Skills, darunter `frontend-design`, `adapt`, `audit`, `polish` und mehr.
 
@@ -148,16 +145,13 @@ Attributionen und rechtliche Dateien bleiben in [`impeccable/NOTICE.md`](impecca
 | [get-api-docs](get-api-docs/SKILL.md) | Aktuelle Dokumentation zu APIs oder SDKs von Drittanbietern abrufen, bevor Code geschrieben wird. | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | PR-Review- und Issue-Kommentare im aktuellen Branch mit `gh` bearbeiten. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | Fehlgeschlagene GitHub-Actions-Checks untersuchen, Logs abrufen und Fixes planen. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | Überschreibt das Standardverhalten bei LLM-Kürzungen. Erzwingt vollständige Codeausgabe, verbietet Platzhalter-Muster und handhabt Token-Grenzen sauber. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | PDF-Dateien mit Rendering-Prüfungen und Python-Werkzeugen lesen, erstellen und überprüfen. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | Einen headless oder sichtbaren Chrome-Browser über Pinchtabs HTTP-API für Web-Automatisierung, Scraping, Formularausfüllung, Navigation, Screenshots und Extraktion mit stabilen Accessibility-Referenzen steuern. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | PowerPoint-Präsentationen, Vorlagen, Layouts, Notizen und Foliensinhalte erstellen, lesen, bearbeiten und manipulieren. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Fortgeschrittene Prompt-Engineering-Muster für verlässliche, produktive LLM-Workflows. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | Bestehende Websites und Apps auf Premium-Niveau bringen. Analysiert den Ist-Zustand, identifiziert generische AI-Muster und hebt die Qualität, ohne Funktionalität zu brechen. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Best Practices für das Erstellen von Videos in React mit Remotion. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | Leitfaden zum Erstellen oder Aktualisieren von Skills mit spezialisiertem Wissen und Tool-Integrationen. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | Senior-UI/UX-Engineer-Skill. Entwirft digitale Interfaces jenseits typischer LLM-Biases mit metrischen Regeln, strikter Komponentenarchitektur, CSS-Hardwarebeschleunigung und ausgewogener Design-Engineering-Praxis. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | Vor jeder neuen Funktion oder Fehlerbehebung verwenden. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React- und Next.js-Leitlinien zur Performance-Optimierung von Vercel Engineering. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | Erstellung, Bearbeitung, Formeln, Formatierung und Analyse von Tabellenkalkulationen. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

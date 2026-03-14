@@ -4,7 +4,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **44 skills reutilizables**: **26 skills de nivel superior** mantenidos directamente aqui, ademas de **18 skills de diseno** integradas como paquete vendorizado en [`impeccable/`](impeccable/README.md). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
+Este repositorio incluye actualmente **41 skills reutilizables**: **23 skills de nivel superior** mantenidos directamente aqui, ademas de **18 skills de diseno** integradas como paquete vendorizado en [`impeccable/`](impeccable/README.md). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -76,7 +76,6 @@ Despues puedes pedirlo de forma natural:
 
 - [brainstorming](brainstorming/SKILL.md): aclara la intencion, los requisitos y el diseno antes de implementar.
 - [planning-with-files](planning-with-files/SKILL.md): planificacion persistente en Markdown con `task_plan.md`, `findings.md` y `progress.md`.
-- [output-skill](output-skill/SKILL.md): obliga a generar salidas completas, sin abreviaciones ni marcadores de posicion.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): patrones avanzados de prompt para sistemas LLM en produccion.
 - [test-driven-development](test-driven-development/SKILL.md): obliga a escribir pruebas antes de implementar.
 
@@ -96,9 +95,7 @@ Despues puedes pedirlo de forma natural:
 ### Frontend y Diseno
 
 - [ai-elements](ai-elements/SKILL.md): crea componentes de interfaz conversacional para la libreria `ai-elements`.
-- [redesign-skill](redesign-skill/SKILL.md): mejora sitios y aplicaciones existentes hasta un nivel premium sin reescribirlos desde cero.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): recomendaciones de rendimiento para React y Next.js de Vercel Engineering.
-- [taste-skill](taste-skill/SKILL.md): skill senior de UI/UX para resultados de frontend con mayor criterio de diseno, sistemas visuales y movimiento.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): guia de Remotion para trabajo de video basado en React.
 - [`impeccable/`](impeccable/README.md): 18 skills de diseno frontend vendorizadas, incluidas `frontend-design`, `adapt`, `audit`, `polish` y mas.
 
@@ -148,16 +145,13 @@ La atribucion y los archivos legales se conservan en [`impeccable/NOTICE.md`](im
 | [get-api-docs](get-api-docs/SKILL.md) | Obtiene la documentacion actual de APIs o SDK de terceros antes de escribir codigo. | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | Responde a comentarios de revision y de issues en la rama actual con `gh`. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | Inspecciona fallos de GitHub Actions, descarga logs y prepara un plan de correccion. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | Sobrescribe el truncado por defecto del LLM. Obliga a generar codigo completo, prohbe marcadores de posicion y maneja divisiones limpias al acercarse al limite de tokens. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | Lee, crea y revisa archivos PDF con comprobaciones de renderizado y herramientas en Python. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | Controla Chrome en modo headless o con interfaz mediante la API HTTP de Pinchtab para automatizacion web, scraping, formularios, navegacion, capturas y extraccion basada en referencias de accesibilidad estables. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | Crea, lee, edita y manipula presentaciones de PowerPoint, plantillas, layouts, notas y contenido de diapositivas. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Patrones avanzados de prompt engineering para flujos LLM fiables y orientados a produccion. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | Mejora sitios y aplicaciones existentes hasta un nivel premium. Audita el diseno actual, detecta patrones genericos de IA y aplica estandares visuales de alto nivel sin romper la funcionalidad. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Buenas practicas para crear videos en React con Remotion. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | Guia para crear o actualizar skills con conocimiento especializado e integraciones de herramientas. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | Skill de ingenieria UI/UX senior. Arquitecta interfaces digitales superando los sesgos visuales tipicos de los LLM, con reglas metricas, arquitectura estricta de componentes, aceleracion CSS por hardware e ingenieria de diseno equilibrada. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | Usala antes de implementar cualquier funcionalidad o correccion. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | Guia de optimizacion de rendimiento para React y Next.js desde Vercel Engineering. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | Creacion, edicion, formulas, formato y analisis de hojas de calculo. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

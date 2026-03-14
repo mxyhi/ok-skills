@@ -4,7 +4,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **44 reusable skills** शामिल हैं: **26 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **41 reusable skills** शामिल हैं: **23 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -76,7 +76,6 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 
 - [brainstorming](brainstorming/SKILL.md): implementation से पहले intent, requirements, और design स्पष्ट करें।
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, और `progress.md` के साथ persistent markdown planning.
-- [output-skill](output-skill/SKILL.md): complete, unabridged output enforce करता है और placeholder patterns पर रोक लगाता है।
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): production LLM systems के लिए advanced prompt design patterns.
 - [test-driven-development](test-driven-development/SKILL.md): implementation work से पहले tests लिखने को enforce करता है।
 
@@ -96,9 +95,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 ### Frontend & Design
 
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` library के लिए AI chat UI components बनाएं।
-- [redesign-skill](redesign-skill/SKILL.md): scratch से rewrite किए बिना existing websites और apps को premium quality तक upgrade करें।
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): Vercel Engineering से React और Next.js performance guidance.
-- [taste-skill](taste-skill/SKILL.md): stronger design systems, motion, और high-agency frontend output के लिए senior UI/UX design skill.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React-based video work के लिए Remotion guidance.
 - [`impeccable/`](impeccable/README.md): `frontend-design`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
 
@@ -148,16 +145,13 @@ Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) �
 | [get-api-docs](get-api-docs/SKILL.md) | code लिखने से पहले current third-party API या SDK docs fetch करें। | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | current branch पर PR review और issue comments को `gh` के साथ address करें। | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | failing GitHub Actions checks inspect करें, logs pull करें, और fixes plan करें। | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | LLM truncation के default behavior को override करता है, complete code generation enforce करता है, placeholder patterns पर रोक लगाता है, और token limit के पास clean splits संभालता है। | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | rendering checks और Python tooling के साथ PDF files पढ़ें, बनाएं, और review करें। | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | Pinchtab के HTTP API के जरिए headless या headed Chrome control करें, web automation, scraping, form filling, navigation, screenshots, और stable accessibility refs के साथ extraction के लिए। | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | PowerPoint presentations, templates, layouts, notes, और slide content create, read, edit, और manipulate करें। | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | reliable, production LLM workflows के लिए advanced prompt engineering patterns. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | existing websites और apps को premium quality तक upgrade करें; current design audit करें, generic AI patterns पहचानें, और functionality तोड़े बिना high-end improvements लागू करें। | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | React के साथ videos बनाने के लिए Remotion best practices. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | specialized knowledge और tool integrations के साथ skills create या update करने की guide. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | Senior UI/UX Engineer skill जो default LLM design bias को override करती है और metric-based rules, strict component architecture, CSS hardware acceleration, और balanced design engineering पर जोर देती है। | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | किसी भी feature या bugfix को implement करने से पहले उपयोग करें। | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | Vercel Engineering से React और Next.js performance optimization guidance. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | spreadsheet creation, editing, formulas, formatting, और analysis. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

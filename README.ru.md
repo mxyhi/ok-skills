@@ -4,7 +4,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **44 переиспользуемых skills**: **26 skills верхнего уровня**, которые поддерживаются прямо здесь, и еще **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **41 переиспользуемых skills**: **23 skills верхнего уровня**, которые поддерживаются прямо здесь, и еще **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -76,7 +76,6 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 - [brainstorming](brainstorming/SKILL.md): прояснение намерения, требований и дизайна перед реализацией.
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning с `task_plan.md`, `findings.md` и `progress.md`.
-- [output-skill](output-skill/SKILL.md): полное, неусеченное output без placeholder-паттернов.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): продвинутые prompt design patterns для production LLM systems.
 - [test-driven-development](test-driven-development/SKILL.md): требование писать тесты до реализации.
 
@@ -96,9 +95,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 ### Frontend & Design
 
 - [ai-elements](ai-elements/SKILL.md): создание AI chat UI components для библиотеки `ai-elements`.
-- [redesign-skill](redesign-skill/SKILL.md): улучшение существующих сайтов и приложений до premium-уровня без переписывания с нуля.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): guidance по React и Next.js performance от Vercel Engineering.
-- [taste-skill](taste-skill/SKILL.md): senior UI/UX design skill для frontend output с более сильными design systems и motion.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): guidance по Remotion для video work на React.
 - [`impeccable/`](impeccable/README.md): 18 vendored frontend design skills, включая `frontend-design`, `adapt`, `audit`, `polish` и другие.
 
@@ -148,16 +145,13 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [get-api-docs](get-api-docs/SKILL.md) | Fetch current third-party API or SDK docs before writing code. | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | Address PR review and issue comments on the current branch with `gh`. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | Inspect failing GitHub Actions checks, pull logs, and plan fixes. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | Read, create, and review PDF files with rendering checks and Python tooling. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | Control a headless or headed Chrome browser via Pinchtab's HTTP API for web automation, scraping, form filling, navigation, screenshots, and extraction with stable accessibility refs. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | Create, read, edit, and manipulate PowerPoint presentations, templates, layouts, notes, and slide content. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Advanced prompt engineering patterns for reliable, production LLM workflows. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Best practices for building videos in React with Remotion. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | Guide for creating or updating skills with specialized knowledge and tool integrations. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | Senior UI/UX Engineer. Architect digital interfaces overriding default LLM biases. Enforces metric-based rules, strict component architecture, CSS hardware acceleration, and balanced design engineering. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | Use before implementing any feature or bugfix. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidance from Vercel Engineering. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | Spreadsheet creation, editing, formulas, formatting, and analysis. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

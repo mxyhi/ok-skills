@@ -4,7 +4,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 44개**가 포함되어 있습니다. 이 중 **26개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 41개**가 포함되어 있습니다. 이 중 **23개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -76,7 +76,6 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 
 - [brainstorming](brainstorming/SKILL.md): 구현 전에 의도, 요구사항, 설계를 명확히 함.
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, `progress.md`를 사용하는 지속형 마크다운 계획 수립.
-- [output-skill](output-skill/SKILL.md): 출력 누락이나 자리표시자를 막고 완전한 결과를 강제.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): 프로덕션 LLM 시스템을 위한 고급 프롬프트 설계 패턴.
 - [test-driven-development](test-driven-development/SKILL.md): 구현 전에 테스트부터 작성하도록 강제.
 
@@ -96,9 +95,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 ### 프런트엔드 및 디자인
 
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` 라이브러리를 위한 AI 채팅 UI 컴포넌트 제작.
-- [redesign-skill](redesign-skill/SKILL.md): 기존 웹사이트와 앱을 처음부터 다시 쓰지 않고도 프리미엄 품질로 개선.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): Vercel Engineering이 정리한 React / Next.js 성능 가이드.
-- [taste-skill](taste-skill/SKILL.md): 더 강한 디자인 시스템과 모션을 포함한 고자율 프런트엔드 출력을 위한 시니어 UI/UX 디자인 스킬.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React 기반 영상 작업을 위한 Remotion 가이드.
 - [`impeccable/`](impeccable/README.md): `frontend-design`, `adapt`, `audit`, `polish` 등을 포함한 18개의 벤더링된 프런트엔드 디자인 스킬 번들.
 
@@ -148,16 +145,13 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [get-api-docs](get-api-docs/SKILL.md) | 코드를 작성하기 전에 최신 서드파티 API 또는 SDK 문서를 가져옴. | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | 현재 브랜치의 PR 리뷰 및 이슈 코멘트를 `gh`로 처리. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | 실패한 GitHub Actions 체크를 확인하고 로그를 가져와 수정 계획을 세움. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | 기본 LLM 출력 잘림을 방지하고, 완전한 코드 출력과 placeholder 금지를 강제하며, 토큰 한계 근처에서 깔끔하게 분할 처리. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | 렌더링 검토와 Python 도구를 포함해 PDF를 읽고, 생성하고, 검토. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | 안정적인 접근성 참조를 사용해 Pinchtab의 HTTP API로 헤드리스/헤디드 Chrome을 제어하여 웹 자동화, 스크래핑, 폼 입력, 탐색, 스크린샷, 추출을 수행. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | PowerPoint 프레젠테이션, 템플릿, 레이아웃, 노트, 슬라이드 콘텐츠 생성/읽기/편집/조작. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 안정적인 프로덕션 LLM 워크플로를 위한 고급 프롬프트 엔지니어링 패턴. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | 기존 웹사이트와 앱을 프리미엄 품질로 개선하며, 흔한 AI스러운 패턴을 식별하고 기능을 깨지 않고 고급스러운 방향으로 다듬음. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | React와 Remotion으로 영상을 만들기 위한 모범 사례. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | 전문 지식과 도구 연동을 갖춘 스킬을 만들거나 업데이트하는 가이드. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | 기본 LLM 디자인 편향을 넘어서는 디지털 인터페이스를 설계하는 시니어 UI/UX 엔지니어 스킬. 정량 규칙, 엄격한 컴포넌트 아키텍처, CSS 하드웨어 가속, 균형 잡힌 디자인 엔지니어링을 강조. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | 기능이나 버그 수정을 구현하기 전에 사용. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | Vercel Engineering이 정리한 React / Next.js 성능 최적화 가이드. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | 스프레드시트 생성, 편집, 수식, 서식, 분석. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

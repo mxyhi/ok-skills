@@ -4,7 +4,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **44 skill có thể tái sử dụng**: **26 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **41 skill có thể tái sử dụng**: **23 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -76,7 +76,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 - [brainstorming](brainstorming/SKILL.md): làm rõ ý định, yêu cầu và thiết kế trước khi triển khai.
 - [planning-with-files](planning-with-files/SKILL.md): lập kế hoạch Markdown bền vững với `task_plan.md`, `findings.md` và `progress.md`.
-- [output-skill](output-skill/SKILL.md): ép đầu ra đầy đủ, không rút gọn và cấm placeholder.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): các mẫu thiết kế prompt nâng cao cho hệ thống LLM production.
 - [test-driven-development](test-driven-development/SKILL.md): buộc viết test trước khi triển khai.
 
@@ -96,9 +95,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 ### Frontend và thiết kế
 
 - [ai-elements](ai-elements/SKILL.md): xây dựng các thành phần UI chat AI cho thư viện `ai-elements`.
-- [redesign-skill](redesign-skill/SKILL.md): nâng cấp website và ứng dụng hiện có lên chất lượng cao hơn mà không cần viết lại từ đầu.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): hướng dẫn hiệu năng React và Next.js từ Vercel Engineering.
-- [taste-skill](taste-skill/SKILL.md): skill thiết kế UI/UX cấp senior cho đầu ra frontend có tính chủ động cao, hệ thống thiết kế mạnh hơn và motion tốt hơn.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): hướng dẫn Remotion cho công việc video dựa trên React.
 - [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `frontend-design`, `adapt`, `audit`, `polish` và nhiều skill khác.
 
@@ -148,16 +145,13 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [get-api-docs](get-api-docs/SKILL.md) | Lấy tài liệu API hoặc SDK bên thứ ba hiện tại trước khi viết code. | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | Xử lý comment review PR và issue trên nhánh hiện tại bằng `gh`. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | Kiểm tra các check GitHub Actions thất bại, kéo log và lập kế hoạch sửa. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | Ghi đè hành vi cắt ngắn mặc định của LLM. Ép sinh mã đầy đủ, cấm placeholder và xử lý phân đoạn sạch khi gần chạm trần token. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | Đọc, tạo và rà soát PDF với kiểm tra render và công cụ Python. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | Điều khiển Chrome headless hoặc headed qua HTTP API của Pinchtab cho tự động hóa web, scraping, điền biểu mẫu, điều hướng, ảnh chụp màn hình và trích xuất bằng accessibility ref ổn định. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`. | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | Tạo, đọc, chỉnh sửa và xử lý bản trình bày PowerPoint, template, layout, note và nội dung slide. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Các mẫu prompt engineering nâng cao cho workflow LLM đáng tin cậy trong production. | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | Nâng cấp website và ứng dụng hiện có lên chất lượng cao cấp hơn. Đánh giá thiết kế hiện tại, nhận diện dấu vết AI chung chung và áp dụng chuẩn cao cấp mà không phá vỡ chức năng. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | Best practices để xây dựng video trong React với Remotion. | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | Hướng dẫn tạo mới hoặc cập nhật skill với tri thức chuyên biệt và tích hợp công cụ. | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | Kỹ sư UI/UX cấp senior. Thiết kế giao diện số phá vỡ thiên kiến mặc định của LLM, với quy tắc định lượng, kiến trúc component chặt chẽ, tăng tốc CSS bằng phần cứng và tư duy thiết kế cân bằng. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | Dùng trước khi triển khai bất kỳ tính năng hay bugfix nào. | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | Hướng dẫn tối ưu hiệu năng React và Next.js từ Vercel Engineering. | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | Tạo và chỉnh sửa bảng tính, công thức, định dạng và phân tích. | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |

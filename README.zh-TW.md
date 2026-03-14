@@ -4,7 +4,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **44 個可重用技能**：其中 **26 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **41 個可重用技能**：其中 **23 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -76,7 +76,6 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 - [brainstorming](brainstorming/SKILL.md)：在實作前先釐清意圖、需求與設計。
 - [planning-with-files](planning-with-files/SKILL.md)：透過 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。
-- [output-skill](output-skill/SKILL.md)：強制完整輸出，禁止占位符、截斷與半成品程式碼。
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：面向生產環境的進階提示工程模式。
 - [test-driven-development](test-driven-development/SKILL.md)：任何功能或修復都先寫測試。
 
@@ -96,9 +95,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 ### 前端與設計
 
 - [ai-elements](ai-elements/SKILL.md)：為 `ai-elements` 元件庫建立 AI 對話介面元件。
-- [redesign-skill](redesign-skill/SKILL.md)：升級現有網站或應用程式的設計品質，而不是從零重寫。
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md)：來自 Vercel Engineering 的 React / Next.js 效能實踐。
-- [taste-skill](taste-skill/SKILL.md)：面向高品質前端輸出的進階 UI/UX 設計技能，強調設計系統、動效與工程約束。
 - [remotion-best-practices](remotion-best-practices/SKILL.md)：基於 React 的 Remotion 影片開發最佳實踐。
 - [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `frontend-design`、`adapt`、`audit`、`polish` 等。
 
@@ -148,16 +145,13 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [get-api-docs](get-api-docs/SKILL.md) | 在撰寫第三方 API / SDK 程式碼前先抓取當前文件。 | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs) |
 | [gh-address-comments](gh-address-comments/SKILL.md) | 使用 `gh` 處理目前分支 PR 的評審與 issue 留言。 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments) |
 | [gh-fix-ci](gh-fix-ci/SKILL.md) | 檢查 GitHub Actions 失敗項、提取日誌並制定修復計畫。 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci) |
-| [output-skill](output-skill/SKILL.md) | 覆蓋預設的 LLM 截斷行為，強制完整程式碼輸出，禁止占位符，並在接近 token 上限時做乾淨分段。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/output-skill) |
 | [pdf](pdf/SKILL.md) | 處理 PDF 的讀取、產生與審查，強調渲染後的視覺檢查。 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
 | [pinchtab](pinchtab/SKILL.md) | 透過 Pinchtab 的 HTTP API 控制 headless 或 headed Chrome，用於網頁自動化、抓取、表單填寫、導覽、截圖與基於穩定 accessibility refs 的內容擷取。 | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skill/pinchtab) |
 | [planning-with-files](planning-with-files/SKILL.md) | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.agent/skills/planning-with-files) |
 | [pptx](pptx/SKILL.md) | 建立、讀取、編輯與處理 PowerPoint 簡報，涵蓋模板、版面、備註與投影片內容。 | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/pptx) |
 | [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 面向生產環境的進階提示工程模式。 | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
-| [redesign-skill](redesign-skill/SKILL.md) | 將現有網站與應用升級到更高設計品質；先審計現況、識別通用 AI 痕跡，再在不破壞功能的前提下進行高品質改造。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/redesign-skill) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md) | 用於 React + Remotion 影片開發的最佳實踐。 | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion) |
 | [skill-creator](skill-creator/SKILL.md) | 建立或更新技能，補齊專業知識、工作流與工具整合。 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) |
-| [taste-skill](taste-skill/SKILL.md) | 進階 UI/UX 工程技能，專注於打破預設 LLM 設計偏差，強調量化規則、元件架構、CSS 硬體加速與平衡的設計工程。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/taste-skill) |
 | [test-driven-development](test-driven-development/SKILL.md) | 實作任何功能或修復前先使用。 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development) |
 | [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 來自 Vercel Engineering 的 React / Next.js 效能最佳實踐。 | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices) |
 | [xlsx](xlsx/SKILL.md) | 涵蓋試算表建立、編輯、公式、格式與分析。 | [anthropics/skills](https://github.com/anthropics/skills/tree/main/skills/xlsx) |
