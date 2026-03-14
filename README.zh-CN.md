@@ -1,14 +1,14 @@
-# OK Skills：面向 Codex、Claude Code、Cursor 等工具的 AI Agent Skills 集合
+# OK Skills：面向 Codex、Claude Code、Cursor、OpenClaw 等工具的 AI Agent Skills 集合
 
 简体中文 | [English](README.md)
 
-这是一个面向 Codex、Claude Code、Cursor、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
+这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
 当前仓库共收录 **44 个可复用技能**：其中 **26 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 ## 适合谁
 
-- 你在用 Codex、Claude Code、Cursor、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
+- 你在用 Codex、Claude Code、Cursor、OpenClaw、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
 - 你在维护 `AGENTS.md` / `SKILL.md` 体系，希望不同项目之间可以迁移同一套工作流。
 - 你需要现成的文档查询、浏览器自动化、GitHub 工作流、规划、提示工程、前端设计、PDF、Office 文档、演示文稿和表格类技能。
 

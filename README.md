@@ -1,14 +1,14 @@
-# OK Skills: AI Coding Agent Skills for Codex, Claude Code, Cursor, and More
+# OK Skills: AI Coding Agent Skills for Codex, Claude Code, Cursor, OpenClaw, and More
 
 English | [简体中文](README.zh-CN.md)
 
-Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, Trae, and other SKILL.md-compatible tools.
+Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, OpenClaw, Trae, and other SKILL.md-compatible tools.
 
 This repo currently bundles **44 reusable skills**: **26 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
 
 ## Who This Repo Is For
 
-- You use Codex, Claude Code, Cursor, Trae, or another AI coding agent and want reusable skills instead of ad-hoc prompts.
+- You use Codex, Claude Code, Cursor, OpenClaw, Trae, or another AI coding agent and want reusable skills instead of ad-hoc prompts.
 - You maintain `AGENTS.md` / `SKILL.md` workflows and want portable instructions that work across projects.
 - You need battle-tested skills for docs lookup, browser automation, GitHub workflow, planning, prompt engineering, frontend design, PDFs, Office documents, slide decks, and spreadsheets.
 
