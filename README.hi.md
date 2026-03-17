@@ -113,7 +113,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 
 ## Vendored Skill Packs
 
-[`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `15332dd293986e0a310fa54c103025d21142c3dd` पर आधारित।
+[`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `b5af865d84bc1ba1b8bc7104488bc7db50977029` पर आधारित।
 
 इसमें शामिल हैं:
 

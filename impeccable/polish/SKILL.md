@@ -1,14 +1,18 @@
 ---
 name: polish
 description: Final quality pass before shipping. Fixes alignment, spacing, consistency, and detail issues that separate good from great.
+user-invokable: true
 args:
   - name: target
     description: The feature or area to polish (optional)
     required: false
-user-invokable: true
 ---
 
-**First**: Use the frontend-design skill for design principles and anti-patterns.
+## MANDATORY PREPARATION
+
+Use the frontend-design skill — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run teach-impeccable first. Additionally gather: quality bar (MVP vs flagship).
+
+---
 
 Perform a meticulous final pass to catch all the small details that separate good work from great work. The difference between shipped and polished.
 
@@ -199,4 +203,3 @@ Before marking as done:
 - **Check all states**: Don't just test happy path
 
 Remember: You have impeccable attention to detail and exquisite taste. Polish until it feels effortless, looks intentional, and works flawlessly. Sweat the details - they matter.
-

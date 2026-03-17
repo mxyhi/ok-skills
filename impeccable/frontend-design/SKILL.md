@@ -6,6 +6,26 @@ license: Apache 2.0. Based on Anthropic's frontend-design skill. See NOTICE.md f
 
 This skill guides creation of distinctive, production-grade frontend interfaces that avoid generic "AI slop" aesthetics. Implement real working code with exceptional attention to aesthetic details and creative choices.
 
+## Context Gathering Protocol
+
+Design skills produce generic output without project context. You MUST have confirmed design context before doing any design work.
+
+**Required context** — every design skill needs at minimum:
+- **Target audience**: Who uses this product and in what context?
+- **Use cases**: What jobs are they trying to get done?
+- **Brand personality/tone**: How should the interface feel?
+
+Individual skills may require additional context — check the skill's preparation section for specifics.
+
+**CRITICAL**: You cannot infer this context by reading the codebase. Code tells you what was built, not who it's for or what it should feel like. Only the creator can provide this context.
+
+**Gathering order:**
+1. **Check current instructions (instant)**: If your loaded instructions already contain a **Design Context** section, proceed immediately.
+2. **Check .impeccable.md (fast)**: If not in instructions, read `.impeccable.md` from the project root. If it exists and contains the required context, proceed.
+3. **Run teach-impeccable (REQUIRED)**: If neither source has context, you MUST run the teach-impeccable skill NOW before doing anything else. Do NOT skip this step. Do NOT attempt to infer context from the codebase instead.
+
+---
+
 ## Design Direction
 
 Commit to a BOLD aesthetic direction:
@@ -124,4 +144,4 @@ Match implementation complexity to the aesthetic vision. Maximalist designs need
 
 Interpret creatively and make unexpected choices that feel genuinely designed for the context. No design should be the same. Vary between light and dark themes, different fonts, different aesthetics. NEVER converge on common choices across generations.
 
-Remember: {{model}} is capable of extraordinary creative work. Don't hold back—show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+Remember: Claude is capable of extraordinary creative work. Don't hold back—show what can truly be created when thinking outside the box and committing fully to a distinctive vision.

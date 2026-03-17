@@ -13,6 +13,9 @@ Search and retrieve icons from 200+ libraries via Iconify.
 # Search icons
 better-icons search <query> [--prefix <prefix>] [--limit <n>] [--json]
 
+# Search and download all found icons as SVG files
+better-icons search <query> -d [dir] [--color <color>] [--size <px>]
+
 # Get icon SVG (outputs to stdout)
 better-icons get <icon-id> [--color <color>] [--size <px>] [--json]
 
@@ -27,6 +30,11 @@ better-icons search arrow --limit 10
 better-icons search home --json | jq '.icons[0]'
 better-icons get lucide:home > icon.svg
 better-icons get mdi:home --color '#333' --json
+
+# Batch download all search results
+better-icons search arrow -d              # saves to ./icons/
+better-icons search check -d ./my-icons   # saves to ./my-icons/
+better-icons search star -d -c '#000' -s 24 --limit 64
 ```
 
 ## Icon ID Format

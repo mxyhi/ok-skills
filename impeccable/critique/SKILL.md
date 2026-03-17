@@ -1,16 +1,20 @@
 ---
 name: critique
 description: Evaluate design effectiveness from a UX perspective. Assesses visual hierarchy, information architecture, emotional resonance, and overall design quality with actionable feedback.
+user-invokable: true
 args:
   - name: area
     description: The feature or area to critique (optional)
     required: false
-user-invokable: true
+---
+
+## MANDATORY PREPARATION
+
+Use the frontend-design skill — it contains design principles, anti-patterns, and the **Context Gathering Protocol**. Follow the protocol before proceeding — if no design context exists yet, you MUST run teach-impeccable first. Additionally gather: what the interface is trying to accomplish.
+
 ---
 
 Conduct a holistic design critique, evaluating whether the interface actually works—not just technically, but as a designed experience. Think like a design director giving feedback.
-
-**First**: Use the frontend-design skill for design principles and anti-patterns.
 
 ## Design Critique
 
@@ -98,7 +102,7 @@ For each issue:
 - **What**: Name the problem clearly
 - **Why it matters**: How this hurts users or undermines goals
 - **Fix**: What to do about it (be concrete)
-- **Command**: Which command to use (prefer: {{available_commands}} — or other installed skills you're sure exist)
+- **Command**: Which command to use (prefer: /animate, /quieter, /optimize, /adapt, /clarify, /distill, /delight, /onboard, /normalize, /audit, /harden, /polish, /extract, /bolder, /arrange, /typeset, /critique, /colorize, /overdrive — or other installed skills you're sure exist)
 
 ### Minor Observations
 Quick notes on smaller issues worth addressing.

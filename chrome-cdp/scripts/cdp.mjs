@@ -22,7 +22,7 @@ const MIN_TARGET_PREFIX_LEN = 8;
 const IS_WINDOWS = process.platform === 'win32';
 if (!IS_WINDOWS) process.umask(0o077);
 const RUNTIME_DIR = IS_WINDOWS
-  ? resolve(homedir(), '.cache', 'cdp')
+  ? resolve(process.env.LOCALAPPDATA || resolve(homedir(), 'AppData', 'Local'), 'cdp')
   : process.env.XDG_RUNTIME_DIR
     ? resolve(process.env.XDG_RUNTIME_DIR, 'cdp')
     : resolve(homedir(), '.cache', 'cdp');
@@ -58,17 +58,21 @@ function getWsUrl() {
       resolve(home, '.config', b, 'DevToolsActivePort'),
       resolve(home, '.config', b, 'Default/DevToolsActivePort'),
     ]),
-    // Windows: ~/AppData/Local/<name>/User Data/DevToolsActivePort
-    ...['Google/Chrome', 'BraveSoftware/Brave-Browser', 'Microsoft/Edge'].flatMap(b => [
-      resolve(home, 'AppData/Local', b, 'User Data/DevToolsActivePort'),
-      resolve(home, 'AppData/Local', b, 'User Data/Default/DevToolsActivePort'),
-    ]),
+    // Windows: %LOCALAPPDATA%/<name>/User Data/DevToolsActivePort
+    ...(IS_WINDOWS ? ['Google/Chrome', 'BraveSoftware/Brave-Browser', 'Microsoft/Edge'].flatMap(b => {
+      const base = process.env.LOCALAPPDATA || resolve(home, 'AppData/Local');
+      return [
+        resolve(base, b, 'User Data/DevToolsActivePort'),
+        resolve(base, b, 'User Data/Default/DevToolsActivePort'),
+      ];
+    }) : []),
   ].filter(Boolean);
   const portFile = candidates.find(p => existsSync(p));
   if (!portFile) throw new Error('No DevToolsActivePort found. Enable remote debugging at chrome://inspect/#remote-debugging');
   const lines = readFileSync(portFile, 'utf8').trim().split('\n');
   if (lines.length < 2 || !lines[0] || !lines[1]) throw new Error(`Invalid DevToolsActivePort file: ${portFile}`);
-  return `ws://127.0.0.1:${lines[0]}${lines[1]}`;
+  const host = process.env.CDP_HOST || '127.0.0.1';
+  return `ws://${host}:${lines[0]}${lines[1]}`;
 }
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -580,6 +584,11 @@ async function runDaemon(targetId) {
         });
       }
     });
+  });
+
+  server.on('error', (e) => {
+    process.stderr.write(`Daemon server listen failed: ${e.message}\n`);
+    process.exit(1);
   });
 
   if (!IS_WINDOWS) try { unlinkSync(sp); } catch {}

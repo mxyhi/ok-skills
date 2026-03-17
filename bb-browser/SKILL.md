@@ -70,20 +70,20 @@ bb-browser open https://example.com --tab 123      # 在指定 tabId 打开
 ### 导航
 
 ```bash
-bb-browser open <url>                # 打开 URL（新 tab）
+bb-browser open <url>           # 打开 URL（新 tab）
 bb-browser open <url> --tab current  # 在当前 tab 打开
-bb-browser back                      # 后退
-bb-browser forward                   # 前进
-bb-browser refresh                   # 刷新
-bb-browser close                     # 关闭当前 tab
+bb-browser back                 # 后退
+bb-browser forward              # 前进
+bb-browser refresh              # 刷新
+bb-browser close                # 关闭当前 tab
 ```
 
 ### 快照
 
 ```bash
-bb-browser snapshot        # 完整页面结构
-bb-browser snapshot -i     # 只显示可交互元素（推荐）
-bb-browser snapshot --json # JSON 格式输出
+bb-browser snapshot             # 完整页面结构
+bb-browser snapshot -i          # 只显示可交互元素（推荐）
+bb-browser snapshot --json      # JSON 格式输出
 ```
 
 ### 元素交互
@@ -105,47 +105,47 @@ bb-browser scroll up 500        # 向上滚动 500px
 ### 获取信息
 
 ```bash
-bb-browser get text @5 # 获取元素文本
-bb-browser get url     # 获取当前 URL
-bb-browser get title   # 获取页面标题
+bb-browser get text @5          # 获取元素文本
+bb-browser get url              # 获取当前 URL
+bb-browser get title            # 获取页面标题
 ```
 
 ### Tab 管理
 
 ```bash
-bb-browser tab           # 列出所有 tab
-bb-browser tab new [url] # 新建 tab
-bb-browser tab 2         # 切换到第 2 个 tab
-bb-browser tab close     # 关闭当前 tab
-bb-browser tab close 3   # 关闭第 3 个 tab
+bb-browser tab                  # 列出所有 tab
+bb-browser tab new [url]        # 新建 tab
+bb-browser tab 2                # 切换到第 2 个 tab
+bb-browser tab close            # 关闭当前 tab
+bb-browser tab close 3          # 关闭第 3 个 tab
 ```
 
 ### 截图
 
 ```bash
-bb-browser screenshot          # 截图（自动保存）
-bb-browser screenshot path.png # 截图到指定路径
+bb-browser screenshot           # 截图（自动保存）
+bb-browser screenshot path.png  # 截图到指定路径
 ```
 
 ### 等待
 
 ```bash
-bb-browser wait 2000 # 等待 2 秒
-bb-browser wait @5   # 等待元素出现
+bb-browser wait 2000            # 等待 2 秒
+bb-browser wait @5              # 等待元素出现
 ```
 
 ### JavaScript
 
 ```bash
-bb-browser eval "document.title"           # 执行 JS
-bb-browser eval "window.scrollTo(0, 1000)" # 滚动到指定位置
+bb-browser eval "document.title"              # 执行 JS
+bb-browser eval "window.scrollTo(0, 1000)"    # 滚动到指定位置
 ```
 
 ### Frame 切换
 
 ```bash
-bb-browser frame "#iframe-id" # 切换到 iframe
-bb-browser frame main         # 返回主 frame
+bb-browser frame "#iframe-id"   # 切换到 iframe
+bb-browser frame main           # 返回主 frame
 ```
 
 ### 对话框处理
@@ -159,18 +159,18 @@ bb-browser dialog accept "text" # 确认并输入（prompt）
 ### 调试
 
 ```bash
-bb-browser network requests # 查看网络请求
-bb-browser console          # 查看控制台消息
-bb-browser errors           # 查看 JS 错误
-bb-browser trace start      # 开始录制用户操作
-bb-browser trace stop       # 停止录制
+bb-browser network requests     # 查看网络请求
+bb-browser console              # 查看控制台消息
+bb-browser errors               # 查看 JS 错误
+bb-browser trace start          # 开始录制用户操作
+bb-browser trace stop           # 停止录制
 ```
 
 ## Ref 使用说明
 
 snapshot 返回的 `@ref` 是元素的临时标识：
 
-```text
+```
 @1 [button] "提交"
 @2 [input type="text"] placeholder="请输入姓名"
 @3 [a] "查看详情"
@@ -259,81 +259,33 @@ bb-browser snapshot -i
 bb-browser fill @1 "张三"
 bb-browser fill @2 "zhangsan@example.com"
 bb-browser click @3
+bb-browser wait 2000
+bb-browser close
 ```
 
 ### 信息提取
 
 ```bash
-bb-browser open https://news.ycombinator.com
+bb-browser open https://example.com/dashboard
 bb-browser snapshot -i
-bb-browser get text @5 # 获取某个标题
-
-# 或直接提取页面所有文本
-bb-browser eval "document.body.innerText"
+bb-browser get text @5              # 获取特定元素文本
+bb-browser screenshot report.png    # 截图保存
+bb-browser close
 ```
 
-### 登录后页面操作
+### 批量操作
 
 ```bash
-# 浏览器中已经登录 GitHub
-bb-browser open https://github.com/settings/profile
-bb-browser snapshot -i
-# @1 [input] value="当前昵称"
-# @2 [button] "Save"
-
-bb-browser fill @1 "新昵称"
-bb-browser click @2
+# 打开多个页面提取信息
+for url in "url1" "url2" "url3"; do
+  bb-browser open "$url"
+  bb-browser snapshot -i --json
+  bb-browser close
+done
 ```
 
-### Frame 内操作
+## 深入文档
 
-```bash
-bb-browser open https://example.com/with-iframe
-bb-browser frame "#content-frame"
-bb-browser snapshot -i
-bb-browser click @1
-bb-browser frame main
-```
-
-## Site-specific 处理
-
-某些网站有特殊的最佳实践，详见：
-
-- [references/site-specific-guide.md](references/site-specific-guide.md) - 微信公众号、知乎、GitHub 等
-
-## 故障排查
-
-### 元素找不到 / ref 失效
-
-```bash
-bb-browser snapshot -i # 重新获取最新 ref
-```
-
-### 页面还没加载完
-
-```bash
-bb-browser wait 2000
-bb-browser snapshot -i
-```
-
-### 需要操作 iframe
-
-```bash
-bb-browser frame "#iframe-selector"
-bb-browser snapshot -i
-```
-
-### 查看错误信息
-
-```bash
-bb-browser errors
-bb-browser console
-```
-
-## 最佳实践
-
-1. **优先用 `snapshot -i`** - 过滤无关元素，聚焦可操作项
-2. **提取长文本用 `eval`** - 比 snapshot 更高效
-3. **操作后重新 snapshot** - ref 可能已失效
-4. **完成后关闭 tab** - 避免污染用户浏览器
-5. **需要调试时查看 console/errors** - 快速定位问题
+| 文档 | 说明 |
+|------|------|
+| [references/snapshot-refs.md](references/snapshot-refs.md) | Ref 生命周期、最佳实践、常见问题 |
