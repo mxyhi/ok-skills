@@ -4,7 +4,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **47 個可重用技能**：其中 **29 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **55 個可重用技能**：其中 **29 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -103,6 +103,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [better-icons](better-icons/SKILL.md)：透過 CLI 或 MCP 搜尋、瀏覽並取得 200+ Iconify 圖示庫中的 SVG 圖示。
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md)：來自 Vercel Engineering 的 React / Next.js 效能實踐。
 - [remotion-best-practices](remotion-best-practices/SKILL.md)：基於 React 的 Remotion 影片開發最佳實踐。
+- [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
 - [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `frontend-design`、`adapt`、`audit`、`polish` 等。
 
 ### 工具與內容製作
@@ -124,6 +125,21 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - `extract`、`harden`、`normalize`、`onboard`、`optimize`、`polish`、`quieter`、`teach-impeccable`
 
 歸屬與法律文件保存在 [`impeccable/NOTICE.md`](impeccable/NOTICE.md) 與 [`impeccable/LICENSE`](impeccable/LICENSE)。
+
+[`gsap-skills/`](gsap-skills/) 目錄收錄了來自 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) 的 GSAP 動畫技能包，目前同步基於提交 `4300e310513b0ddc0b121a5c0e0bd2e5c2325ff2`。
+
+其中包括：
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+歸屬與法律文件保存在 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 與 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)。
 
 ## 常見前置條件
 
@@ -192,6 +208,19 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [quieter](impeccable/quieter/SKILL.md) | 降低過強的視覺侵略性，同時保留設計品質。 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | 收集設計上下文並保存為後續工作的長期指引。 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
+### Vendored `gsap-skills/` 技能
+
+| 技能 | 說明 | Source URL |
+| --- | --- | --- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md) | 核心 API：`gsap.to()` / `from()` / `fromTo()`，緩動、duration、stagger、defaults、matchMedia。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core) |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md) | Timeline：時序編排、position 參數、labels、巢狀與播放控制。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline) |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger：滾動驅動動畫、pin、scrub、觸發器、refresh、清理。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md) | 外掛：Flip、Draggable、MotionPath、ScrollToPlugin、CustomEase 等。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins) |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md) | gsap.utils：clamp、mapRange、normalize、random、snap、toArray、wrap、pipe。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils) |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md) | React：useGSAP、refs、`gsap.context()`、清理、SSR。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react) |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md) | 效能：transform 優先、will-change、批次處理、ScrollTrigger 效能建議。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance) |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md) | Vue、Svelte 等：生命週期、選擇器作用域、卸載清理。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks) |
+
 ## 貢獻
 
 歡迎為現有技能提出改進，或新增新的技能。
@@ -205,4 +234,4 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 本倉庫主授權條款見 [LICENSE](LICENSE)。
 
-部分技能目錄包含額外授權或歸屬說明文件，包括 [`docx/`](docx/)、[`pptx/`](pptx/)、[`impeccable/`](impeccable/README.md)、[`skill-creator/`](skill-creator/) 與 [`xlsx/`](xlsx/)。
+部分技能目錄包含額外授權或歸屬說明文件，包括 [`docx/`](docx/)、[`pptx/`](pptx/)、[`impeccable/`](impeccable/README.md)、[`gsap-skills/`](gsap-skills/)、[`skill-creator/`](skill-creator/) 與 [`xlsx/`](xlsx/)。

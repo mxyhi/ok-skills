@@ -4,7 +4,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **47 reusable skills** शामिल हैं: **29 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **55 reusable skills** शामिल हैं: **29 top-level skills** सीधे इसी repo में maintain की जाती हैं, [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -103,6 +103,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): Vercel Engineering से React और Next.js performance guidance.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React-based video work के लिए Remotion guidance.
+- [`gsap-skills/`](gsap-skills/): core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks सहित 8 official GSAP animation skills.
 - [`impeccable/`](impeccable/README.md): `frontend-design`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
 
 ### Utilities & Authoring
@@ -124,6 +125,21 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
 
 Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) और [`impeccable/LICENSE`](impeccable/LICENSE) में सुरक्षित रखे गए हैं।
+
+[`gsap-skills/`](gsap-skills/) में [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) से लिया गया animation-focused vendored bundle शामिल है, commit `4300e310513b0ddc0b121a5c0e0bd2e5c2325ff2` पर आधारित।
+
+इसमें शामिल हैं:
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) और [`gsap-skills/LICENSE`](gsap-skills/LICENSE) में सुरक्षित रखे गए हैं।
 
 ## सामान्य prerequisites
 
@@ -192,6 +208,19 @@ Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) �
 | [quieter](impeccable/quieter/SKILL.md) | quality बरकरार रखते हुए visual aggression कम करें। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | future work के लिए design context एकत्र करके persistent guidance के रूप में सहेजें। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
+### Vendored `gsap-skills/` Skills
+
+| Skill | विवरण | Source URL |
+| --- | --- | --- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md) | Core API: `gsap.to()` / `from()` / `fromTo()`, easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core) |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md) | Timelines: sequencing, position parameter, labels, nesting, playback. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline) |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: scroll-linked animation, pinning, scrub, triggers, refresh, cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md) | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase, और अधिक. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins) |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md) | gsap.utils helpers: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils) |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md) | React: useGSAP, refs, `gsap.context()`, cleanup, SSR. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react) |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md) | Performance tips: transforms, will-change, batching, ScrollTrigger tips. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance) |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md) | Vue, Svelte, और अन्य frameworks: lifecycle, selector scoping, unmount cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks) |
+
 ## Contributing
 
 नई skills या existing skills में improvements के लिए contributions का स्वागत है।
@@ -205,4 +234,4 @@ Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) �
 
 यह repository [LICENSE](LICENSE) के अंतर्गत licensed है।
 
-कुछ skills में skill-specific assets और attribution के लिए अतिरिक्त license files या notices शामिल हैं, जिनमें [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`skill-creator/`](skill-creator/), और [`xlsx/`](xlsx/) शामिल हैं।
+कुछ skills में skill-specific assets और attribution के लिए अतिरिक्त license files या notices शामिल हैं, जिनमें [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`gsap-skills/`](gsap-skills/), [`skill-creator/`](skill-creator/), और [`xlsx/`](xlsx/) शामिल हैं।

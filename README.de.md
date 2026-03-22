@@ -4,7 +4,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **47 wiederverwendbare Skills**: **29 Top-Level-Skills**, die direkt hier gepflegt werden, plus **18 vendorte Design-Skills** unter [`impeccable/`](impeccable/README.md). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
+Dieses Repository bündelt aktuell **55 wiederverwendbare Skills**: **29 Top-Level-Skills**, die direkt hier gepflegt werden, plus **18 vendorte Design-Skills** unter [`impeccable/`](impeccable/README.md), plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -103,6 +103,7 @@ Danach kannst du natürlich formulieren:
 - [better-icons](better-icons/SKILL.md): SVG-Icons aus mehr als 200 Iconify-Bibliotheken per CLI oder MCP suchen, durchsuchen und abrufen.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): React- und Next.js-Performanceleitlinien von Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): Remotion-Leitfaden für videobasierte Arbeit mit React.
+- [`gsap-skills/`](gsap-skills/): 8 offizielle GSAP-Animations-Skills (Core, Timelines, ScrollTrigger, Plugins, Utils, React, Performance, Frameworks).
 - [`impeccable/`](impeccable/README.md): 18 vendorte Frontend-Design-Skills, darunter `frontend-design`, `adapt`, `audit`, `polish` und mehr.
 
 ### Utilities und Content-Erstellung
@@ -124,6 +125,21 @@ Enthalten sind:
 - `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
 
 Attributionen und rechtliche Dateien bleiben in [`impeccable/NOTICE.md`](impeccable/NOTICE.md) und [`impeccable/LICENSE`](impeccable/LICENSE) erhalten.
+
+[`gsap-skills/`](gsap-skills/) enthält ein animationsfokussiertes Bundle, vendort aus [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) auf Basis des Commits `4300e310513b0ddc0b121a5c0e0bd2e5c2325ff2`.
+
+Enthalten sind:
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+Attributionen und rechtliche Dateien bleiben in [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) und [`gsap-skills/LICENSE`](gsap-skills/LICENSE) erhalten.
 
 ## Häufige Voraussetzungen
 
@@ -192,6 +208,19 @@ Attributionen und rechtliche Dateien bleiben in [`impeccable/NOTICE.md`](impecca
 | [quieter](impeccable/quieter/SKILL.md) | Visuelle Aggressivität reduzieren und die Qualität beibehalten. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | Designkontext erfassen und als dauerhafte Leitlinie für spätere Arbeit speichern. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
+### Vendorte `gsap-skills/`-Skills
+
+| Skill | Beschreibung | Source URL |
+| --- | --- | --- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md) | Core API: gsap.to()/from()/fromTo(), Easing, Duration, Stagger, Defaults, MatchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core) |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md) | Timelines: Sequencing, Position Parameter, Labels, Nesting, Playback. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline) |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: Scroll-gebundene Animationen, Pinning, Scrub, Triggers, Refresh, Cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md) | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase u.v.m. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins) |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md) | gsap.utils Helpers: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils) |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md) | React: useGSAP, Refs, gsap.context(), Cleanup, SSR. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react) |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md) | Performance: Transforms, will-change, Batching, ScrollTrigger Tips. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance) |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md) | Vue, Svelte u.a.: Lifecycle, Selector-Scoping, Cleanup beim Unmount. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks) |
+
 ## Mitwirken
 
 Beiträge für neue Skills oder Verbesserungen an bestehenden Skills sind willkommen.
@@ -205,4 +234,4 @@ Beiträge für neue Skills oder Verbesserungen an bestehenden Skills sind willko
 
 Dieses Repository steht unter der Lizenz aus [LICENSE](LICENSE).
 
-Einige Skills enthalten zusätzliche Lizenzdateien oder Hinweise zu skill-spezifischen Assets und Attributionen, darunter [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`skill-creator/`](skill-creator/) und [`xlsx/`](xlsx/).
+Einige Skills enthalten zusätzliche Lizenzdateien oder Hinweise zu skill-spezifischen Assets und Attributionen, darunter [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`gsap-skills/`](gsap-skills/), [`skill-creator/`](skill-creator/) und [`xlsx/`](xlsx/).

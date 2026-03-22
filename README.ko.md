@@ -4,7 +4,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 47개**가 포함되어 있습니다. 이 중 **29개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 55개**가 포함되어 있습니다. 이 중 **29개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -103,6 +103,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): Vercel Engineering이 정리한 React / Next.js 성능 가이드.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React 기반 영상 작업을 위한 Remotion 가이드.
+- [`gsap-skills/`](gsap-skills/): core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks를 포함한 공식 GSAP 애니메이션 스킬 8개.
 - [`impeccable/`](impeccable/README.md): `frontend-design`, `adapt`, `audit`, `polish` 등을 포함한 18개의 벤더링된 프런트엔드 디자인 스킬 번들.
 
 ### 유틸리티 및 문서 작업
@@ -124,6 +125,21 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
 
 출처 및 법적 고지는 [`impeccable/NOTICE.md`](impeccable/NOTICE.md)와 [`impeccable/LICENSE`](impeccable/LICENSE)에 보존되어 있습니다.
+
+[`gsap-skills/`](gsap-skills/)에는 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills)에서 가져온 GSAP 애니메이션 스킬 번들이 포함되어 있으며, 기준 커밋은 `4300e310513b0ddc0b121a5c0e0bd2e5c2325ff2`입니다.
+
+포함된 항목:
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+출처 및 법적 고지는 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md)와 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)에 보존되어 있습니다.
 
 ## 공통 전제 조건
 
@@ -192,6 +208,19 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [quieter](impeccable/quieter/SKILL.md) | 디자인 품질은 유지하면서 시각적 공격성을 낮춤. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | 설계 컨텍스트를 수집하고 향후 작업을 위한 지속 가이드로 저장. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
+### 벤더링된 `gsap-skills/` 스킬
+
+| Skill | 설명 | Source URL |
+| --- | --- | --- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md) | 코어 API: `gsap.to()` / `from()` / `fromTo()`, easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core) |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md) | 타임라인: 시퀀싱, position 파라미터, labels, 중첩, 재생 제어. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline) |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: 스크롤 연동 애니메이션, pinning, scrub, triggers, refresh, cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md) | 플러그인: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase 등. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins) |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md) | gsap.utils: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils) |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md) | React: useGSAP, refs, `gsap.context()`, cleanup, SSR. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react) |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md) | 성능: transforms 우선, will-change, batching, ScrollTrigger 팁. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance) |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md) | Vue, Svelte 등: lifecycle, selector 스코프, 언마운트 시 cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks) |
+
 ## 기여하기
 
 새 스킬 추가나 기존 스킬 개선 기여를 환영합니다.
@@ -205,4 +234,4 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 
 이 저장소는 [LICENSE](LICENSE) 하에 배포됩니다.
 
-일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`skill-creator/`](skill-creator/), [`xlsx/`](xlsx/)입니다.
+일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`gsap-skills/`](gsap-skills/), [`skill-creator/`](skill-creator/), [`xlsx/`](xlsx/)입니다.

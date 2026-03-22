@@ -4,7 +4,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **47 переиспользуемых skills**: **29 skills верхнего уровня**, которые поддерживаются прямо здесь, и еще **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **55 переиспользуемых skills**: **29 skills верхнего уровня**, которые поддерживаются прямо здесь, **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -103,6 +103,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [better-icons](better-icons/SKILL.md): искать, просматривать и получать SVG-иконки из более чем 200 библиотек Iconify через CLI или MCP.
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): guidance по React и Next.js performance от Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): guidance по Remotion для video work на React.
+- [`gsap-skills/`](gsap-skills/): 8 official GSAP animation skills: core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks.
 - [`impeccable/`](impeccable/README.md): 18 vendored frontend design skills, включая `frontend-design`, `adapt`, `audit`, `polish` и другие.
 
 ### Utilities & Authoring
@@ -124,6 +125,21 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
 
 Файлы attribution и legal сохранены в [`impeccable/NOTICE.md`](impeccable/NOTICE.md) и [`impeccable/LICENSE`](impeccable/LICENSE).
+
+[`gsap-skills/`](gsap-skills/) содержит vendored GSAP animation bundle из [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) на коммите `4300e310513b0ddc0b121a5c0e0bd2e5c2325ff2`.
+
+В него входят:
+
+- `gsap-core`
+- `gsap-timeline`
+- `gsap-scrolltrigger`
+- `gsap-plugins`
+- `gsap-utils`
+- `gsap-react`
+- `gsap-performance`
+- `gsap-frameworks`
+
+Файлы attribution и legal сохранены в [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) и [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
 ## Общие предварительные требования
 
@@ -192,6 +208,19 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [quieter](impeccable/quieter/SKILL.md) | Reduce visual aggression while preserving design quality. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | Gather design context and save it as persistent guidance for future work. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
+### Vendored `gsap-skills/` Skills
+
+| Skill | Описание | Source URL |
+| --- | --- | --- |
+| [gsap-core](gsap-skills/gsap-core/SKILL.md) | Core API: gsap.to()/from()/fromTo(), easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core) |
+| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md) | Timelines: sequencing, position parameter, labels, nesting, playback. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline) |
+| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: scroll-linked animation, pinning, scrub, triggers, refresh, cleanup. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
+| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md) | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase, and more. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins) |
+| [gsap-utils](gsap-skills/gsap-utils/SKILL.md) | gsap.utils helpers: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils) |
+| [gsap-react](gsap-skills/gsap-react/SKILL.md) | React: useGSAP, refs, gsap.context(), cleanup, SSR. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react) |
+| [gsap-performance](gsap-skills/gsap-performance/SKILL.md) | Performance tips: transforms, will-change, batching, ScrollTrigger tips. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance) |
+| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md) | Vue, Svelte, and other frameworks: lifecycle, scoping selectors, cleanup on unmount. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks) |
+
 ## Contributing
 
 Приветствуются новые skills и улучшения существующих.
@@ -205,4 +234,4 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 Этот репозиторий распространяется по лицензии [LICENSE](LICENSE).
 
-Некоторые skills содержат дополнительные license-файлы или notices для attribution, включая [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`skill-creator/`](skill-creator/) и [`xlsx/`](xlsx/).
+Некоторые skills содержат дополнительные license-файлы или notices для attribution, включая [`docx/`](docx/), [`pptx/`](pptx/), [`impeccable/`](impeccable/README.md), [`gsap-skills/`](gsap-skills/), [`skill-creator/`](skill-creator/) и [`xlsx/`](xlsx/).
