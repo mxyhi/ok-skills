@@ -1,13 +1,13 @@
 # React Best Practices
 
-**Version 1.0.0**
-Vercel Engineering
+**Version 1.0.0**  
+Vercel Engineering  
 January 2026
 
-> **Note:**
-> This document is mainly for agents and LLMs to follow when maintaining,
-> generating, or refactoring React and Next.js codebases. Humans
-> may also find it useful, but guidance here is optimized for automation
+> **Note:**  
+> This document is mainly for agents and LLMs to follow when maintaining,  
+> generating, or refactoring React and Next.js codebases. Humans  
+> may also find it useful, but guidance here is optimized for automation  
 > and consistency by AI-assisted workflows.
 
 ---
@@ -39,8 +39,9 @@ Comprehensive performance optimization guide for React and Next.js applications,
    - 3.4 [Hoist Static I/O to Module Level](#34-hoist-static-io-to-module-level)
    - 3.5 [Minimize Serialization at RSC Boundaries](#35-minimize-serialization-at-rsc-boundaries)
    - 3.6 [Parallel Data Fetching with Component Composition](#36-parallel-data-fetching-with-component-composition)
-   - 3.7 [Per-Request Deduplication with React.cache()](#37-per-request-deduplication-with-reactcache)
-   - 3.8 [Use after() for Non-Blocking Operations](#38-use-after-for-non-blocking-operations)
+   - 3.7 [Parallel Nested Data Fetching](#37-parallel-nested-data-fetching)
+   - 3.8 [Per-Request Deduplication with React.cache()](#38-per-request-deduplication-with-reactcache)
+   - 3.9 [Use after() for Non-Blocking Operations](#39-use-after-for-non-blocking-operations)
 4. [Client-Side Data Fetching](#4-client-side-data-fetching) — **MEDIUM-HIGH**
    - 4.1 [Deduplicate Global Event Listeners](#41-deduplicate-global-event-listeners)
    - 4.2 [Use Passive Event Listeners for Scrolling Performance](#42-use-passive-event-listeners-for-scrolling-performance)
@@ -81,13 +82,14 @@ Comprehensive performance optimization guide for React and Next.js applications,
    - 7.4 [Cache Repeated Function Calls](#74-cache-repeated-function-calls)
    - 7.5 [Cache Storage API Calls](#75-cache-storage-api-calls)
    - 7.6 [Combine Multiple Array Iterations](#76-combine-multiple-array-iterations)
-   - 7.7 [Early Length Check for Array Comparisons](#77-early-length-check-for-array-comparisons)
-   - 7.8 [Early Return from Functions](#78-early-return-from-functions)
-   - 7.9 [Hoist RegExp Creation](#79-hoist-regexp-creation)
-   - 7.10 [Use flatMap to Map and Filter in One Pass](#710-use-flatmap-to-map-and-filter-in-one-pass)
-   - 7.11 [Use Loop for Min/Max Instead of Sort](#711-use-loop-for-minmax-instead-of-sort)
-   - 7.12 [Use Set/Map for O(1) Lookups](#712-use-setmap-for-o1-lookups)
-   - 7.13 [Use toSorted() Instead of sort() for Immutability](#713-use-tosorted-instead-of-sort-for-immutability)
+   - 7.7 [Defer Non-Critical Work with requestIdleCallback](#77-defer-non-critical-work-with-requestidlecallback)
+   - 7.8 [Early Length Check for Array Comparisons](#78-early-length-check-for-array-comparisons)
+   - 7.9 [Early Return from Functions](#79-early-return-from-functions)
+   - 7.10 [Hoist RegExp Creation](#710-hoist-regexp-creation)
+   - 7.11 [Use flatMap to Map and Filter in One Pass](#711-use-flatmap-to-map-and-filter-in-one-pass)
+   - 7.12 [Use Loop for Min/Max Instead of Sort](#712-use-loop-for-minmax-instead-of-sort)
+   - 7.13 [Use Set/Map for O(1) Lookups](#713-use-setmap-for-o1-lookups)
+   - 7.14 [Use toSorted() Instead of sort() for Immutability](#714-use-tosorted-instead-of-sort-for-immutability)
 8. [Advanced Patterns](#8-advanced-patterns) — **LOW**
    - 8.1 [Initialize App Once, Not Per Mount](#81-initialize-app-once-not-per-mount)
    - 8.2 [Store Event Handlers in Refs](#82-store-event-handlers-in-refs)
@@ -112,12 +114,12 @@ Move `await` operations into the branches where they're actually used to avoid b
 ```typescript
 async function handleRequest(userId: string, skipProcessing: boolean) {
   const userData = await fetchUserData(userId)
-
+  
   if (skipProcessing) {
     // Returns immediately but still waited for userData
     return { skipped: true }
   }
-
+  
   // Only this branch uses userData
   return processUserData(userData)
 }
@@ -131,7 +133,7 @@ async function handleRequest(userId: string, skipProcessing: boolean) {
     // Returns immediately without waiting
     return { skipped: true }
   }
-
+  
   // Fetch only when needed
   const userData = await fetchUserData(userId)
   return processUserData(userData)
@@ -145,32 +147,32 @@ async function handleRequest(userId: string, skipProcessing: boolean) {
 async function updateResource(resourceId: string, userId: string) {
   const permissions = await fetchPermissions(userId)
   const resource = await getResource(resourceId)
-
+  
   if (!resource) {
     return { error: 'Not found' }
   }
-
+  
   if (!permissions.canEdit) {
     return { error: 'Forbidden' }
   }
-
+  
   return await updateResourceData(resource, permissions)
 }
 
 // Correct: fetches only when needed
 async function updateResource(resourceId: string, userId: string) {
   const resource = await getResource(resourceId)
-
+  
   if (!resource) {
     return { error: 'Not found' }
   }
-
+  
   const permissions = await fetchPermissions(userId)
-
+  
   if (!permissions.canEdit) {
     return { error: 'Forbidden' }
   }
-
+  
   return await updateResourceData(resource, permissions)
 }
 ```
@@ -293,7 +295,7 @@ Instead of awaiting data in async components before returning JSX, use Suspense 
 ```tsx
 async function Page() {
   const data = await fetchData() // Blocks entire page
-
+  
   return (
     <div>
       <div>Sidebar</div>
@@ -341,7 +343,7 @@ Sidebar, Header, and Footer render immediately. Only DataDisplay waits for data.
 function Page() {
   // Start fetch immediately, but don't await
   const dataPromise = fetchData()
-
+  
   return (
     <div>
       <div>Sidebar</div>
@@ -409,35 +411,27 @@ import { Button, TextField } from '@mui/material'
 // Loads 2,225 modules, takes ~4.2s extra in dev
 ```
 
-**Correct: imports only what you need**
+**Correct - Next.js 13.5+ (recommended):**
 
 ```tsx
-import Check from 'lucide-react/dist/esm/icons/check'
-import X from 'lucide-react/dist/esm/icons/x'
-import Menu from 'lucide-react/dist/esm/icons/menu'
-// Loads only 3 modules (~2KB vs ~1MB)
+// Keep the standard imports - Next.js transforms them to direct imports
+import { Check, X, Menu } from 'lucide-react'
+// Full TypeScript support, no manual path wrangling
+```
 
+This is the recommended approach because it preserves TypeScript type safety and editor autocompletion while still eliminating the barrel import cost.
+
+**Correct - Direct imports (non-Next.js projects):**
+
+```tsx
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 // Loads only what you use
 ```
 
-**Alternative: Next.js 13.5+**
+> **TypeScript warning:** Some libraries (notably `lucide-react`) don't ship `.d.ts` files for their deep import paths. Importing from `lucide-react/dist/esm/icons/check` resolves to an implicit `any` type, causing errors under `strict` or `noImplicitAny`. Prefer `optimizePackageImports` when available, or verify the library exports types for its subpaths before using direct imports.
 
-```js
-// next.config.js - use optimizePackageImports
-module.exports = {
-  experimental: {
-    optimizePackageImports: ['lucide-react', '@mui/material']
-  }
-}
-
-// Then you can keep the ergonomic barrel imports:
-import { Check, X, Menu } from 'lucide-react'
-// Automatically transformed to direct imports at build time
-```
-
-Direct imports provide 15-70% faster dev boot, 28% faster builds, 40% faster cold starts, and significantly faster HMR.
+These optimizations provide 15-70% faster dev boot, 28% faster builds, 40% faster cold starts, and significantly faster HMR.
 
 Libraries commonly affected: `lucide-react`, `@mui/material`, `@mui/icons-material`, `@tabler/icons-react`, `react-icons`, `@headlessui/react`, `@radix-ui/react-*`, `lodash`, `ramda`, `date-fns`, `rxjs`, `react-use`.
 
@@ -631,16 +625,16 @@ import { unauthorized } from '@/lib/errors'
 export async function deleteUser(userId: string) {
   // Always check auth inside the action
   const session = await verifySession()
-
+  
   if (!session) {
     throw unauthorized('Must be logged in')
   }
-
+  
   // Check authorization too
   if (session.user.role !== 'admin' && session.user.id !== userId) {
     throw unauthorized('Cannot delete other users')
   }
-
+  
   await db.user.delete({ where: { id: userId } })
   return { success: true }
 }
@@ -663,18 +657,18 @@ const updateProfileSchema = z.object({
 export async function updateProfile(data: unknown) {
   // Validate input first
   const validated = updateProfileSchema.parse(data)
-
+  
   // Then authenticate
   const session = await verifySession()
   if (!session) {
     throw new Error('Unauthorized')
   }
-
+  
   // Then authorize
   if (session.user.id !== validated.userId) {
     throw new Error('Can only update own profile')
   }
-
+  
   // Finally perform the mutation
   await db.user.update({
     where: { id: validated.userId },
@@ -683,7 +677,7 @@ export async function updateProfile(data: unknown) {
       email: validated.email
     }
   })
-
+  
   return { success: true }
 }
 ```
@@ -941,7 +935,37 @@ export default function Page() {
 }
 ```
 
-### 3.7 Per-Request Deduplication with React.cache()
+### 3.7 Parallel Nested Data Fetching
+
+**Impact: CRITICAL (eliminates server-side waterfalls)**
+
+When fetching nested data in parallel, chain dependent fetches within each item's promise so a slow item doesn't block the rest.
+
+**Incorrect: a single slow item blocks all nested fetches**
+
+```tsx
+const chats = await Promise.all(
+  chatIds.map(id => getChat(id))
+)
+
+const chatAuthors = await Promise.all(
+  chats.map(chat => getUser(chat.author))
+)
+```
+
+If one `getChat(id)` out of 100 is extremely slow, the authors of the other 99 chats can't start loading even though their data is ready.
+
+**Correct: each item chains its own nested fetch**
+
+```tsx
+const chatAuthors = await Promise.all(
+  chatIds.map(id => getChat(id).then(chat => getUser(chat.author)))
+)
+```
+
+Each item independently chains `getChat` → `getUser`, so a slow chat doesn't block author fetches for the others.
+
+### 3.8 Per-Request Deduplication with React.cache()
 
 **Impact: MEDIUM (deduplicates within request)**
 
@@ -1007,7 +1031,7 @@ Use `React.cache()` to deduplicate these operations across your component tree.
 
 Reference: [https://react.dev/reference/react/cache](https://react.dev/reference/react/cache)
 
-### 3.8 Use after() for Non-Blocking Operations
+### 3.9 Use after() for Non-Blocking Operations
 
 **Impact: MEDIUM (faster response times)**
 
@@ -1021,11 +1045,11 @@ import { logUserAction } from '@/app/utils'
 export async function POST(request: Request) {
   // Perform mutation
   await updateDatabase(request)
-
+  
   // Logging blocks the response
   const userAgent = request.headers.get('user-agent') || 'unknown'
   await logUserAction({ userAgent })
-
+  
   return new Response(JSON.stringify({ status: 'success' }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
@@ -1043,15 +1067,15 @@ import { logUserAction } from '@/app/utils'
 export async function POST(request: Request) {
   // Perform mutation
   await updateDatabase(request)
-
+  
   // Log after response is sent
   after(async () => {
     const userAgent = (await headers()).get('user-agent') || 'unknown'
     const sessionCookie = (await cookies()).get('session-id')?.value || 'anonymous'
-
+    
     logUserAction({ sessionCookie, userAgent })
   })
-
+  
   return new Response(JSON.stringify({ status: 'success' }), {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
@@ -1153,7 +1177,7 @@ function useKeyboardShortcut(key: string, callback: () => void) {
 
 function Profile() {
   // Multiple shortcuts will share the same listener
-  useKeyboardShortcut('p', () => { /* ... */ })
+  useKeyboardShortcut('p', () => { /* ... */ }) 
   useKeyboardShortcut('k', () => { /* ... */ })
   // ...
 }
@@ -1171,10 +1195,10 @@ Add `{ passive: true }` to touch and wheel event listeners to enable immediate s
 useEffect(() => {
   const handleTouch = (e: TouchEvent) => console.log(e.touches[0].clientX)
   const handleWheel = (e: WheelEvent) => console.log(e.deltaY)
-
+  
   document.addEventListener('touchstart', handleTouch)
   document.addEventListener('wheel', handleWheel)
-
+  
   return () => {
     document.removeEventListener('touchstart', handleTouch)
     document.removeEventListener('wheel', handleWheel)
@@ -1188,10 +1212,10 @@ useEffect(() => {
 useEffect(() => {
   const handleTouch = (e: TouchEvent) => console.log(e.touches[0].clientX)
   const handleWheel = (e: WheelEvent) => console.log(e.deltaY)
-
+  
   document.addEventListener('touchstart', handleTouch, { passive: true })
   document.addEventListener('wheel', handleWheel, { passive: true })
-
+  
   return () => {
     document.removeEventListener('touchstart', handleTouch)
     document.removeEventListener('wheel', handleWheel)
@@ -1763,17 +1787,17 @@ When updating state based on the current state value, use the functional update 
 ```tsx
 function TodoList() {
   const [items, setItems] = useState(initialItems)
-
+  
   // Callback must depend on items, recreated on every items change
   const addItems = useCallback((newItems: Item[]) => {
     setItems([...items, ...newItems])
   }, [items])  // ❌ items dependency causes recreations
-
+  
   // Risk of stale closure if dependency is forgotten
   const removeItem = useCallback((id: string) => {
     setItems(items.filter(item => item.id !== id))
   }, [])  // ❌ Missing items dependency - will use stale items!
-
+  
   return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />
 }
 ```
@@ -1785,17 +1809,17 @@ The first callback is recreated every time `items` changes, which can cause chil
 ```tsx
 function TodoList() {
   const [items, setItems] = useState(initialItems)
-
+  
   // Stable callback, never recreated
   const addItems = useCallback((newItems: Item[]) => {
     setItems(curr => [...curr, ...newItems])
   }, [])  // ✅ No dependencies needed
-
+  
   // Always uses latest state, no stale closure risk
   const removeItem = useCallback((id: string) => {
     setItems(curr => curr.filter(item => item.id !== id))
   }, [])  // ✅ Safe and stable
-
+  
   return <ItemsEditor items={items} onAdd={addItems} onRemove={removeItem} />
 }
 ```
@@ -1843,7 +1867,7 @@ function FilteredList({ items }: { items: Item[] }) {
   // buildSearchIndex() runs on EVERY render, even after initialization
   const [searchIndex, setSearchIndex] = useState(buildSearchIndex(items))
   const [query, setQuery] = useState('')
-
+  
   // When query changes, buildSearchIndex runs again unnecessarily
   return <SearchResults index={searchIndex} query={query} />
 }
@@ -1853,7 +1877,7 @@ function UserProfile() {
   const [settings, setSettings] = useState(
     JSON.parse(localStorage.getItem('settings') || '{}')
   )
-
+  
   return <SettingsForm settings={settings} onChange={setSettings} />
 }
 ```
@@ -1865,7 +1889,7 @@ function FilteredList({ items }: { items: Item[] }) {
   // buildSearchIndex() runs ONLY on initial render
   const [searchIndex, setSearchIndex] = useState(() => buildSearchIndex(items))
   const [query, setQuery] = useState('')
-
+  
   return <SearchResults index={searchIndex} query={query} />
 }
 
@@ -1875,7 +1899,7 @@ function UserProfile() {
     const stored = localStorage.getItem('settings')
     return stored ? JSON.parse(stored) : {}
   })
-
+  
   return <SettingsForm settings={settings} onChange={setSettings} />
 }
 ```
@@ -2065,10 +2089,10 @@ Many browsers don't have hardware acceleration for CSS3 animations on SVG elemen
 ```tsx
 function LoadingSpinner() {
   return (
-    <svg
+    <svg 
       className="animate-spin"
-      width="24"
-      height="24"
+      width="24" 
+      height="24" 
       viewBox="0 0 24 24"
     >
       <circle cx="12" cy="12" r="10" stroke="currentColor" />
@@ -2083,9 +2107,9 @@ function LoadingSpinner() {
 function LoadingSpinner() {
   return (
     <div className="animate-spin">
-      <svg
-        width="24"
-        height="24"
+      <svg 
+        width="24" 
+        height="24" 
         viewBox="0 0 24 24"
       >
         <circle cx="12" cy="12" r="10" stroke="currentColor" />
@@ -2209,7 +2233,7 @@ When rendering content that depends on client-side storage (localStorage, cookie
 function ThemeWrapper({ children }: { children: ReactNode }) {
   // localStorage is not available on server - throws error
   const theme = localStorage.getItem('theme') || 'light'
-
+  
   return (
     <div className={theme}>
       {children}
@@ -2225,7 +2249,7 @@ Server-side rendering will fail because `localStorage` is undefined.
 ```tsx
 function ThemeWrapper({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState('light')
-
+  
   useEffect(() => {
     // Runs after hydration - causes visible flash
     const stored = localStorage.getItem('theme')
@@ -2233,7 +2257,7 @@ function ThemeWrapper({ children }: { children: ReactNode }) {
       setTheme(stored)
     }
   }, [])
-
+  
   return (
     <div className={theme}>
       {children}
@@ -2541,7 +2565,7 @@ function SearchResults() {
 
   const handleSearch = (value: string) => {
     setQuery(value) // Update input immediately
-
+    
     startTransition(async () => {
       // Fetch and update results
       const data = await fetchResults(value)
@@ -2617,7 +2641,7 @@ function updateElementStyles(element: HTMLElement) {
   element.style.height = '200px'
   element.style.backgroundColor = 'blue'
   element.style.border = '1px solid black'
-
+  
   // Read after all writes are done (single reflow)
   const { width, height } = element.getBoundingClientRect()
 }
@@ -2628,7 +2652,7 @@ function updateElementStyles(element: HTMLElement) {
 ```typescript
 function updateElementStyles(element: HTMLElement) {
   element.classList.add('highlighted-box')
-
+  
   const { width, height } = element.getBoundingClientRect()
 }
 ```
@@ -2641,7 +2665,7 @@ function updateElementStyles(element: HTMLElement) {
 // Incorrect: interleaving style changes with layout queries
 function Box({ isHighlighted }: { isHighlighted: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
-
+  
   useEffect(() => {
     if (ref.current && isHighlighted) {
       ref.current.style.width = '100px'
@@ -2649,7 +2673,7 @@ function Box({ isHighlighted }: { isHighlighted: boolean }) {
       ref.current.style.height = '200px'
     }
   }, [isHighlighted])
-
+  
   return <div ref={ref}>Content</div>
 }
 
@@ -2740,7 +2764,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
       {projects.map(project => {
         // slugify() called 100+ times for same project names
         const slug = slugify(project.name)
-
+        
         return <ProjectCard key={project.id} slug={slug} />
       })}
     </div>
@@ -2769,7 +2793,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
       {projects.map(project => {
         // Computed only once per unique project name
         const slug = cachedSlugify(project.name)
-
+        
         return <ProjectCard key={project.id} slug={slug} />
       })}
     </div>
@@ -2786,7 +2810,7 @@ function isLoggedIn(): boolean {
   if (isLoggedInCache !== null) {
     return isLoggedInCache
   }
-
+  
   isLoggedInCache = document.cookie.includes('auth=')
   return isLoggedInCache
 }
@@ -2895,7 +2919,112 @@ for (const user of users) {
 }
 ```
 
-### 7.7 Early Length Check for Array Comparisons
+### 7.7 Defer Non-Critical Work with requestIdleCallback
+
+**Impact: MEDIUM (keeps UI responsive during background tasks)**
+
+Use `requestIdleCallback()` to schedule non-critical work during browser idle periods. This keeps the main thread free for user interactions and animations, reducing jank and improving perceived performance.
+
+**Incorrect: blocks main thread during user interaction**
+
+```typescript
+function handleSearch(query: string) {
+  const results = searchItems(query)
+  setResults(results)
+
+  // These block the main thread immediately
+  analytics.track('search', { query })
+  saveToRecentSearches(query)
+  prefetchTopResults(results.slice(0, 3))
+}
+```
+
+**Correct: defers non-critical work to idle time**
+
+```typescript
+function handleSearch(query: string) {
+  const results = searchItems(query)
+  setResults(results)
+
+  // Defer non-critical work to idle periods
+  requestIdleCallback(() => {
+    analytics.track('search', { query })
+  })
+
+  requestIdleCallback(() => {
+    saveToRecentSearches(query)
+  })
+
+  requestIdleCallback(() => {
+    prefetchTopResults(results.slice(0, 3))
+  })
+}
+```
+
+**With timeout for required work:**
+
+```typescript
+// Ensure analytics fires within 2 seconds even if browser stays busy
+requestIdleCallback(
+  () => analytics.track('page_view', { path: location.pathname }),
+  { timeout: 2000 }
+)
+```
+
+**Chunking large tasks:**
+
+```typescript
+function processLargeDataset(items: Item[]) {
+  let index = 0
+
+  function processChunk(deadline: IdleDeadline) {
+    // Process items while we have idle time (aim for <50ms chunks)
+    while (index < items.length && deadline.timeRemaining() > 0) {
+      processItem(items[index])
+      index++
+    }
+
+    // Schedule next chunk if more items remain
+    if (index < items.length) {
+      requestIdleCallback(processChunk)
+    }
+  }
+
+  requestIdleCallback(processChunk)
+}
+```
+
+**With fallback for unsupported browsers:**
+
+```typescript
+const scheduleIdleWork = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 1))
+
+scheduleIdleWork(() => {
+  // Non-critical work
+})
+```
+
+**When to use:**
+
+- Analytics and telemetry
+
+- Saving state to localStorage/IndexedDB
+
+- Prefetching resources for likely next actions
+
+- Processing non-urgent data transformations
+
+- Lazy initialization of non-critical features
+
+**When NOT to use:**
+
+- User-initiated actions that need immediate feedback
+
+- Rendering updates the user is waiting for
+
+- Time-sensitive operations
+
+### 7.8 Early Length Check for Array Comparisons
 
 **Impact: MEDIUM-HIGH (avoids expensive operations when lengths differ)**
 
@@ -2944,7 +3073,7 @@ This new approach is more efficient because:
 
 - It returns early when a difference is found
 
-### 7.8 Early Return from Functions
+### 7.9 Early Return from Functions
 
 **Impact: LOW-MEDIUM (avoids unnecessary computation)**
 
@@ -2956,7 +3085,7 @@ Return early when result is determined to skip unnecessary processing.
 function validateUsers(users: User[]) {
   let hasError = false
   let errorMessage = ''
-
+  
   for (const user of users) {
     if (!user.email) {
       hasError = true
@@ -2968,7 +3097,7 @@ function validateUsers(users: User[]) {
     }
     // Continues checking all users even after error found
   }
-
+  
   return hasError ? { valid: false, error: errorMessage } : { valid: true }
 }
 ```
@@ -2990,7 +3119,7 @@ function validateUsers(users: User[]) {
 }
 ```
 
-### 7.9 Hoist RegExp Creation
+### 7.10 Hoist RegExp Creation
 
 **Impact: LOW-MEDIUM (avoids recreation)**
 
@@ -3031,7 +3160,7 @@ regex.test('foo')  // false, lastIndex = 0
 
 Global regex (`/g`) has mutable `lastIndex` state:
 
-### 7.10 Use flatMap to Map and Filter in One Pass
+### 7.11 Use flatMap to Map and Filter in One Pass
 
 **Impact: LOW-MEDIUM (eliminates intermediate array)**
 
@@ -3088,7 +3217,7 @@ const numbers = strings.flatMap(s => {
 
 - Parsing/validating where invalid inputs should be skipped
 
-### 7.11 Use Loop for Min/Max Instead of Sort
+### 7.12 Use Loop for Min/Max Instead of Sort
 
 **Impact: LOW (O(n) instead of O(n log n))**
 
@@ -3127,29 +3256,29 @@ Still sorts unnecessarily when only min/max are needed.
 ```typescript
 function getLatestProject(projects: Project[]) {
   if (projects.length === 0) return null
-
+  
   let latest = projects[0]
-
+  
   for (let i = 1; i < projects.length; i++) {
     if (projects[i].updatedAt > latest.updatedAt) {
       latest = projects[i]
     }
   }
-
+  
   return latest
 }
 
 function getOldestAndNewest(projects: Project[]) {
   if (projects.length === 0) return { oldest: null, newest: null }
-
+  
   let oldest = projects[0]
   let newest = projects[0]
-
+  
   for (let i = 1; i < projects.length; i++) {
     if (projects[i].updatedAt < oldest.updatedAt) oldest = projects[i]
     if (projects[i].updatedAt > newest.updatedAt) newest = projects[i]
   }
-
+  
   return { oldest, newest }
 }
 ```
@@ -3166,7 +3295,7 @@ const max = Math.max(...numbers)
 
 This works for small arrays, but can be slower or just throw an error for very large arrays due to spread operator limitations. Maximal array length is approximately 124000 in Chrome 143 and 638000 in Safari 18; exact numbers may vary - see [the fiddle](https://jsfiddle.net/qw1jabsx/4/). Use the loop approach for reliability.
 
-### 7.12 Use Set/Map for O(1) Lookups
+### 7.13 Use Set/Map for O(1) Lookups
 
 **Impact: LOW-MEDIUM (O(n) to O(1))**
 
@@ -3186,7 +3315,7 @@ const allowedIds = new Set(['a', 'b', 'c', ...])
 items.filter(item => allowedIds.has(item.id))
 ```
 
-### 7.13 Use toSorted() Instead of sort() for Immutability
+### 7.14 Use toSorted() Instead of sort() for Immutability
 
 **Impact: MEDIUM-HIGH (prevents mutation bugs in React state)**
 

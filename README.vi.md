@@ -117,7 +117,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 ## Gói skill vendored
 
-[`impeccable/`](impeccable/README.md) chứa một bundle thiên về thiết kế được vendored từ [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) tại commit `d6b1a56bc5b79e9375be0f8508b4daa1678fb058`.
+[`impeccable/`](impeccable/README.md) chứa một bundle thiên về thiết kế được vendored từ [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) tại commit `9d368b777d222e213c9a8f4fa78f6f1d29cb492d`.
 
 Gói này bao gồm:
 

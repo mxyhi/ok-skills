@@ -117,7 +117,7 @@ Danach kannst du natürlich formulieren:
 
 ## Vendorte Skill-Pakete
 
-[`impeccable/`](impeccable/README.md) enthält ein vendortes, designfokussiertes Bundle aus [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) auf Basis des Commits `d6b1a56bc5b79e9375be0f8508b4daa1678fb058`.
+[`impeccable/`](impeccable/README.md) enthält ein vendortes, designfokussiertes Bundle aus [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) auf Basis des Commits `9d368b777d222e213c9a8f4fa78f6f1d29cb492d`.
 
 Enthalten sind:
 
