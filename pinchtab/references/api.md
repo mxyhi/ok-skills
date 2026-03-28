@@ -325,6 +325,59 @@ curl -X POST /cookies -H 'Content-Type: application/json' \
   -d '{"url":"https://pinchtab.com","cookies":[{"name":"session","value":"abc123"}]}'
 ```
 
+## Solve challenges
+
+PinchTab includes a pluggable solver framework for browser challenges (Cloudflare Turnstile, CAPTCHAs, interstitials). Solvers auto-detect the challenge type and resolve it using human-like interaction.
+
+```bash
+# List available solvers
+curl /solvers
+
+# Auto-detect and solve (tries each solver in order)
+curl -X POST /solve -H 'Content-Type: application/json' \
+  -d '{"maxAttempts": 3, "timeout": 30000}'
+
+# Use a specific solver by name
+curl -X POST /solve/cloudflare -H 'Content-Type: application/json' \
+  -d '{"maxAttempts": 3}'
+
+# Solve on a specific tab
+curl -X POST /tabs/TAB_ID/solve -H 'Content-Type: application/json' \
+  -d '{"solver": "cloudflare"}'
+
+# Solve on a specific tab with path-based solver
+curl -X POST /tabs/TAB_ID/solve/cloudflare -H 'Content-Type: application/json' \
+  -d '{}'
+```
+
+**Request fields:**
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `solver` | string | — | Solver name (omit for auto-detect) |
+| `tabId` | string | — | Target tab (omit for default tab) |
+| `maxAttempts` | int | 3 | Maximum solve attempts |
+| `timeout` | float | 30000 | Overall timeout in ms |
+
+**Response:**
+
+```json
+{
+  "tabId": "DEADBEEF",
+  "solver": "cloudflare",
+  "solved": true,
+  "challengeType": "managed",
+  "attempts": 1,
+  "title": "Example Site"
+}
+```
+
+Returns `solved: true, attempts: 0` when no challenge is detected — safe to call speculatively.
+
+**Built-in solvers:** `cloudflare` (Turnstile/interstitial — detects via page title, clicks checkbox with human-like input).
+
+**Stealth requirement:** Solvers work best with `stealthLevel: "full"`. Cloudflare checks browser fingerprints before and after the checkbox click. Verify stealth is active with `GET /stealth/status`.
+
 ## Stealth
 
 ```bash
