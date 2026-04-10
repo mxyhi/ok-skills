@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **55 个可复用技能**：其中 **29 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **56 个可复用技能**：其中 **30 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -163,6 +163,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [bb-browser](bb-browser/SKILL.md)                                   | 通过用户真实浏览器和登录态完成信息获取与浏览器自动化，覆盖公开页面、内部系统和登录后流程。                                                     | [epiral/bb-browser](https://github.com/epiral/bb-browser/tree/main/skills/bb-browser)                                          |
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [browser-use](browser-use/SKILL.md)                                 | 持续式浏览器自动化 CLI，用于导航、页面状态检查、表单填写、截图和信息提取。                                                                     | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [context7-cli](context7-cli/SKILL.md)                               | 使用 Context7 CLI 完成文档查询、skill 管理和 MCP 配置。                                                                                        | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
 | [minimax-docx](minimax-docx/SKILL.md) | 基于 OpenXML SDK（.NET）的专业 DOCX 创建、编辑与格式编排。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/dogfood)                             |
@@ -237,4 +238,4 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 本仓库主许可证见 [LICENSE](LICENSE)。
 
-部分技能目录包含额外许可证或归属说明文件，包括 [`minimax-docx/`](minimax-docx/)、[`impeccable/`](impeccable/README.md)、[`gsap-skills/`](gsap-skills/) 和 [`skill-creator/`](skill-creator/)。
+部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`minimax-docx/`](minimax-docx/)、[`impeccable/`](impeccable/README.md)、[`gsap-skills/`](gsap-skills/) 和 [`skill-creator/`](skill-creator/)。

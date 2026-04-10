@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 55개**가 포함되어 있습니다. 이 중 **29개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 56개**가 포함되어 있습니다. 이 중 **30개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -163,6 +163,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [bb-browser](bb-browser/SKILL.md)                                   | 사용자의 실제 브라우저와 로그인 상태를 통해 공개 페이지, 내부 시스템, 로그인 후 워크플로까지 다루는 정보 수집 및 브라우저 자동화 스킬입니다.     | [epiral/bb-browser](https://github.com/epiral/bb-browser/tree/main/skills/bb-browser)                                          |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [browser-use](browser-use/SKILL.md)                                 | 탐색, 페이지 상태 확인, 폼 입력, 스크린샷, 정보 추출을 위한 지속형 브라우저 자동화 CLI.                                                          | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [context7-cli](context7-cli/SKILL.md)                               | Context7 CLI를 사용해 문서 조회, 스킬 관리, MCP 설정을 수행.                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
 | [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK(.NET) 기반의 전문 DOCX 생성, 편집, 서식화. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [dogfood](dogfood/SKILL.md)                                         | 웹 앱을 체계적으로 테스트하고 스크린샷/영상과 함께 재현 가능한 이슈 리포트를 생성.                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/dogfood)                             |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caveman"
+  short_description: "Ultra-compressed response mode with adjustable intensity"
+  default_prompt: "Use $caveman to answer tersely with full technical accuracy, defaulting to full unless I ask for lite, ultra, or wenyan variants."
