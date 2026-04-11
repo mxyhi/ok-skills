@@ -27,7 +27,7 @@ Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compat
 - [agent-browser](agent-browser/SKILL.md): screenshots, forms, scraping, और web QA के लिए browser automation.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): failing GitHub Actions checks inspect करके logs को fix plan में बदलता है।
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): अधिक reliable LLM workflows के लिए production-oriented prompt patterns.
-- [impeccable/frontend-design](impeccable/frontend-design/SKILL.md): high-quality frontend design skill और companion design commands का पूरा bundle.
+- [impeccable](impeccable/impeccable/SKILL.md): core impeccable design skill और companion design commands का पूरा bundle.
 
 ## 1-मिनट Quick Start
 
@@ -95,7 +95,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [bb-browser](bb-browser/SKILL.md): उपयोगकर्ता के वास्तविक browser और login session का उपयोग करके information retrieval और browser automation.
 - [pinchtab](pinchtab/SKILL.md): stable accessibility refs के साथ Pinchtab के local HTTP API द्वारा Chrome control करें।
 - [electron](electron/SKILL.md): Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।
-- [opencli](opencli/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
+- [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
 - [dogfood](dogfood/SKILL.md): reproducible evidence के साथ structured exploratory testing.
 
 ### Frontend & Design
@@ -107,7 +107,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): Vercel Engineering से React और Next.js performance guidance.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React-based video work के लिए Remotion guidance.
 - [`gsap-skills/`](gsap-skills/): core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks सहित 8 official GSAP animation skills.
-- [`impeccable/`](impeccable/README.md): `frontend-design`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
+- [`impeccable/`](impeccable/README.md): `impeccable`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
 
 ### Utilities & Authoring
 
@@ -119,13 +119,13 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 
 ## Vendored Skill Packs
 
-[`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `9d368b777d222e213c9a8f4fa78f6f1d29cb492d` पर आधारित।
+[`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `00d485659af82982aef0328d0419c49a2716d123` पर आधारित।
 
 इसमें शामिल हैं:
 
-- `frontend-design`: flagship frontend design skill
+- `impeccable`: flagship frontend design skill
 - `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
+- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
 
 Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) और [`impeccable/LICENSE`](impeccable/LICENSE) में सुरक्षित रखे गए हैं।
 
@@ -176,7 +176,7 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | current branch पर PR review और issue comments को `gh` के साथ address करें।                                                                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | failing GitHub Actions checks inspect करें, logs pull करें, और fixes plan करें।                                                                                                              | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Dependency source code fetch karke AI agents ko deeper implementation context dena.                                                                                                          | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
-| [opencli](opencli/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli)                                                                      |
+| [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [pinchtab](pinchtab/SKILL.md)                                       | Pinchtab के HTTP API के जरिए headless या headed Chrome control करें, web automation, scraping, form filling, navigation, screenshots, और stable accessibility refs के साथ extraction के लिए। | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
@@ -194,7 +194,7 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 
 | Skill                                                    | विवरण                                                                                          | Source URL                                                  |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [frontend-design](impeccable/frontend-design/SKILL.md)   | उच्च पहचान और production-grade quality के साथ frontend interfaces बनाएं।                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [impeccable](impeccable/impeccable/SKILL.md)   | उच्च पहचान और production-grade quality के साथ frontend interfaces बनाएं।                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [adapt](impeccable/adapt/SKILL.md)                       | designs को अलग-अलग screen sizes, devices, और contexts के लिए adapt करें।                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [animate](impeccable/animate/SKILL.md)                   | purposeful motion और micro-interactions जोड़ें।                                                | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [audit](impeccable/audit/SKILL.md)                       | accessibility, performance, theming, और responsive design के पार interface quality audit करें। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
@@ -204,14 +204,14 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [critique](impeccable/critique/SKILL.md)                 | UX perspective से design effectiveness evaluate करें।                                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [delight](impeccable/delight/SKILL.md)                   | interfaces में personality और memorable touches जोड़ें।                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [distill](impeccable/distill/SKILL.md)                   | designs को उनकी essential form तक simplify करें।                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [extract](impeccable/extract/SKILL.md)                   | reusable components, tokens, और patterns को design system में consolidate करें।                | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [harden](impeccable/harden/SKILL.md)                     | errors, i18n, overflow, और edge cases के आसपास resilience बढ़ाएं।                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [normalize](impeccable/normalize/SKILL.md)               | किसी feature को design system के अनुरूप normalize करें।                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [onboard](impeccable/onboard/SKILL.md)                   | onboarding और first-time user experience को design या improve करें।                            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [layout](impeccable/layout/SKILL.md)                       | लेआउट, स्पेसिंग और विजुअल रिद्म को बेहतर बनाएं।                                            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [optimize](impeccable/optimize/SKILL.md)                 | frontend performance, rendering, motion, और bundle efficiency सुधारें।                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [overdrive](impeccable/overdrive/SKILL.md)                 | तकनीकी रूप से महत्वाकांक्षी इम्प्लीमेंटेशन के साथ इंटरफेस को पारंपरिक सीमाओं से आगे ले जाएं। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [polish](impeccable/polish/SKILL.md)                     | alignment, spacing, consistency, और detail के लिए final quality pass.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [quieter](impeccable/quieter/SKILL.md)                   | quality बरकरार रखते हुए visual aggression कम करें।                                             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | future work के लिए design context एकत्र करके persistent guidance के रूप में सहेजें।            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [shape](impeccable/shape/SKILL.md)                         | कोड लिखने से पहले किसी फीचर की UX और UI योजना बनाएं।                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [typeset](impeccable/typeset/SKILL.md)                     | फ़ॉन्ट चयन, hierarchy, sizing, weight और readability को सुधारकर typography बेहतर बनाएं।    | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
 ### Vendored `gsap-skills/` Skills
 

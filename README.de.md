@@ -27,7 +27,7 @@ Wenn du zuerst nur wenige Skills installieren willst, beginne mit diesen:
 - [agent-browser](agent-browser/SKILL.md): Browser-Automatisierung für Screenshots, Formulare, Scraping und Web-QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): fehlgeschlagene GitHub-Actions-Checks untersuchen und aus Logs einen Fixplan ableiten.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): produktionsorientierte Prompt-Muster für verlässlichere LLM-Workflows.
-- [impeccable/frontend-design](impeccable/frontend-design/SKILL.md): hochwertiger Frontend-Design-Skill plus ein vollständiges Bundle ergänzender Design-Kommandos.
+- [impeccable](impeccable/impeccable/SKILL.md): zentraler impeccable Design-Skill plus ein vollstandiges Bundle erganzender Design-Kommandos.
 
 ## 1-Minuten-Schnellstart
 
@@ -95,7 +95,7 @@ Danach kannst du natürlich formulieren:
 - [bb-browser](bb-browser/SKILL.md): Informationsgewinnung und Browser-Automatisierung über den echten Browser und den Login-Status des Nutzers.
 - [pinchtab](pinchtab/SKILL.md): Chrome über Pinchtabs lokale HTTP-API mit stabilen Accessibility-Referenzen steuern.
 - [electron](electron/SKILL.md): Electron-Desktop-Apps über das Chrome DevTools Protocol automatisieren.
-- [opencli](opencli/SKILL.md): Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern als CLI nutzen.
+- [opencli](opencli/opencli-usage/SKILL.md): Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern als CLI nutzen.
 - [dogfood](dogfood/SKILL.md): strukturierte explorative Tests mit reproduzierbaren Belegen.
 
 ### Frontend und Design
@@ -107,7 +107,7 @@ Danach kannst du natürlich formulieren:
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): React- und Next.js-Performanceleitlinien von Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): Remotion-Leitfaden für videobasierte Arbeit mit React.
 - [`gsap-skills/`](gsap-skills/): 8 offizielle GSAP-Animations-Skills (Core, Timelines, ScrollTrigger, Plugins, Utils, React, Performance, Frameworks).
-- [`impeccable/`](impeccable/README.md): 18 vendorte Frontend-Design-Skills, darunter `frontend-design`, `adapt`, `audit`, `polish` und mehr.
+- [`impeccable/`](impeccable/README.md): 18 vendorte Frontend-Design-Skills, darunter `impeccable`, `adapt`, `audit`, `polish` und mehr.
 
 ### Utilities und Content-Erstellung
 
@@ -119,13 +119,13 @@ Danach kannst du natürlich formulieren:
 
 ## Vendorte Skill-Pakete
 
-[`impeccable/`](impeccable/README.md) enthält ein vendortes, designfokussiertes Bundle aus [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) auf Basis des Commits `9d368b777d222e213c9a8f4fa78f6f1d29cb492d`.
+[`impeccable/`](impeccable/README.md) enthält ein vendortes, designfokussiertes Bundle aus [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) auf Basis des Commits `00d485659af82982aef0328d0419c49a2716d123`.
 
 Enthalten sind:
 
-- `frontend-design`: der zentrale Frontend-Design-Skill
+- `impeccable`: der zentrale Frontend-Design-Skill
 - `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
+- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
 
 Attributionen und rechtliche Dateien bleiben in [`impeccable/NOTICE.md`](impeccable/NOTICE.md) und [`impeccable/LICENSE`](impeccable/LICENSE) erhalten.
 
@@ -176,7 +176,7 @@ Attributionen und rechtliche Dateien bleiben in [`gsap-skills/NOTICE.md`](gsap-s
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | PR-Review- und Issue-Kommentare im aktuellen Branch mit `gh` bearbeiten.                                                                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Fehlgeschlagene GitHub-Actions-Checks untersuchen, Logs abrufen und Fixes planen.                                                                                                                                  | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Abhängige Quelltexte abrufen, um AI-Agents tieferen Implementierungskontext zu geben.                                                                                                                              | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
-| [opencli](opencli/SKILL.md)                                         | Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern in CLI-Befehle verwandeln.                                                                                                 | [jackwener/opencli](https://github.com/jackwener/opencli)                                                                      |
+| [opencli](opencli/opencli-usage/SKILL.md)                                         | Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern in CLI-Befehle verwandeln.                                                                                                 | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | PDF-Dokumente mit einem tokenbasierten Designsystem erzeugen, ausfüllen und neu formatieren. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [pinchtab](pinchtab/SKILL.md)                                       | Einen headless oder sichtbaren Chrome-Browser über Pinchtabs HTTP-API für Web-Automatisierung, Scraping, Formularausfüllung, Navigation, Screenshots und Extraktion mit stabilen Accessibility-Referenzen steuern. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
@@ -194,7 +194,7 @@ Attributionen und rechtliche Dateien bleiben in [`gsap-skills/NOTICE.md`](gsap-s
 
 | Skill                                                    | Beschreibung                                                                                          | Source URL                                                  |
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [frontend-design](impeccable/frontend-design/SKILL.md)   | Unverwechselbare, produktionsreife Frontends mit hoher Designqualität erstellen.                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [impeccable](impeccable/impeccable/SKILL.md)   | Unverwechselbare, produktionsreife Frontends mit hoher Designqualität erstellen.                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [adapt](impeccable/adapt/SKILL.md)                       | Designs auf unterschiedliche Bildschirmgrößen, Geräte und Kontexte anpassen.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [animate](impeccable/animate/SKILL.md)                   | Zweckgerichtete Motion und Mikrointeraktionen ergänzen.                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [audit](impeccable/audit/SKILL.md)                       | Interface-Qualität in Bezug auf Accessibility, Performance, Theming und Responsive Design auditieren. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
@@ -204,14 +204,14 @@ Attributionen und rechtliche Dateien bleiben in [`gsap-skills/NOTICE.md`](gsap-s
 | [critique](impeccable/critique/SKILL.md)                 | Designwirksamkeit aus UX-Sicht bewerten.                                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [delight](impeccable/delight/SKILL.md)                   | Interfaces Persönlichkeit und erinnerungswürdige Momente geben.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [distill](impeccable/distill/SKILL.md)                   | Designs auf ihre wesentliche Form reduzieren.                                                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [extract](impeccable/extract/SKILL.md)                   | Wiederverwendbare Komponenten, Tokens und Muster in ein Designsystem überführen.                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [harden](impeccable/harden/SKILL.md)                     | Resilienz bei Fehlern, i18n, Overflow und Randfällen verbessern.                                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [normalize](impeccable/normalize/SKILL.md)               | Ein Feature auf ein Designsystem angleichen und konsistent machen.                                    | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [onboard](impeccable/onboard/SKILL.md)                   | Onboarding, Empty States und das erste Nutzungserlebnis verbessern.                                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [layout](impeccable/layout/SKILL.md)                       | Layout, Abstande und visuellen Rhythmus verbessern.                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [optimize](impeccable/optimize/SKILL.md)                 | Frontend-Performance, Rendering, Motion und Bundle-Effizienz verbessern.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [overdrive](impeccable/overdrive/SKILL.md)                 | Interfaces mit technisch ambitionierten Umsetzungen uber herkommliche Grenzen hinausschieben. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [polish](impeccable/polish/SKILL.md)                     | Letzter Qualitätsschliff für Ausrichtung, Abstände, Konsistenz und Details.                           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [quieter](impeccable/quieter/SKILL.md)                   | Visuelle Aggressivität reduzieren und die Qualität beibehalten.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | Designkontext erfassen und als dauerhafte Leitlinie für spätere Arbeit speichern.                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [shape](impeccable/shape/SKILL.md)                         | UX und UI eines Features planen, bevor Code geschrieben wird.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [typeset](impeccable/typeset/SKILL.md)                     | Typografie verbessern, indem Schriftwahl, Hierarchie, Grossen, Gewichtung und Lesbarkeit optimiert werden. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
 ### Vendorte `gsap-skills/`-Skills
 

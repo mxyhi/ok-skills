@@ -34,11 +34,20 @@ Use `ch` units for character-based measure (`max-width: 65ch`). Line-height scal
 
 **Avoid the invisible defaults**: Inter, Roboto, Open Sans, Lato, Montserrat. These are everywhere, making your design feel generic. They're fine for documentation or tools where personality isn't the goal—but if you want distinctive design, look elsewhere.
 
-**Better Google Fonts alternatives**:
-- Instead of Inter → **Instrument Sans**, **Plus Jakarta Sans**, **Outfit**
-- Instead of Roboto → **Onest**, **Figtree**, **Urbanist**
-- Instead of Open Sans → **Source Sans 3**, **Nunito Sans**, **DM Sans**
-- For editorial/premium feel → **Fraunces**, **Newsreader**, **Lora**
+**Pick the font from the brief, not from a category preset.** The most common AI typography failure is reaching for the same "tasteful" font for every editorial brief, the same "modern" font for every tech brief, the same "elegant serif" for every premium brief. Those reflexes produce monoculture across projects. The right font is one whose physical character matches *this specific* brand, audience, and moment.
+
+A working selection process:
+
+1. Read the brief once. Write down three concrete words for the brand voice. Not "modern" or "elegant" — those are dead categories. Try "warm and mechanical and opinionated" or "calm and clinical and careful" or "fast and dense and unimpressed" or "handmade and a little weird."
+2. Now imagine the font as a physical object the brand could ship: a typewriter ribbon, a hand-lettered shop sign, a 1970s mainframe terminal manual, a fabric label on the inside of a coat, a museum exhibit caption, a tax form, a children's book printed on cheap newsprint. Whichever physical object fits the three words is pointing at the right *kind* of typeface.
+3. Browse a font catalog (Google Fonts, Pangram Pangram, Adobe Fonts, Future Fonts, ABC Dinamo) with that physical object in mind. **Reject the first thing that "looks designy."** That's your trained-everywhere reflex. Keep looking.
+4. Avoid your defaults from previous projects. If you find yourself reaching for the same display font you used last time, make yourself pick something else.
+
+**Anti-reflexes worth defending against**:
+- A technical/utilitarian brief does NOT need a serif "for warmth." Most tech tools should look like tech tools.
+- An editorial/premium brief does NOT need the same expressive serif everyone is using right now. Premium can be Swiss-modern, can be neo-grotesque, can be a literal monospace, can be a quiet humanist sans.
+- A children's product does NOT need a rounded display font. Kids' books use real type.
+- A "modern" brief does NOT need a geometric sans. The most modern thing you can do in 2026 is not use the font everyone else is using.
 
 **System fonts are underrated**: `-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui` looks native, loads instantly, and is highly readable. Consider this for apps where performance > personality.
 

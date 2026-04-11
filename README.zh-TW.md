@@ -27,7 +27,7 @@
 - [agent-browser](agent-browser/SKILL.md)：瀏覽器自動化、截圖、抓取、表單填寫與 Web QA。
 - [gh-fix-ci](gh-fix-ci/SKILL.md)：讀取 GitHub Actions 失敗日誌並輸出修復方案。
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：更穩定、可控、面向生產的提示工程模式。
-- [impeccable/frontend-design](impeccable/frontend-design/SKILL.md)：高品質前端介面設計技能，以及一整套配套設計指令。
+- [impeccable](impeccable/impeccable/SKILL.md)：核心 impeccable 設計技能，以及一整套配套設計指令。
 
 ## 1 分鐘快速開始
 
@@ -95,7 +95,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [bb-browser](bb-browser/SKILL.md)：透過使用者真實瀏覽器與登入狀態進行資訊擷取與瀏覽器自動化。
 - [pinchtab](pinchtab/SKILL.md)：透過 Pinchtab 的本地 HTTP API 控制 Chrome，利用穩定的 accessibility refs 進行自動化與擷取。
 - [electron](electron/SKILL.md)：透過 Chrome DevTools Protocol 自動化 Electron 桌面應用。
-- [opencli](opencli/SKILL.md)：將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。
+- [opencli](opencli/opencli-usage/SKILL.md)：將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。
 - [dogfood](dogfood/SKILL.md)：系統化探索測試，並輸出可重現的證據。
 
 ### 前端與設計
@@ -107,7 +107,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md)：來自 Vercel Engineering 的 React / Next.js 效能實踐。
 - [remotion-best-practices](remotion-best-practices/SKILL.md)：基於 React 的 Remotion 影片開發最佳實踐。
 - [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
-- [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `frontend-design`、`adapt`、`audit`、`polish` 等。
+- [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `impeccable`、`adapt`、`audit`、`polish` 等。
 
 ### 工具與內容製作
 
@@ -119,13 +119,13 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 ## Vendored Skill Packs
 
-[`impeccable/`](impeccable/README.md) 目錄收錄了來自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端設計技能包，目前同步基於提交 `9d368b777d222e213c9a8f4fa78f6f1d29cb492d`。
+[`impeccable/`](impeccable/README.md) 目錄收錄了來自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端設計技能包，目前同步基於提交 `00d485659af82982aef0328d0419c49a2716d123`。
 
 其中包括：
 
-- `frontend-design` 主技能
+- `impeccable` 主技能
 - `adapt`、`animate`、`audit`、`bolder`、`clarify`、`colorize`、`critique`、`delight`、`distill`
-- `extract`、`harden`、`normalize`、`onboard`、`optimize`、`polish`、`quieter`、`teach-impeccable`
+- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
 
 歸屬與法律文件保存在 [`impeccable/NOTICE.md`](impeccable/NOTICE.md) 與 [`impeccable/LICENSE`](impeccable/LICENSE)。
 
@@ -176,7 +176,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 使用 `gh` 處理目前分支 PR 的評審與 issue 留言。                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 檢查 GitHub Actions 失敗項、提取日誌並制定修復計畫。                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依賴原始碼，為 AI agents 提供更深的實作上下文。                                                                                            | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
-| [opencli](opencli/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli)                                                                      |
+| [opencli](opencli/opencli-usage/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化設計系統生成、填寫與重排 PDF 文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [pinchtab](pinchtab/SKILL.md)                                       | 透過 Pinchtab 的 HTTP API 控制 headless 或 headed Chrome，用於網頁自動化、抓取、表單填寫、導覽、截圖與基於穩定 accessibility refs 的內容擷取。 | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
@@ -194,7 +194,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 | 技能                                                     | 說明                                           | Source URL                                                  |
 | -------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------- |
-| [frontend-design](impeccable/frontend-design/SKILL.md)   | 建立有辨識度、可用於生產環境的高品質前端介面。 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [impeccable](impeccable/impeccable/SKILL.md)   | 建立有辨識度、可用於生產環境的高品質前端介面。 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [adapt](impeccable/adapt/SKILL.md)                       | 讓設計適配不同螢幕尺寸、裝置與上下文。         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [animate](impeccable/animate/SKILL.md)                   | 以有目的的動畫與微互動強化介面。               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [audit](impeccable/audit/SKILL.md)                       | 稽核介面的可存取性、效能、主題與響應式表現。   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
@@ -204,14 +204,14 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [critique](impeccable/critique/SKILL.md)                 | 從 UX 視角評估設計效果。                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [delight](impeccable/delight/SKILL.md)                   | 為介面加入個性與令人記住的細節。               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [distill](impeccable/distill/SKILL.md)                   | 將設計提煉到本質，去除多餘複雜度。             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [extract](impeccable/extract/SKILL.md)                   | 抽取並整合可重用元件、tokens 與模式。          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [harden](impeccable/harden/SKILL.md)                     | 提升錯誤處理、i18n、溢出與邊界情況的韌性。     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [normalize](impeccable/normalize/SKILL.md)               | 讓功能對齊設計系統並保持一致性。               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [onboard](impeccable/onboard/SKILL.md)                   | 改善導覽流程、空狀態與首次使用體驗。           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [layout](impeccable/layout/SKILL.md)                       | 改善版面、間距與視覺節奏。                                                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [optimize](impeccable/optimize/SKILL.md)                 | 優化載入、渲染、動畫、圖片與包體積。           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [overdrive](impeccable/overdrive/SKILL.md)                 | 以更激進的技術實作把介面推到常規上限之外。                                                                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [polish](impeccable/polish/SKILL.md)                     | 上線前打磨對齊、間距、一致性與細節。           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [quieter](impeccable/quieter/SKILL.md)                   | 降低過強的視覺侵略性，同時保留設計品質。       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | 收集設計上下文並保存為後續工作的長期指引。     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [shape](impeccable/shape/SKILL.md)                         | 在寫程式前先規劃功能的 UX / UI。                                                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [typeset](impeccable/typeset/SKILL.md)                     | 優化字體選擇、層級、字級、字重與可讀性。                                                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
 ### Vendored `gsap-skills/` 技能
 

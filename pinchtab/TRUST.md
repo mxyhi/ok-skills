@@ -36,7 +36,6 @@ Binaries are built automatically from tagged commits via GitHub Actions (publicl
 
 - **Source**: https://github.com/pinchtab/pinchtab (MIT)
 - **Releases**: https://github.com/pinchtab/pinchtab/releases
-- **Latest**: v0.8.4 (Mar 2026)
 
 If you're concerned, audit the source—it's ~15MB, zero external dependencies, mostly Go stdlib.
 
@@ -66,15 +65,15 @@ Use `profiles.baseDir`, `profiles.defaultProfile`, or `PINCHTAB_CONFIG` if you n
 
 ## Security History
 
-| CVE | Severity | Affected | Fixed In | Endpoint |
-| --- | --- | --- | --- | --- |
-| [CVE-2026-30834](https://github.com/advisories/GHSA-rw8p-c6hf-q3pg) | High (7.5) | < 0.7.7 | 0.7.7 | `/download` |
-
-**Type:** Server-Side Request Forgery (SSRF) — allowed exfiltration of internal files and network probing via crafted download URLs.
-
-**Fix PRs:** [#135](https://github.com/pinchtab/pinchtab/pull/135) (SafePath validation), [#288](https://github.com/pinchtab/pinchtab/pull/288) (expanded URL validation).
-
-**Minimum recommended version:** 0.8.3+ (includes full SSRF hardening).
+| Advisory | Severity | Fixed In |
+| --- | --- | --- |
+| [GHSA-p8mm-644p-phmh / CVE-2026-33623](https://github.com/advisories/GHSA-p8mm-644p-phmh) | Medium | 0.8.5 |
+| [GHSA-w5pc-m664-r62v / CVE-2026-33622](https://github.com/advisories/GHSA-w5pc-m664-r62v) | Medium | 0.8.5 |
+| [GHSA-j65m-hv65-r264 / CVE-2026-33621](https://github.com/advisories/GHSA-j65m-hv65-r264) | Medium | 0.8.4 |
+| [GHSA-mrqc-3276-74f8 / CVE-2026-33620](https://github.com/advisories/GHSA-mrqc-3276-74f8) | Medium | 0.8.4 |
+| [GHSA-xqq2-4j46-vwp7 / CVE-2026-33619](https://github.com/advisories/GHSA-xqq2-4j46-vwp7) | Medium | 0.8.4 |
+| [GHSA-qwxp-6qf9-wr4m / CVE-2026-33081](https://github.com/advisories/GHSA-qwxp-6qf9-wr4m) | Medium | v0.8.3 |
+| [GHSA-rw8p-c6hf-q3pg / CVE-2026-30834](https://github.com/advisories/GHSA-rw8p-c6hf-q3pg) | High | v0.7.7 |
 
 ## Questions?
 

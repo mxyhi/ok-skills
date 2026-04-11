@@ -4,36 +4,19 @@
 
 **Stop using HSL.** Use OKLCH (or LCH) instead. It's perceptually uniform, meaning equal steps in lightness *look* equal—unlike HSL where 50% lightness in yellow looks bright while 50% in blue looks dark.
 
-```css
-/* OKLCH: lightness (0-100%), chroma (0-0.4+), hue (0-360) */
---color-primary: oklch(60% 0.15 250);      /* Blue */
---color-primary-light: oklch(85% 0.08 250); /* Same hue, lighter */
---color-primary-dark: oklch(35% 0.12 250);  /* Same hue, darker */
-```
+The OKLCH function takes three components: `oklch(lightness chroma hue)` where lightness is 0-100%, chroma is roughly 0-0.4, and hue is 0-360. To build a primary color and its lighter / darker variants, hold the chroma+hue roughly constant and vary the lightness — but **reduce chroma as you approach white or black**, because high chroma at extreme lightness looks garish.
 
-**Key insight**: As you move toward white or black, reduce chroma (saturation). High chroma at extreme lightness looks garish. A light blue at 85% lightness needs ~0.08 chroma, not the 0.15 of your base color.
+The hue you pick is a brand decision and should not come from a default. Do not reach for blue (hue 250) or warm orange (hue 60) by reflex — those are the dominant AI-design defaults, not the right answer for any specific brand.
 
 ## Building Functional Palettes
 
-### The Tinted Neutral Trap
+### Tinted Neutrals
 
-**Pure gray is dead.** Add a subtle hint of your brand hue to all neutrals:
+**Pure gray is dead.** A neutral with zero chroma feels lifeless next to a colored brand. Add a tiny chroma value (0.005-0.015) to all your neutrals, hued toward whatever your brand color is. The chroma is small enough not to read as "tinted" consciously, but it creates subconscious cohesion between brand color and UI surfaces.
 
-```css
-/* Dead grays */
---gray-100: oklch(95% 0 0);     /* No personality */
---gray-900: oklch(15% 0 0);
+The hue you tint toward should come from THIS project's brand, not from a "warm = friendly, cool = tech" formula. If your brand color is teal, your neutrals lean toward teal. If your brand color is amber, they lean toward amber. The point is cohesion with the SPECIFIC brand, not a stock palette.
 
-/* Warm-tinted grays (add brand warmth) */
---gray-100: oklch(95% 0.01 60);  /* Hint of warmth */
---gray-900: oklch(15% 0.01 60);
-
-/* Cool-tinted grays (tech, professional) */
---gray-100: oklch(95% 0.01 250); /* Hint of blue */
---gray-900: oklch(15% 0.01 250);
-```
-
-The chroma is tiny (0.01) but perceptible. It creates subconscious cohesion between your brand color and your UI.
+**Avoid** the trap of always tinting toward warm orange or always tinting toward cool blue. Those are the two laziest defaults and they create their own monoculture across projects.
 
 ### Palette Structure
 
@@ -107,17 +90,7 @@ You can't just swap colors. Dark mode requires different design decisions:
 | Vibrant accents | Desaturate accents slightly |
 | White backgrounds | Never pure black—use dark gray (oklch 12-18%) |
 
-```css
-/* Dark mode depth via surface color, not shadow */
-:root[data-theme="dark"] {
-  --surface-1: oklch(15% 0.01 250);
-  --surface-2: oklch(20% 0.01 250);  /* "Higher" = lighter */
-  --surface-3: oklch(25% 0.01 250);
-
-  /* Reduce text weight slightly */
-  --body-weight: 350;  /* Instead of 400 */
-}
-```
+In dark mode, depth comes from surface lightness, not shadow. Build a 3-step surface scale where higher elevations are lighter (e.g. 15% / 20% / 25% lightness). Use the SAME hue and chroma as your brand color (whatever it is for THIS project — do not reach for blue) and only vary the lightness. Reduce body text weight slightly (e.g. 350 instead of 400) because light text on dark reads as heavier than dark text on light.
 
 ### Token Hierarchy
 

@@ -166,8 +166,10 @@ pinchtab nav <url> --block-images --timeout 60
 
 ## General Efficiency Rules
 
+- **Set a stable agent ID up front.** Use `pinchtab --agent-id <agent-id> ...`, `PINCHTAB_AGENT_ID`, or `X-Agent-Id` for raw HTTP calls so work stays attributable to the same agent.
 - **Batch reads before writes.** Snap once, extract all refs, then act. Avoid snap → act → snap → act loops when you can snap → act × N → snap once to verify.
 - **Use `text` for extraction tasks.** If you only need to read content (not interact), `text` is cheaper than `snap` + parsing.
 - **Scope snapshots.** Use `snap -s <selector>` to target a specific section of the page when you know where the element is.
 - **Prefer `fill` over `type` for framework forms.** Saves retries caused by React/Vue not detecting raw keystroke events.
 - **Check health before long workflows.** Run `pinchtab health` at the start of a multi-step task to fail fast if the server is down.
+- **Export network traces after sessions.** `pinchtab network-export -o session.har` captures every request. For live capture: `pinchtab network-export --stream -o live.har`.

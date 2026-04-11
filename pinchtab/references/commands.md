@@ -29,10 +29,10 @@ Check if the server is running and healthy.
 Navigate the current tab to a URL.
 
 ```bash
-pinchtab nav https://example.com
-pinchtab nav https://example.com --new-tab
-pinchtab nav https://example.com --block-images
-pinchtab nav https://example.com --timeout 60
+pinchtab nav https://pinchtab.com
+pinchtab nav https://pinchtab.com --new-tab
+pinchtab nav https://pinchtab.com --block-images
+pinchtab nav https://pinchtab.com --timeout 60
 ```
 
 | Flag | Description |
@@ -163,6 +163,19 @@ pinchtab eval "document.querySelectorAll('a').length"
 ```
 
 > Requires `security.allowEvaluate: true` in config. Returns 403 by default.
+
+### `pinchtab network-export`
+Export captured network data in standard formats.
+
+```bash
+pinchtab network-export                           # HAR 1.2 to exports/
+pinchtab network-export -o session.har            # HAR to specific file
+pinchtab network-export --format ndjson -o s.ndjson # NDJSON (one JSON per line)
+pinchtab network-export --body                    # Include response bodies
+pinchtab network-export --stream -o live.har      # Live capture while browsing
+```
+
+Formats: `har` (Chrome DevTools compatible), `ndjson` (streamable). Sensitive headers redacted by default.
 
 ---
 

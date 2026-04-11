@@ -27,7 +27,7 @@ Nếu lúc đầu bạn chỉ cài vài skill, hãy bắt đầu với những s
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho ảnh chụp màn hình, biểu mẫu, scraping và web QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): kiểm tra các check GitHub Actions thất bại và biến log thành kế hoạch sửa lỗi.
 - [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): các mẫu prompt hướng production cho workflow LLM đáng tin cậy hơn.
-- [impeccable/frontend-design](impeccable/frontend-design/SKILL.md): skill thiết kế frontend chất lượng cao cùng cả bộ lệnh thiết kế đi kèm.
+- [impeccable](impeccable/impeccable/SKILL.md): skill thiết kế impeccable cốt lõi cùng cả bộ lệnh thiết kế đi kèm.
 
 ## Quick Start trong 1 phút
 
@@ -95,7 +95,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [bb-browser](bb-browser/SKILL.md): thu thập thông tin và tự động hóa trình duyệt bằng trình duyệt thật cùng trạng thái đăng nhập của người dùng.
 - [pinchtab](pinchtab/SKILL.md): điều khiển Chrome qua HTTP API cục bộ của Pinchtab bằng các accessibility ref ổn định.
 - [electron](electron/SKILL.md): tự động hóa ứng dụng Electron desktop qua Chrome DevTools Protocol.
-- [opencli](opencli/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
+- [opencli](opencli/opencli-usage/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
 - [dogfood](dogfood/SKILL.md): exploratory testing có cấu trúc cùng bằng chứng có thể tái hiện.
 
 ### Frontend và thiết kế
@@ -107,7 +107,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): hướng dẫn hiệu năng React và Next.js từ Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): hướng dẫn Remotion cho công việc video dựa trên React.
 - [`gsap-skills/`](gsap-skills/): 8 skill animation GSAP chính thức (core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks).
-- [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `frontend-design`, `adapt`, `audit`, `polish` và nhiều skill khác.
+- [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `impeccable`, `adapt`, `audit`, `polish` và nhiều skill khác.
 
 ### Tiện ích và biên soạn nội dung
 
@@ -119,13 +119,13 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 ## Gói skill vendored
 
-[`impeccable/`](impeccable/README.md) chứa một bundle thiên về thiết kế được vendored từ [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) tại commit `9d368b777d222e213c9a8f4fa78f6f1d29cb492d`.
+[`impeccable/`](impeccable/README.md) chứa một bundle thiên về thiết kế được vendored từ [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) tại commit `00d485659af82982aef0328d0419c49a2716d123`.
 
 Gói này bao gồm:
 
-- `frontend-design`: skill thiết kế frontend chủ lực
+- `impeccable`: skill thiết kế frontend chủ lực
 - `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `extract`, `harden`, `normalize`, `onboard`, `optimize`, `polish`, `quieter`, `teach-impeccable`
+- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
 
 Thông tin ghi nhận nguồn gốc và hồ sơ pháp lý được giữ trong [`impeccable/NOTICE.md`](impeccable/NOTICE.md) và [`impeccable/LICENSE`](impeccable/LICENSE).
 
@@ -176,7 +176,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | Xử lý comment review PR và issue trên nhánh hiện tại bằng `gh`.                                                                                                                            | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Kiểm tra các check GitHub Actions thất bại, kéo log và lập kế hoạch sửa.                                                                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Lấy mã nguồn của dependency để cung cấp cho AI agents bối cảnh triển khai sâu hơn.                                                                                                         | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
-| [opencli](opencli/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli)                                                                      |
+| [opencli](opencli/opencli-usage/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Tạo, điền và tái định dạng tài liệu PDF bằng hệ thiết kế token. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [pinchtab](pinchtab/SKILL.md)                                       | Điều khiển Chrome headless hoặc headed qua HTTP API của Pinchtab cho tự động hóa web, scraping, điền biểu mẫu, điều hướng, ảnh chụp màn hình và trích xuất bằng accessibility ref ổn định. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
@@ -194,7 +194,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 
 | Skill                                                    | Mô tả                                                                                   | Source URL                                                  |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [frontend-design](impeccable/frontend-design/SKILL.md)   | Tạo giao diện frontend có bản sắc và chất lượng production cao.                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [impeccable](impeccable/impeccable/SKILL.md)   | Tạo giao diện frontend có bản sắc và chất lượng production cao.                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [adapt](impeccable/adapt/SKILL.md)                       | Điều chỉnh thiết kế cho nhiều kích thước màn hình, thiết bị và bối cảnh khác nhau.      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [animate](impeccable/animate/SKILL.md)                   | Thêm motion có chủ đích và micro-interaction.                                           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [audit](impeccable/audit/SKILL.md)                       | Audit chất lượng giao diện về accessibility, performance, theming và responsive design. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
@@ -204,14 +204,14 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [critique](impeccable/critique/SKILL.md)                 | Đánh giá hiệu quả thiết kế từ góc nhìn UX.                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [delight](impeccable/delight/SKILL.md)                   | Thêm cá tính và những điểm nhấn đáng nhớ cho giao diện.                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [distill](impeccable/distill/SKILL.md)                   | Chắt lọc thiết kế về dạng cốt lõi nhất.                                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [extract](impeccable/extract/SKILL.md)                   | Gom và hợp nhất các component, token và pattern có thể tái sử dụng vào design system.   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [harden](impeccable/harden/SKILL.md)                     | Tăng độ bền vững quanh lỗi, i18n, tràn nội dung và các edge case.                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [normalize](impeccable/normalize/SKILL.md)               | Chuẩn hóa một tính năng để khớp với design system.                                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [onboard](impeccable/onboard/SKILL.md)                   | Thiết kế hoặc cải thiện onboarding và trải nghiệm lần đầu sử dụng.                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [layout](impeccable/layout/SKILL.md)                       | Cải thiện bố cục, khoảng cách và nhịp điệu thị giác.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [optimize](impeccable/optimize/SKILL.md)                 | Cải thiện hiệu năng frontend, rendering, motion và hiệu quả bundle.                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [overdrive](impeccable/overdrive/SKILL.md)                 | Đẩy giao diện vượt ra ngoài giới hạn thông thường bằng các triển khai kỹ thuật đầy tham vọng. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [polish](impeccable/polish/SKILL.md)                     | Bước hoàn thiện cuối để chỉnh căn lề, khoảng cách, tính nhất quán và chi tiết.          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 | [quieter](impeccable/quieter/SKILL.md)                   | Giảm độ gắt về thị giác nhưng vẫn giữ chất lượng thiết kế.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [teach-impeccable](impeccable/teach-impeccable/SKILL.md) | Thu thập bối cảnh thiết kế và lưu lại làm hướng dẫn lâu dài cho công việc sau này.      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [shape](impeccable/shape/SKILL.md)                         | Lập kế hoạch UX và UI cho một tính năng trước khi viết mã.                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| [typeset](impeccable/typeset/SKILL.md)                     | Cải thiện kiểu chữ bằng cách chỉnh lựa chọn font, phân cấp, kích thước, độ đậm và khả năng đọc. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
 
 ### Vendored `gsap-skills/` Skills
 

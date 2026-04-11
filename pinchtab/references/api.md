@@ -4,6 +4,24 @@ Base URL for all examples: `http://localhost:9867`
 
 > **CLI alternative:** All endpoints have CLI equivalents. Use `pinchtab help` for the full list. Examples are shown as `# CLI:` comments below.
 
+## Agent Attribution
+
+If an agent is calling the HTTP API directly, include `X-Agent-Id: <agent-id>` on the requests that should stay attributable to that agent.
+
+Example:
+
+```bash
+curl -X POST /navigate \
+  -H 'X-Agent-Id: agent-crawl-01' \
+  -H 'Content-Type: application/json' \
+  -d '{"url": "https://pinchtab.com"}'
+```
+
+Notes:
+
+- CLI users should prefer `pinchtab --agent-id <agent-id> ...` instead of setting the header manually
+- scheduler-submitted tasks reuse their `agentId` as `X-Agent-Id` when the task is executed
+
 ## Navigate
 
 ```bash
@@ -304,11 +322,11 @@ These are equivalent to using `?tabId=TARGET_ID` on top-level endpoints but foll
 
 ```bash
 # Lock a tab (default 30s timeout, max 5min)
-curl -X POST /tab/lock -H 'Content-Type: application/json' \
+curl -X POST /lock -H 'Content-Type: application/json' \
   -d '{"tabId": "TARGET_ID", "owner": "agent-1", "timeoutSec": 60}'
 
 # Unlock
-curl -X POST /tab/unlock -H 'Content-Type: application/json' \
+curl -X POST /unlock -H 'Content-Type: application/json' \
   -d '{"tabId": "TARGET_ID", "owner": "agent-1"}'
 ```
 
@@ -378,6 +396,35 @@ Returns `solved: true, attempts: 0` when no challenge is detected — safe to ca
 
 **Stealth requirement:** Solvers work best with `stealthLevel: "full"`. Cloudflare checks browser fingerprints before and after the checkbox click. Verify stealth is active with `GET /stealth/status`.
 
+## Network Export
+
+```bash
+# Export as HAR 1.2 (stream to response)
+curl /network/export?format=har
+
+# Export as NDJSON (one JSON per line)
+curl /network/export?format=ndjson
+
+# Save to server-side file
+curl "/network/export?format=har&output=file&path=session.har"
+
+# Include response bodies (10 MB cap per entry)
+curl "/network/export?format=har&body=true"
+
+# Include raw sensitive headers (Cookie, Authorization)
+curl "/network/export?format=har&redact=false"
+
+# Live streaming export (entries written to file as they arrive)
+curl -N "/network/export/stream?format=ndjson&path=live.ndjson"
+
+# Tab-scoped
+curl /tabs/TAB_ID/network/export?format=har
+```
+
+All standard network filters apply: `filter`, `method`, `status`, `type`, `limit`.
+
+Formats are pluggable. `GET /network/export?format=unknown` returns `{"available": ["har", "ndjson"]}`.
+
 ## Stealth
 
 ```bash
@@ -394,4 +441,12 @@ curl -X POST /fingerprint/rotate -H 'Content-Type: application/json' \
 
 ```bash
 curl /health
+```
+
+## Session Auth
+
+If the user already gives you an agent session token, send it as:
+
+```bash
+curl -H "Authorization: Session ses_..." /health
 ```
