@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, OpenClaw, Trae, and other SKILL.md-compatible tools.
 
-This repo currently bundles **51 reusable skills**: **25 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md), plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
+This repo currently bundles **53 reusable skills**: **27 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md), plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -92,6 +92,8 @@ Then ask naturally:
 - [agent-browser](agent-browser/SKILL.md): browser automation for navigation, forms, screenshots, and scraping.
 - [browser-use](browser-use/SKILL.md): persistent browser automation CLI for navigation, state inspection, form filling, screenshots, and extraction.
 - [opencli](opencli/opencli-usage/SKILL.md): turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.
+- [dogfood](dogfood/SKILL.md): structured exploratory testing with reproducible evidence.
+- [electron](electron/SKILL.md): automate Electron desktop apps over Chrome DevTools Protocol.
 
 ### Frontend & Design
 
@@ -169,6 +171,8 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Inspect failing GitHub Actions checks, pull logs, and plan fixes.                                                                                                                       | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Fetch dependency source code to give AI agents deeper implementation context.                                                                                                           | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.                                                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | Systematically test web apps and produce reproducible issue reports with screenshots and videos.                                                                                        | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | Automate Electron desktop apps through agent-browser and Chrome DevTools Protocol.                                                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Generate, fill, and reformat PDF documents with a token-based design system. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | Generate, edit, and read PowerPoint presentations with PptxGenJS, XML workflows, or markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |

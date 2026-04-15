@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **51 個可重用技能**：其中 **25 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **53 個可重用技能**：其中 **27 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 

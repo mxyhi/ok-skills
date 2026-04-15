@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **51 skill có thể tái sử dụng**: **25 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **53 skill có thể tái sử dụng**: **27 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 

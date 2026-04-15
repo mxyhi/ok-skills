@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **51 skills reutilizables**: **25 skills de nivel superior** mantenidos directamente aqui, ademas de **18 skills de diseno** integradas como paquete vendorizado en [`impeccable/`](impeccable/README.md), y **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
+Este repositorio incluye actualmente **53 skills reutilizables**: **27 skills de nivel superior** mantenidos directamente aqui, ademas de **18 skills de diseno** integradas como paquete vendorizado en [`impeccable/`](impeccable/README.md), y **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 

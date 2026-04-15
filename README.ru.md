@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **51 переиспользуемый skill**: **25 skills верхнего уровня**, которые поддерживаются прямо здесь, **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **53 переиспользуемых skills**: **27 skills верхнего уровня**, которые поддерживаются прямо здесь, **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
