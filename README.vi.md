@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **57 skill có thể tái sử dụng**: **31 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **53 skill có thể tái sử dụng**: **27 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -22,11 +22,11 @@ Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills
 
 Nếu lúc đầu bạn chỉ cài vài skill, hãy bắt đầu với những skill sau:
 
+- [brainstorming](brainstorming/SKILL.md): làm rõ ý tưởng, yêu cầu và thiết kế trước khi bắt đầu triển khai.
 - [planning-with-files](planning-with-files/SKILL.md): lập kế hoạch dựa trên file cho tác vụ phức tạp, nghiên cứu và công việc kéo dài.
 - [context7-cli](context7-cli/SKILL.md): lấy tài liệu thư viện mới nhất và các tham chiếu được Context7 hỗ trợ.
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho ảnh chụp màn hình, biểu mẫu, scraping và web QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): kiểm tra các check GitHub Actions thất bại và biến log thành kế hoạch sửa lỗi.
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): các mẫu prompt hướng production cho workflow LLM đáng tin cậy hơn.
 - [impeccable](impeccable/impeccable/SKILL.md): skill thiết kế impeccable cốt lõi cùng cả bộ lệnh thiết kế đi kèm.
 
 ## Quick Start trong 1 phút
@@ -77,9 +77,8 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 ### Lập kế hoạch và prompting
 
+- [brainstorming](brainstorming/SKILL.md): làm rõ ý tưởng, yêu cầu và thiết kế trước khi bắt đầu triển khai.
 - [planning-with-files](planning-with-files/SKILL.md): lập kế hoạch Markdown bền vững với `task_plan.md`, `findings.md` và `progress.md`.
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): các mẫu thiết kế prompt nâng cao cho hệ thống LLM production.
-- [subagent-driven-development](subagent-driven-development/SKILL.md): thực thi kế hoạch triển khai với các tác vụ độc lập trong phiên hiện tại bằng subagent mới và các vòng review theo giai đoạn.
 - [test-driven-development](test-driven-development/SKILL.md): buộc viết test trước khi triển khai.
 
 ### Workflow GitHub
@@ -92,8 +91,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho điều hướng, biểu mẫu, ảnh chụp màn hình và scraping.
 - [browser-use](browser-use/SKILL.md): CLI tự động hóa trình duyệt dạng phiên bền vững để điều hướng, kiểm tra trạng thái trang, điền biểu mẫu, chụp màn hình và trích xuất dữ liệu.
-- [bb-browser](bb-browser/SKILL.md): thu thập thông tin và tự động hóa trình duyệt bằng trình duyệt thật cùng trạng thái đăng nhập của người dùng.
-- [pinchtab](pinchtab/SKILL.md): điều khiển Chrome qua HTTP API cục bộ của Pinchtab bằng các accessibility ref ổn định.
 - [electron](electron/SKILL.md): tự động hóa ứng dụng Electron desktop qua Chrome DevTools Protocol.
 - [opencli](opencli/opencli-usage/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
 - [dogfood](dogfood/SKILL.md): exploratory testing có cấu trúc cùng bằng chứng có thể tái hiện.
@@ -104,7 +101,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [frontend-skill](frontend-skill/SKILL.md): dùng khi cần landing page, website, ứng dụng, prototype, demo hoặc UI game có thị giác mạnh.
 - [shader-dev](shader-dev/SKILL.md): kỹ thuật GLSL toàn diện cho hiệu ứng hình ảnh thời gian thực tương thích ShaderToy.
 - [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
-- [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): hướng dẫn hiệu năng React và Next.js từ Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): hướng dẫn Remotion cho công việc video dựa trên React.
 - [`gsap-skills/`](gsap-skills/): 8 skill animation GSAP chính thức (core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks).
 - [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `impeccable`, `adapt`, `audit`, `polish` và nhiều skill khác.
@@ -160,8 +156,8 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [agent-browser](agent-browser/SKILL.md)                             | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web.                                                                           | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [ai-elements](ai-elements/SKILL.md)                                 | Tạo các thành phần giao diện chat AI mới cho thư viện ai-elements với mô hình composable và quy ước shadcn/ui.                                                                             | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
-| [bb-browser](bb-browser/SKILL.md)                                   | Skill thu thập thông tin và tự động hóa trình duyệt bằng trình duyệt thật cùng trạng thái đăng nhập của người dùng, áp dụng cho trang công khai, hệ thống nội bộ và luồng sau đăng nhập.   | [epiral/bb-browser](https://github.com/epiral/bb-browser/tree/main/skills/bb-browser)                                          |
 | [better-icons](better-icons/SKILL.md)                               | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP.                                                                                                                     | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [brainstorming](brainstorming/SKILL.md)                               | Biến ý tưởng thành thiết kế và đặc tả đã được xác nhận thông qua đối thoại cộng tác trước khi triển khai.                                                                                | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | CLI tự động hóa trình duyệt dạng phiên bền vững để điều hướng, kiểm tra trạng thái trang, điền biểu mẫu, chụp màn hình và trích xuất dữ liệu.                                              | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [caveman](caveman/SKILL.md)                                         | Che do giao tiep sieu nen, tra loi kieu nguoi toi co de giam token nhung van giu do chinh xac ky thuat.                                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [context7-cli](context7-cli/SKILL.md)                               | Dùng Context7 CLI để tra cứu tài liệu, quản lý skill và thiết lập MCP.                                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
@@ -178,15 +174,11 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [opensrc](opensrc/SKILL.md)                                         | Lấy mã nguồn của dependency để cung cấp cho AI agents bối cảnh triển khai sâu hơn.                                                                                                         | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Tạo, điền và tái định dạng tài liệu PDF bằng hệ thiết kế token. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [pinchtab](pinchtab/SKILL.md)                                       | Điều khiển Chrome headless hoặc headed qua HTTP API của Pinchtab cho tự động hóa web, scraping, điền biểu mẫu, điều hướng, ảnh chụp màn hình và trích xuất bằng accessibility ref ổn định. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | Tạo, chỉnh sửa và đọc bản trình bày PowerPoint bằng PptxGenJS, luồng XML hoặc markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Các mẫu prompt engineering nâng cao cho workflow LLM đáng tin cậy trong production.                                                                                                        | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md)         | Best practices để xây dựng video trong React với Remotion.                                                                                                                                 | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [skill-creator](skill-creator/SKILL.md)                             | Hướng dẫn tạo mới hoặc cập nhật skill với tri thức chuyên biệt và tích hợp công cụ.                                                                                                        | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator)                                       |
-| [subagent-driven-development](subagent-driven-development/SKILL.md) | Thực thi kế hoạch triển khai với các tác vụ độc lập trong phiên hiện tại bằng subagent mới và các vòng review theo giai đoạn.                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development)                           |
 | [test-driven-development](test-driven-development/SKILL.md)         | Dùng trước khi triển khai bất kỳ tính năng hay bugfix nào.                                                                                                                                 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
-| [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | Hướng dẫn tối ưu hiệu năng React và Next.js từ Vercel Engineering.                                                                                                                         | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices)                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Chỉ dùng khi người dùng yêu cầu rõ ràng việc stage, commit, push và mở GitHub pull request trong một luồng dùng `gh`.                                                                      | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
 

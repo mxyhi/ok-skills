@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, OpenClaw, Trae, and other SKILL.md-compatible tools.
 
-This repo currently bundles **57 reusable skills**: **31 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md), plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
+This repo currently bundles **53 reusable skills**: **27 top-level skills** maintained directly in this repo, plus **18 vendored design skills** under [`impeccable/`](impeccable/README.md), plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -22,11 +22,11 @@ If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills
 
 If you only install a few skills first, start with these:
 
+- [brainstorming](brainstorming/SKILL.md): explore ideas, requirements, and design before implementation begins.
 - [planning-with-files](planning-with-files/SKILL.md): file-based planning for complex tasks, research, and long-running work.
 - [context7-cli](context7-cli/SKILL.md): fetch current library docs and Context7-backed references.
 - [agent-browser](agent-browser/SKILL.md): browser automation for screenshots, forms, scraping, and web QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): inspect failing GitHub Actions checks and turn logs into a fix plan.
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): production-oriented prompt patterns for more reliable LLM workflows.
 - [impeccable](impeccable/impeccable/SKILL.md): core impeccable design skill plus a full bundle of companion design commands.
 
 ## 1-Minute Quick Start
@@ -77,9 +77,8 @@ Then ask naturally:
 
 ### Planning & Prompting
 
+- [brainstorming](brainstorming/SKILL.md): explore ideas, requirements, and design before implementation begins.
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning with `task_plan.md`, `findings.md`, and `progress.md`.
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md): advanced prompt design patterns for production LLM systems.
-- [subagent-driven-development](subagent-driven-development/SKILL.md): execute implementation plans with independent tasks in the current session using fresh subagents and staged reviews.
 - [test-driven-development](test-driven-development/SKILL.md): enforce writing tests before implementation work.
 
 ### GitHub Workflow
@@ -92,8 +91,6 @@ Then ask naturally:
 
 - [agent-browser](agent-browser/SKILL.md): browser automation for navigation, forms, screenshots, and scraping.
 - [browser-use](browser-use/SKILL.md): persistent browser automation CLI for navigation, state inspection, form filling, screenshots, and extraction.
-- [bb-browser](bb-browser/SKILL.md): information retrieval and browser automation through the user's real browser and logged-in session.
-- [pinchtab](pinchtab/SKILL.md): control Chrome through Pinchtab's local HTTP API using stable accessibility refs.
 - [electron](electron/SKILL.md): automate Electron desktop apps over Chrome DevTools Protocol.
 - [opencli](opencli/opencli-usage/SKILL.md): turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.
 - [dogfood](dogfood/SKILL.md): structured exploratory testing with reproducible evidence.
@@ -104,7 +101,6 @@ Then ask naturally:
 - [frontend-skill](frontend-skill/SKILL.md): use when you need a visually strong landing page, website, app, prototype, demo, or game UI.
 - [shader-dev](shader-dev/SKILL.md): comprehensive GLSL shader techniques for ShaderToy-compatible real-time visual effects.
 - [better-icons](better-icons/SKILL.md): search, browse, and retrieve SVG icons from 200+ Iconify libraries via CLI or MCP.
-- [vercel-react-best-practices](vercel-react-best-practices/SKILL.md): React and Next.js performance guidance from Vercel Engineering.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): Remotion guidance for React-based video work.
 - [`gsap-skills/`](gsap-skills/): 8 official GSAP animation skills: core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks.
 - [`impeccable/`](impeccable/README.md): 18 vendored frontend design skills, including `impeccable`, `adapt`, `audit`, `polish`, and more.
@@ -160,8 +156,8 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [ai-elements](ai-elements/SKILL.md)                                 | Create new AI chat interface components for the ai-elements library with composable patterns and shadcn/ui conventions.                                                                 | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
-| [bb-browser](bb-browser/SKILL.md)                                   | Information retrieval and browser automation through the user's real browser and logged-in session, covering public pages, internal systems, and logged-in workflows.                   | [epiral/bb-browser](https://github.com/epiral/bb-browser/tree/main/skills/bb-browser)                                          |
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons through CLI or MCP tools.                                                                                                          | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [brainstorming](brainstorming/SKILL.md)                               | Turn ideas into validated designs and specs through collaborative dialogue before implementation.                                                                                         | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | Persistent browser automation CLI for navigation, state inspection, form filling, screenshots, and extraction.                                                                          | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode that cuts response tokens by speaking like caveman while keeping technical accuracy.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [context7-cli](context7-cli/SKILL.md)                               | Use the Context7 CLI for docs lookup, skill management, and MCP setup.                                                                                                                  | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
@@ -178,15 +174,11 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | [opensrc](opensrc/SKILL.md)                                         | Fetch dependency source code to give AI agents deeper implementation context.                                                                                                           | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.                                                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Generate, fill, and reformat PDF documents with a token-based design system. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [pinchtab](pinchtab/SKILL.md)                                       | Control a headless or headed Chrome browser via Pinchtab's HTTP API for web automation, scraping, form filling, navigation, screenshots, and extraction with stable accessibility refs. | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | Generate, edit, and read PowerPoint presentations with PptxGenJS, XML workflows, or markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | Advanced prompt engineering patterns for reliable, production LLM workflows.                                                                                                            | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md)         | Best practices for building videos in React with Remotion.                                                                                                                              | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [skill-creator](skill-creator/SKILL.md)                             | Guide for creating or updating skills with specialized knowledge and tool integrations.                                                                                                 | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator)                                       |
-| [subagent-driven-development](subagent-driven-development/SKILL.md) | Execute implementation plans with independent tasks in the current session using fresh subagents and staged reviews.                                                                    | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development)                           |
 | [test-driven-development](test-driven-development/SKILL.md)         | Use before implementing any feature or bugfix.                                                                                                                                          | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
-| [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | React and Next.js performance optimization guidance from Vercel Engineering.                                                                                                            | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices)                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Open, create, read, analyze, edit, and validate Excel or spreadsheet files with low-loss XML workflows. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`.                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
 

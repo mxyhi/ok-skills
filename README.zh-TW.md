@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **57 個可重用技能**：其中 **31 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **53 個可重用技能**：其中 **27 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -22,11 +22,11 @@
 
 如果你第一次使用這個倉庫，優先從下面幾個技能開始：
 
+- [brainstorming](brainstorming/SKILL.md)：在進入實作前先梳理想法、需求與設計。
 - [planning-with-files](planning-with-files/SKILL.md)：適合複雜任務、調研任務與多輪推進任務的檔案式規劃。
 - [context7-cli](context7-cli/SKILL.md)：查詢最新函式庫文件、Context7 參考資料與 MCP 相關內容。
 - [agent-browser](agent-browser/SKILL.md)：瀏覽器自動化、截圖、抓取、表單填寫與 Web QA。
 - [gh-fix-ci](gh-fix-ci/SKILL.md)：讀取 GitHub Actions 失敗日誌並輸出修復方案。
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：更穩定、可控、面向生產的提示工程模式。
 - [impeccable](impeccable/impeccable/SKILL.md)：核心 impeccable 設計技能，以及一整套配套設計指令。
 
 ## 1 分鐘快速開始
@@ -77,9 +77,8 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 ### 規劃與提示工程
 
+- [brainstorming](brainstorming/SKILL.md)：在進入實作前先梳理想法、需求與設計。
 - [planning-with-files](planning-with-files/SKILL.md)：透過 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。
-- [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md)：面向生產環境的進階提示工程模式。
-- [subagent-driven-development](subagent-driven-development/SKILL.md)：在目前會話中執行彼此獨立的實作任務，使用全新 subagent 與分階段審查推進計畫。
 - [test-driven-development](test-driven-development/SKILL.md)：任何功能或修復都先寫測試。
 
 ### GitHub 工作流
@@ -92,8 +91,6 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 - [agent-browser](agent-browser/SKILL.md)：瀏覽器導覽、表單、截圖、抓取與網頁測試。
 - [browser-use](browser-use/SKILL.md)：持久化瀏覽器自動化 CLI，用於導覽、頁面狀態檢查、表單填寫、截圖和資訊擷取。
-- [bb-browser](bb-browser/SKILL.md)：透過使用者真實瀏覽器與登入狀態進行資訊擷取與瀏覽器自動化。
-- [pinchtab](pinchtab/SKILL.md)：透過 Pinchtab 的本地 HTTP API 控制 Chrome，利用穩定的 accessibility refs 進行自動化與擷取。
 - [electron](electron/SKILL.md)：透過 Chrome DevTools Protocol 自動化 Electron 桌面應用。
 - [opencli](opencli/opencli-usage/SKILL.md)：將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。
 - [dogfood](dogfood/SKILL.md)：系統化探索測試，並輸出可重現的證據。
@@ -104,7 +101,6 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [frontend-skill](frontend-skill/SKILL.md)：適用於需要強視覺表現的著陸頁、網站、應用、原型、示範或遊戲 UI。
 - [shader-dev](shader-dev/SKILL.md)：提供系統化的 GLSL 著色器技巧，用於打造相容 ShaderToy 的即時視覺效果。
 - [better-icons](better-icons/SKILL.md)：透過 CLI 或 MCP 搜尋、瀏覽並取得 200+ Iconify 圖示庫中的 SVG 圖示。
-- [vercel-react-best-practices](vercel-react-best-practices/SKILL.md)：來自 Vercel Engineering 的 React / Next.js 效能實踐。
 - [remotion-best-practices](remotion-best-practices/SKILL.md)：基於 React 的 Remotion 影片開發最佳實踐。
 - [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
 - [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `impeccable`、`adapt`、`audit`、`polish` 等。
@@ -160,8 +156,8 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的瀏覽器自動化：導覽、表單、截圖、資料擷取與網頁測試。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [ai-elements](ai-elements/SKILL.md)                                 | 為 ai-elements 元件庫建立新的 AI 對話介面元件，遵循可組合模式與 shadcn/ui 慣例。                                                               | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
-| [bb-browser](bb-browser/SKILL.md)                                   | 透過使用者真實瀏覽器與登入狀態完成資訊擷取與瀏覽器自動化，涵蓋公開頁面、內部系統與登入後流程。                                                 | [epiral/bb-browser](https://github.com/epiral/bb-browser/tree/main/skills/bb-browser)                                          |
 | [better-icons](better-icons/SKILL.md)                               | 透過 CLI 或 MCP 工具搜尋 200+ Iconify 圖示庫並取得 SVG 圖示。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [brainstorming](brainstorming/SKILL.md)                               | 透過協作式對話把想法整理成已確認的設計與規格，再進入實作。                                                                                                       | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | 持久化瀏覽器自動化 CLI，用於導覽、頁面狀態檢查、表單填寫、截圖和資訊擷取。                                                                     | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [caveman](caveman/SKILL.md)                                         | 用「穴居人」式極簡表達壓縮回覆 tokens，同時保留完整技術準確性，並支援多段強度。                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [context7-cli](context7-cli/SKILL.md)                               | 使用 Context7 CLI 完成文件查詢、skill 管理與 MCP 設定。                                                                                        | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
@@ -178,15 +174,11 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依賴原始碼，為 AI agents 提供更深的實作上下文。                                                                                            | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化設計系統生成、填寫與重排 PDF 文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [pinchtab](pinchtab/SKILL.md)                                       | 透過 Pinchtab 的 HTTP API 控制 headless 或 headed Chrome，用於網頁自動化、抓取、表單填寫、導覽、截圖與基於穩定 accessibility refs 的內容擷取。 | [pinchtab/pinchtab](https://github.com/pinchtab/pinchtab/tree/main/skills/pinchtab)                                            |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 來建立、編輯與讀取 PowerPoint 簡報。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [prompt-engineering-patterns](prompt-engineering-patterns/SKILL.md) | 面向生產環境的進階提示工程模式。                                                                                                               | [wshobson/agents](https://github.com/wshobson/agents/tree/main/plugins/llm-application-dev/skills/prompt-engineering-patterns) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md)         | 用於 React + Remotion 影片開發的最佳實踐。                                                                                                     | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [skill-creator](skill-creator/SKILL.md)                             | 建立或更新技能，補齊專業知識、工作流與工具整合。                                                                                               | [openai/skills](https://github.com/openai/skills/tree/main/skills/.system/skill-creator)                                       |
-| [subagent-driven-development](subagent-driven-development/SKILL.md) | 在目前會話中執行包含獨立任務的實作計畫，使用全新 subagent 與分階段審查。                                                                       | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/subagent-driven-development)                           |
 | [test-driven-development](test-driven-development/SKILL.md)         | 實作任何功能或修復前先使用。                                                                                                                   | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
-| [vercel-react-best-practices](vercel-react-best-practices/SKILL.md) | 來自 Vercel Engineering 的 React / Next.js 效能最佳實踐。                                                                                      | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices)                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低損 XML 工作流開啟、建立、讀取、分析、編輯與驗證 Excel／試算表檔案。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 僅在使用者明確要求用 `gh` 一次完成 stage、commit、push 與建立 GitHub PR 時使用。                                                               | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
 
