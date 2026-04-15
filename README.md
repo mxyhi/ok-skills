@@ -95,6 +95,8 @@ Then ask naturally:
 - [dogfood](dogfood/SKILL.md): structured exploratory testing with reproducible evidence.
 - [electron](electron/SKILL.md): automate Electron desktop apps over Chrome DevTools Protocol.
 
+`dogfood/` and `electron/` are still vendored from `vercel-labs/agent-browser`, but upstream moved them from `skills/` to `skill-data/` in commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` so installer discovery only exposes the bootstrap `agent-browser` skill. This repo keeps those specialized skills as top-level directories because they are still maintained upstream and remain directly usable.
+
 ### Frontend & Design
 
 - [ai-elements](ai-elements/SKILL.md): build AI chat UI components for the `ai-elements` library.
@@ -181,6 +183,11 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | [test-driven-development](test-driven-development/SKILL.md)         | Use before implementing any feature or bugfix.                                                                                                                                          | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Open, create, read, analyze, edit, and validate Excel or spreadsheet files with low-loss XML workflows. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`.                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+Notes:
+- `dogfood` and `electron` come from upstream `skill-data/`, not upstream `skills/`.
+- Upstream moved these specialized skills in commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` so installer discovery only finds the bootstrap `agent-browser` skill.
+- This repository intentionally keeps them as top-level vendored skills because they are still maintained upstream and remain directly useful.
 
 ### Vendored `impeccable/` Skills
 
