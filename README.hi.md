@@ -92,6 +92,11 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [agent-browser](agent-browser/SKILL.md): navigation, forms, screenshots, और scraping के लिए browser automation.
 - [browser-use](browser-use/SKILL.md): navigation, page state inspection, form filling, screenshots, और extraction के लिए persistent browser automation CLI.
 - [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
+- [dogfood](dogfood/SKILL.md): reproducible evidence के साथ structured exploratory testing.
+- [electron](electron/SKILL.md): Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।
+
+`dogfood/` और `electron/` अभी भी `vercel-labs/agent-browser` से vendored हैं, लेकिन upstream ने commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` में इन्हें `skills/` से `skill-data/` में move किया ताकि installer discovery केवल bootstrap skill `agent-browser` को expose करे। यह repo इन specialized skills को top-level directories के रूप में बनाए रखता है क्योंकि upstream अभी भी इन्हें maintain करता है और ये सीधे उपयोगी हैं।
+
 
 ### Frontend & Design
 
@@ -169,6 +174,8 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | failing GitHub Actions checks inspect करें, logs pull करें, और fixes plan करें।                                                                                                              | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Dependency source code fetch karke AI agents ko deeper implementation context dena.                                                                                                          | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | screenshots और videos के साथ reproducible issue reports तैयार करने के लिए web apps का systematic परीक्षण करें।                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | agent-browser और Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।                                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
@@ -177,6 +184,11 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [test-driven-development](test-driven-development/SKILL.md)         | किसी भी feature या bugfix को implement करने से पहले उपयोग करें।                                                                                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Low-loss XML workflow ke saath Excel/spreadsheet files open, create, read, analyze, edit, aur validate karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | केवल तब उपयोग करें जब user explicitly `gh` के साथ stage, commit, push, और GitHub pull request खोलने को कहे।                                                                                  | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+नोट्स:
+- `dogfood` और `electron` का upstream path `skill-data/` में है, `skills/` में नहीं।
+- upstream ने commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` में इन specialized skills को move किया ताकि installer discovery सिर्फ bootstrap skill `agent-browser` को पाए।
+- यह repo इन्हें जानबूझकर top-level vendored skills के रूप में रखता है क्योंकि upstream अभी भी इन्हें maintain करता है और ये सीधे उपयोगी हैं।
 
 ### Vendored `impeccable/` Skills
 

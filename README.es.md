@@ -92,6 +92,11 @@ Despues puedes pedirlo de forma natural:
 - [agent-browser](agent-browser/SKILL.md): automatizacion de navegador para navegacion, formularios, capturas y scraping.
 - [browser-use](browser-use/SKILL.md): CLI de automatizacion persistente del navegador para navegacion, inspeccion del estado de la pagina, formularios, capturas y extraccion.
 - [opencli](opencli/opencli-usage/SKILL.md): convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.
+- [dogfood](dogfood/SKILL.md): pruebas exploratorias estructuradas con evidencia reproducible.
+- [electron](electron/SKILL.md): automatiza aplicaciones Electron mediante Chrome DevTools Protocol.
+
+`dogfood/` y `electron/` siguen vendorizados desde `vercel-labs/agent-browser`, pero upstream los movio de `skills/` a `skill-data/` en el commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` para que la deteccion del instalador solo exponga el skill bootstrap `agent-browser`. Este repositorio mantiene esos skills especializados como directorios de nivel superior porque upstream todavia los mantiene y siguen siendo utiles de forma directa.
+
 
 ### Frontend y Diseno
 
@@ -169,6 +174,8 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Inspecciona fallos de GitHub Actions, descarga logs y prepara un plan de correccion.                                                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Obtiene el codigo fuente de dependencias para dar a los agentes de IA un contexto de implementacion mas profundo.                                                                                                  | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.                                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | Prueba aplicaciones web de forma sistematica y produce reportes de incidencias reproducibles con capturas y videos.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | Automatiza aplicaciones Electron mediante agent-browser y Chrome DevTools Protocol.                                                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Genera, rellena y remaqueta documentos PDF con un sistema de diseno basado en tokens. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`.                                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | Genera, edita y lee presentaciones PowerPoint con PptxGenJS, flujos XML o markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
@@ -177,6 +184,11 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [test-driven-development](test-driven-development/SKILL.md)         | Usala antes de implementar cualquier funcionalidad o correccion.                                                                                                                                                    | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Abre, crea, lee, analiza, edita y valida archivos Excel/hojas de calculo con un flujo XML de baja perdida. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Usala solo cuando el usuario pida explicitamente hacer stage, commit, push y abrir una pull request en un unico flujo con `gh`.                                                                                     | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+Notas:
+- `dogfood` y `electron` vienen del `skill-data/` de upstream, no del `skills/`.
+- Upstream movio estos skills especializados en el commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` para que la deteccion del instalador solo encuentre el skill bootstrap `agent-browser`.
+- Este repositorio los conserva a proposito como skills vendorizados de nivel superior porque upstream sigue manteniendolos y siguen siendo utiles directamente.
 
 ### Skills Vendorizadas De `impeccable/`
 

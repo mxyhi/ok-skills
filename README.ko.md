@@ -93,6 +93,11 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [browser-use](browser-use/SKILL.md): 탐색, 페이지 상태 확인, 폼 입력, 스크린샷, 정보 추출을 위한 지속형 브라우저 자동화 CLI.
 - [opencli](opencli/opencli-usage/SKILL.md): 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다룹니다.
 
+- [dogfood](dogfood/SKILL.md): 재현 가능한 증거를 남기는 구조화된 탐색 테스트.
+- [electron](electron/SKILL.md): Chrome DevTools Protocol 기반으로 Electron 데스크톱 앱 자동화.
+
+`dogfood/`와 `electron/`은 여전히 `vercel-labs/agent-browser`에서 vendored 되지만, upstream은 commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0`에서 이들을 `skills/`에서 `skill-data/`로 옮겨 installer discovery가 bootstrap skill `agent-browser`만 노출하도록 바꿨습니다. 이 저장소는 이 specialized skills가 여전히 upstream에서 유지되고 직접 유용하기 때문에 top-level 디렉터리로 계속 보존합니다.
+
 ### 프런트엔드 및 디자인
 
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` 라이브러리를 위한 AI 채팅 UI 컴포넌트 제작.
@@ -169,6 +174,8 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 실패한 GitHub Actions 체크를 확인하고 로그를 가져와 수정 계획을 세움.                                                                            | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | 의존성 소스 코드를 가져와 AI agents 에 더 깊은 구현 맥락을 제공합니다.                                                                            | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다루는 스킬입니다.                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | 웹 앱을 체계적으로 테스트하고 스크린샷/영상과 함께 재현 가능한 이슈 리포트를 생성.                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | agent-browser와 Chrome DevTools Protocol을 통해 Electron 데스크톱 앱 자동화.                                                                     | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 토큰 기반 디자인 시스템으로 PDF를 생성, 입력, 재구성. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML 워크플로, markitdown으로 PowerPoint를 생성, 편집, 읽기. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
@@ -177,6 +184,11 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [test-driven-development](test-driven-development/SKILL.md)         | 기능이나 버그 수정을 구현하기 전에 사용.                                                                                                         | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 손실을 최소화한 XML 워크플로로 Excel/스프레드시트를 열고, 생성하고, 분석·편집·검증. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 사용자가 명시적으로 요청한 경우에만 `gh`를 사용해 stage, commit, push, PR 생성을 한 번에 처리.                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+참고:
+- `dogfood`와 `electron`의 upstream 경로는 `skills/`가 아니라 `skill-data/`입니다.
+- upstream은 commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0`에서 이 specialized skills를 옮겨 installer discovery가 bootstrap skill `agent-browser`만 찾게 했습니다.
+- 이 저장소는 이들이 upstream에서 계속 유지되고 직접 유용하기 때문에 top-level vendored skills로 의도적으로 유지합니다.
 
 ### 벤더링된 `impeccable/` 스킬
 

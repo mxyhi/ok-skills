@@ -93,6 +93,11 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [browser-use](browser-use/SKILL.md): CLI tự động hóa trình duyệt dạng phiên bền vững để điều hướng, kiểm tra trạng thái trang, điền biểu mẫu, chụp màn hình và trích xuất dữ liệu.
 - [opencli](opencli/opencli-usage/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
 
+- [dogfood](dogfood/SKILL.md): exploratory testing có cấu trúc cùng bằng chứng có thể tái hiện.
+- [electron](electron/SKILL.md): tự động hóa ứng dụng Electron desktop qua Chrome DevTools Protocol.
+
+`dogfood/` và `electron/` vẫn được vendored từ `vercel-labs/agent-browser`, nhưng upstream đã chuyển chúng từ `skills/` sang `skill-data/` trong commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` để logic discovery của installer chỉ lộ ra skill bootstrap `agent-browser`. Repo này vẫn giữ các specialized skills đó ở cấp top-level vì upstream vẫn đang duy trì chúng và chúng vẫn hữu dụng trực tiếp.
+
 ### Frontend và thiết kế
 
 - [ai-elements](ai-elements/SKILL.md): xây dựng các thành phần UI chat AI cho thư viện `ai-elements`.
@@ -169,6 +174,8 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Kiểm tra các check GitHub Actions thất bại, kéo log và lập kế hoạch sửa.                                                                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | Lấy mã nguồn của dependency để cung cấp cho AI agents bối cảnh triển khai sâu hơn.                                                                                                         | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | Kiểm thử web app một cách có hệ thống và tạo báo cáo lỗi có thể tái hiện với ảnh chụp và video.                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | Tự động hóa ứng dụng Electron desktop thông qua agent-browser và Chrome DevTools Protocol.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Tạo, điền và tái định dạng tài liệu PDF bằng hệ thiết kế token. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | Tạo, chỉnh sửa và đọc bản trình bày PowerPoint bằng PptxGenJS, luồng XML hoặc markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
@@ -177,6 +184,11 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [test-driven-development](test-driven-development/SKILL.md)         | Dùng trước khi triển khai bất kỳ tính năng hay bugfix nào.                                                                                                                                 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Chỉ dùng khi người dùng yêu cầu rõ ràng việc stage, commit, push và mở GitHub pull request trong một luồng dùng `gh`.                                                                      | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+Ghi chú:
+- `dogfood` và `electron` đến từ `skill-data/` của upstream, không phải `skills/`.
+- Upstream đã chuyển các specialized skills này trong commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` để installer discovery chỉ tìm thấy skill bootstrap `agent-browser`.
+- Repo này cố ý giữ chúng như các vendored top-level skills vì upstream vẫn duy trì và chúng vẫn hữu dụng trực tiếp.
 
 ### Vendored `impeccable/` Skills
 

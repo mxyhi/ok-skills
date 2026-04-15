@@ -93,6 +93,11 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [browser-use](browser-use/SKILL.md)：持久化瀏覽器自動化 CLI，用於導覽、頁面狀態檢查、表單填寫、截圖和資訊擷取。
 - [opencli](opencli/opencli-usage/SKILL.md)：將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。
 
+- [dogfood](dogfood/SKILL.md)：系統化探索測試，並輸出可重現的證據。
+- [electron](electron/SKILL.md)：透過 Chrome DevTools Protocol 自動化 Electron 桌面應用。
+
+`dogfood/` 和 `electron/` 仍然 vendored 自 `vercel-labs/agent-browser`，但 upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中把它們從 `skills/` 挪到了 `skill-data/`，讓 installer 的發現邏輯只暴露引導用的 `agent-browser` skill。本倉仍把這兩個 specialized skills 保留為頂層目錄，因為它們依然由 upstream 維護，且可以直接使用。
+
 ### 前端與設計
 
 - [ai-elements](ai-elements/SKILL.md)：為 `ai-elements` 元件庫建立 AI 對話介面元件。
@@ -169,6 +174,8 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 檢查 GitHub Actions 失敗項、提取日誌並制定修復計畫。                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依賴原始碼，為 AI agents 提供更深的實作上下文。                                                                                            | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [dogfood](dogfood/SKILL.md)                                         | 系統化測試 Web 應用，並產出附帶截圖與錄影的可重現問題報告。                                                                                    | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
+| [electron](electron/SKILL.md)                                       | 透過 agent-browser 與 Chrome DevTools Protocol 自動化 Electron 桌面應用。                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化設計系統生成、填寫與重排 PDF 文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 來建立、編輯與讀取 PowerPoint 簡報。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
@@ -177,6 +184,11 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 | [test-driven-development](test-driven-development/SKILL.md)         | 實作任何功能或修復前先使用。                                                                                                                   | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低損 XML 工作流開啟、建立、讀取、分析、編輯與驗證 Excel／試算表檔案。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 僅在使用者明確要求用 `gh` 一次完成 stage、commit、push 與建立 GitHub PR 時使用。                                                               | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
+
+說明：
+- `dogfood` 和 `electron` 的上游路徑在 `skill-data/`，不在 upstream 的 `skills/`。
+- upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中遷移了這些 specialized skills，以便 installer 的發現邏輯只找到引導 skill `agent-browser`。
+- 本倉有意繼續把它們作為頂層 vendored skills 保留，因為它們仍在 upstream 持續維護，且具備直接使用價值。
 
 ### Vendored `impeccable/` 技能
 
