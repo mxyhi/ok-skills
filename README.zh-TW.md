@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **53 個可重用技能**：其中 **27 個頂層技能** 由本倉直接維護，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **58 個可重用技能**：其中 **27 個頂層技能** 由本倉直接維護，另有 **5 個 HyperFrames 影片技能** 以 vendored bundle 形式放在 [`hyperframes/`](hyperframes/README.md) 目錄下，另有 **18 個前端設計技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 目錄下，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -108,6 +108,14 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
 - [`impeccable/`](impeccable/README.md)：18 個 vendored 前端設計技能，包含 `impeccable`、`adapt`、`audit`、`polish` 等。
 
+### 影片與動效
+
+- [hyperframes](hyperframes/hyperframes/SKILL.md)：用 HTML 建立影片分鏡、字幕、TTS 旁白、音訊驅動動畫與場景轉場。
+- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md)：初始化、lint、預覽、渲染、轉錄並排查 HyperFrames 專案問題。
+- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md)：安裝 registry 中的 blocks / components，並把它們接入既有分鏡。
+- [gsap](hyperframes/gsap/SKILL.md)：面向 HyperFrames 的 GSAP 動畫參考，覆蓋 timeline、緩動、特效與效能實踐。
+- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md)：擷取網站並把它轉成帶腳本、分鏡與配音流程的 HyperFrames 影片。
+
 ### 工具與內容製作
 
 - [minimax-docx](minimax-docx/SKILL.md)：基於 OpenXML SDK（.NET）的專業 DOCX 建立、編輯與格式編排。
@@ -117,6 +125,18 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - [skill-creator](skill-creator/SKILL.md)：建立或更新技能，補齊結構、文件與工具整合。
 
 ## Vendored Skill Packs
+
+[`hyperframes/`](hyperframes/README.md) 目錄收錄了來自 [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) 的影片技能包，目前同步基於提交 `42d39866ffb52c1c377f5f384b760f2de8519982`。
+
+其中包括：
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+歸屬與法律文件保存在 [`hyperframes/LICENSE`](hyperframes/LICENSE)。
 
 [`impeccable/`](impeccable/README.md) 目錄收錄了來自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端設計技能包，目前同步基於提交 `00d485659af82982aef0328d0419c49a2716d123`。
 
@@ -189,6 +209,16 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 - `dogfood` 和 `electron` 的上游路徑在 `skill-data/`，不在 upstream 的 `skills/`。
 - upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中遷移了這些 specialized skills，以便 installer 的發現邏輯只找到引導 skill `agent-browser`。
 - 本倉有意繼續把它們作為頂層 vendored skills 保留，因為它們仍在 upstream 持續維護，且具備直接使用價值。
+
+### Vendored `hyperframes/` 技能
+
+| 技能 | 說明 | Source URL |
+| --- | --- | --- |
+| [hyperframes](hyperframes/hyperframes/SKILL.md) | 用 HTML 建立影片分鏡、字幕、TTS 旁白、音訊驅動動畫與場景轉場。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
+| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | HyperFrames CLI 工作流：init、lint、preview、render、轉錄、TTS 與環境診斷。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
+| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | 安裝 registry 中的 blocks / components，並把它們接入 HyperFrames 分鏡。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
+| [gsap](hyperframes/gsap/SKILL.md) | 面向 HyperFrames 的 GSAP 動畫參考：補間、timeline、緩動、特效與效能實踐。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
+| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | 擷取網站並把它轉成包含設計、腳本、分鏡、配音與搭建步驟的 HyperFrames 影片工作流。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Vendored `impeccable/` 技能
 

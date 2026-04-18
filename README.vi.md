@@ -6,7 +6,19 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **53 skill có thể tái sử dụng**: **27 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **58 skill có thể tái sử dụng**: **27 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **5 skill video HyperFrames được vendored** dưới [`hyperframes/`](hyperframes/README.md), **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+
+It includes:
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
+
+[`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -108,6 +120,14 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [`gsap-skills/`](gsap-skills/): 8 skill animation GSAP chính thức (core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks).
 - [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `impeccable`, `adapt`, `audit`, `polish` và nhiều skill khác.
 
+### Video & Motion
+
+- [hyperframes](hyperframes/hyperframes/SKILL.md): create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and scene transitions.
+- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md): scaffold, lint, preview, render, transcribe, and troubleshoot HyperFrames projects.
+- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md): install registry blocks and components, then wire them into compositions.
+- [gsap](hyperframes/gsap/SKILL.md): HyperFrames-focused GSAP reference for timelines, easing, effects, and performance.
+- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md): capture a website and turn it into a scripted HyperFrames promo or product video.
+
 ### Tiện ích và biên soạn nội dung
 
 - [minimax-docx](minimax-docx/SKILL.md): tạo, chỉnh sửa và định dạng DOCX chuyên nghiệp với OpenXML SDK (.NET).
@@ -189,6 +209,16 @@ Ghi chú:
 - `dogfood` và `electron` đến từ `skill-data/` của upstream, không phải `skills/`.
 - Upstream đã chuyển các specialized skills này trong commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` để installer discovery chỉ tìm thấy skill bootstrap `agent-browser`.
 - Repo này cố ý giữ chúng như các vendored top-level skills vì upstream vẫn duy trì và chúng vẫn hữu dụng trực tiếp.
+
+### Vendored `hyperframes/` Skills
+
+| Skill | Description | Source URL |
+| --- | --- | --- |
+| [hyperframes](hyperframes/hyperframes/SKILL.md) | Create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and transitions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
+| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | CLI workflow for HyperFrames: init, lint, preview, render, transcribe, TTS, and environment diagnosis. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
+| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | Install registry blocks/components and wire them into HyperFrames compositions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
+| [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
+| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Vendored `impeccable/` Skills
 

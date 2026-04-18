@@ -6,7 +6,19 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 53개**가 포함되어 있습니다. 이 중 **27개는 루트 레벨 스킬**로 직접 관리되며, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 58개**가 포함되어 있습니다. 이 중 **27개는 루트 레벨 스킬**로 직접 관리되며, **5개의 벤더링된 HyperFrames 비디오 스킬**은 [`hyperframes/`](hyperframes/README.md) 아래에, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+
+It includes:
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
+
+[`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -108,6 +120,14 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [`gsap-skills/`](gsap-skills/): core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks를 포함한 공식 GSAP 애니메이션 스킬 8개.
 - [`impeccable/`](impeccable/README.md): `impeccable`, `adapt`, `audit`, `polish` 등을 포함한 18개의 벤더링된 프런트엔드 디자인 스킬 번들.
 
+### Video & Motion
+
+- [hyperframes](hyperframes/hyperframes/SKILL.md): create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and scene transitions.
+- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md): scaffold, lint, preview, render, transcribe, and troubleshoot HyperFrames projects.
+- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md): install registry blocks and components, then wire them into compositions.
+- [gsap](hyperframes/gsap/SKILL.md): HyperFrames-focused GSAP reference for timelines, easing, effects, and performance.
+- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md): capture a website and turn it into a scripted HyperFrames promo or product video.
+
 ### 유틸리티 및 문서 작업
 
 - [minimax-docx](minimax-docx/SKILL.md): OpenXML SDK(.NET) 기반의 전문 DOCX 생성, 편집, 서식화.
@@ -189,6 +209,16 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - `dogfood`와 `electron`의 upstream 경로는 `skills/`가 아니라 `skill-data/`입니다.
 - upstream은 commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0`에서 이 specialized skills를 옮겨 installer discovery가 bootstrap skill `agent-browser`만 찾게 했습니다.
 - 이 저장소는 이들이 upstream에서 계속 유지되고 직접 유용하기 때문에 top-level vendored skills로 의도적으로 유지합니다.
+
+### Vendored `hyperframes/` Skills
+
+| Skill | Description | Source URL |
+| --- | --- | --- |
+| [hyperframes](hyperframes/hyperframes/SKILL.md) | Create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and transitions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
+| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | CLI workflow for HyperFrames: init, lint, preview, render, transcribe, TTS, and environment diagnosis. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
+| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | Install registry blocks/components and wire them into HyperFrames compositions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
+| [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
+| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### 벤더링된 `impeccable/` 스킬
 

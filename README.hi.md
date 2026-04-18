@@ -6,7 +6,19 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **53 reusable skills** शामिल हैं: **27 top-level skills** सीधे इसी repo में maintain की जाती हैं, [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **58 reusable skills** शामिल हैं: **27 top-level skills** सीधे इसी repo में maintain की जाती हैं, [`hyperframes/`](hyperframes/README.md) के अंतर्गत **5 vendored HyperFrames video skills** शामिल हैं, [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+
+It includes:
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
+
+[`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -108,6 +120,14 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [`gsap-skills/`](gsap-skills/): core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks सहित 8 official GSAP animation skills.
 - [`impeccable/`](impeccable/README.md): `impeccable`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
 
+### Video & Motion
+
+- [hyperframes](hyperframes/hyperframes/SKILL.md): create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and scene transitions.
+- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md): scaffold, lint, preview, render, transcribe, and troubleshoot HyperFrames projects.
+- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md): install registry blocks and components, then wire them into compositions.
+- [gsap](hyperframes/gsap/SKILL.md): HyperFrames-focused GSAP reference for timelines, easing, effects, and performance.
+- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md): capture a website and turn it into a scripted HyperFrames promo or product video.
+
 ### Utilities & Authoring
 
 - [minimax-docx](minimax-docx/SKILL.md): OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting.
@@ -117,6 +137,18 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [skill-creator](skill-creator/SKILL.md): बेहतर structure और tool integrations के साथ skills create या update करें।
 
 ## Vendored Skill Packs
+
+[`hyperframes/`](hyperframes/README.md) contains a video-focused bundle vendored from [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) at commit `42d39866ffb52c1c377f5f384b760f2de8519982`.
+
+It includes:
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
 
 [`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `00d485659af82982aef0328d0419c49a2716d123` पर आधारित।
 
@@ -189,6 +221,16 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 - `dogfood` और `electron` का upstream path `skill-data/` में है, `skills/` में नहीं।
 - upstream ने commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` में इन specialized skills को move किया ताकि installer discovery सिर्फ bootstrap skill `agent-browser` को पाए।
 - यह repo इन्हें जानबूझकर top-level vendored skills के रूप में रखता है क्योंकि upstream अभी भी इन्हें maintain करता है और ये सीधे उपयोगी हैं।
+
+### Vendored `hyperframes/` Skills
+
+| Skill | Description | Source URL |
+| --- | --- | --- |
+| [hyperframes](hyperframes/hyperframes/SKILL.md) | Create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and transitions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
+| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | CLI workflow for HyperFrames: init, lint, preview, render, transcribe, TTS, and environment diagnosis. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
+| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | Install registry blocks/components and wire them into HyperFrames compositions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
+| [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
+| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Vendored `impeccable/` Skills
 

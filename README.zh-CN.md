@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **53 个可复用技能**：其中 **27 个顶层技能** 由本仓直接维护，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **58 个可复用技能**：其中 **27 个顶层技能** 由本仓直接维护，另有 **5 个 HyperFrames 视频技能** 以 vendored bundle 形式放在 [`hyperframes/`](hyperframes/README.md) 下，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -107,6 +107,14 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - [`gsap-skills/`](gsap-skills/)：8 个官方 GSAP 动画技能包，覆盖 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
 - [`impeccable/`](impeccable/README.md)：18 个 vendored 前端设计技能，包含 `impeccable`、`adapt`、`audit`、`polish` 等。
 
+### 视频与动效
+
+- [hyperframes](hyperframes/hyperframes/SKILL.md)：用 HTML 构建视频分镜、字幕、TTS 旁白、音频驱动动画和场景转场。
+- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md)：初始化、lint、预览、渲染、转录并排查 HyperFrames 项目问题。
+- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md)：安装 registry 中的 blocks / components，并把它们接入现有分镜。
+- [gsap](hyperframes/gsap/SKILL.md)：面向 HyperFrames 的 GSAP 动画参考，覆盖 timeline、缓动、特效与性能实践。
+- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md)：抓取网站并把它转成带脚本、分镜和配音流程的 HyperFrames 视频。
+
 ### 工具与内容生产
 
 - [minimax-docx](minimax-docx/SKILL.md)：基于 OpenXML SDK（.NET）的专业 DOCX 创建、编辑与格式编排。
@@ -116,6 +124,18 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - [skill-creator](skill-creator/SKILL.md)：创建或更新技能，补齐结构、文档和工具集成。
 
 ## Vendored Skill Packs
+
+[`hyperframes/`](hyperframes/README.md) 目录收录了来自 [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) 的视频技能包，当前同步基于提交 `42d39866ffb52c1c377f5f384b760f2de8519982`。
+
+其中包括：
+
+- `hyperframes`
+- `hyperframes-cli`
+- `hyperframes-registry`
+- `gsap`
+- `website-to-hyperframes`
+
+归属和法律文件保存在 [`hyperframes/LICENSE`](hyperframes/LICENSE)。
 
 [`impeccable/`](impeccable/README.md) 目录收录了来自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端设计技能包，当前同步基于提交 `00d485659af82982aef0328d0419c49a2716d123`。
 
@@ -188,6 +208,16 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - `dogfood` 和 `electron` 的上游路径在 `skill-data/`，不在 upstream 的 `skills/`。
 - upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中迁移了这些 specialized skills，以便 installer 发现逻辑只找到引导 skill `agent-browser`。
 - 本仓有意继续把它们作为顶层 vendored skills 保留，因为它们仍在 upstream 持续维护，且具备直接使用价值。
+
+### Vendored `hyperframes/` 技能
+
+| 技能 | 说明 | Source URL |
+| --- | --- | --- |
+| [hyperframes](hyperframes/hyperframes/SKILL.md) | 用 HTML 构建视频分镜、字幕、TTS 旁白、音频驱动动画和场景转场。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
+| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | HyperFrames CLI 工作流：init、lint、preview、render、转录、TTS 与环境诊断。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
+| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | 安装 registry 中的 blocks / components，并把它们接入 HyperFrames 分镜。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
+| [gsap](hyperframes/gsap/SKILL.md) | 面向 HyperFrames 的 GSAP 动画参考：补间、timeline、缓动、特效与性能实践。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
+| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | 抓取网站并把它转成包含设计、脚本、分镜、配音和搭建步骤的 HyperFrames 视频工作流。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Vendored `impeccable/` 技能
 
