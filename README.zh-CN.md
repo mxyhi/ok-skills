@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **57 个可复用技能**：其中 **26 个顶层技能** 由本仓直接维护，另有 **5 个 HyperFrames 视频技能** 以 vendored bundle 形式放在 [`hyperframes/`](hyperframes/README.md) 下，另有 **18 个前端设计技能** 以 vendored bundle 形式放在 [`impeccable/`](impeccable/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **39 个可复用技能**：其中 **26 个顶层技能** 由本仓直接维护，另有 **5 个 HyperFrames 视频技能** 以 vendored bundle 形式放在 [`hyperframes/`](hyperframes/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -27,7 +27,6 @@
 - [context7-cli](context7-cli/SKILL.md)：查询最新库文档、Context7 资料和 MCP 相关内容。
 - [agent-browser](agent-browser/SKILL.md)：浏览器自动化、截图、抓取、表单填写、Web QA。
 - [gh-fix-ci](gh-fix-ci/SKILL.md)：读取 GitHub Actions 失败日志并产出修复方案。
-- [impeccable](impeccable/impeccable/SKILL.md)：核心 impeccable 设计技能，以及一整套配套设计命令。
 
 ## 1 分钟快速开始
 
@@ -105,7 +104,6 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
 - [remotion-best-practices](remotion-best-practices/SKILL.md)：基于 React 的 Remotion 视频开发实践。
 - [`gsap-skills/`](gsap-skills/)：8 个官方 GSAP 动画技能包，覆盖 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
-- [`impeccable/`](impeccable/README.md)：18 个 vendored 前端设计技能，包含 `impeccable`、`adapt`、`audit`、`polish` 等。
 
 ### 视频与动效
 
@@ -135,16 +133,6 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - `website-to-hyperframes`
 
 归属和法律文件保存在 [`hyperframes/LICENSE`](hyperframes/LICENSE)。
-
-[`impeccable/`](impeccable/README.md) 目录收录了来自 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) 的前端设计技能包，当前同步基于提交 `00d485659af82982aef0328d0419c49a2716d123`。
-
-其中包括：
-
-- `impeccable` 主技能
-- `adapt`、`animate`、`audit`、`bolder`、`clarify`、`colorize`、`critique`、`delight`、`distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-归属和法律文件保存在 [`impeccable/NOTICE.md`](impeccable/NOTICE.md) 与 [`impeccable/LICENSE`](impeccable/LICENSE)。
 
 [`gsap-skills/`](gsap-skills/) 目录收录了来自 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) 的 GSAP 动画技能包，当前同步基于提交 `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`。
 
@@ -217,29 +205,6 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [gsap](hyperframes/gsap/SKILL.md) | 面向 HyperFrames 的 GSAP 动画参考：补间、timeline、缓动、特效与性能实践。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | 抓取网站并把它转成包含设计、脚本、分镜、配音和搭建步骤的 HyperFrames 视频工作流。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### Vendored `impeccable/` 技能
-
-| 技能                                                     | 说明                                         | Source URL                                                  |
-| -------------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | 创建有辨识度、生产级的高质量前端界面。       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | 让设计适配不同屏幕尺寸、设备和上下文。       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | 用有目的的动画和微交互增强界面。             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | 审计界面的可访问性、性能、主题与响应式表现。 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | 让过于保守或平淡的设计更有张力。             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | 改善不清晰的 UX 文案与说明。                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | 为过于单色的界面加入策略性色彩。             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | 从 UX 视角评估设计效果。                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | 为界面加入个性和让人记住的细节。             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | 把设计提炼到本质，去掉多余复杂度。           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | 提升错误处理、i18n、溢出和边界情况的韧性。   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | 改善布局、间距与视觉节奏。                                                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | 优化加载、渲染、动画、图片和包体积。         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | 通过更激进的技术实现把界面推到常规上限之外。                                                                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | 上线前打磨对齐、间距、一致性和细节。         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | 降低过强的视觉攻击性，同时保持质量。         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | 在写代码前先规划功能的 UX / UI。                                                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | 优化字体选择、层级、字号、字重与可读性。                                                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### Vendored `gsap-skills/` 技能
 
 | 技能                                                          | 说明                                                                                           | Source URL                                                                                            |
@@ -266,4 +231,4 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 本仓库主许可证见 [LICENSE](LICENSE)。
 
-部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`minimax-docx/`](minimax-docx/)、[`impeccable/`](impeccable/README.md) 和 [`gsap-skills/`](gsap-skills/)。
+部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`minimax-docx/`](minimax-docx/) 和 [`gsap-skills/`](gsap-skills/)。

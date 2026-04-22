@@ -6,19 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **57 reusable skills** शामिल हैं: **26 top-level skills** सीधे इसी repo में maintain की जाती हैं, [`hyperframes/`](hyperframes/README.md) के अंतर्गत **5 vendored HyperFrames video skills** शामिल हैं, [`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
-
-It includes:
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) के अंतर्गत **18 vendored design skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **39 reusable skills** शामिल हैं: **26 top-level skills** सीधे इसी repo में maintain की जाती हैं, [`hyperframes/`](hyperframes/README.md) के अंतर्गत **5 vendored HyperFrames video skills** शामिल हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -39,7 +27,6 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 - [context7-cli](context7-cli/SKILL.md): current library docs और Context7-backed references fetch करने के लिए।
 - [agent-browser](agent-browser/SKILL.md): screenshots, forms, scraping, और web QA के लिए browser automation.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): failing GitHub Actions checks inspect करके logs को fix plan में बदलता है।
-- [impeccable](impeccable/impeccable/SKILL.md): core impeccable design skill और companion design commands का पूरा bundle.
 
 ## 1-मिनट Quick Start
 
@@ -118,7 +105,6 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React-based video work के लिए Remotion guidance.
 - [`gsap-skills/`](gsap-skills/): core, timelines, ScrollTrigger, plugins, utils, React, performance, frameworks सहित 8 official GSAP animation skills.
-- [`impeccable/`](impeccable/README.md): `impeccable`, `adapt`, `audit`, `polish` आदि सहित 18 vendored frontend design skills.
 
 ### Video & Motion
 
@@ -148,16 +134,6 @@ It includes:
 - `website-to-hyperframes`
 
 Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) में [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) से लिया गया design-focused vendored bundle शामिल है, commit `00d485659af82982aef0328d0419c49a2716d123` पर आधारित।
-
-इसमें शामिल हैं:
-
-- `impeccable`: flagship frontend design skill
-- `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-Attribution और legal files [`impeccable/NOTICE.md`](impeccable/NOTICE.md) और [`impeccable/LICENSE`](impeccable/LICENSE) में सुरक्षित रखे गए हैं।
 
 [`gsap-skills/`](gsap-skills/) में [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) से लिया गया animation-focused vendored bundle शामिल है, commit `03d9f0c3dbf91e0b60582b64ed040c8911ca0174` पर आधारित।
 
@@ -230,29 +206,6 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### Vendored `impeccable/` Skills
-
-| Skill                                                    | विवरण                                                                                          | Source URL                                                  |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | उच्च पहचान और production-grade quality के साथ frontend interfaces बनाएं।                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | designs को अलग-अलग screen sizes, devices, और contexts के लिए adapt करें।                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | purposeful motion और micro-interactions जोड़ें।                                                | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | accessibility, performance, theming, और responsive design के पार interface quality audit करें। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | safe या boring designs को और अधिक visually interesting बनाएं।                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | अस्पष्ट UX copy और instructions को बेहतर बनाएं।                                                | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | बहुत अधिक monochrome features में strategic color जोड़ें।                                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | UX perspective से design effectiveness evaluate करें।                                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | interfaces में personality और memorable touches जोड़ें।                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | designs को उनकी essential form तक simplify करें।                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | errors, i18n, overflow, और edge cases के आसपास resilience बढ़ाएं।                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | लेआउट, स्पेसिंग और विजुअल रिद्म को बेहतर बनाएं।                                            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | frontend performance, rendering, motion, और bundle efficiency सुधारें।                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | तकनीकी रूप से महत्वाकांक्षी इम्प्लीमेंटेशन के साथ इंटरफेस को पारंपरिक सीमाओं से आगे ले जाएं। | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | alignment, spacing, consistency, और detail के लिए final quality pass.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | quality बरकरार रखते हुए visual aggression कम करें।                                             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | कोड लिखने से पहले किसी फीचर की UX और UI योजना बनाएं।                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | फ़ॉन्ट चयन, hierarchy, sizing, weight और readability को सुधारकर typography बेहतर बनाएं।    | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### Vendored `gsap-skills/` Skills
 
 | Skill                                                         | विवरण                                                                                           | Source URL                                                                                            |
@@ -279,4 +232,4 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 
 यह repository [LICENSE](LICENSE) के अंतर्गत licensed है।
 
-कुछ skills में skill-specific assets और attribution के लिए अतिरिक्त license files या notices शामिल हैं, जिनमें [`minimax-docx/`](minimax-docx/), [`impeccable/`](impeccable/README.md), और [`gsap-skills/`](gsap-skills/) शामिल हैं।
+कुछ skills में skill-specific assets और attribution के लिए अतिरिक्त license files या notices शामिल हैं, जिनमें [`minimax-docx/`](minimax-docx/), और [`gsap-skills/`](gsap-skills/) शामिल हैं।

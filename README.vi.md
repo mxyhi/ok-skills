@@ -6,19 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **57 skill có thể tái sử dụng**: **26 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **5 skill video HyperFrames được vendored** dưới [`hyperframes/`](hyperframes/README.md), **18 skill thiết kế được vendored** dưới [`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
-
-It includes:
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **39 skill có thể tái sử dụng**: **26 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **5 skill video HyperFrames được vendored** dưới [`hyperframes/`](hyperframes/README.md) và **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -39,7 +27,6 @@ Nếu lúc đầu bạn chỉ cài vài skill, hãy bắt đầu với những s
 - [context7-cli](context7-cli/SKILL.md): lấy tài liệu thư viện mới nhất và các tham chiếu được Context7 hỗ trợ.
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho ảnh chụp màn hình, biểu mẫu, scraping và web QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): kiểm tra các check GitHub Actions thất bại và biến log thành kế hoạch sửa lỗi.
-- [impeccable](impeccable/impeccable/SKILL.md): skill thiết kế impeccable cốt lõi cùng cả bộ lệnh thiết kế đi kèm.
 
 ## Quick Start trong 1 phút
 
@@ -118,7 +105,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): hướng dẫn Remotion cho công việc video dựa trên React.
 - [`gsap-skills/`](gsap-skills/): 8 skill animation GSAP chính thức (core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks).
-- [`impeccable/`](impeccable/README.md): 18 skill thiết kế frontend được vendored, bao gồm `impeccable`, `adapt`, `audit`, `polish` và nhiều skill khác.
 
 ### Video & Motion
 
@@ -136,16 +122,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [minimax-xlsx](minimax-xlsx/SKILL.md): mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát.
 
 ## Gói skill vendored
-
-[`impeccable/`](impeccable/README.md) chứa một bundle thiên về thiết kế được vendored từ [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) tại commit `00d485659af82982aef0328d0419c49a2716d123`.
-
-Gói này bao gồm:
-
-- `impeccable`: skill thiết kế frontend chủ lực
-- `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-Thông tin ghi nhận nguồn gốc và hồ sơ pháp lý được giữ trong [`impeccable/NOTICE.md`](impeccable/NOTICE.md) và [`impeccable/LICENSE`](impeccable/LICENSE).
 
 [`gsap-skills/`](gsap-skills/) chứa một bundle animation được vendored từ [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) tại commit `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`.
 
@@ -218,29 +194,6 @@ Ghi chú:
 | [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### Vendored `impeccable/` Skills
-
-| Skill                                                    | Mô tả                                                                                   | Source URL                                                  |
-| -------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | Tạo giao diện frontend có bản sắc và chất lượng production cao.                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | Điều chỉnh thiết kế cho nhiều kích thước màn hình, thiết bị và bối cảnh khác nhau.      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | Thêm motion có chủ đích và micro-interaction.                                           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | Audit chất lượng giao diện về accessibility, performance, theming và responsive design. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | Làm các thiết kế an toàn hoặc nhàm chán trở nên thú vị hơn về mặt thị giác.             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | Cải thiện UX copy và hướng dẫn chưa rõ ràng.                                            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | Thêm màu sắc có chiến lược cho các giao diện quá đơn sắc.                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | Đánh giá hiệu quả thiết kế từ góc nhìn UX.                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | Thêm cá tính và những điểm nhấn đáng nhớ cho giao diện.                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | Chắt lọc thiết kế về dạng cốt lõi nhất.                                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | Tăng độ bền vững quanh lỗi, i18n, tràn nội dung và các edge case.                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | Cải thiện bố cục, khoảng cách và nhịp điệu thị giác.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | Cải thiện hiệu năng frontend, rendering, motion và hiệu quả bundle.                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | Đẩy giao diện vượt ra ngoài giới hạn thông thường bằng các triển khai kỹ thuật đầy tham vọng. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | Bước hoàn thiện cuối để chỉnh căn lề, khoảng cách, tính nhất quán và chi tiết.          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | Giảm độ gắt về thị giác nhưng vẫn giữ chất lượng thiết kế.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | Lập kế hoạch UX và UI cho một tính năng trước khi viết mã.                                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | Cải thiện kiểu chữ bằng cách chỉnh lựa chọn font, phân cấp, kích thước, độ đậm và khả năng đọc. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### Vendored `gsap-skills/` Skills
 
 | Skill                                                         | Mô tả                                                                                           | Source URL                                                                                            |
@@ -267,4 +220,4 @@ Chúng tôi hoan nghênh đóng góp cho các skill mới hoặc cải tiến sk
 
 Repo này được cấp phép theo [LICENSE](LICENSE).
 
-Một số skill có thêm file giấy phép hoặc ghi nhận nguồn cho tài sản và attribution riêng, bao gồm [`minimax-docx/`](minimax-docx/), [`impeccable/`](impeccable/README.md) và [`gsap-skills/`](gsap-skills/).
+Một số skill có thêm file giấy phép hoặc ghi nhận nguồn cho tài sản và attribution riêng, bao gồm [`minimax-docx/`](minimax-docx/) và [`gsap-skills/`](gsap-skills/).

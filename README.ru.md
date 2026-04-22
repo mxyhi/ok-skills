@@ -6,19 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **57 переиспользуемых skills**: **26 skills верхнего уровня**, которые поддерживаются прямо здесь, **5 vendored HyperFrames video skills** в каталоге [`hyperframes/`](hyperframes/README.md), **18 vendored design skills** в каталоге [`impeccable/`](impeccable/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
-
-It includes:
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **39 переиспользуемых skills**: **26 skills верхнего уровня**, которые поддерживаются прямо здесь, **5 vendored HyperFrames video skills** в каталоге [`hyperframes/`](hyperframes/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -39,7 +27,6 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 - [context7-cli](context7-cli/SKILL.md): получение актуальной документации библиотек и reference-материалов на базе Context7.
 - [agent-browser](agent-browser/SKILL.md): browser automation для скриншотов, форм, scraping и web QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): анализ проваленных проверок GitHub Actions и превращение логов в plan исправления.
-- [impeccable](impeccable/impeccable/SKILL.md): core impeccable design skill и полный пакет сопутствующих design-команд.
 
 ## Быстрый старт за 1 минуту
 
@@ -118,7 +105,6 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [better-icons](better-icons/SKILL.md): искать, просматривать и получать SVG-иконки из более чем 200 библиотек Iconify через CLI или MCP.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): guidance по Remotion для video work на React.
 - [`gsap-skills/`](gsap-skills/): 8 official GSAP animation skills: core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks.
-- [`impeccable/`](impeccable/README.md): 18 vendored frontend design skills, включая `impeccable`, `adapt`, `audit`, `polish` и другие.
 
 ### Video & Motion
 
@@ -148,16 +134,6 @@ It includes:
 - `website-to-hyperframes`
 
 Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) содержит vendored design-focused bundle из [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) на коммите `00d485659af82982aef0328d0419c49a2716d123`.
-
-В него входят:
-
-- `impeccable`: флагманский frontend design skill
-- `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-Файлы attribution и legal сохранены в [`impeccable/NOTICE.md`](impeccable/NOTICE.md) и [`impeccable/LICENSE`](impeccable/LICENSE).
 
 [`gsap-skills/`](gsap-skills/) содержит vendored GSAP animation bundle из [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) на коммите `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`.
 
@@ -230,29 +206,6 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 | [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### Vendored `impeccable/` Skills
-
-| Skill                                                    | Описание                                                                                   | Source URL                                                  |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | Create distinctive, production-grade frontend interfaces with high design quality.         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | Adapt designs across screen sizes, devices, and contexts.                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | Add purposeful motion and micro-interactions.                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | Audit interface quality across accessibility, performance, theming, and responsive design. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | Make safe or boring designs more visually interesting.                                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | Improve unclear UX copy and instructions.                                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | Add strategic color to overly monochrome features.                                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | Evaluate design effectiveness from a UX perspective.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | Add personality and memorable moments to interfaces.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | Strip designs down to their essential form.                                                | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | Improve resilience around errors, i18n, overflow, and edge cases.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | Улучшает макет, интервалы и визуальный ритм.                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | Improve frontend performance, rendering, motion, and bundle efficiency.                    | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | Выводит интерфейсы за привычные пределы за счет технически амбициозных реализаций.         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | Final quality pass for alignment, spacing, consistency, and detail.                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | Reduce visual aggression while preserving design quality.                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | Планирует UX и UI функции до написания кода.                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | Улучшает типографику, исправляя выбор шрифтов, иерархию, размеры, насыщенность и читаемость. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### Vendored `gsap-skills/` Skills
 
 | Skill                                                         | Описание                                                                              | Source URL                                                                                            |
@@ -279,4 +232,4 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 
 Этот репозиторий распространяется по лицензии [LICENSE](LICENSE).
 
-Некоторые skills содержат дополнительные license-файлы или notices для attribution, включая [`minimax-docx/`](minimax-docx/), [`impeccable/`](impeccable/README.md) и [`gsap-skills/`](gsap-skills/).
+Некоторые skills содержат дополнительные license-файлы или notices для attribution, включая [`minimax-docx/`](minimax-docx/) и [`gsap-skills/`](gsap-skills/).

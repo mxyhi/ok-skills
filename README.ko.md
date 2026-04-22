@@ -6,19 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 57개**가 포함되어 있습니다. 이 중 **26개는 루트 레벨 스킬**로 직접 관리되며, **5개의 벤더링된 HyperFrames 비디오 스킬**은 [`hyperframes/`](hyperframes/README.md) 아래에, **18개의 벤더링된 디자인 스킬**은 [`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
-
-It includes:
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 39개**가 포함되어 있습니다. 이 중 **26개는 루트 레벨 스킬**로 직접 관리되며, **5개의 벤더링된 HyperFrames 비디오 스킬**은 [`hyperframes/`](hyperframes/README.md) 아래에, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -39,7 +27,6 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 - [context7-cli](context7-cli/SKILL.md): 최신 라이브러리 문서와 Context7 기반 참고 자료 조회.
 - [agent-browser](agent-browser/SKILL.md): 스크린샷, 폼 입력, 스크래핑, 웹 QA를 위한 브라우저 자동화.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): 실패한 GitHub Actions 체크를 읽고 수정 계획으로 정리.
-- [impeccable](impeccable/impeccable/SKILL.md): 핵심 impeccable 디자인 스킬과 함께 제공되는 전체 디자인 명령 번들.
 
 ## 1분 빠른 시작
 
@@ -118,7 +105,6 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): React 기반 영상 작업을 위한 Remotion 가이드.
 - [`gsap-skills/`](gsap-skills/): core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks를 포함한 공식 GSAP 애니메이션 스킬 8개.
-- [`impeccable/`](impeccable/README.md): `impeccable`, `adapt`, `audit`, `polish` 등을 포함한 18개의 벤더링된 프런트엔드 디자인 스킬 번들.
 
 ### Video & Motion
 
@@ -136,16 +122,6 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [minimax-xlsx](minimax-xlsx/SKILL.md): 손실을 최소화한 XML 워크플로로 Excel/스프레드시트를 열고, 생성하고, 분석·편집·검증.
 
 ## 벤더링된 스킬 팩
-
-[`impeccable/`](impeccable/README.md)에는 [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable)에서 가져온 디자인 중심 번들이 포함되어 있으며, 기준 커밋은 `00d485659af82982aef0328d0419c49a2716d123`입니다.
-
-포함된 항목:
-
-- `impeccable`: 대표 프런트엔드 디자인 스킬
-- `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-출처 및 법적 고지는 [`impeccable/NOTICE.md`](impeccable/NOTICE.md)와 [`impeccable/LICENSE`](impeccable/LICENSE)에 보존되어 있습니다.
 
 [`gsap-skills/`](gsap-skills/)에는 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills)에서 가져온 GSAP 애니메이션 스킬 번들이 포함되어 있으며, 기준 커밋은 `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`입니다.
 
@@ -218,29 +194,6 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### 벤더링된 `impeccable/` 스킬
-
-| Skill                                                    | 설명                                                             | Source URL                                                  |
-| -------------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | 개성이 있고 프로덕션 수준의 고품질 프런트엔드 인터페이스를 제작. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | 다양한 화면 크기, 디바이스, 맥락에 맞게 디자인을 조정.           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | 목적 있는 모션과 마이크로 인터랙션을 추가.                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | 접근성, 성능, 테마, 반응형 품질을 감사.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | 안전하지만 밋밋한 디자인을 더 흥미롭게 만듦.                     | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | 불명확한 UX 문구와 안내를 개선.                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | 지나치게 단색인 인터페이스에 전략적인 색을 추가.                 | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | UX 관점에서 디자인 효과를 평가.                                  | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | 인터페이스에 개성과 기억에 남는 디테일을 추가.                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | 디자인을 본질만 남기도록 정제.                                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | 오류 처리, i18n, 오버플로, 엣지 케이스 대응력을 개선.            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | 레이아웃, 간격, 시각적 리듬을 개선합니다.                                                                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | 로딩, 렌더링, 모션, 번들 효율을 개선.                            | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | 기술적으로 야심찬 구현으로 인터페이스를 기존 한계 너머로 밀어붙입니다.                                                    | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | 정렬, 간격, 일관성, 디테일을 마무리 점검.                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | 디자인 품질은 유지하면서 시각적 공격성을 낮춤.                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | 코드를 쓰기 전에 기능의 UX / UI를 설계합니다.                                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | 글꼴 선택, 계층, 크기, 굵기, 가독성을 개선합니다.                                                             | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### 벤더링된 `gsap-skills/` 스킬
 
 | Skill                                                         | 설명                                                                                            | Source URL                                                                                            |
@@ -267,4 +220,4 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 
 이 저장소는 [LICENSE](LICENSE) 하에 배포됩니다.
 
-일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`minimax-docx/`](minimax-docx/), [`impeccable/`](impeccable/README.md), [`gsap-skills/`](gsap-skills/)입니다.
+일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`minimax-docx/`](minimax-docx/), [`gsap-skills/`](gsap-skills/)입니다.

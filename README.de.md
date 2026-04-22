@@ -6,19 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **57 wiederverwendbare Skills**: **26 Top-Level-Skills**, die direkt hier gepflegt werden, plus **5 vendorte HyperFrames-Video-Skills** unter [`hyperframes/`](hyperframes/README.md), plus **18 vendorte Design-Skills** unter [`impeccable/`](impeccable/README.md), plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
-
-It includes:
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes/LICENSE).
-
-[`impeccable/`](impeccable/README.md), plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
+Dieses Repository bündelt aktuell **39 wiederverwendbare Skills**: **26 Top-Level-Skills**, die direkt hier gepflegt werden, plus **5 vendorte HyperFrames-Video-Skills** unter [`hyperframes/`](hyperframes/README.md), plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -39,7 +27,6 @@ Wenn du zuerst nur wenige Skills installieren willst, beginne mit diesen:
 - [context7-cli](context7-cli/SKILL.md): aktuelle Bibliotheksdokumentation und Context7-basierte Referenzen abrufen.
 - [agent-browser](agent-browser/SKILL.md): Browser-Automatisierung für Screenshots, Formulare, Scraping und Web-QA.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): fehlgeschlagene GitHub-Actions-Checks untersuchen und aus Logs einen Fixplan ableiten.
-- [impeccable](impeccable/impeccable/SKILL.md): zentraler impeccable Design-Skill plus ein vollstandiges Bundle erganzender Design-Kommandos.
 
 ## 1-Minuten-Schnellstart
 
@@ -118,7 +105,6 @@ Danach kannst du natürlich formulieren:
 - [better-icons](better-icons/SKILL.md): SVG-Icons aus mehr als 200 Iconify-Bibliotheken per CLI oder MCP suchen, durchsuchen und abrufen.
 - [remotion-best-practices](remotion-best-practices/SKILL.md): Remotion-Leitfaden für videobasierte Arbeit mit React.
 - [`gsap-skills/`](gsap-skills/): 8 offizielle GSAP-Animations-Skills (Core, Timelines, ScrollTrigger, Plugins, Utils, React, Performance, Frameworks).
-- [`impeccable/`](impeccable/README.md): 18 vendorte Frontend-Design-Skills, darunter `impeccable`, `adapt`, `audit`, `polish` und mehr.
 
 ### Video & Motion
 
@@ -136,16 +122,6 @@ Danach kannst du natürlich formulieren:
 - [minimax-xlsx](minimax-xlsx/SKILL.md): Excel-/Spreadsheet-Dateien mit verlustarmem XML-Workflow öffnen, erstellen, analysieren, bearbeiten und validieren.
 
 ## Vendorte Skill-Pakete
-
-[`impeccable/`](impeccable/README.md) enthält ein vendortes, designfokussiertes Bundle aus [`pbakaus/impeccable`](https://github.com/pbakaus/impeccable) auf Basis des Commits `00d485659af82982aef0328d0419c49a2716d123`.
-
-Enthalten sind:
-
-- `impeccable`: der zentrale Frontend-Design-Skill
-- `adapt`, `animate`, `audit`, `bolder`, `clarify`, `colorize`, `critique`, `delight`, `distill`
-- `harden`, `layout`, `optimize`, `overdrive`, `polish`, `quieter`, `shape`, `typeset`
-
-Attributionen und rechtliche Dateien bleiben in [`impeccable/NOTICE.md`](impeccable/NOTICE.md) und [`impeccable/LICENSE`](impeccable/LICENSE) erhalten.
 
 [`gsap-skills/`](gsap-skills/) enthält ein animationsfokussiertes Bundle, vendort aus [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) auf Basis des Commits `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`.
 
@@ -218,29 +194,6 @@ Hinweise:
 | [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
 | [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
-### Vendorte `impeccable/`-Skills
-
-| Skill                                                    | Beschreibung                                                                                          | Source URL                                                  |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [impeccable](impeccable/impeccable/SKILL.md)   | Unverwechselbare, produktionsreife Frontends mit hoher Designqualität erstellen.                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [adapt](impeccable/adapt/SKILL.md)                       | Designs auf unterschiedliche Bildschirmgrößen, Geräte und Kontexte anpassen.                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [animate](impeccable/animate/SKILL.md)                   | Zweckgerichtete Motion und Mikrointeraktionen ergänzen.                                               | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [audit](impeccable/audit/SKILL.md)                       | Interface-Qualität in Bezug auf Accessibility, Performance, Theming und Responsive Design auditieren. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [bolder](impeccable/bolder/SKILL.md)                     | Sichere oder langweilige Designs visuell interessanter machen.                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [clarify](impeccable/clarify/SKILL.md)                   | Unklare UX-Texte und Anweisungen verbessern.                                                          | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [colorize](impeccable/colorize/SKILL.md)                 | Strategische Farbe zu übermäßig monochromen Oberflächen hinzufügen.                                   | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [critique](impeccable/critique/SKILL.md)                 | Designwirksamkeit aus UX-Sicht bewerten.                                                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [delight](impeccable/delight/SKILL.md)                   | Interfaces Persönlichkeit und erinnerungswürdige Momente geben.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [distill](impeccable/distill/SKILL.md)                   | Designs auf ihre wesentliche Form reduzieren.                                                         | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [harden](impeccable/harden/SKILL.md)                     | Resilienz bei Fehlern, i18n, Overflow und Randfällen verbessern.                                      | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [layout](impeccable/layout/SKILL.md)                       | Layout, Abstande und visuellen Rhythmus verbessern.                                        | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [optimize](impeccable/optimize/SKILL.md)                 | Frontend-Performance, Rendering, Motion und Bundle-Effizienz verbessern.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [overdrive](impeccable/overdrive/SKILL.md)                 | Interfaces mit technisch ambitionierten Umsetzungen uber herkommliche Grenzen hinausschieben. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [polish](impeccable/polish/SKILL.md)                     | Letzter Qualitätsschliff für Ausrichtung, Abstände, Konsistenz und Details.                           | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [quieter](impeccable/quieter/SKILL.md)                   | Visuelle Aggressivität reduzieren und die Qualität beibehalten.                                       | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [shape](impeccable/shape/SKILL.md)                         | UX und UI eines Features planen, bevor Code geschrieben wird.                              | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-| [typeset](impeccable/typeset/SKILL.md)                     | Typografie verbessern, indem Schriftwahl, Hierarchie, Grossen, Gewichtung und Lesbarkeit optimiert werden. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
-
 ### Vendorte `gsap-skills/`-Skills
 
 | Skill                                                         | Beschreibung                                                                             | Source URL                                                                                            |
@@ -267,4 +220,4 @@ Beiträge für neue Skills oder Verbesserungen an bestehenden Skills sind willko
 
 Dieses Repository steht unter der Lizenz aus [LICENSE](LICENSE).
 
-Einige Skills enthalten zusätzliche Lizenzdateien oder Hinweise zu skill-spezifischen Assets und Attributionen, darunter [`minimax-docx/`](minimax-docx/), [`impeccable/`](impeccable/README.md) und [`gsap-skills/`](gsap-skills/).
+Einige Skills enthalten zusätzliche Lizenzdateien oder Hinweise zu skill-spezifischen Assets und Attributionen, darunter [`minimax-docx/`](minimax-docx/) und [`gsap-skills/`](gsap-skills/).
