@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **39 skills reutilizables**: **26 skills de nivel superior** mantenidos directamente aqui, ademas de **5 skills de video HyperFrames** integradas como paquete vendorizado en [`hyperframes/`](hyperframes/README.md) y **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
+Este repositorio incluye actualmente **40 skills reutilizables**: **27 skills de nivel superior** mantenidos directamente aqui, ademas de **5 skills de video HyperFrames** integradas como paquete vendorizado en [`hyperframes/`](hyperframes/README.md) y **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -79,6 +79,7 @@ Despues puedes pedirlo de forma natural:
 - [brainstorming](brainstorming/SKILL.md): aclara ideas, requisitos y diseno antes de empezar la implementacion.
 - [planning-with-files](planning-with-files/SKILL.md): planificacion persistente en Markdown con `task_plan.md`, `findings.md` y `progress.md`.
 - [test-driven-development](test-driven-development/SKILL.md): obliga a escribir pruebas antes de implementar.
+- [systematic-debugging](systematic-debugging/SKILL.md): investiga la causa raiz de bugs, tests fallidos o comportamientos inesperados antes de proponer arreglos.
 
 ### Flujo De Trabajo En GitHub
 
@@ -176,6 +177,7 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [pptx-generator](pptx-generator/SKILL.md) | Genera, edita y lee presentaciones PowerPoint con PptxGenJS, flujos XML o markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md)         | Buenas practicas para crear videos en React con Remotion.                                                                                                                                                           | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [test-driven-development](test-driven-development/SKILL.md)         | Usala antes de implementar cualquier funcionalidad o correccion.                                                                                                                                                    | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [systematic-debugging](systematic-debugging/SKILL.md)             | Usala cuando encuentres cualquier bug, test fallido o comportamiento inesperado, antes de proponer arreglos.                                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Abre, crea, lee, analiza, edita y valida archivos Excel/hojas de calculo con un flujo XML de baja perdida. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Usala solo cuando el usuario pida explicitamente hacer stage, commit, push y abrir una pull request en un unico flujo con `gh`.                                                                                     | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
 

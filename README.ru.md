@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **39 переиспользуемых skills**: **26 skills верхнего уровня**, которые поддерживаются прямо здесь, **5 vendored HyperFrames video skills** в каталоге [`hyperframes/`](hyperframes/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **40 переиспользуемых skills**: **27 skills верхнего уровня**, которые поддерживаются прямо здесь, **5 vendored HyperFrames video skills** в каталоге [`hyperframes/`](hyperframes/README.md) и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -79,6 +79,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [brainstorming](brainstorming/SKILL.md): прояснять идею, требования и дизайн до начала реализации.
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning с `task_plan.md`, `findings.md` и `progress.md`.
 - [test-driven-development](test-driven-development/SKILL.md): требование писать тесты до реализации.
+- [systematic-debugging](systematic-debugging/SKILL.md): системно искать корневую причину бага, падения теста или странного поведения до предложения фикса.
 
 ### GitHub Workflow
 
@@ -188,6 +189,7 @@ Attribution and legal files are preserved in [`hyperframes/LICENSE`](hyperframes
 | [pptx-generator](pptx-generator/SKILL.md) | Создание, редактирование и чтение презентаций PowerPoint через PptxGenJS, XML workflows и markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [remotion-best-practices](remotion-best-practices/SKILL.md)         | Best practices for building videos in React with Remotion.                                                                                                                                   | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [test-driven-development](test-driven-development/SKILL.md)         | Use before implementing any feature or bugfix.                                                                                                                                               | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [systematic-debugging](systematic-debugging/SKILL.md)             | Использовать при любом баге, падении теста или странном поведении до того, как предлагать фикс.                                            | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Открывать, создавать, читать, анализировать, редактировать и проверять Excel/табличные файлы с малопотерным XML workflow. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`.                                                                        | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
 
