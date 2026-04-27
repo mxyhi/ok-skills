@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **40 skills reutilizables**: **27 skills de nivel superior** mantenidos directamente aqui, ademas de **5 skills de video HyperFrames** integradas como paquete vendorizado en [`hyperframes/`](hyperframes/README.md) y **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
+Este repositorio incluye actualmente **36 skills reutilizables**: **28 skills de nivel superior** mantenidos directamente aqui, ademas de **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -24,7 +24,7 @@ Si al principio solo vas a instalar unas pocas skills, empieza por estas:
 
 - [brainstorming](brainstorming/SKILL.md): aclara ideas, requisitos y diseno antes de empezar la implementacion.
 - [planning-with-files](planning-with-files/SKILL.md): planificacion basada en archivos para tareas complejas, investigacion y trabajo de larga duracion.
-- [context7-cli](context7-cli/SKILL.md): consulta documentacion actual de librerias y referencias respaldadas por Context7.
+- [find-docs](find-docs/SKILL.md): consulta documentacion actual de librerias, referencias de API y ejemplos de Context7.
 - [agent-browser](agent-browser/SKILL.md): automatizacion de navegador para capturas, formularios, scraping y QA web.
 - [gh-fix-ci](gh-fix-ci/SKILL.md): inspecciona fallos de GitHub Actions y convierte los logs en un plan de correccion.
 
@@ -42,7 +42,7 @@ Despues de clonar, el repositorio quedara en `~/.agents/skills/ok-skills`, y los
 ~/.agents/skills/ok-skills/
   planning-with-files/
     SKILL.md
-  context7-cli/
+  find-docs/
     SKILL.md
   agent-browser/
     SKILL.md
@@ -55,21 +55,21 @@ Anade reglas de activacion simples a tu `AGENTS.md`:
 ## Skills
 
 - planning-with-files: Use for complex tasks, research, or anything that will take 5+ tool calls.
-- context7-cli: Use when you need current library docs, API references, or Context7-backed examples.
+- find-docs: Use when you need current library docs, API references, or Context7-backed examples.
 - agent-browser: Use for browser automation, screenshots, scraping, web testing, or form filling.
 ```
 
 Despues puedes pedirlo de forma natural:
 
 - `Use planning-with-files before refactoring this module.`
-- `Use context7-cli to fetch the latest docs for this SDK.`
+- `Use find-docs to fetch the latest docs for this SDK.`
 - `Use agent-browser to reproduce this UI bug.`
 
 ## Explora Skills Por Caso De Uso
 
 ### Investigacion y Documentacion
 
-- [context7-cli](context7-cli/SKILL.md): flujo oficial de Context7 CLI para buscar documentacion, gestionar skills y configurar MCP.
+- [find-docs](find-docs/SKILL.md): flujo de Context7 CLI centrado en buscar documentacion actual.
 - [exa-search](exa-search/SKILL.md): investigacion web, de codigo y de empresas con herramientas de Exa.
 - [get-api-docs](get-api-docs/SKILL.md): recupera la documentacion actual de APIs y SDK de terceros antes de programar.
 - [find-skills](find-skills/SKILL.md): descubre skills existentes cuando un usuario pide una capacidad concreta.
@@ -78,6 +78,8 @@ Despues puedes pedirlo de forma natural:
 
 - [brainstorming](brainstorming/SKILL.md): aclara ideas, requisitos y diseno antes de empezar la implementacion.
 - [planning-with-files](planning-with-files/SKILL.md): planificacion persistente en Markdown con `task_plan.md`, `findings.md` y `progress.md`.
+- [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): encuentra oportunidades de deepening que mejoran locality, leverage, testabilidad y navegacion por IA.
+- [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migra assertions de tipo `as` en tests a `@total-typescript/shoehorn`.
 - [test-driven-development](test-driven-development/SKILL.md): obliga a escribir pruebas antes de implementar.
 - [systematic-debugging](systematic-debugging/SKILL.md): investiga la causa raiz de bugs, tests fallidos o comportamientos inesperados antes de proponer arreglos.
 
@@ -104,16 +106,7 @@ Despues puedes pedirlo de forma natural:
 - [frontend-skill](frontend-skill/SKILL.md): usalo cuando necesites una landing page, sitio web, app, prototipo, demo o UI de juego con gran impacto visual.
 - [shader-dev](shader-dev/SKILL.md): tecnicas GLSL completas para efectos visuales en tiempo real compatibles con ShaderToy.
 - [better-icons](better-icons/SKILL.md): busca, explora y obtiene iconos SVG de mas de 200 bibliotecas de Iconify mediante CLI o MCP.
-- [remotion-best-practices](remotion-best-practices/SKILL.md): guia de Remotion para trabajo de video basado en React.
 - [`gsap-skills/`](gsap-skills/): 8 skills oficiales de animacion GSAP (core, timelines, ScrollTrigger, plugins, utils, React, rendimiento, frameworks).
-
-### Video & Motion
-
-- [hyperframes](hyperframes/hyperframes/SKILL.md): create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and scene transitions.
-- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md): scaffold, lint, preview, render, transcribe, and troubleshoot HyperFrames projects.
-- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md): install registry blocks and components, then wire them into compositions.
-- [gsap](hyperframes/gsap/SKILL.md): HyperFrames-focused GSAP reference for timelines, easing, effects, and performance.
-- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md): capture a website and turn it into a scripted HyperFrames promo or product video.
 
 ### Utilidades y Creacion De Contenido
 
@@ -124,7 +117,7 @@ Despues puedes pedirlo de forma natural:
 
 ## Paquetes De Skills Vendorizados
 
-[`gsap-skills/`](gsap-skills/) contiene un paquete centrado en animacion, vendorizado desde [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) en el commit `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`.
+[`gsap-skills/`](gsap-skills/) contiene un paquete centrado en animacion, vendorizado desde [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) en el commit `aed9cfd3277740755f6bfc1155c7aa645403b760`.
 
 Incluye:
 
@@ -138,6 +131,8 @@ Incluye:
 - `gsap-frameworks`
 
 La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) y [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
+
+[`planning-with-files/`](planning-with-files/) usa [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files) como baseline upstream. Este repositorio conserva el nombre generico `planning-with-files` y elimina metadatos de paquete especificos de Pi para mantener compatibilidad con flujos `SKILL.md` estandar.
 
 ## Requisitos Habituales
 
@@ -159,7 +154,7 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [brainstorming](brainstorming/SKILL.md)                               | Convierte ideas en disenos y especificaciones validadas mediante dialogo colaborativo antes de implementar.                                                                               | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | CLI de automatizacion persistente del navegador para navegacion, inspeccion del estado de la pagina, formularios, capturas y extraccion.                                                                            | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [caveman](caveman/SKILL.md)                                         | Modo de comunicacion ultra comprimido que reduce tokens de respuesta hablando como cavernicola sin perder precision tecnica.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
-| [context7-cli](context7-cli/SKILL.md)                               | Usa Context7 CLI para buscar documentacion, gestionar skills y configurar MCP.                                                                                                                                      | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
+| [find-docs](find-docs/SKILL.md)                                     | Usa Context7 CLI para consultar documentacion actual, referencias de API y ejemplos de codigo.                                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | Creacion, edicion y formateo profesional de DOCX con OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | Usa Exa para investigacion web, de codigo y de empresas.                                                                                                                                                            | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Descubre skills existentes cuando los usuarios necesitan capacidades especializadas.                                                                                                                                | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
@@ -168,14 +163,15 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [get-api-docs](get-api-docs/SKILL.md)                               | Obtiene la documentacion actual de APIs o SDK de terceros antes de escribir codigo.                                                                                                                                 | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | Responde a comentarios de revision y de issues en la rama actual con `gh`.                                                                                                                                          | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Inspecciona fallos de GitHub Actions, descarga logs y prepara un plan de correccion.                                                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
+| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Encuentra oportunidades de deepening que mejoran locality, leverage, testabilidad y navegacion por IA.                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/improve-codebase-architecture)                              |
+| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migra archivos de test desde assertions de tipo `as` a `@total-typescript/shoehorn`.                                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | Obtiene el codigo fuente de dependencias para dar a los agentes de IA un contexto de implementacion mas profundo.                                                                                                  | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.                                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [dogfood](dogfood/SKILL.md)                                         | Prueba aplicaciones web de forma sistematica y produce reportes de incidencias reproducibles con capturas y videos.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | Automatiza aplicaciones Electron mediante agent-browser y Chrome DevTools Protocol.                                                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Genera, rellena y remaqueta documentos PDF con un sistema de diseno basado en tokens. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [planning-with-files](planning-with-files/SKILL.md)                 | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`.                                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
+| [planning-with-files](planning-with-files/SKILL.md)                 | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`.                                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Genera, edita y lee presentaciones PowerPoint con PptxGenJS, flujos XML o markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [remotion-best-practices](remotion-best-practices/SKILL.md)         | Buenas practicas para crear videos en React con Remotion.                                                                                                                                                           | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [test-driven-development](test-driven-development/SKILL.md)         | Usala antes de implementar cualquier funcionalidad o correccion.                                                                                                                                                    | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | Usala cuando encuentres cualquier bug, test fallido o comportamiento inesperado, antes de proponer arreglos.                                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Abre, crea, lee, analiza, edita y valida archivos Excel/hojas de calculo con un flujo XML de baja perdida. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
@@ -185,16 +181,6 @@ Notas:
 - `dogfood` y `electron` vienen del `skill-data/` de upstream, no del `skills/`.
 - Upstream movio estos skills especializados en el commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` para que la deteccion del instalador solo encuentre el skill bootstrap `agent-browser`.
 - Este repositorio los conserva a proposito como skills vendorizados de nivel superior porque upstream sigue manteniendolos y siguen siendo utiles directamente.
-
-### Vendored `hyperframes/` Skills
-
-| Skill | Description | Source URL |
-| --- | --- | --- |
-| [hyperframes](hyperframes/hyperframes/SKILL.md) | Create HTML-native video compositions, captions, TTS voiceovers, audio-reactive visuals, and transitions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
-| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | CLI workflow for HyperFrames: init, lint, preview, render, transcribe, TTS, and environment diagnosis. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
-| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | Install registry blocks/components and wire them into HyperFrames compositions. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
-| [gsap](hyperframes/gsap/SKILL.md) | HyperFrames-focused GSAP reference for timelines, easing, effects, and performance. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
-| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | Capture a website and turn it into a HyperFrames video workflow with design, script, storyboard, voiceover, and build steps. | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Skills Vendorizadas De `gsap-skills/`
 
@@ -222,4 +208,4 @@ Se aceptan contribuciones para nuevas skills o para mejorar las existentes.
 
 Este repositorio esta licenciado bajo [LICENSE](LICENSE).
 
-Algunas skills incluyen archivos adicionales de licencia o avisos de atribucion para activos especificos, incluidos [`minimax-docx/`](minimax-docx/) y [`gsap-skills/`](gsap-skills/).
+Algunas skills incluyen archivos adicionales de licencia o avisos de atribucion para activos especificos, incluidos [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`minimax-docx/`](minimax-docx/) y [`gsap-skills/`](gsap-skills/).

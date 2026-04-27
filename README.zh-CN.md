@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **40 个可复用技能**：其中 **27 个顶层技能** 由本仓直接维护，另有 **5 个 HyperFrames 视频技能** 以 vendored bundle 形式放在 [`hyperframes/`](hyperframes/README.md) 下，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **36 个可复用技能**：其中 **28 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -24,7 +24,7 @@
 
 - [brainstorming](brainstorming/SKILL.md)：在进入实现前先梳理想法、需求和设计。
 - [planning-with-files](planning-with-files/SKILL.md)：复杂任务、调研任务、多轮推进任务的文件化规划。
-- [context7-cli](context7-cli/SKILL.md)：查询最新库文档、Context7 资料和 MCP 相关内容。
+- [find-docs](find-docs/SKILL.md)：查询最新库文档、API 参考和 Context7 示例。
 - [agent-browser](agent-browser/SKILL.md)：浏览器自动化、截图、抓取、表单填写、Web QA。
 - [gh-fix-ci](gh-fix-ci/SKILL.md)：读取 GitHub Actions 失败日志并产出修复方案。
 
@@ -42,7 +42,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 ~/.agents/skills/ok-skills/
   planning-with-files/
     SKILL.md
-  context7-cli/
+  find-docs/
     SKILL.md
   agent-browser/
     SKILL.md
@@ -55,21 +55,21 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 ## Skills
 
 - planning-with-files: 复杂任务、调研任务、或者预计会有 5 次以上工具调用时使用。
-- context7-cli: 需要最新库文档、API 参考或 Context7 示例时使用。
+- find-docs: 需要最新库文档、API 参考或 Context7 示例时使用。
 - agent-browser: 需要浏览器自动化、截图、抓取、网页测试或表单填写时使用。
 ```
 
 之后就可以自然触发：
 
 - `在重构这个模块之前先用 planning-with-files。`
-- `用 context7-cli 查一下这个 SDK 的最新文档。`
+- `用 find-docs 查一下这个 SDK 的最新文档。`
 - `用 agent-browser 复现这个 UI 问题。`
 
 ## 按场景浏览技能
 
 ### 调研与文档
 
-- [context7-cli](context7-cli/SKILL.md)：官方 Context7 CLI 的文档查询、skill 管理与 MCP 配置工作流。
+- [find-docs](find-docs/SKILL.md)：专注于最新文档查询的 Context7 CLI 工作流。
 - [exa-search](exa-search/SKILL.md)：用 Exa 做网页、代码、公司调研。
 - [get-api-docs](get-api-docs/SKILL.md)：写第三方 API / SDK 代码前先拉当前文档。
 - [find-skills](find-skills/SKILL.md)：当用户提出能力诉求时，先查有没有现成 skill 可用。
@@ -78,6 +78,8 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 - [brainstorming](brainstorming/SKILL.md)：在进入实现前先梳理想法、需求和设计。
 - [planning-with-files](planning-with-files/SKILL.md)：通过 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。
+- [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。
+- [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：把测试里的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。
 - [test-driven-development](test-driven-development/SKILL.md)：任何功能或修复先写测试。
 - [systematic-debugging](systematic-debugging/SKILL.md)：遇到 bug、测试失败或异常行为时，先系统化追根因，再提出修复。
 
@@ -103,16 +105,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - [frontend-skill](frontend-skill/SKILL.md)：适用于需要强视觉表现的落地页、网站、应用、原型、演示或游戏 UI。
 - [shader-dev](shader-dev/SKILL.md)：覆盖 GLSL 着色器的系统化技巧，用于构建兼容 ShaderToy 的实时视觉效果。
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
-- [remotion-best-practices](remotion-best-practices/SKILL.md)：基于 React 的 Remotion 视频开发实践。
 - [`gsap-skills/`](gsap-skills/)：8 个官方 GSAP 动画技能包，覆盖 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
-
-### 视频与动效
-
-- [hyperframes](hyperframes/hyperframes/SKILL.md)：用 HTML 构建视频分镜、字幕、TTS 旁白、音频驱动动画和场景转场。
-- [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md)：初始化、lint、预览、渲染、转录并排查 HyperFrames 项目问题。
-- [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md)：安装 registry 中的 blocks / components，并把它们接入现有分镜。
-- [gsap](hyperframes/gsap/SKILL.md)：面向 HyperFrames 的 GSAP 动画参考，覆盖 timeline、缓动、特效与性能实践。
-- [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md)：抓取网站并把它转成带脚本、分镜和配音流程的 HyperFrames 视频。
 
 ### 工具与内容生产
 
@@ -123,19 +116,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 ## Vendored Skill Packs
 
-[`hyperframes/`](hyperframes/README.md) 目录收录了来自 [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) 的视频技能包，当前同步基于提交 `42d39866ffb52c1c377f5f384b760f2de8519982`。
-
-其中包括：
-
-- `hyperframes`
-- `hyperframes-cli`
-- `hyperframes-registry`
-- `gsap`
-- `website-to-hyperframes`
-
-归属和法律文件保存在 [`hyperframes/LICENSE`](hyperframes/LICENSE)。
-
-[`gsap-skills/`](gsap-skills/) 目录收录了来自 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) 的 GSAP 动画技能包，当前同步基于提交 `03d9f0c3dbf91e0b60582b64ed040c8911ca0174`。
+[`gsap-skills/`](gsap-skills/) 目录收录了来自 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) 的 GSAP 动画技能包，当前同步基于提交 `aed9cfd3277740755f6bfc1155c7aa645403b760`。
 
 其中包括：
 
@@ -149,6 +130,8 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - `gsap-frameworks`
 
 归属和法律文件保存在 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 与 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)。
+
+[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)。本仓保留通用的 `planning-with-files` 名称，并移除 Pi 专属包元数据，使其继续兼容标准 `SKILL.md` 工作流。
 
 ## 常见前置条件
 
@@ -170,7 +153,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [brainstorming](brainstorming/SKILL.md)                               | 通过协作式对话把想法整理成经确认的设计与规格，再进入实现。                                                                                                       | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | 持续式浏览器自动化 CLI，用于导航、页面状态检查、表单填写、截图和信息提取。                                                                     | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
-| [context7-cli](context7-cli/SKILL.md)                               | 使用 Context7 CLI 完成文档查询、skill 管理和 MCP 配置。                                                                                        | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/context7-cli)                                        |
+| [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查询最新文档、API 参考和代码示例。                                                                                           | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | 基于 OpenXML SDK（.NET）的专业 DOCX 创建、编辑与格式编排。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 做网页、代码和公司调研。                                                                                                              | 自制                                                                                                                           |
 | [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，发现已有技能。                                                                                                           | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
@@ -179,14 +162,15 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在写第三方 API / SDK 代码前先抓当前文档。                                                                                                      | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 用 `gh` 处理当前分支 PR 的评审和 issue 评论。                                                                                                  | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 检查 GitHub Actions 失败项、提取日志并制定修复方案。                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
+| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/improve-codebase-architecture)                              |
+| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 把测试文件中的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依赖源码，给 AI agents 提供更深的实现上下文。                                                                                              | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | 通过 agent-browser 和 Chrome DevTools Protocol 自动化 Electron 桌面应用。                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)       |
+| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 生成、编辑和读取 PowerPoint 演示文稿。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [remotion-best-practices](remotion-best-practices/SKILL.md)         | 用于 React + Remotion 视频开发的最佳实践。                                                                                                     | [remotion-dev/skills](https://github.com/remotion-dev/skills/tree/main/skills/remotion)                                        |
 | [test-driven-development](test-driven-development/SKILL.md)         | 实现任何功能或修复前先使用。                                                                                                                   | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、测试失败或异常行为时，在提出修复前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低损 XML 工作流打开、创建、读取、分析、编辑和校验 Excel / 表格文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
@@ -196,16 +180,6 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - `dogfood` 和 `electron` 的上游路径在 `skill-data/`，不在 upstream 的 `skills/`。
 - upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中迁移了这些 specialized skills，以便 installer 发现逻辑只找到引导 skill `agent-browser`。
 - 本仓有意继续把它们作为顶层 vendored skills 保留，因为它们仍在 upstream 持续维护，且具备直接使用价值。
-
-### Vendored `hyperframes/` 技能
-
-| 技能 | 说明 | Source URL |
-| --- | --- | --- |
-| [hyperframes](hyperframes/hyperframes/SKILL.md) | 用 HTML 构建视频分镜、字幕、TTS 旁白、音频驱动动画和场景转场。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes) |
-| [hyperframes-cli](hyperframes/hyperframes-cli/SKILL.md) | HyperFrames CLI 工作流：init、lint、preview、render、转录、TTS 与环境诊断。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-cli) |
-| [hyperframes-registry](hyperframes/hyperframes-registry/SKILL.md) | 安装 registry 中的 blocks / components，并把它们接入 HyperFrames 分镜。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-registry) |
-| [gsap](hyperframes/gsap/SKILL.md) | 面向 HyperFrames 的 GSAP 动画参考：补间、timeline、缓动、特效与性能实践。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/gsap) |
-| [website-to-hyperframes](hyperframes/website-to-hyperframes/SKILL.md) | 抓取网站并把它转成包含设计、脚本、分镜、配音和搭建步骤的 HyperFrames 视频工作流。 | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes/tree/main/skills/website-to-hyperframes) |
 
 ### Vendored `gsap-skills/` 技能
 
@@ -233,4 +207,4 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 本仓库主许可证见 [LICENSE](LICENSE)。
 
-部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`minimax-docx/`](minimax-docx/) 和 [`gsap-skills/`](gsap-skills/)。
+部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`minimax-docx/`](minimax-docx/) 和 [`gsap-skills/`](gsap-skills/)。
