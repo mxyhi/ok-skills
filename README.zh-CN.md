@@ -80,7 +80,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 - [planning-with-files](planning-with-files/SKILL.md)：通过 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：把测试里的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。
-- [test-driven-development](test-driven-development/SKILL.md)：任何功能或修复先写测试。
+- [tdd](tdd/SKILL.md)：功能、修复、重构或行为变更前执行 test-first red-green-refactor。
 - [systematic-debugging](systematic-debugging/SKILL.md)：遇到 bug、测试失败或异常行为时，先系统化追根因，再提出修复。
 
 ### GitHub 工作流
@@ -171,7 +171,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 生成、编辑和读取 PowerPoint 演示文稿。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [test-driven-development](test-driven-development/SKILL.md)         | 实现任何功能或修复前先使用。                                                                                                                   | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、测试失败或异常行为时，在提出修复前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低损 XML 工作流打开、创建、读取、分析、编辑和校验 Excel / 表格文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 仅在用户明确要求用 `gh` 一次性完成 stage、commit、push 并创建 GitHub PR 时使用。                                                               | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |

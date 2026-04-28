@@ -80,7 +80,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, `progress.md`를 사용하는 지속형 마크다운 계획 수립.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, AI navigation을 높이는 architecture deepening 기회를 찾음.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): 테스트의 `as` 타입 단언을 `@total-typescript/shoehorn`으로 마이그레이션.
-- [test-driven-development](test-driven-development/SKILL.md): 구현 전에 테스트부터 작성하도록 강제.
+- [tdd](tdd/SKILL.md): 기능, 버그 수정, 리팩터링, 동작 변경 전에 test-first red-green-refactor 적용.
 - [systematic-debugging](systematic-debugging/SKILL.md): 버그, 테스트 실패, 예상치 못한 동작에서 수정안을 내기 전에 근본 원인을 체계적으로 조사.
 
 ### GitHub 워크플로
@@ -172,7 +172,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [minimax-pdf](minimax-pdf/SKILL.md) | 토큰 기반 디자인 시스템으로 PDF를 생성, 입력, 재구성. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML 워크플로, markitdown으로 PowerPoint를 생성, 편집, 읽기. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [test-driven-development](test-driven-development/SKILL.md)         | 기능이나 버그 수정을 구현하기 전에 사용.                                                                                                         | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 버그, 테스트 실패, 예상치 못한 동작을 만났을 때 수정안을 내기 전에 사용.                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 손실을 최소화한 XML 워크플로로 Excel/스프레드시트를 열고, 생성하고, 분석·편집·검증. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 사용자가 명시적으로 요청한 경우에만 `gh`를 사용해 stage, commit, push, PR 생성을 한 번에 처리.                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |

@@ -80,7 +80,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [planning-with-files](planning-with-files/SKILL.md): lập kế hoạch Markdown bền vững với `task_plan.md`, `findings.md` và `progress.md`.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): tìm cơ hội architecture deepening giúp tăng locality, leverage, testability và AI navigation.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migrate `as` type assertions trong test sang `@total-typescript/shoehorn`.
-- [test-driven-development](test-driven-development/SKILL.md): buộc viết test trước khi triển khai.
+- [tdd](tdd/SKILL.md): test-first red-green-refactor cho tính năng, bugfix, refactor và thay đổi hành vi.
 - [systematic-debugging](systematic-debugging/SKILL.md): điều tra có hệ thống nguyên nhân gốc của bug, test lỗi hoặc hành vi bất thường trước khi đề xuất cách sửa.
 
 ### Workflow GitHub
@@ -172,7 +172,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [minimax-pdf](minimax-pdf/SKILL.md) | Tạo, điền và tái định dạng tài liệu PDF bằng hệ thiết kế token. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Tạo, chỉnh sửa và đọc bản trình bày PowerPoint bằng PptxGenJS, luồng XML hoặc markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [test-driven-development](test-driven-development/SKILL.md)         | Dùng trước khi triển khai bất kỳ tính năng hay bugfix nào.                                                                                                                                 | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [tdd](tdd/SKILL.md)                                                 | Dùng trước tính năng, bugfix, refactor hoặc thay đổi hành vi; ưu tiên integration-style tests qua public interface.                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | Dùng khi gặp bug, test lỗi hoặc hành vi bất thường, trước khi đề xuất cách sửa.                                                             | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Chỉ dùng khi người dùng yêu cầu rõ ràng việc stage, commit, push và mở GitHub pull request trong một luồng dùng `gh`.                                                                      | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |

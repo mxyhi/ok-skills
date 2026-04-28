@@ -80,7 +80,7 @@ Then ask naturally:
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning with `task_plan.md`, `findings.md`, and `progress.md`.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): find deepening opportunities that improve locality, leverage, testability, and AI navigation.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migrate test `as` assertions to `@total-typescript/shoehorn`.
-- [test-driven-development](test-driven-development/SKILL.md): enforce writing tests before implementation work.
+- [tdd](tdd/SKILL.md): test-first red-green-refactor for features, bugfixes, refactors, and behavior changes.
 - [systematic-debugging](systematic-debugging/SKILL.md): investigate root causes methodically before proposing fixes.
 
 ### GitHub Workflow
@@ -171,7 +171,7 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | [minimax-pdf](minimax-pdf/SKILL.md) | Generate, fill, and reformat PDF documents with a token-based design system. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Generate, edit, and read PowerPoint presentations with PptxGenJS, XML workflows, or markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [test-driven-development](test-driven-development/SKILL.md)         | Use before implementing any feature or bugfix.                                                                                                                                          | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/test-driven-development)                               |
+| [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes.                                                                                           | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Open, create, read, analyze, edit, and validate Excel or spreadsheet files with low-loss XML workflows. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | Use only when the user explicitly asks to stage, commit, push, and open a GitHub pull request in one flow using `gh`.                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
