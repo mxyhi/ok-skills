@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and AGENTS.md playbooks for Codex, Claude Code, Cursor, OpenClaw, Trae, and other SKILL.md-compatible tools.
 
-This repo currently bundles **36 reusable skills**: **28 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
+This repo currently bundles **37 reusable skills**: **29 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -93,6 +93,7 @@ Then ask naturally:
 
 - [agent-browser](agent-browser/SKILL.md): browser automation for navigation, forms, screenshots, and scraping.
 - [browser-use](browser-use/SKILL.md): persistent browser automation CLI for navigation, state inspection, form filling, screenshots, and extraction.
+- [browser-trace](browser-trace/SKILL.md): CDP trace capture for browser automation runs, with screenshots, DOM dumps, and per-page buckets.
 - [opencli](opencli/opencli-usage/SKILL.md): turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.
 - [dogfood](dogfood/SKILL.md): structured exploratory testing with reproducible evidence.
 - [electron](electron/SKILL.md): automate Electron desktop apps over Chrome DevTools Protocol.
@@ -152,6 +153,7 @@ Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skil
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons through CLI or MCP tools.                                                                                                          | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | Turn ideas into validated designs and specs through collaborative dialogue before implementation.                                                                                         | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | Persistent browser automation CLI for navigation, state inspection, form filling, screenshots, and extraction.                                                                          | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | Capture CDP traces, screenshots, and DOM dumps for browser automation debugging.                                                                                                        | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode that cuts response tokens by speaking like caveman while keeping technical accuracy.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | Use the Context7 CLI for current documentation lookup, API references, and code examples.                                                                                              | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | Professional DOCX document creation, editing, and formatting using OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

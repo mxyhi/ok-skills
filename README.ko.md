@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 36개**가 포함되어 있습니다. 이 중 **28개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 37개**가 포함되어 있습니다. 이 중 **29개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -93,6 +93,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 
 - [agent-browser](agent-browser/SKILL.md): 탐색, 폼, 스크린샷, 스크래핑을 위한 브라우저 자동화.
 - [browser-use](browser-use/SKILL.md): 탐색, 페이지 상태 확인, 폼 입력, 스크린샷, 정보 추출을 위한 지속형 브라우저 자동화 CLI.
+- [browser-trace](browser-trace/SKILL.md): 브라우저 자동화 실행의 CDP trace, 스크린샷, DOM dump를 캡처하고 페이지별로 나눠 디버깅합니다.
 - [opencli](opencli/opencli-usage/SKILL.md): 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다룹니다.
 
 - [dogfood](dogfood/SKILL.md): 재현 가능한 증거를 남기는 구조화된 탐색 테스트.
@@ -153,6 +154,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | 구현 전에 협업형 대화를 통해 아이디어를 검증된 설계와 명세로 구체화합니다.                                                                                         | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | 탐색, 페이지 상태 확인, 폼 입력, 스크린샷, 정보 추출을 위한 지속형 브라우저 자동화 CLI.                                                          | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | 브라우저 자동화 디버깅용 CDP trace, 스크린샷, DOM dump를 캡처합니다.                                                                               | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI를 사용해 최신 문서, API 레퍼런스, 코드 예제를 조회.                                                                                 | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK(.NET) 기반의 전문 DOCX 생성, 편집, 서식화. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

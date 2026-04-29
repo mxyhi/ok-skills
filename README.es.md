@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **36 skills reutilizables**: **28 skills de nivel superior** mantenidos directamente aqui, ademas de **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
+Este repositorio incluye actualmente **37 skills reutilizables**: **29 skills de nivel superior** mantenidos directamente aqui, ademas de **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -93,6 +93,7 @@ Despues puedes pedirlo de forma natural:
 
 - [agent-browser](agent-browser/SKILL.md): automatizacion de navegador para navegacion, formularios, capturas y scraping.
 - [browser-use](browser-use/SKILL.md): CLI de automatizacion persistente del navegador para navegacion, inspeccion del estado de la pagina, formularios, capturas y extraccion.
+- [browser-trace](browser-trace/SKILL.md): captura trazas CDP, capturas de pantalla y dumps DOM para depurar automatizacion del navegador.
 - [opencli](opencli/opencli-usage/SKILL.md): convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.
 - [dogfood](dogfood/SKILL.md): pruebas exploratorias estructuradas con evidencia reproducible.
 - [electron](electron/SKILL.md): automatiza aplicaciones Electron mediante Chrome DevTools Protocol.
@@ -153,6 +154,7 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [better-icons](better-icons/SKILL.md)                               | Busca en mas de 200 bibliotecas de Iconify y obtiene iconos SVG mediante CLI o herramientas MCP.                                                                                                                    | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | Convierte ideas en disenos y especificaciones validadas mediante dialogo colaborativo antes de implementar.                                                                               | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | CLI de automatizacion persistente del navegador para navegacion, inspeccion del estado de la pagina, formularios, capturas y extraccion.                                                                            | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | Captura trazas CDP, capturas de pantalla y dumps DOM para depurar automatizacion del navegador.                                                                    | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Modo de comunicacion ultra comprimido que reduce tokens de respuesta hablando como cavernicola sin perder precision tecnica.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | Usa Context7 CLI para consultar documentacion actual, referencias de API y ejemplos de codigo.                                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | Creacion, edicion y formateo profesional de DOCX con OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

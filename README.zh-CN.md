@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **36 个可复用技能**：其中 **28 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **37 个可复用技能**：其中 **29 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -93,6 +93,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 - [agent-browser](agent-browser/SKILL.md)：浏览器导航、表单、截图、抓取和网页测试。
 - [browser-use](browser-use/SKILL.md)：持续式浏览器自动化 CLI，用于导航、页面状态检查、表单填写、截图和信息提取。
+- [browser-trace](browser-trace/SKILL.md)：采集浏览器自动化运行的 CDP trace、截图和 DOM dump，并按页面拆分以便调试。
 - [opencli](opencli/opencli-usage/SKILL.md)：将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。
 - [dogfood](dogfood/SKILL.md)：系统化探索测试，并输出可复现证据。
 - [electron](electron/SKILL.md)：通过 Chrome DevTools Protocol 自动化 Electron 桌面应用。
@@ -152,6 +153,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | 通过协作式对话把想法整理成经确认的设计与规格，再进入实现。                                                                                                       | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | 持续式浏览器自动化 CLI，用于导航、页面状态检查、表单填写、截图和信息提取。                                                                     | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | 采集浏览器自动化调试所需的 CDP trace、截图和 DOM dump。                                                                                     | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查询最新文档、API 参考和代码示例。                                                                                           | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | 基于 OpenXML SDK（.NET）的专业 DOCX 创建、编辑与格式编排。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **36 skill có thể tái sử dụng**: **28 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **37 skill có thể tái sử dụng**: **29 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -93,6 +93,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho điều hướng, biểu mẫu, ảnh chụp màn hình và scraping.
 - [browser-use](browser-use/SKILL.md): CLI tự động hóa trình duyệt dạng phiên bền vững để điều hướng, kiểm tra trạng thái trang, điền biểu mẫu, chụp màn hình và trích xuất dữ liệu.
+- [browser-trace](browser-trace/SKILL.md): ghi lại CDP trace, ảnh chụp màn hình và DOM dump cho quá trình gỡ lỗi tự động hóa trình duyệt.
 - [opencli](opencli/opencli-usage/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
 
 - [dogfood](dogfood/SKILL.md): exploratory testing có cấu trúc cùng bằng chứng có thể tái hiện.
@@ -153,6 +154,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [better-icons](better-icons/SKILL.md)                               | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP.                                                                                                                     | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | Biến ý tưởng thành thiết kế và đặc tả đã được xác nhận thông qua đối thoại cộng tác trước khi triển khai.                                                                                | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | CLI tự động hóa trình duyệt dạng phiên bền vững để điều hướng, kiểm tra trạng thái trang, điền biểu mẫu, chụp màn hình và trích xuất dữ liệu.                                              | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | Ghi lại CDP trace, ảnh chụp màn hình và DOM dump để gỡ lỗi tự động hóa trình duyệt.                                                                                  | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Che do giao tiep sieu nen, tra loi kieu nguoi toi co de giam token nhung van giu do chinh xac ky thuat.                                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | Dùng Context7 CLI để tra cứu tài liệu mới nhất, tham chiếu API và ví dụ mã.                                                                                                                | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | Tạo, chỉnh sửa và định dạng DOCX chuyên nghiệp với OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **36 переиспользуемых skills**: **28 skills верхнего уровня**, которые поддерживаются прямо здесь, и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **37 переиспользуемых skills**: **29 skills верхнего уровня**, которые поддерживаются прямо здесь, и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -93,6 +93,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 - [agent-browser](agent-browser/SKILL.md): browser automation для навигации, форм, скриншотов и scraping.
 - [browser-use](browser-use/SKILL.md): Постоянно работающий CLI для браузерной автоматизации: навигация, проверка состояния страницы, заполнение форм, скриншоты и извлечение данных.
+- [browser-trace](browser-trace/SKILL.md): снимает CDP-трейсы, скриншоты и DOM-дампы для отладки браузерной автоматизации.
 - [opencli](opencli/opencli-usage/SKILL.md): превращать сайты в CLI-команды за счет повторного использования браузерной сессии, public API и AI-generated adapters.
 
 - [dogfood](dogfood/SKILL.md): структурированное exploratory testing с воспроизводимыми артефактами.
@@ -153,6 +154,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons via CLI or MCP tools.                                                                                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | Превращает идеи в подтвержденные дизайн-решения и спецификации через совместный диалог до начала реализации.                                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | Постоянно работающий CLI для браузерной автоматизации: навигация, проверка состояния страницы, заполнение форм, скриншоты и извлечение данных.                                               | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | Снимает CDP-трейсы, скриншоты и DOM-дампы для отладки браузерной автоматизации.                                                                                      | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Sverkhzhatyi rezhim obshcheniya, kotoryi sokrashchaet tokeny otveta stilem peshchernogo cheloveka bez poteri tekhnicheskoi tochnosti.                                                      | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | Use the Context7 CLI for current documentation lookup, API references, and code examples.                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | Профессиональное создание, редактирование и форматирование DOCX на OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |

@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **36 reusable skills** शामिल हैं: **28 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **37 reusable skills** शामिल हैं: **29 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -93,6 +93,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 
 - [agent-browser](agent-browser/SKILL.md): navigation, forms, screenshots, और scraping के लिए browser automation.
 - [browser-use](browser-use/SKILL.md): navigation, page state inspection, form filling, screenshots, और extraction के लिए persistent browser automation CLI.
+- [browser-trace](browser-trace/SKILL.md): browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।
 - [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
 - [dogfood](dogfood/SKILL.md): reproducible evidence के साथ structured exploratory testing.
 - [electron](electron/SKILL.md): Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।
@@ -153,6 +154,7 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [better-icons](better-icons/SKILL.md)                               | CLI या MCP tools के जरिए 200+ Iconify libraries खोजें और SVG icons प्राप्त करें।                                                                                                             | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [brainstorming](brainstorming/SKILL.md)                               | Collaborative dialogue ke through implementation se pehle ideas ko validated design aur spec mein badalta hai.                                                                          | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | navigation, page state inspection, form filling, screenshots, और extraction के लिए persistent browser automation CLI.                                                                        | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
+| [browser-trace](browser-trace/SKILL.md)                             | browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।                                                                                  | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode jo caveman style me bolkar response tokens kam karta hai aur technical accuracy banaye rakhta hai.                                                       | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
 | [find-docs](find-docs/SKILL.md)                                     | current documentation, API references, और code examples के लिए Context7 CLI का उपयोग करें।                                                                                                   | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
