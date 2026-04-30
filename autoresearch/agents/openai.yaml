@@ -1,0 +1,8 @@
+interface:
+  display_name: "Autoresearch"
+  short_description: "Autonomous goal-directed iteration engine"
+  brand_color: "#7C3AED"
+  default_prompt: "Set a goal, define a metric, let Codex loop until done"
+
+policy:
+  allow_implicit_invocation: true
