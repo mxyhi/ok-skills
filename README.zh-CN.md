@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **38 个可复用技能**：其中 **30 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **40 个可复用技能**：其中 **32 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -22,7 +22,6 @@
 
 如果你第一次用这个仓库，优先从下面几个技能开始：
 
-- [brainstorming](brainstorming/SKILL.md)：在进入实现前先梳理想法、需求和设计。
 - [planning-with-files](planning-with-files/SKILL.md)：复杂任务、调研任务、多轮推进任务的文件化规划。
 - [find-docs](find-docs/SKILL.md)：查询最新库文档、API 参考和 Context7 示例。
 - [agent-browser](agent-browser/SKILL.md)：浏览器自动化、截图、抓取、表单填写、Web QA。
@@ -76,9 +75,11 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 ### 规划与提示工程
 
-- [brainstorming](brainstorming/SKILL.md)：在进入实现前先梳理想法、需求和设计。
 - [planning-with-files](planning-with-files/SKILL.md)：通过 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。
 - [autoresearch](autoresearch/SKILL.md)：以明确目标、度量、验证循环和保留/丢弃门禁驱动自主迭代。
+- [diagnose](diagnose/SKILL.md)：面向疑难 bug 与性能回归的严格诊断循环。
+- [grill-me](grill-me/SKILL.md)：通过一次一个问题的追问，压力测试计划或设计直到达成共识。
+- [grill-with-docs](grill-with-docs/SKILL.md)：用领域语言、`CONTEXT.md` 与 ADR 压测计划，并在决策明确时同步更新文档。
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：把测试里的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。
 - [tdd](tdd/SKILL.md)：功能、修复、重构或行为变更前执行 test-first red-green-refactor。
@@ -153,10 +154,10 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [ai-elements](ai-elements/SKILL.md)                                 | 为 ai-elements 组件库创建新的 AI 聊天界面组件，遵循可组合模式与 shadcn/ui 约定。                                                               | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
 | [autoresearch](autoresearch/SKILL.md)                               | 自主目标导向迭代引擎，覆盖修改、验证、保留/丢弃与重复推进工作流。                                                                          | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
-| [brainstorming](brainstorming/SKILL.md)                               | 通过协作式对话把想法整理成经确认的设计与规格，再进入实现。                                                                                                       | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/brainstorming)                                        |
 | [browser-use](browser-use/SKILL.md)                                 | 持续式浏览器自动化 CLI，用于导航、页面状态检查、表单填写、截图和信息提取。                                                                     | [browser-use/browser-use](https://github.com/browser-use/browser-use/tree/main/skills/browser-use)                             |
 | [browser-trace](browser-trace/SKILL.md)                             | 采集浏览器自动化调试所需的 CDP trace、截图和 DOM dump。                                                                                     | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/caveman)                                            |
+| [diagnose](diagnose/SKILL.md)                                   | 面向疑难 bug 与性能回归的严格诊断循环。                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose)                                |
 | [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查询最新文档、API 参考和代码示例。                                                                                           | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [minimax-docx](minimax-docx/SKILL.md) | 基于 OpenXML SDK（.NET）的专业 DOCX 创建、编辑与格式编排。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 做网页、代码和公司调研。                                                                                                              | 自制                                                                                                                           |
@@ -166,8 +167,10 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在写第三方 API / SDK 代码前先抓当前文档。                                                                                                      | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 用 `gh` 处理当前分支 PR 的评审和 issue 评论。                                                                                                  | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
 | [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 检查 GitHub Actions 失败项、提取日志并制定修复方案。                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
-| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/improve-codebase-architecture)                              |
-| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 把测试文件中的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/migrate-to-shoehorn)                                        |
+| [grill-me](grill-me/SKILL.md)                                 | 通过持续追问计划或设计，直到达成共同理解。                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
+| [grill-with-docs](grill-with-docs/SKILL.md)                   | 用领域语言、`CONTEXT.md` 与 ADR 压测计划，并内联更新文档。                                                                  | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
+| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
+| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 把测试文件中的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依赖源码，给 AI agents 提供更深的实现上下文。                                                                                              | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
@@ -175,7 +178,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 生成、编辑和读取 PowerPoint 演示文稿。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
-| [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/tdd)                                                        |
+| [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、测试失败或异常行为时，在提出修复前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低损 XML 工作流打开、创建、读取、分析、编辑和校验 Excel / 表格文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 | [yeet](yeet/SKILL.md)                                               | 仅在用户明确要求用 `gh` 一次性完成 stage、commit、push 并创建 GitHub PR 时使用。                                                               | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/yeet)                                               |
@@ -211,4 +214,4 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 本仓库主许可证见 [LICENSE](LICENSE)。
 
-部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`minimax-docx/`](minimax-docx/) 和 [`gsap-skills/`](gsap-skills/)。
+部分技能目录包含额外许可证或归属说明文件，包括 [`caveman/`](caveman/)、[`diagnose/`](diagnose/)、[`grill-me/`](grill-me/)、[`grill-with-docs/`](grill-with-docs/)、[`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`minimax-docx/`](minimax-docx/) 和 [`gsap-skills/`](gsap-skills/)。
