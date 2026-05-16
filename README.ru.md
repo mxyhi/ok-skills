@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-Кураторская коллекция AI coding agent skills и playbook-файлов `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
+Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **41 переиспользуемых skills**: **33 skills верхнего уровня**, которые поддерживаются прямо здесь, и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`.
+Сейчас в этом репозитории собрано **41 переиспользуемых skills**: **33 skills верхнего уровня**, которые поддерживаются прямо здесь, и **8 vendored GSAP animation skills** в каталоге [`gsap-skills/`](gsap-skills/). Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
-Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
+Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
 **Популярные сценарии:** поиск актуальной документации, автоматизация браузера, отладка GitHub Actions, prompt engineering, планирование сложных задач, frontend design и работа с PDF / Word / PPTX / XLSX.
 
 ## Для кого этот репозиторий
 
 - Вы используете Codex, Claude Code, Cursor, OpenClaw, Trae или другого AI coding agent и хотите опираться на переиспользуемые skills, а не на одноразовые prompts.
-- Вы поддерживаете workflows на базе `AGENTS.md` / `SKILL.md` и хотите переносимые инструкции, которые работают в разных проектах.
+- Вы поддерживаете workflows на базе `CLAUDE.md` / `AGENTS.md` / `SKILL.md` и хотите переносимые инструкции, которые работают в разных проектах.
 - Вам нужны проверенные skills для поиска документации, автоматизации браузера, GitHub workflow, planning, prompt engineering, frontend design, PDF, Office-документов, презентаций и таблиц.
 
 ## С чего начать
@@ -39,6 +39,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
   ...
 ```
 
-Добавьте простые trigger rules в ваш `AGENTS.md`:
+Для глобальных инструкций Claude Code или Codex начните с [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md), затем скопируйте или объедините его с `CLAUDE.md` для Claude Code или `AGENTS.md` для Codex. Он включает Chinese-first и KISS-ориентированный workflow, проверки актуальной документации/source, предпочтение multi-agent, включенные по умолчанию `caveman` / `planning-with-files` / `karpathy-guidelines`, строгие ожидания к TypeScript и правила маршрутизации context-mode. Перед повторным использованием отредактируйте раздел `语言要求` под ваш проект. Раздел `其他注意项` намеренно является проектно-локальным и может редактироваться по мере необходимости.
+
+Добавьте простые trigger rules в ваш `AGENTS.md` или перенесите те же skill triggers в `CLAUDE.md` / `AGENTS.md`:
 
 ```md
 ## Skills

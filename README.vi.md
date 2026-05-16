@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-Bộ sưu tập AI coding agent skills và playbook `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
+Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **41 skill có thể tái sử dụng**: **33 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi.
+Kho này hiện gồm **41 skill có thể tái sử dụng**: **33 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
-Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
+Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
 **Các tình huống dùng phổ biến:** tra cứu tài liệu, tự động hóa trình duyệt, debug GitHub Actions, prompt engineering, workflow lập kế hoạch, thiết kế frontend, và xử lý PDF/Word/PPTX/XLSX.
 
 ## Repo này phù hợp với ai
 
 - Bạn dùng Codex, Claude Code, Cursor, OpenClaw, Trae hoặc một AI coding agent khác và muốn dùng lại skill thay vì viết prompt ad-hoc.
-- Bạn duy trì workflow với `AGENTS.md` / `SKILL.md` và muốn có hướng dẫn có thể dùng xuyên nhiều dự án.
+- Bạn duy trì workflow với `CLAUDE.md` / `AGENTS.md` / `SKILL.md` và muốn có hướng dẫn có thể dùng xuyên nhiều dự án.
 - Bạn cần các skill đã được kiểm chứng cho tra cứu tài liệu, tự động hóa trình duyệt, workflow GitHub, lập kế hoạch, prompt engineering, thiết kế frontend, PDF, tài liệu Office, slide deck và bảng tính.
 
 ## Bắt đầu từ đây
@@ -39,6 +39,7 @@ Sau khi clone, repo sẽ nằm tại `~/.agents/skills/ok-skills`, và các thư
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ Sau khi clone, repo sẽ nằm tại `~/.agents/skills/ok-skills`, và các thư
   ...
 ```
 
-Thêm các quy tắc kích hoạt đơn giản vào `AGENTS.md` của bạn:
+Với chỉ dẫn toàn cục cho Claude Code hoặc Codex, hãy bắt đầu từ [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md), rồi sao chép hoặc gộp vào `CLAUDE.md` của Claude Code hoặc `AGENTS.md` của Codex. File này đóng gói workflow Chinese-first, theo KISS, kiểm tra tài liệu/source mới nhất, ưu tiên multi-agent, bật mặc định `caveman` / `planning-with-files` / `karpathy-guidelines`, kỳ vọng TypeScript nghiêm ngặt và quy tắc định tuyến context-mode. Trước khi tái sử dụng, hãy chỉnh phần `语言要求` cho dự án của bạn. Phần `其他注意项` là cấu hình cục bộ theo dự án và có thể chỉnh khi cần.
+
+Thêm các quy tắc kích hoạt đơn giản vào `AGENTS.md` của bạn, hoặc gộp cùng các trigger skill đó vào `CLAUDE.md` / `AGENTS.md`:
 
 ```md
 ## Skills

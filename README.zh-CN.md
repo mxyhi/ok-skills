@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `AGENTS.md` 工作流工具的技能仓库。
+这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **41 个可复用技能**：其中 **33 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范。
+当前仓库共收录 **41 个可复用技能**：其中 **33 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
-如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
+如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
 **高频使用场景：** 最新文档查询、浏览器自动化、GitHub Actions 排障、提示工程、复杂任务规划、前端设计，以及 PDF / Word / PPTX / XLSX 内容处理。
 
 ## 适合谁
 
 - 你在用 Codex、Claude Code、Cursor、OpenClaw、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
-- 你在维护 `AGENTS.md` / `SKILL.md` 体系，希望不同项目之间可以迁移同一套工作流。
+- 你在维护 `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 体系，希望不同项目之间可以迁移同一套工作流。
 - 你需要现成的文档查询、浏览器自动化、GitHub 工作流、规划、提示工程、前端设计、PDF、Office 文档、演示文稿和表格类技能。
 
 ## 建议先装这几个
@@ -39,6 +39,7 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合
   ...
 ```
 
-然后在 `AGENTS.md` 里加最小触发规则：
+Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 开始，然后复制或合并到 Claude Code 的 `CLAUDE.md` 或 Codex 的 `AGENTS.md`。它内置中文优先、KISS、最新文档/源码检查、多 agent 优先、默认启用 `caveman` / `planning-with-files` / `karpathy-guidelines`、严格 TypeScript 约束和 context-mode 路由规则。复用前请按项目编辑 `语言要求` 小节；`其他注意项` 是项目本地配置，可按需编辑。
+
+然后在 `AGENTS.md` 里加最小触发规则，或把同样的 skill 触发规则合并进 `CLAUDE.md` / `AGENTS.md`：
 
 ```md
 ## Skills

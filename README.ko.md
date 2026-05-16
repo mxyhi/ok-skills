@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `AGENTS.md` 플레이북 저장소입니다.
+Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 41개**가 포함되어 있습니다. 이 중 **33개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있습니다.
+이 저장소에는 현재 **재사용 가능한 스킬 41개**가 포함되어 있습니다. 이 중 **33개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
-**Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
+**Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
 **주요 사용 장면:** 최신 문서 조회, 브라우저 자동화, GitHub Actions 장애 분석, 프롬프트 엔지니어링, 복잡한 작업 계획, 프런트엔드 디자인, 그리고 PDF / Word / PPTX / XLSX 문서 작업.
 
 ## 이 저장소가 맞는 사람
 
 - Codex, Claude Code, Cursor, OpenClaw, Trae 또는 다른 AI 코딩 에이전트를 사용하며, 일회성 프롬프트 대신 재사용 가능한 스킬을 원한다.
-- `AGENTS.md` / `SKILL.md` 기반 워크플로를 운영하며, 프로젝트 간에 이식 가능한 지침을 원한다.
+- `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 기반 워크플로를 운영하며, 프로젝트 간에 이식 가능한 지침을 원한다.
 - 문서 조회, 브라우저 자동화, GitHub 워크플로, 계획 수립, 프롬프트 엔지니어링, 프런트엔드 디자인, PDF, Office 문서, 슬라이드, 스프레드시트용 검증된 스킬이 필요하다.
 
 ## 먼저 설치할 추천 스킬
@@ -39,6 +39,7 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ clone 이후 저장소 경로는 `~/.agents/skills/ok-skills`가 되며, 내부 
   ...
 ```
 
-그리고 `AGENTS.md`에 아래처럼 간단한 트리거 규칙을 추가하면 됩니다.
+Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)에서 시작해 Claude Code의 `CLAUDE.md` 또는 Codex의 `AGENTS.md`로 복사하거나 병합할 수 있습니다. Chinese-first, KISS, 최신 문서/소스 확인, multi-agent 우선, `caveman` / `planning-with-files` / `karpathy-guidelines` 기본 활성화, 엄격한 TypeScript 규칙, context-mode 라우팅을 담은 agent playbook입니다. 재사용하기 전에 `语言要求` 섹션을 프로젝트에 맞게 수정하세요. `其他注意项` 섹션은 프로젝트 로컬 설정이므로 필요에 따라 수정할 수 있습니다.
+
+그리고 `AGENTS.md`에 아래처럼 간단한 트리거 규칙을 추가하거나, 같은 skill 트리거를 `CLAUDE.md` / `AGENTS.md`에 병합하면 됩니다.
 
 ```md
 ## Skills

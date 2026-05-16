@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `AGENTS.md` playbooks का यह curated repository है।
+Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **41 reusable skills** शामिल हैं: **33 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं।
+इस repo में अभी **41 reusable skills** शामिल हैं: **33 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है।
 
-अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
+अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
 **लोकप्रिय उपयोग परिदृश्य:** docs lookup, browser automation, GitHub Actions debugging, prompt engineering, planning workflows, frontend design, और PDF / Word / PPTX / XLSX authoring.
 
 ## यह Repo किनके लिए है
 
 - आप Codex, Claude Code, Cursor, OpenClaw, Trae या किसी अन्य AI coding agent का उपयोग करते हैं और ad-hoc prompts की जगह reusable skills चाहते हैं।
-- आप `AGENTS.md` / `SKILL.md` workflows maintain करते हैं और ऐसी portable instructions चाहते हैं जो कई projects में काम करें।
+- आप `CLAUDE.md` / `AGENTS.md` / `SKILL.md` workflows maintain करते हैं और ऐसी portable instructions चाहते हैं जो कई projects में काम करें।
 - आपको docs lookup, browser automation, GitHub workflow, planning, prompt engineering, frontend design, PDFs, Office documents, slide decks और spreadsheets के लिए battle-tested skills चाहिए।
 
 ## शुरुआत यहां से करें
@@ -39,6 +39,7 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ Clone करने के बाद repo `~/.agents/skills/ok-skills` पर र
   ...
 ```
 
-अपने `AGENTS.md` में simple trigger rules जोड़ें:
+Claude Code या Codex की global instructions के लिए [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) से शुरू करें, फिर इसे Claude Code के `CLAUDE.md` या Codex के `AGENTS.md` में copy या merge करें। इसमें Chinese-first, KISS-oriented workflow, latest docs/source checks, multi-agent preference, default `caveman` / `planning-with-files` / `karpathy-guidelines`, strict TypeScript expectations और context-mode routing rules शामिल हैं। Reuse करने से पहले `语言要求` section को अपने project के लिए edit करें। `其他注意项` section intentionally project-local है और जरूरत के अनुसार edit किया जा सकता है।
+
+अपने `AGENTS.md` में simple trigger rules जोड़ें, या वही skill triggers `CLAUDE.md` / `AGENTS.md` में merge करें:
 
 ```md
 ## Skills

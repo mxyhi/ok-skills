@@ -4,18 +4,18 @@
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
+這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **41 個可重用技能**：其中 **33 個頂層技能** 由本倉直接維護，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局。
+目前倉庫共收錄 **41 個可重用技能**：其中 **33 個頂層技能** 由本倉直接維護，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
 
-如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
+如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **CLAUDE.md / AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
 **高頻使用場景：** 最新文件查詢、瀏覽器自動化、GitHub Actions 排障、提示工程、複雜任務規劃、前端設計，以及 PDF / Word / PPTX / XLSX 內容處理。
 
 ## 適合誰
 
 - 你正在使用 Codex、Claude Code、Cursor、OpenClaw、Trae 或其他 AI coding agent，希望重用技能，而不是每次臨時撰寫 prompt。
-- 你正在維護 `AGENTS.md` / `SKILL.md` 體系，希望同一套工作流能在不同專案之間攜帶與復用。
+- 你正在維護 `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 體系，希望同一套工作流能在不同專案之間攜帶與復用。
 - 你需要現成可用的文件查詢、瀏覽器自動化、GitHub 工作流、規劃、提示工程、前端設計、PDF、Office 文件、簡報與試算表技能。
 
 ## 建議先安裝這幾個
@@ -39,6 +39,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
 
 ```text
 ~/.agents/skills/ok-skills/
+  CLAUDE_AGENTS.md
   planning-with-files/
     SKILL.md
   find-docs/
@@ -48,7 +49,9 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
   ...
 ```
 
-接著在 `AGENTS.md` 裡加入最小觸發規則：
+Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 開始，然後複製或合併到 Claude Code 的 `CLAUDE.md` 或 Codex 的 `AGENTS.md`。它內建中文優先、KISS、最新文件/原始碼檢查、多 agent 優先、預設啟用 `caveman` / `planning-with-files` / `karpathy-guidelines`、嚴格 TypeScript 約束和 context-mode 路由規則。復用前請按專案編輯 `语言要求` 小節；`其他注意项` 是專案本地設定，可按需編輯。
+
+接著在 `AGENTS.md` 裡加入最小觸發規則，或把同樣的 skill 觸發規則合併進 `CLAUDE.md` / `AGENTS.md`：
 
 ```md
 ## Skills
