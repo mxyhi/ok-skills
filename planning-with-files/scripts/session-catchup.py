@@ -168,13 +168,198 @@ def get_codex_sessions(project_path: str) -> Iterable[Path]:
 
 
 def get_session_candidates(project_path: str) -> Tuple[str, Iterable[Path]]:
-    if '/.codex/' in Path(__file__).resolve().as_posix().lower():
+    script_path = Path(__file__).resolve().as_posix().lower()
+    if '/.codex/' in script_path:
         return 'codex', get_codex_sessions(project_path)
+    if '/.opencode/' in script_path:
+        # OpenCode dispatch is handled separately via SQLite (v2.38.0+).
+        return 'opencode', []
 
     claude_project_dir = get_claude_project_dir(project_path)
     if claude_project_dir.exists():
         return 'claude', get_sessions_sorted(claude_project_dir)
     return 'claude', []
+
+
+PLANNING_LIKE_SQL = ('%task_plan.md', '%findings.md', '%progress.md')
+
+
+def get_opencode_db_path() -> Optional[Path]:
+    """Resolve OpenCode SQLite path. Same on all OS per xdg-basedir."""
+    xdg = os.environ.get('XDG_DATA_HOME')
+    if xdg:
+        base = Path(xdg) / 'opencode'
+    elif os.environ.get('OPENCODE_DATA_DIR'):
+        base = Path(os.environ['OPENCODE_DATA_DIR'])
+    else:
+        base = Path.home() / '.local' / 'share' / 'opencode'
+    db = base / 'opencode.db'
+    return db if db.exists() else None
+
+
+def _format_opencode_part(data: Dict[str, Any], session_id: str) -> Optional[Dict[str, Any]]:
+    """Print-ready summary for one OpenCode part row."""
+    ptype = data.get('type')
+    short = session_id[:8] if session_id else '????????'
+    if ptype == 'tool':
+        tool = (data.get('tool') or '').lower()
+        state = data.get('state') or {}
+        input_ = state.get('input') or {}
+        if tool in ('write', 'edit'):
+            fp = input_.get('filePath', '')
+            return {'session': short, 'summary': f"Tool {tool}: {fp}"}
+        if tool == 'patch':
+            return {'session': short, 'summary': f"Tool patch: {input_.get('filePath', '')}"}
+        if tool == 'bash':
+            cmd = (input_.get('command') or '')[:80]
+            return {'session': short, 'summary': f"Tool bash: {cmd}"}
+        return {'session': short, 'summary': f"Tool {tool}"}
+    if ptype == 'text':
+        text = (data.get('text') or '')[:300]
+        if text.strip():
+            return {'session': short, 'summary': f"text: {text}"}
+    return None
+
+
+def opencode_catchup(project_path: str) -> None:
+    """Session catchup for OpenCode SQLite (v2.38.0+).
+
+    Schema as of sst/opencode dev @ 2026-05-14:
+      session (id, directory, time_created, ...)
+      part    (id, session_id, message_id, time_created, data TEXT JSON)
+    """
+    import sqlite3
+
+    db_path = get_opencode_db_path()
+    if not db_path:
+        return
+
+    try:
+        conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+    except sqlite3.OperationalError:
+        return
+
+    cur = conn.cursor()
+    try:
+        cur.execute("PRAGMA table_info(session)")
+        session_cols = {row[1] for row in cur.fetchall()}
+        cur.execute("PRAGMA table_info(part)")
+        part_cols = {row[1] for row in cur.fetchall()}
+    except sqlite3.OperationalError:
+        conn.close()
+        return
+
+    if 'directory' not in session_cols or 'data' not in part_cols:
+        conn.close()
+        return
+
+    project_abs = normalize_for_compare(project_path)
+
+    cur.execute(
+        "SELECT id, time_created FROM session WHERE directory = ? ORDER BY time_created DESC",
+        (project_abs,),
+    )
+    sessions = cur.fetchall()
+    if len(sessions) < 2:
+        conn.close()
+        return
+
+    previous_sessions = sessions[1:]
+
+    update_sid = None
+    update_time = None
+    update_idx = -1
+    for idx, (sid, _) in enumerate(previous_sessions):
+        params = (sid,) + PLANNING_LIKE_SQL
+        cur.execute(
+            """
+            SELECT time_created FROM part
+            WHERE session_id = ?
+              AND json_extract(data, '$.type') = 'tool'
+              AND lower(json_extract(data, '$.tool')) IN ('write', 'edit', 'patch')
+              AND (
+                json_extract(data, '$.state.input.filePath') LIKE ?
+                OR json_extract(data, '$.state.input.filePath') LIKE ?
+                OR json_extract(data, '$.state.input.filePath') LIKE ?
+              )
+            ORDER BY time_created DESC
+            LIMIT 1
+            """,
+            params,
+        )
+        row = cur.fetchone()
+        if row:
+            update_sid = sid
+            update_time = row[0]
+            update_idx = idx
+            break
+
+    if not update_sid:
+        conn.close()
+        return
+
+    newer_sessions = list(reversed(previous_sessions[:update_idx]))
+
+    parts: List[Dict[str, Any]] = []
+
+    cur.execute(
+        "SELECT data FROM part WHERE session_id = ? AND time_created > ? ORDER BY time_created ASC, id ASC",
+        (update_sid, update_time),
+    )
+    for (data_str,) in cur.fetchall():
+        try:
+            data = json.loads(data_str)
+        except json.JSONDecodeError:
+            continue
+        msg = _format_opencode_part(data, update_sid)
+        if msg:
+            parts.append(msg)
+
+    for sid, _ in newer_sessions:
+        cur.execute(
+            "SELECT data FROM part WHERE session_id = ? ORDER BY time_created ASC, id ASC",
+            (sid,),
+        )
+        for (data_str,) in cur.fetchall():
+            try:
+                data = json.loads(data_str)
+            except json.JSONDecodeError:
+                continue
+            msg = _format_opencode_part(data, sid)
+            if msg:
+                parts.append(msg)
+
+    conn.close()
+
+    if not parts:
+        return
+
+    print(f"\n[planning-with-files] SESSION CATCHUP DETECTED (IDE: opencode)")
+    print(f"Last planning update in session {update_sid[:8]}...")
+    if update_idx + 1 > 1:
+        print(f"Scanning {update_idx + 1} previous sessions for unsynced context")
+    print(f"Unsynced parts: {len(parts)}")
+    print("\n--- UNSYNCED CONTEXT ---")
+
+    MAX_PARTS = 100
+    if len(parts) > MAX_PARTS:
+        print(f"(Showing last {MAX_PARTS} of {len(parts)} parts)\n")
+        to_show = parts[-MAX_PARTS:]
+    else:
+        to_show = parts
+
+    current_session = None
+    for msg in to_show:
+        if msg.get('session') != current_session:
+            current_session = msg.get('session')
+            print(f"\n[Session: {current_session}...]")
+        print(f"  {msg['summary']}")
+
+    print("\n--- RECOMMENDED ---")
+    print("1. Run: git diff --stat")
+    print("2. Read: task_plan.md, progress.md, findings.md")
+    print("3. Update planning files based on above context")
+    print("4. Continue with task")
 
 
 def parse_session_messages(session_file: Path) -> List[Dict[str, Any]]:
@@ -383,6 +568,10 @@ def main():
         return
 
     runtime_name, sessions = get_session_candidates(project_path)
+
+    if runtime_name == 'opencode':
+        opencode_catchup(project_path)
+        return
 
     # Find a substantial previous session
     target_session = None
