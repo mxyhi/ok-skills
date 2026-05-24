@@ -137,7 +137,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 归属和法律文件保存在 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 与 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)。
 
-[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)。本仓保留通用的 `planning-with-files` 名称，并移除 Pi 专属包元数据，使其继续兼容标准 `SKILL.md` 工作流。
+[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)。本仓保留通用的 `planning-with-files` 名称，并避免引入上游仓库专属包元数据，使其继续兼容标准 `SKILL.md` 工作流。
 
 ## 常见前置条件
 
@@ -180,7 +180,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | 通过 agent-browser 和 Chrome DevTools Protocol 自动化 Electron 桌面应用。                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
+| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 生成、编辑和读取 PowerPoint 演示文稿。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、测试失败或异常行为时，在提出修复前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
