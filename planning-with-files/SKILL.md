@@ -1,31 +1,18 @@
 ---
 name: planning-with-files
 description: Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring 5+ tool calls. Supports automatic session recovery after /clear.
-allowed-tools: "Read Write Edit Bash Glob Grep"
-metadata:
-  version: "2.40.1"
 ---
 
 # Planning with Files
 
 Work like Manus: Use persistent markdown files as your "working memory on disk."
 
-## FIRST: Restore Context (v2.2.0)
+## FIRST: Restore Context
 
 **Before doing anything else**, check if planning files exist and read them:
 
 1. If `task_plan.md` exists, read `task_plan.md`, `progress.md`, and `findings.md` immediately.
-2. Then check for unsynced context from a previous session:
-
-```bash
-# Linux/macOS
-$(command -v python3 || command -v python) ${CLAUDE_PLUGIN_ROOT}/scripts/session-catchup.py "$(pwd)"
-```
-
-```powershell
-# Windows PowerShell
-& (Get-Command python -ErrorAction SilentlyContinue).Source "$env:USERPROFILE\.claude\skills\planning-with-files\scripts\session-catchup.py" (Get-Location)
-```
+2. The extension automatically checks for unsynced context from a previous session.
 
 If catchup report shows unsynced context:
 1. Run `git diff --stat` to see actual code changes
@@ -35,12 +22,12 @@ If catchup report shows unsynced context:
 
 ## Important: Where Files Go
 
-- **Templates** are in `${CLAUDE_PLUGIN_ROOT}/templates/`
+- **Templates** are in `templates/` inside this skill
 - **Your planning files** go in **your project directory**
 
 | Location | What Goes There |
 |----------|-----------------|
-| Skill directory (`${CLAUDE_PLUGIN_ROOT}/`) | Templates, scripts, reference docs |
+| Skill directory | Templates, scripts, reference docs |
 | Your project directory | `task_plan.md`, `findings.md`, `progress.md` |
 
 ## Quick Start
@@ -216,58 +203,22 @@ export PLAN_ID=2026-01-10-backend-refactor
 ```
 
 Each session reads from its own isolated plan directory. Hooks resolve the correct plan automatically.
-- `scripts/session-catchup.py` — Recover context from previous session (v2.2.0). For OpenCode (v2.38.0+), reads the new SQLite store at `${XDG_DATA_HOME:-~/.local/share}/opencode/opencode.db` instead of the legacy JSON tree.
 
-## Claude Code Turn-Loop Integration (v2.38.0+)
+## Pi Extension Hooks (mode-based)
 
-Claude Code shipped three new turn-loop primitives in May 2026: `/loop` (v2.1.72), `/goal` (v2.1.139), and the `PreCompact` hook event. v2.38.0 wires the planning workflow into all three.
+When installed via `pi install npm:@tomxprime/planning-with-files`, this package also loads a Pi extension that maps lifecycle events to hook-equivalent behavior.
 
-### PreCompact hook (auto)
+Modes:
+- `auto` (default): DeepSeek -> `cache-safe`, other models -> `parity`
+- `parity`: maximum Claude-style behavior (dynamic plan context)
+- `cache-safe`: fixed reminder strings for better DeepSeek KV-cache stability
+- `notify`: notification-only mode
 
-The skill registers a `PreCompact` hook with matcher `"*"`. It fires on both `/compact` (manual) and autoCompact (context-full). When `task_plan.md` is present, the hook:
-
-- Reminds the agent to flush in-context progress to `progress.md` before compaction completes.
-- Prints `Plan-SHA256` if an attestation is set, so the post-compaction agent can verify the plan is still the one you approved.
-- Stays silent when no plan exists. Exit code 0 always — never blocks compaction.
-
-Compaction still proceeds. The protection model is "the plan is on disk, the plan will be re-read after compaction" — not "the plan survives compaction unchanged in context."
-
-### `/plan-goal` slash command
-
-Composes with Claude Code's `/goal`. Derives a goal condition from the active plan and forwards it to `/goal`, so the agent keeps working until the plan file actually reports complete.
-
-```
-/plan-goal                                # default: "all phases report Status: complete"
-/plan-goal until all tests pass           # appends user clause to default
-```
-
-`/plan-goal` does not replace `/goal`. `/goal "anything"` still works.
-
-### `/plan-loop` slash command
-
-Composes with Claude Code's `/loop`. Default 10-minute tick re-reads the planning files, runs `check-complete`, and writes a `progress.md` entry if nothing changed since the last tick.
-
-```
-/plan-loop                                # default 10m cadence, default tick prompt
-/plan-loop 5m                             # override interval
-/plan-loop 15m custom prompt              # override interval + prompt
-```
-
-For a "babysit until done" workflow, combine `/plan-loop` (cadence) with `/plan-goal` (termination criterion).
-
-### `loop.md` template
-
-Claude Code's bare `/loop` reads `.claude/loop.md` (project) or `~/.claude/loop.md` (user). v2.38 ships a planning-aware template at `templates/loop.md`. Install once:
-
-```bash
-# user-wide
-cp ${CLAUDE_PLUGIN_ROOT}/templates/loop.md ~/.claude/loop.md
-
-# project-specific
-cp ${CLAUDE_PLUGIN_ROOT}/templates/loop.md .claude/loop.md
-```
-
-After install, bare `/loop <interval>` runs the planning-aware tick.
+Commands:
+- `/plan-status`
+- `/plan-attest [--show|--clear]`
+- `/plan-goal <text|default|clear>`
+- `/plan-loop [interval] [prompt]` (use `stop` to cancel)
 
 ## Advanced Topics
 
