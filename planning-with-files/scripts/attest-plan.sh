@@ -99,7 +99,68 @@ case "${mode}" in
         ;;
     attest)
         hash_val="$(compute_hash "${plan_file}")" || exit 1
-        printf "%s\n" "${hash_val}" > "${attestation_file}"
+
+        # v2.40: protect the write with an advisory flock when available so
+        # concurrent legacy-mode sessions (no PLAN_ID, both at the same project
+        # root) cannot corrupt the .plan-attestation file mid-write. Atomic
+        # rename of a temp file is the real guarantee on POSIX; flock is the
+        # cooperative gate around the rename for slow-disk writes.
+        #
+        # Note: legacy single-file mode is inherently racey across concurrent
+        # sessions because both can edit task_plan.md without coordination. The
+        # canonical parallel-session pattern is slug-mode under
+        # .planning/<slug>/, where each session pins PLAN_ID and gets its own
+        # .attestation file. We surface a hint when concurrent activity is
+        # detected.
+        if [ -f "${attestation_file}" ]; then
+            mtime_now="$(date +%s 2>/dev/null || echo 0)"
+            mtime_prev="$(stat -c '%Y' "${attestation_file}" 2>/dev/null \
+                || stat -f '%m' "${attestation_file}" 2>/dev/null \
+                || echo 0)"
+            age=$((mtime_now - mtime_prev))
+            if [ "${age}" -ge 0 ] && [ "${age}" -lt 30 ] 2>/dev/null; then
+                # If we're in legacy mode (root .plan-attestation) and another
+                # session just wrote, warn. Slug-mode files in .planning/<slug>/
+                # are per-session by construction; no need to warn there.
+                case "${attestation_file}" in
+                    *./.plan-attestation|*/.plan-attestation)
+                        case "${attestation_file}" in
+                            *./.planning/*) : ;;  # slug-mode, ignore
+                            *)
+                                printf "[plan-attest] Note: %s was modified %ss ago by another process.\n" \
+                                    "${attestation_file}" "${age}" >&2
+                                printf "[plan-attest] For parallel sessions, prefer slug-mode (init-session.sh <name>) so each session gets its own .attestation file.\n" >&2
+                                ;;
+                        esac
+                        ;;
+                esac
+            fi
+        fi
+
+        tmp_file="${attestation_file}.tmp.$$"
+        printf "%s\n" "${hash_val}" > "${tmp_file}" 2>/dev/null || {
+            printf "[plan-attest] Failed to write %s\n" "${tmp_file}" >&2
+            exit 1
+        }
+        if command -v flock >/dev/null 2>&1; then
+            # Advisory lock around the rename. lock_dir is the dir containing
+            # the target file. The {} subshell pattern keeps the lock scoped to
+            # the mv call.
+            lock_dir="$(dirname "${attestation_file}")"
+            (
+                flock -w 5 9 || true
+                mv -f "${tmp_file}" "${attestation_file}"
+            ) 9>"${lock_dir}/.attestation.lock" 2>/dev/null
+            rm -f "${lock_dir}/.attestation.lock" 2>/dev/null
+        else
+            mv -f "${tmp_file}" "${attestation_file}" 2>/dev/null
+        fi
+
+        # If mv failed for any reason, fall back to direct write.
+        if [ ! -f "${attestation_file}" ]; then
+            printf "%s\n" "${hash_val}" > "${attestation_file}"
+        fi
+
         short_hash="$(printf "%s" "${hash_val}" | cut -c1-12)"
         printf "[plan-attest] Locked %s\n" "${plan_file}"
         printf "[plan-attest] SHA-256: %s... (stored in %s)\n" "${short_hash}" "${attestation_file}"
