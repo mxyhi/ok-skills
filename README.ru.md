@@ -138,7 +138,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 Файлы attribution и legal сохранены в [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) и [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
-[`planning-with-files/`](planning-with-files/) использует [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) как upstream baseline. В этом репозитории сохранено общее имя `planning-with-files`, а repository-specific package metadata не добавляются, чтобы skill оставался совместимым со стандартными `SKILL.md` workflows.
+[`planning-with-files/`](planning-with-files/) использует [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) как upstream baseline. В этом репозитории этот upstream-каталог используется как canonical baseline для локального skill.
 
 ## Общие предварительные требования
 

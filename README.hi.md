@@ -138,7 +138,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) और [`gsap-skills/LICENSE`](gsap-skills/LICENSE) में सुरक्षित रखे गए हैं।
 
-[`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) है। यह repository generic `planning-with-files` नाम रखती है और upstream repository-specific package metadata नहीं लाती ताकि skill standard `SKILL.md` workflows के साथ compatible रहे।
+[`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) है। यह repository local skill के लिए उसी upstream directory को canonical baseline मानती है।
 
 ## सामान्य prerequisites
 

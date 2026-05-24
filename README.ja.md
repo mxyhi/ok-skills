@@ -138,7 +138,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 帰属表示および法的文書は [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) と [`gsap-skills/LICENSE`](gsap-skills/LICENSE) に保持されています。
 
-[`planning-with-files/`](planning-with-files/) は [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) を upstream baseline として対応しています。この repository では汎用名 `planning-with-files` を維持し、upstream repository 固有の package metadata を持ち込まず、標準的な `SKILL.md` workflow との互換性を保っています。
+[`planning-with-files/`](planning-with-files/) は [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) を upstream baseline として対応しています。この repository では、その upstream directory を local skill の canonical baseline として扱います。
 
 ## よくある前提条件
 

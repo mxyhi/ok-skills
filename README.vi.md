@@ -138,7 +138,7 @@ Gói này bao gồm:
 
 Thông tin ghi nhận nguồn gốc và hồ sơ pháp lý được giữ trong [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) và [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
-[`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) làm upstream baseline. Repo này giữ tên generic `planning-with-files` và không đưa vào metadata gói riêng của upstream repository để skill tiếp tục tương thích với workflow `SKILL.md` tiêu chuẩn.
+[`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) làm upstream baseline. Repo này dùng thư mục upstream đó làm baseline canonical cho skill cục bộ.
 
 ## Các điều kiện tiên quyết phổ biến
 

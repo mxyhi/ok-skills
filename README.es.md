@@ -138,7 +138,7 @@ Incluye:
 
 La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) y [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
-[`planning-with-files/`](planning-with-files/) usa [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) como baseline upstream. Este repositorio conserva el nombre generico `planning-with-files` y omite metadatos de paquete especificos del repositorio upstream para mantener compatibilidad con flujos `SKILL.md` estandar.
+[`planning-with-files/`](planning-with-files/) usa [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) como baseline upstream. Este repositorio usa ese directorio upstream como baseline canonica para la skill local.
 
 ## Requisitos Habituales
 

@@ -137,7 +137,7 @@ It includes:
 
 Attribution and legal files are preserved in [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) and [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
-[`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) as its upstream baseline. This repository keeps the generic `planning-with-files` name and keeps repository-specific metadata out so the skill stays compatible with standard `SKILL.md` workflows.
+[`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files) as its upstream baseline. This repository keeps that upstream directory as the canonical baseline for the local skill.
 
 ## Common Prerequisites
 

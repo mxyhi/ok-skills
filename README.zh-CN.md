@@ -137,7 +137,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 归属和法律文件保存在 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 与 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)。
 
-[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)。本仓保留通用的 `planning-with-files` 名称，并避免引入上游仓库专属包元数据，使其继续兼容标准 `SKILL.md` 工作流。
+[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线。
 
 ## 常见前置条件
 
