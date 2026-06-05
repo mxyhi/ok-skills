@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **40 個可重用技能**：其中 **32 個頂層技能** 由本倉直接維護，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
+目前倉庫共收錄 **41 個可重用技能**：其中 **33 個頂層技能** 由本倉直接維護，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **CLAUDE.md / AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -110,6 +110,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 - [ai-elements](ai-elements/SKILL.md)：為 `ai-elements` 元件庫建立 AI 對話介面元件。
 - [frontend-skill](frontend-skill/SKILL.md)：適用於需要強視覺表現的著陸頁、網站、應用、原型、示範或遊戲 UI。
+- [huashu-design](huashu-design/SKILL.md)：用 HTML 交付高保真原型、互動 Demo、投影片、動畫、設計變體、影片匯出與設計評審。
 - [shader-dev](shader-dev/SKILL.md)：提供系統化的 GLSL 著色器技巧，用於打造相容 ShaderToy 的即時視覺效果。
 - [better-icons](better-icons/SKILL.md)：透過 CLI 或 MCP 搜尋、瀏覽並取得 200+ Iconify 圖示庫中的 SVG 圖示。
 - [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
@@ -119,6 +120,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [minimax-docx](minimax-docx/SKILL.md)：基於 OpenXML SDK（.NET）的專業 DOCX 建立、編輯與格式編排。
 - [minimax-pdf](minimax-pdf/SKILL.md)：使用 token 化設計系統生成、填寫與重排 PDF 文件。
 - [pptx-generator](pptx-generator/SKILL.md)：使用 PptxGenJS、XML 工作流或 markitdown 來建立、編輯與讀取 PowerPoint 簡報。
+- [huashu-design](huashu-design/SKILL.md)：製作 HTML deck、可編輯 PPTX、MP4/GIF 動畫與帶解說的設計影片。
 - [minimax-xlsx](minimax-xlsx/SKILL.md)：以低損 XML 工作流開啟、建立、讀取、分析、編輯與驗證 Excel／試算表檔案。
 
 ## Vendored Skill Packs
@@ -167,6 +169,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 進行網頁、程式碼與公司調研。                                                                                                          | 自製                                                                                                                           |
 | [find-skills](find-skills/SKILL.md)                                 | 當使用者需要特定能力時，協助發現既有技能。                                                                                                     | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [frontend-skill](frontend-skill/SKILL.md)                           | 建立具有強視覺表現的著陸頁、網站、應用、原型、示範或遊戲 UI。                                                                                  | [ok-skills/frontend-skill](frontend-skill/SKILL.md)                                                                            |
+| [huashu-design](huashu-design/SKILL.md)                           | 用 HTML 建立高保真原型、互動演示、投影片、動畫、設計變體、影片匯出與設計評審。                                                                | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [shader-dev](shader-dev/SKILL.md) | 提供系統化的 GLSL 著色器技巧，用於打造相容 ShaderToy 的即時視覺效果。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在撰寫第三方 API / SDK 程式碼前先抓取當前文件。                                                                                                | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 使用 `gh` 處理目前分支 PR 的評審與 issue 留言。                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
@@ -218,4 +221,4 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 本倉庫主授權條款見 [LICENSE](LICENSE)。
 
-部分技能目錄包含額外授權或歸屬說明文件，包括 [`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`minimax-docx/`](minimax-docx/) 與 [`gsap-skills/`](gsap-skills/)。
+部分技能目錄包含額外授權或歸屬說明文件，包括 [`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`huashu-design/`](huashu-design/)、[`minimax-docx/`](minimax-docx/) 與 [`gsap-skills/`](gsap-skills/)。
