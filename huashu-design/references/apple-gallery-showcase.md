@@ -331,7 +331,7 @@ requestAnimationFrame(function tick(now) {
 
 ## 引用
 
-- 完整实现样本：`/Users/alchain/Documents/写作/01-公众号写作/项目/2026.04-huashu-design发布/配图/hero-animation-v5.html`
+- 完整实现样本：hero-animation-v5.html（作者本地样本，未随仓库分发）
 - 原始灵感：claude.ai/design hero 视频
 - 参考审美：Apple 产品页、Dribbble shot 集合页
 

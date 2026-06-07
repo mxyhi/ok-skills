@@ -259,9 +259,9 @@ v5f · 草间彌生 Yayoi Kusama（圆点 + 重复 + 单一强色）
 
 原始项目位置（含对应实施 HTML + 关键帧）：
 
-- `~/.claude/skills/huashu-md-html/demos/v5-director-notes.md`（director's notes）
-- `~/.claude/skills/huashu-md-html/demos/v5-six-forms.html`（HTML 实施）
-- `~/.claude/skills/huashu-md-html/demos/v5-keyframes/`（关键帧验证截图）
+- v5-director-notes.md（director's notes，作者本地，未随仓库分发）
+- v5-six-forms.html（HTML 实施，作者本地，未随仓库分发）
+- v5-keyframes/（关键帧验证截图，作者本地，未随仓库分发）
 
 写新项目时强烈建议**先 Read 这份样本**，理解工作量和细节密度，再决定要不要全套走流程。
 

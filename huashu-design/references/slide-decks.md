@@ -291,6 +291,25 @@ window.DECK_MANIFEST = [
 
 拼接器已内置：键盘导航（←/→/Home/End/数字键/P 打印）、scale + letterbox、右下计数器、localStorage 记忆、hash 跳页、打印模式（遍历 iframe 按页输出 PDF）。
 
+#### 两种概览模式（自适应 + 防踩坑，2026-06 重写）
+
+打开 deck 默认进**概览**，用户未指定时按秒数随机：**网格 grid 60% / 无限画廊 gallery 40%**（可用 URL `?ov=grid|gallery` 或 `window.DECK_OVERVIEW='grid'|'gallery'` 固定）。
+
+- **网格 grid（默认主力）**：用 **iframe 渲染真实子页面**（清晰、所见即所得、无需缩略图）。**自适应**：能一屏放下→对角倾斜居中铺满；页多放不下→卡片保持舒适大小、**竖向滚动**（绝不把几十页硬塞一屏缩成邮票）。
+- **无限画廊 gallery**：所有页**无缝无限平铺 + 缓慢漂移 + 轻微呼吸缩放**，一个 tile 含全部页（洗牌排布，看完所有页才重复）。瓦片多，**必须用 `<img>` 缩略图**扛性能（见下），没 thumb 时回退 iframe。
+
+🛑 **三条来自实战的硬约束（改这个文件前必读，否则会重蹈覆辙）**：
+1. **概览墙绝不用 `transform-style: preserve-3d` 做卡片墙**。preserve-3d 的 3D 场景里浏览器对「往后退的卡片」（顶排）命中测试不可靠 → 顶排点不到、中排时好时坏。**正解**：整墙作**单个被 3D 倾斜的平面**（不开 preserve-3d），所有卡片共面，点击反投影到一个平面 → 可靠。hover 用 2D `scale` 不用 `translateZ`。
+2. **任意页数都要自适应**：固定列数 + 给整墙写死强倾斜，页一多就溢出塌角/透视失真。必须按页数+视口算列数、行多则倾斜变平、一屏放不下就滚动。
+3. **缩略图分辨率别太低**：画廊缩略图 < 1000px，hover 放大后发虚。默认 1600px。
+
+**为画廊生成缩略图**：用 `scripts/gen_deck_thumbs.mjs`（playwright 截每页 + sharp 降采样）：
+```bash
+npm install playwright sharp
+node gen_deck_thumbs.mjs --slides slides --out thumbs --width 1600
+```
+然后给 MANIFEST 每项加 `thumb: "thumbs/<同名>.jpg"`。网格模式忽略 thumb（始终 iframe），只有画廊模式用它。
+
 ### 单页验证（这是多文件架构的杀手级优势）
 
 每张 slide 都是独立 HTML。**做完一张就在浏览器双击打开看**：
