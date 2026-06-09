@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **42 reusable skills** शामिल हैं: **34 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है।
+इस repo में अभी **43 reusable skills** शामिल हैं: **35 top-level skills** सीधे इसी repo में maintain की जाती हैं, और [`gsap-skills/`](gsap-skills/) के अंतर्गत **8 vendored GSAP animation skills** शामिल हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है।
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -100,6 +100,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [kimi-webbridge](kimi-webbridge/SKILL.md): local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।
 - [browser-trace](browser-trace/SKILL.md): browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।
 - [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
+- [xquik-twitter](xquik-twitter/SKILL.md): Xquik API से X/Twitter data खोजें और confirmed account actions चलाएं।
 - [dogfood](dogfood/SKILL.md): reproducible evidence के साथ structured exploratory testing.
 - [electron](electron/SKILL.md): Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।
 
@@ -183,6 +184,7 @@ Attribution और legal files [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files को `as` type assertions से `@total-typescript/shoehorn` में migrate करें।                                                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | Dependency source code fetch karke AI agents ko deeper implementation context dena.                                                                                                          | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [xquik-twitter](xquik-twitter/SKILL.md)                         | Xquik API से X/Twitter data खोजें और confirmed account actions चलाएं।                                                                                                                       | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [dogfood](dogfood/SKILL.md)                                         | screenshots और videos के साथ reproducible issue reports तैयार करने के लिए web apps का systematic परीक्षण करें।                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | agent-browser और Chrome DevTools Protocol के माध्यम से Electron desktop apps automate करें।                                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
