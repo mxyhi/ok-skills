@@ -12,7 +12,7 @@ Run: `~/.kimi-webbridge/bin/kimi-webbridge status`
 
 | Observed | Action |
 |---|---|
-| `command not found` or binary missing | Not installed. Run: `curl -fsSL https://kimi-web-img.moonshot.cn/webbridge/install.sh \| bash` |
+| `command not found` or binary missing | Not installed. Run: `curl -fsSL https://cdn.kimi.com/webbridge/install.sh \| bash` |
 | `{"running": false, ...}` | Daemon not running. Run: `~/.kimi-webbridge/bin/kimi-webbridge start` |
 | `{"running": true, "extension_connected": false, ...}` | Extension not connected. Tell the user: "If you've already installed the Kimi WebBridge extension, please open your browser and try again. If not yet installed, see https://www.kimi.com/features/webbridge (中文: https://www.kimi.com/zh-cn/features/webbridge) for install instructions." |
 | `{"running": true, "extension_connected": true, ...}` | Healthy. Return to the main SKILL.md to make tool calls. |

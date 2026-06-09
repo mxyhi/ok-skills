@@ -25,75 +25,84 @@ Don't guess fixes here — every non-healthy state is handled in `references/ope
 
 | Tool | Args | Returns | Note |
 |------|------|---------|------|
-| `navigate` | `url`, `newTab`(bool), `group_title` | `{success, url, tabId}` | Always use `newTab:true` on first call. `group_title` sets the tab group's visible label |
-| `find_tab` | `url`, `active`(bool) | `{success, url, tabId}` | **Reuse an already-open tab** — pass any URL or domain; `active:true` picks the tab the user is currently viewing, default picks the leftmost match |
+| `navigate` | `url`, `newTab`(bool), `group_title` | `{success, url, tabId}` | First call opens a tab — see [Tabs](#tabs-and-the-current-tab). `group_title` sets the group's visible label |
+| `find_tab` | `url`, `active`(bool) | `{success, url, tabId}` | Select an already-open tab as the current one — see [Tabs](#tabs-and-the-current-tab) |
 | `snapshot` | — | `{url, title, tree}` with `@e` refs | **Accessibility tree** (text) — use this to read page content and locate elements |
 | `click` | `selector` (@e ref or CSS) | `{success, tag, text}` | Synthetic `el.click()` |
 | `fill` | `selector`, `value` | `{success, tag, mode}` | Works on `<input>`/`<textarea>` AND `[contenteditable]` (ProseMirror/Lexical/Slate). `mode` is `"value"` or `"contenteditable"` |
 | `evaluate` | `code` (supports async/await) | `{type, value}` | |
-| `screenshot` | `format`(png\|jpeg), `quality`(0-100), optional `selector` (@e/CSS) | `{format, dataLength, data}` (base64) | Full page floods context — use helper script (saves to disk, returns path). With `selector` only that element is captured (small, OK to call API directly) |
+| `screenshot` | `format`(png\|jpeg), `quality`(0-100), optional `selector` (@e/CSS), optional `path` | `{format, path, sizeBytes, mimeType}` | Returns a file path, not base64 — see [Screenshots](#screenshots) |
 | `network` | `cmd`(start\|stop\|list\|detail), `filter`, `requestId` | request/response data | |
 | `upload` | `selector`, `files`(string[]) | `{success, fileCount}` | |
-| `save_as_pdf` | `paper_format`, `landscape`, `scale`, `print_background`, `file_name` | `{path, sizeBytes, mimeType, pageTitle}` | Render current page → PDF, saved under `/tmp/kimi-webbridge-pdfs/` |
+| `save_as_pdf` | `paper_format`, `landscape`, `scale`, `print_background`, optional `path` | `{path, sizeBytes, mimeType, pageTitle}` | Render current page → PDF, returns a file path — see [Save as PDF](#save-the-current-page-as-pdf) |
 | `list_tabs` | — | `{success, tabs:[{tabId, url, title, active, groupTitle}]}` | Inspect tabs in the current session |
 | `close_tab` | — | `{success, closed: bool}` | Close the current tab in the session |
-| `close_session` | — | `{success, closed: int}` | Close all tabs — `closed` is the count. Always call at task end |
+| `close_session` | — | `{success, closed: int}` | Close all tabs in the session — `closed` is the count. See [Sessions](#sessions) for when to call |
 
-### Using find_tab
+### Tabs and the current tab
 
-Use `find_tab` when the user explicitly asks to operate on an already-open tab. It matches by domain, so any URL on the same site works. Without `active:true`, returns the leftmost matching tab; with `active:true`, returns the tab the user is currently viewing — pass it when the user says "用我打开的 X" / "在我当前的 X 页面上".
+Single-tab tools (`snapshot`, `click`, `fill`, `screenshot`, `save_as_pdf`) act on the **current tab** — the one you most recently opened with `navigate` or selected with `find_tab`.
+
+- **Opening pages**: use `newTab:true` when pages should coexist (comparing, cross-referencing); omit it to send the current tab to a new URL.
+- **Going back to an earlier tab**: call `find_tab` to make a tab you already opened the current one again. Pass the tab's **full URL** — take it from `list_tabs` or the earlier `navigate` result. A bare root domain (`zhihu.com`) may miss a `www.zhihu.com` tab, so prefer the exact URL. `active:true` picks the tab the user is currently viewing — use it when they say "用我打开的 X" / "在我当前的 X 页面上"; otherwise the leftmost match wins.
+- If `find_tab` returns "no open tab found", the page isn't open — `navigate` with `newTab:true` instead.
 
 ```bash
 curl -s -X POST http://127.0.0.1:10086/command \
-  -d '{"action":"find_tab","args":{"url":"https://www.kimi.com","active":true},"session":"kimi"}'
+  -d '{"action":"find_tab","args":{"url":"https://www.zhihu.com","active":true},"session":"camping-research"}'
 ```
 
-If `find_tab` returns "no open tab found", the page is not open — fall back to `navigate` with `newTab:true`.
-
 ### Call Format
+
+Every command carries a top-level `session` naming the current task — see [Sessions](#sessions) below. The examples in later sections omit it only for brevity; in real calls always include it.
 
 ```bash
 curl -s -X POST http://127.0.0.1:10086/command \
   -H 'Content-Type: application/json' \
-  -d '{"action":"navigate","args":{"url":"https://example.com","newTab":true}}'
+  -d '{"action":"navigate","args":{"url":"https://example.com","newTab":true,"group_title":"My task"},"session":"my-task"}'
 ```
 
 ## Sessions
 
-Each session maps to a separate browser tab group. Use different session names for different sites to keep operations isolated.
+**One task = one session = one tab group.** A `session` collects every tab this task opens into a single tab group, so the user sees one group representing "what the agent is doing right now". Pass it as a **top-level field** of the request body (not inside `args`).
 
-Add `"session":"name"` to the request body:
+Rules:
+
+1. **Pick one session name when the task starts, put it on _every_ command, and never change it mid-task.**
+2. **One task uses one session — even across multiple sites.** Searching on Google and then opening results on three different domains all share the same session and land in the same group. **Do not switch session names per site** — that is the #1 cause of fragmented tab groups.
+3. Name the session after the **task**, not the site or domain — e.g. `camping-research`, `phone-compare`.
+4. `group_title` is the human-readable label shown on the group in the browser. Write it in the user's language (match the conversation — Chinese or English). Pass it on the **first** `navigate`; later calls in the same session don't need it.
+5. Use multiple sessions **only when the user asks for several unrelated tasks at once** — one session per task.
 
 ```bash
+# First tab of the task: set session + human-readable label (in the user's language)
 curl -s -X POST http://127.0.0.1:10086/command \
-  -d '{"action":"navigate","args":{"url":"https://example.com","newTab":true},"session":"my-task"}'
+  -d '{"action":"navigate","args":{"url":"https://www.google.com/search?q=tents","newTab":true,"group_title":"Camping gear research"},"session":"camping-research"}'
+
+# Another SITE, SAME task → same session → joins the same group automatically
+curl -s -X POST http://127.0.0.1:10086/command \
+  -d '{"action":"navigate","args":{"url":"https://www.zhihu.com/search?q=tents","newTab":true},"session":"camping-research"}'
+
+# Every later command carries the same session
+curl -s -X POST http://127.0.0.1:10086/command \
+  -d '{"action":"snapshot","args":{},"session":"camping-research"}'
 ```
 
-Always assign distinct session names when working with multiple sites in parallel.
+When the task is finished and the user no longer needs these pages, `close_session` clears the whole group. If they might want to look further (a follow-up question, inspecting a result), deliver your answer first and leave the tabs open — closing too eagerly throws away the work the user can still see.
 
-## Screenshots: Use the Helper Script
+## Screenshots
 
-**Never call the screenshot API directly** — it returns base64-encoded image data (hundreds of KB of text) that will flood the context window.
-
-Use `scripts/screenshot.sh` instead. It decodes and saves the image to disk, returning only the file path:
+The daemon writes the image to disk and returns `{format, path, sizeBytes, mimeType}` — never base64, since the model can't read raw image bytes. Take the `.path` and open it with the `Read` tool to actually see it.
 
 ```bash
-# Default — saves to /tmp/kimi-webbridge-screenshots/{timestamp}.png
-bash "$(dirname "$SKILL_PATH")/scripts/screenshot.sh"
-
-# With a session
-bash "$(dirname "$SKILL_PATH")/scripts/screenshot.sh" -s my-task
-
-# Custom output path
-bash "$(dirname "$SKILL_PATH")/scripts/screenshot.sh" -o /tmp/page.png
-
-# JPEG format, quality 60
-bash "$(dirname "$SKILL_PATH")/scripts/screenshot.sh" -f jpeg -q 60
+# Default: PNG of the visible viewport, daemon picks a temp path
+curl ... -d '{"action":"screenshot","args":{}}'
+# Options (each independent): JPEG quality, element-only via @e/CSS selector, custom output path
+curl ... -d '{"action":"screenshot","args":{"format":"jpeg","quality":60}}'
+curl ... -d '{"action":"screenshot","args":{"selector":"@e123"}}'
 ```
 
-After getting the file path, use the Read tool to view the image.
-
-If `$SKILL_PATH` is unavailable, call the script by its absolute path.
+A caller-supplied `path` is honored verbatim (parent dirs created, existing file overwritten) — use a unique name to avoid clobbering. `save_as_pdf` follows the same rule.
 
 ## Prefer snapshot over CSS/JS selectors
 
@@ -131,14 +140,14 @@ There's no separate "press Enter" tool. To submit a form, click the submit butto
 
 ## Save the current page as PDF
 
-`save_as_pdf` renders the current page to PDF, writes it to `/tmp/kimi-webbridge-pdfs/`, and returns the file path (the daemon strips the base64 — agent never sees raw PDF bytes).
-
-All args optional:
+`save_as_pdf` renders the current page to PDF and returns the file path. All args optional:
 - `paper_format`: `letter` (default) \| `a4` \| `legal` \| `a3` \| `tabloid`
 - `landscape`: `false` (default)
 - `scale`: `1.0` (default), range `[0.1, 2.0]`
 - `print_background`: `true` (default) — keep background colors
-- `file_name`: caller-supplied name; if absent, derived from page title
+- `path`: caller-supplied output path; if absent, daemon picks a default under OS temp dir using the page title as the filename
+
+`path` semantics match `screenshot`: written verbatim, parent dirs auto-created, existing files overwritten.
 
 Decoded PDF cap is 100 MB. Above that the daemon refuses; reduce `scale` or split the page.
 
