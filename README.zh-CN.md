@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **42 个可复用技能**：其中 **34 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **43 个可复用技能**：其中 **35 个顶层技能** 由本仓直接维护，另有 **8 个 GSAP 动画技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 下。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -100,6 +100,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [kimi-webbridge](kimi-webbridge/SKILL.md)：通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。
 - [browser-trace](browser-trace/SKILL.md)：采集浏览器自动化运行的 CDP trace、截图和 DOM dump，并按页面拆分以便调试。
 - [opencli](opencli/opencli-usage/SKILL.md)：将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。
+- [xquik-twitter](xquik-twitter/SKILL.md)：通过 Xquik API 搜索 X/Twitter 数据，并执行需确认的账号操作。
 - [dogfood](dogfood/SKILL.md)：系统化探索测试，并输出可复现证据。
 - [electron](electron/SKILL.md)：通过 Chrome DevTools Protocol 自动化 Electron 桌面应用。
 
@@ -182,6 +183,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 把测试文件中的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | 抓取依赖源码，给 AI agents 提供更深的实现上下文。                                                                                              | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [xquik-twitter](xquik-twitter/SKILL.md)                         | 通过 Xquik API 搜索 X/Twitter 数据，并执行需确认的账号操作。                                                                                  | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [dogfood](dogfood/SKILL.md)                                         | 系统化测试 Web 应用，并产出附截图和录屏的问题报告。                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | 通过 agent-browser 和 Chrome DevTools Protocol 自动化 Electron 桌面应用。                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
