@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 41개**가 포함되어 있습니다. 이 중 **33개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 42개**가 포함되어 있습니다. 이 중 **34개는 루트 레벨 스킬**로 직접 관리되며, **8개의 벤더링된 GSAP 애니메이션 스킬**은 [`gsap-skills/`](gsap-skills/) 아래에 포함되어 있습니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -111,6 +111,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` 라이브러리를 위한 AI 채팅 UI 컴포넌트 제작.
 - [frontend-skill](frontend-skill/SKILL.md): 시각적으로 강한 랜딩 페이지, 웹사이트, 앱, 프로토타입, 데모, 게임 UI가 필요할 때 사용한다.
 - [huashu-design](huashu-design/SKILL.md): 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.
+- [text-to-lottie](text-to-lottie/SKILL.md): 공식 Diffusion Studio player에서 Skia/Skottie로 렌더링 가능한 Lottie JSON animation을 작성한다.
 - [shader-dev](shader-dev/SKILL.md): ShaderToy 호환 실시간 비주얼을 위한 종합 GLSL 셰이더 기법.
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
 - [`gsap-skills/`](gsap-skills/): core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks를 포함한 공식 GSAP 애니메이션 스킬 8개.
@@ -170,6 +171,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [find-skills](find-skills/SKILL.md)                                 | 사용자가 특정 기능을 필요로 할 때 기존 스킬을 탐색.                                                                                              | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [frontend-skill](frontend-skill/SKILL.md)                           | 시각적으로 강한 랜딩 페이지, 웹사이트, 앱, 프로토타입, 데모, 게임 UI를 만든다.                                                                   | [ok-skills/frontend-skill](frontend-skill/SKILL.md)                                                                            |
 | [huashu-design](huashu-design/SKILL.md)                           | 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [text-to-lottie](text-to-lottie/SKILL.md) | 공식 Diffusion Studio player에서 Skia/Skottie로 렌더링 가능한 Lottie JSON animation을 작성한다. | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
 | [shader-dev](shader-dev/SKILL.md) | ShaderToy 호환 실시간 비주얼을 위한 종합 GLSL 셰이더 기법. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 코드를 작성하기 전에 최신 서드파티 API 또는 SDK 문서를 가져옴.                                                                                   | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 현재 브랜치의 PR 리뷰 및 이슈 코멘트를 `gh`로 처리.                                                                                              | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
@@ -221,4 +223,4 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 이 저장소는 [LICENSE](LICENSE) 하에 배포됩니다.
 
-일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`huashu-design/`](huashu-design/), [`minimax-docx/`](minimax-docx/), [`gsap-skills/`](gsap-skills/)입니다.
+일부 스킬은 디렉터리별 자산 및 출처 고지를 위한 추가 라이선스 파일이나 notice를 포함하며, 예시는 [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`huashu-design/`](huashu-design/), [`text-to-lottie/`](text-to-lottie/), [`minimax-docx/`](minimax-docx/), [`gsap-skills/`](gsap-skills/)입니다.

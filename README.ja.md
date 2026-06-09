@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-This repo currently bundles **41 reusable skills**: **33 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **42 reusable skills**: **34 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -111,6 +111,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` ライブラリ向けの AI チャット UI コンポーネントを構築する
 - [frontend-skill](frontend-skill/SKILL.md): 視覚的に強いランディングページ、Web サイト、アプリ、プロトタイプ、デモ、ゲーム UI が必要なときに使う
 - [huashu-design](huashu-design/SKILL.md): 高品質な HTML プロトタイプ、インタラクティブデモ、スライド、motion design、デザイン variants、動画書き出し、design critique を作る。
+- [text-to-lottie](text-to-lottie/SKILL.md): 公式 Diffusion Studio player で Skia/Skottie が描画できる Lottie JSON animation を作成する。
 - [shader-dev](shader-dev/SKILL.md): ShaderToy 互換のリアルタイム表現を作るための包括的な GLSL シェーダ技法。
 - [better-icons](better-icons/SKILL.md): CLI または MCP で 200 以上の Iconify ライブラリを検索し、SVG アイコンを取得する
 - [`gsap-skills/`](gsap-skills/): 公式 GSAP アニメーション skills 8 個（core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks）
@@ -170,6 +171,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [find-skills](find-skills/SKILL.md)                                 | ユーザーが必要とする specialized capability に対して既存 skill を見つける。                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [frontend-skill](frontend-skill/SKILL.md)                           | 視覚的に強いランディングページ、Web サイト、アプリ、プロトタイプ、デモ、ゲーム UI を作成する。                                                                                                | [ok-skills/frontend-skill](frontend-skill/SKILL.md)                                                                            |
 | [huashu-design](huashu-design/SKILL.md)                           | 高品質な HTML プロトタイプ、インタラクティブデモ、スライド、motion design、デザイン variants、動画書き出し、design critique を作る。                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [text-to-lottie](text-to-lottie/SKILL.md) | 公式 Diffusion Studio player で Skia/Skottie が描画できる Lottie JSON animation を作成する。 | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
 | [shader-dev](shader-dev/SKILL.md) | ShaderToy 互換のリアルタイム表現を作るための包括的な GLSL シェーダ技法。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | コードを書く前に、外部 API や SDK の最新ドキュメントを取得する。                                                                                                                              | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [gh-address-comments](gh-address-comments/SKILL.md)                 | 現在のブランチに対する PR review comment や issue comment を `gh` で処理する。                                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
@@ -221,4 +223,4 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 このリポジトリは [LICENSE](LICENSE) の下で提供されています。
 
-一部の skills には、skill 固有のアセットや帰属表示のために追加の license file / notice file が含まれます。対象には [`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`huashu-design/`](huashu-design/)、[`minimax-docx/`](minimax-docx/)、[`gsap-skills/`](gsap-skills/) などがあります。
+一部の skills には、skill 固有のアセットや帰属表示のために追加の license file / notice file が含まれます。対象には [`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`huashu-design/`](huashu-design/)、[`text-to-lottie/`](text-to-lottie/)、[`minimax-docx/`](minimax-docx/)、[`gsap-skills/`](gsap-skills/) などがあります。
