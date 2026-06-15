@@ -178,7 +178,7 @@ Manus operates in a continuous 7-step loop:
 
 ## Critical Constraints
 
-- **Single-Action Execution:** ONE tool call per turn. No parallel execution.
+- **Single-Action Execution (Manus 2025 original constraint):** ONE tool call per turn, no parallel execution. This documents Manus's 2025 sandbox practice. **2026 update:** modern hosts (Claude Code, Codex CLI) support parallel tool calls and subagents, so this constraint no longer applies as written. The plan file, not the one-call-per-turn rule, remains the coordination point: parallel calls and subagents share state through the durable markdown plan on disk.
 - **Plan is Required:** Agent must ALWAYS know: goal, current phase, remaining phases
 - **Files are Memory:** Context = volatile. Filesystem = persistent.
 - **Never Repeat Failures:** If action failed, next action MUST be different

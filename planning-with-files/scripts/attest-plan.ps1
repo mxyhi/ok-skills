@@ -92,6 +92,14 @@ if ($Show) {
         Write-Output "Plan: $planFile"
         Write-Output "Attestation: $attestationFile"
         Write-Output ("SHA-256: " + (Get-Content -LiteralPath $attestationFile -Raw).Trim())
+        # Nonce (security A1.4): surface the per-plan nonce if init-session
+        # generated one next to the attestation. Informational only here; the
+        # hooks consume it to build collision-proof BEGIN/END delimiters.
+        $nonceFile = Join-Path (Split-Path -Parent $attestationFile) ".nonce"
+        if (Test-Path -LiteralPath $nonceFile) {
+            $nonceVal = (Get-Content -LiteralPath $nonceFile -Raw).Trim()
+            if ($nonceVal) { Write-Output "Nonce: $nonceVal" }
+        }
     } else {
         Write-Output "[plan-attest] No attestation set for $planFile."
         exit 1
@@ -111,6 +119,17 @@ if ($Clear) {
 
 $hashVal = (Get-FileHash -LiteralPath $planFile -Algorithm SHA256).Hash.ToLowerInvariant()
 Set-Content -LiteralPath $attestationFile -Value $hashVal -NoNewline -Encoding ascii
+
+# Integrity verification (security A2.1): confirm the on-disk attestation
+# matches the intended hash before reporting success. A silent write failure
+# (permissions, full disk) must not leave a stale attestation and exit clean.
+$storedHash = (Get-Content -LiteralPath $attestationFile -Raw -ErrorAction SilentlyContinue)
+if ($null -ne $storedHash) { $storedHash = $storedHash.Trim() }
+if ($storedHash -ne $hashVal) {
+    Write-Error "[plan-attest] Attestation write verification FAILED for $attestationFile. Expected $hashVal, found $storedHash. The plan is NOT attested."
+    exit 1
+}
+
 $short = $hashVal.Substring(0, 12)
 Write-Output "[plan-attest] Locked $planFile"
 Write-Output "[plan-attest] SHA-256: $short... (stored in $attestationFile)"

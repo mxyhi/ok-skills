@@ -84,6 +84,13 @@ case "${mode}" in
             printf "Plan: %s\n" "${plan_file}"
             printf "Attestation: %s\n" "${attestation_file}"
             printf "SHA-256: %s\n" "$(cat "${attestation_file}")"
+            # Nonce (security A1.4): if init-session generated a per-plan nonce
+            # next to the attestation, surface it. Informational only here; the
+            # hooks consume it to build collision-proof BEGIN/END delimiters.
+            nonce_file="$(dirname "${attestation_file}")/.nonce"
+            if [ -f "${nonce_file}" ]; then
+                printf "Nonce: %s\n" "$(tr -d '\r\n[:space:]' < "${nonce_file}" 2>/dev/null)"
+            fi
         else
             printf "[plan-attest] No attestation set for %s.\n" "${plan_file}"
             exit 1
@@ -142,6 +149,7 @@ case "${mode}" in
             printf "[plan-attest] Failed to write %s\n" "${tmp_file}" >&2
             exit 1
         }
+        mv_ok=1
         if command -v flock >/dev/null 2>&1; then
             # Advisory lock around the rename. lock_dir is the dir containing
             # the target file. The {} subshell pattern keeps the lock scoped to
@@ -150,15 +158,42 @@ case "${mode}" in
             (
                 flock -w 5 9 || true
                 mv -f "${tmp_file}" "${attestation_file}"
-            ) 9>"${lock_dir}/.attestation.lock" 2>/dev/null
+            ) 9>"${lock_dir}/.attestation.lock" 2>/dev/null || mv_ok=0
             rm -f "${lock_dir}/.attestation.lock" 2>/dev/null
         else
-            mv -f "${tmp_file}" "${attestation_file}" 2>/dev/null
+            mv -f "${tmp_file}" "${attestation_file}" 2>/dev/null || mv_ok=0
         fi
 
-        # If mv failed for any reason, fall back to direct write.
-        if [ ! -f "${attestation_file}" ]; then
-            printf "%s\n" "${hash_val}" > "${attestation_file}"
+        # Integrity gap fix (security A2.1): a failed atomic rename must not be
+        # allowed to silently leave a stale attestation when the target already
+        # existed. The old fallback only wrote when the file was absent, so a
+        # cross-device or permission-denied mv on an existing attestation left
+        # the OLD hash in place with a success exit. On mv failure we re-write
+        # the intended hash through a second atomic rename (never a bare
+        # redirect onto the live file, which would expose torn reads to
+        # concurrent verifiers), then verify the on-disk content.
+        if [ "${mv_ok}" -eq 0 ] || [ ! -f "${attestation_file}" ]; then
+            fb_tmp="${attestation_file}.fb.$$"
+            printf "%s\n" "${hash_val}" > "${fb_tmp}" 2>/dev/null \
+                && mv -f "${fb_tmp}" "${attestation_file}" 2>/dev/null || {
+                rm -f "${fb_tmp}" "${tmp_file}" 2>/dev/null
+                printf "[plan-attest] Failed to write attestation %s\n" "${attestation_file}" >&2
+                exit 1
+            }
+        fi
+        rm -f "${tmp_file}" 2>/dev/null
+
+        # Read-back verification. Both write paths above are atomic renames, so
+        # a concurrent verifier always reads a complete 64-hex hash — either our
+        # own or an identical one from a peer attesting the same plan content.
+        # A mismatch here therefore means our intended hash genuinely did not
+        # land (stale content, failed write); fail loudly with a nonzero exit so
+        # callers never trust a stale attestation.
+        stored_hash="$(tr -d '\r\n[:space:]' < "${attestation_file}" 2>/dev/null)"
+        if [ "${stored_hash}" != "${hash_val}" ]; then
+            printf "[plan-attest] Attestation write verification FAILED for %s\n" "${attestation_file}" >&2
+            printf "[plan-attest] Expected %s, found %s. The plan is NOT attested.\n" "${hash_val}" "${stored_hash}" >&2
+            exit 1
         fi
 
         short_hash="$(printf "%s" "${hash_val}" | cut -c1-12)"

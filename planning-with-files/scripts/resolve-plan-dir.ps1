@@ -10,11 +10,34 @@ param(
     [string]$PlanRoot = (Join-Path (Get-Location) ".planning")
 )
 
+$projectRoot = (Get-Location).Path
+
+# Containment guard (security A1.3): a resolved plan dir must canonicalize to a
+# path under the project root. A directory symlink/junction inside a valid slug
+# pointing outside the workspace would otherwise let the hooks hash and inject
+# an arbitrary file. Resolve-Path follows reparse points; we compare the real
+# paths. If canonicalization fails for either side we fail open (return $true)
+# to keep legacy behavior intact on minimal hosts.
+function Test-WithinRoot {
+    param([string]$Candidate)
+    try {
+        $rootReal = (Resolve-Path -LiteralPath $projectRoot -ErrorAction Stop).Path
+        $candReal = (Resolve-Path -LiteralPath $Candidate -ErrorAction Stop).Path
+    } catch {
+        return $true
+    }
+    if (-not $rootReal -or -not $candReal) { return $true }
+    $rootNorm = $rootReal.TrimEnd('\', '/')
+    $candNorm = $candReal.TrimEnd('\', '/')
+    if ($candNorm -eq $rootNorm) { return $true }
+    return $candNorm.StartsWith($rootNorm + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)
+}
+
 $activeFile = Join-Path $PlanRoot ".active_plan"
 
 if ($env:PLAN_ID) {
     $candidate = Join-Path $PlanRoot $env:PLAN_ID
-    if (Test-Path $candidate -PathType Container) {
+    if ((Test-Path $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {
         Write-Output $candidate
         exit 0
     }
@@ -24,7 +47,7 @@ if (Test-Path $activeFile) {
     $planId = (Get-Content $activeFile -Raw).Trim()
     if ($planId) {
         $candidate = Join-Path $PlanRoot $planId
-        if (Test-Path $candidate -PathType Container) {
+        if ((Test-Path $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {
             Write-Output $candidate
             exit 0
         }
@@ -34,6 +57,7 @@ if (Test-Path $activeFile) {
 if (Test-Path $PlanRoot -PathType Container) {
     $latest = Get-ChildItem -Path $PlanRoot -Directory |
         Where-Object { -not $_.Name.StartsWith('.') } |
+        Where-Object { Test-WithinRoot $_.FullName } |
         Sort-Object LastWriteTime -Descending |
         Select-Object -First 1
     if ($latest) {
