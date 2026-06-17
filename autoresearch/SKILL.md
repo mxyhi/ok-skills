@@ -1,7 +1,7 @@
 ---
 name: autoresearch
 description: "Autonomous iteration loop: modify, verify, keep/discard against any metric"
-version: 2.1.0
+version: 2.1.3
 ---
 
 # Autoresearch — Autonomous Goal-directed Iteration
@@ -24,7 +24,7 @@ version: 2.1.0
 | `$autoresearch ship` | Ship through 8 phases: checklist → dry-run → deploy → verify | N/A |
 | `$autoresearch scenario` | Generate edge cases across 12 dimensions | 20 |
 | `$autoresearch predict` | 5 expert personas debate before implementation | N/A |
-| `$autoresearch learn` | Scout codebase → generate docs → validate → fix loop | 10 |
+| `$autoresearch learn` | Scout codebase → generate docs or wiki → validate → fix loop | 10 |
 | `$autoresearch reason` | Adversarial debate with blind judges until convergence | 8 |
 | `$autoresearch probe` | 8 personas interrogate requirements until saturation | 15 |
 | `$autoresearch improve` | Research ICP challenges, discover improvements, generate PRDs | 15 |
