@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Use when implementing any feature, bugfix, refactor, or behavior change, before writing implementation code. Enforce test-first red-green-refactor unless the user explicitly disables tests.
+description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor", or wants integration tests.
 ---
 
 # Test-Driven Development
