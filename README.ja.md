@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-This repo currently bundles **45 reusable skills**: **37 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **46 reusable skills**: **38 top-level skills** maintained directly in this repo, plus **8 vendored GSAP animation skills** under [`gsap-skills/`](gsap-skills/). Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -103,6 +103,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 - [kimi-webbridge](kimi-webbridge/SKILL.md): ローカルデーモン経由でユーザーの実ブラウザを操作し、ナビゲーション、フォーム入力、スクリーンショット、ページ読解、ログイン済みセッションに対応します。
 - [browser-trace](browser-trace/SKILL.md): ブラウザ自動化実行の CDP trace、スクリーンショット、DOM dump を取得し、ページ単位に分割してデバッグする。
 - [opencli](opencli/opencli-usage/SKILL.md): ブラウザのログイン状態を再利用し、公開 API や AI 生成アダプタで Web サイトを CLI 化する
+- [xquik-twitter](xquik-twitter/SKILL.md): Xquik API で X/Twitter データを検索し、承認済みのアカウント操作を実行する。
 - [dogfood](dogfood/SKILL.md): 再現可能な証拠付きで探索的テストを行う
 - [electron](electron/SKILL.md): Chrome DevTools Protocol を通じて Electron デスクトップアプリを自動化する
 
@@ -189,6 +190,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files の `as` type assertions を `@total-typescript/shoehorn` へ移行する。                                                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opensrc](opensrc/SKILL.md)                                         | 依存パッケージのソースコードを取得し、AI agents により深い実装コンテキストを与える。                                                                                                        | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | ブラウザのログイン状態を再利用し、公開 API や AI 生成アダプタで Web サイトを CLI 化する。                                                                                                     | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
+| [xquik-twitter](xquik-twitter/SKILL.md)                         | Xquik API で X/Twitter データを検索し、承認済みのアカウント操作を実行する。                                                                                                             | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [dogfood](dogfood/SKILL.md)                                         | Web アプリを体系的にテストし、スクリーンショットと動画付きの再現可能な issue report を作成する。                                                                                              | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
 | [electron](electron/SKILL.md)                                       | agent-browser と Chrome DevTools Protocol を使って Electron デスクトップアプリを自動化する。                                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | トークンベースのデザインシステムで PDF を生成・入力・再レイアウト。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
