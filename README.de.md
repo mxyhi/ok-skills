@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **46 wiederverwendbare Skills**: **38 Top-Level-Skills**, die direkt hier gepflegt werden, plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **45 wiederverwendbare Skills**: **37 Top-Level-Skills**, die direkt hier gepflegt werden, plus **8 vendorte GSAP-Animations-Skills** unter [`gsap-skills/`](gsap-skills/). Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -113,7 +113,6 @@ Danach kannst du natürlich formulieren:
 ### Frontend und Design
 
 - [ai-elements](ai-elements/SKILL.md): AI-Chat-UI-Komponenten für die Bibliothek `ai-elements` erstellen.
-- [frontend-skill](frontend-skill/SKILL.md): Verwenden, wenn eine visuell starke Landingpage, Website, App, ein Prototyp, eine Demo oder ein Game-UI benötigt wird.
 - [huashu-design](huashu-design/SKILL.md): Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.
 - [text-to-lottie](text-to-lottie/SKILL.md): Skia/Skottie-renderbare Lottie-JSON-Animationen im offiziellen Diffusion-Studio-Player erstellen.
 - [shader-dev](shader-dev/SKILL.md): Umfassende GLSL-Shader-Techniken für ShaderToy-kompatible Echtzeit-Visuals.
@@ -173,7 +172,6 @@ Attributionen und rechtliche Dateien bleiben in [`gsap-skills/NOTICE.md`](gsap-s
 | [minimax-docx](minimax-docx/SKILL.md) | Professionelle DOCX-Erstellung, Bearbeitung und Formatierung mit OpenXML SDK (.NET). | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | Exa für Web-, Code- und Unternehmensrecherche verwenden.                                                                                                                                                           | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Vorhandene Skills entdecken, wenn Benutzer spezialisierte Fähigkeiten benötigen.                                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
-| [frontend-skill](frontend-skill/SKILL.md)                           | Visuell starke Landingpages, Websites, Apps, Prototypen, Demos oder Game-UIs erstellen.                                                                                                                            | [ok-skills/frontend-skill](frontend-skill/SKILL.md)                                                                            |
 | [huashu-design](huashu-design/SKILL.md)                           | Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [text-to-lottie](text-to-lottie/SKILL.md) | Skia/Skottie-renderbare Lottie-JSON-Animationen im offiziellen Diffusion-Studio-Player erstellen. | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
 | [shader-dev](shader-dev/SKILL.md) | Umfassende GLSL-Shader-Techniken für ShaderToy-kompatible Echtzeit-Visuals. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
