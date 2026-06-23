@@ -12,11 +12,9 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
 - Official source: `exa-labs/exa-mcp-server`
 - Current npm package checked: `exa-mcp-server@3.2.1`
-- Tool schemas can change. Before adding new parameters, verify with:
+- Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
-```bash
-mcporter list 'https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,web_fetch_exa' --schema
-```
+Direct MCP HTTP is the required invocation model for this skill. `curl` is fine, but keep the session and SSE parsing in small shell helpers instead of repeating low-level flags at every call site.
 
 ## Tool Choice
 
@@ -78,16 +76,59 @@ mcporter list 'https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_e
 - `deep_search_exa`: use `web_search_advanced_exa` instead; may require user-provided Exa API key and may not register on anonymous hosted MCP.
 - `deep_researcher_start` / `deep_researcher_check`: deprecated; use Exa Research API directly when needed.
 
-## Invocation Examples
+## Curl Pattern
+
+1. POST `initialize`; keep returned `Mcp-Session-Id` response header.
+2. POST `notifications/initialized` with that header.
+3. POST `tools/list` or `tools/call` with that header.
+4. If response is `text/event-stream`, parse JSON from `data:` lines.
+
+### Minimal Curl Helper
 
 ```bash
-URL="https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,web_fetch_exa"
-npx -y mcporter call "$URL.web_search_exa" query="latest AI safety research" numResults:=10
-npx -y mcporter call "$URL.web_search_advanced_exa" query="AI infrastructure startups" category=company numResults:=20
-npx -y mcporter call "$URL.web_fetch_exa" urls:='["https://docs.exa.ai/reference"]' maxCharacters:=5000
+EXA_URL="https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,web_fetch_exa"
+EXA_SESSION_ID=""
+
+exa_rpc() {
+  local payload="$1"
+  local session_header=()
+  local response
+
+  if [ -n "$EXA_SESSION_ID" ]; then
+    session_header=(-H "Mcp-Session-Id: $EXA_SESSION_ID")
+  fi
+
+  response="$(curl -isS "$EXA_URL" \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: application/json, text/event-stream' \
+    "${session_header[@]}" \
+    --data "$payload")"
+
+  if [ -z "$EXA_SESSION_ID" ]; then
+    EXA_SESSION_ID="$(printf '%s\n' "$response" | awk 'tolower($0) ~ /^mcp-session-id:/ { sub(/^[^:]+:[[:space:]]*/, ""); gsub(/\r/, ""); print; exit }')"
+  fi
+
+  printf '%s\n' "$response" | sed -n 's/^data: //p'
+}
+
+exa_init() {
+  exa_rpc '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"exa-curl","version":"0.1.0"}}}' >/dev/null
+  exa_rpc '{"jsonrpc":"2.0","method":"notifications/initialized"}' >/dev/null
+}
+
+exa_call() {
+  local tool_name="$1"
+  local arguments_json="$2"
+  jq -nc --arg name "$tool_name" --argjson arguments "$arguments_json" \
+    '{jsonrpc:"2.0",id:2,method:"tools/call",params:{name:$name,arguments:$arguments}}' |
+    while IFS= read -r payload; do exa_rpc "$payload"; done
+}
+
+exa_init
+exa_call web_search_exa '{"query":"latest AI safety research","numResults":5}'
 ```
 
-For `mcporter call --http-url` style, keep JSON args aligned with the same schemas.
+Tool output format differs: `web_search_exa` returns formatted text, `web_search_advanced_exa` returns JSON text, and `web_fetch_exa` returns fetched page text.
 
 ## Research Practice
 

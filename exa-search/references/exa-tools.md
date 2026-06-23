@@ -3,9 +3,9 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@9ea4ba3e67f87c462c3e06b192470e837ed9009e`
+- Official repo: `exa-labs/exa-mcp-server@253322139071596121f8ef35532443dba8b67017`
 - npm package: `exa-mcp-server@3.2.1`
-- Date checked: 2026-06-19
+- Date checked: 2026-06-23
 
 ## Base URL
 
@@ -13,6 +13,9 @@ Snapshot checked against:
 - Select tools: `?tools=tool_a,tool_b,...`
 - API key: `?exaApiKey=YOUR_EXA_API_KEY`, `Authorization: Bearer ...`, or `EXA_API_KEY` for local npm.
 - Anonymous hosted use works but has rate limits and may not register API-key-only tools.
+- Streamable HTTP flow: `initialize`, `notifications/initialized`, then `tools/list` or `tools/call` with the returned `Mcp-Session-Id`.
+- Hosted responses usually use `text/event-stream`; extract JSON from `data:` lines before parsing.
+- Use `curl` through small shell helpers. Repeating raw header/body plumbing at every call site is noisy.
 
 ## Enabled By Default
 
@@ -68,10 +71,37 @@ Deprecated/compat details:
 ## Minimal MCP Schema Check
 
 ```bash
-mcporter list 'https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,web_fetch_exa,get_code_context_exa,company_research_exa,people_search_exa' --schema --json
+EXA_URL="https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,web_fetch_exa,get_code_context_exa,company_research_exa,people_search_exa"
+EXA_SESSION_ID=""
+
+exa_rpc() {
+  local payload="$1"
+  local session_header=()
+  local response
+
+  if [ -n "$EXA_SESSION_ID" ]; then
+    session_header=(-H "Mcp-Session-Id: $EXA_SESSION_ID")
+  fi
+
+  response="$(curl -isS "$EXA_URL" \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: application/json, text/event-stream' \
+    "${session_header[@]}" \
+    --data "$payload")"
+
+  if [ -z "$EXA_SESSION_ID" ]; then
+    EXA_SESSION_ID="$(printf '%s\n' "$response" | awk 'tolower($0) ~ /^mcp-session-id:/ { sub(/^[^:]+:[[:space:]]*/, ""); gsub(/\r/, ""); print; exit }')"
+  fi
+
+  printf '%s\n' "$response" | sed -n 's/^data: //p'
+}
+
+exa_rpc '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"exa-schema-check","version":"0.1.0"}}}' >/dev/null
+exa_rpc '{"jsonrpc":"2.0","method":"notifications/initialized"}' >/dev/null
+exa_rpc '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}'
 ```
 
-Expected hosted anonymous tools from that request on 2026-06-19:
+Expected hosted anonymous tools from that request on 2026-06-23:
 
 - `web_search_exa`
 - `web_search_advanced_exa`
@@ -81,3 +111,13 @@ Expected hosted anonymous tools from that request on 2026-06-19:
 - `get_code_context_exa`
 
 `deep_search_exa` was requested separately but did not register anonymously, matching official source behavior that requires a user-provided API key.
+
+## Direct HTTP Smoke Result
+
+No-proxy direct HTTP passed on 2026-06-23:
+
+- `initialize`: protocol `2025-06-18`, server `exa-search-server`, version `3.2.1`
+- `tools/list`: returned `web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`
+- `tools/call web_search_exa`: returned `isError=false` and formatted search text
+- `tools/call web_search_advanced_exa`: returned `isError=false` and JSON text
+- `tools/call web_fetch_exa`: returned `isError=false` and fetched page text
