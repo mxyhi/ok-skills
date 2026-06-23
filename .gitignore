@@ -1,5 +1,6 @@
 .DS_Store
 .codegraph/
+.planning/
 __pycache__/
 *.pyc
 /task_plan.md

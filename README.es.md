@@ -6,17 +6,17 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `CLAUDE.md` / `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **45 skills reutilizables**: **37 skills de nivel superior** mantenidos directamente aqui, ademas de **8 skills de animacion GSAP** integradas como paquete vendorizado en [`gsap-skills/`](gsap-skills/). Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
+Este repositorio incluye actualmente **30 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **CLAUDE.md / AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
-**Casos de uso frecuentes:** consulta de documentacion actual, automatizacion de navegador, depuracion de GitHub Actions, prompt engineering, planificacion de tareas complejas, diseno frontend y trabajo con PDF / Word / PPTX / XLSX.
+**Casos de uso frecuentes:** consulta de documentacion actual, automatizacion de navegador, prompt engineering, planificacion de tareas complejas, diseno frontend y trabajo con PDF / Word / PPTX / XLSX.
 
 ## Para Quien Es Este Repositorio
 
 - Usas Codex, Claude Code, Cursor, OpenClaw, Trae u otro agente de programacion con IA y quieres reutilizar skills en lugar de depender de prompts improvisados.
 - Mantienes flujos con `CLAUDE.md` / `AGENTS.md` / `SKILL.md` y quieres instrucciones portables que funcionen entre distintos proyectos.
-- Necesitas skills probadas para busqueda de documentacion, automatizacion de navegador, flujo de GitHub, planificacion, prompt engineering, frontend, PDF, documentos de Office, presentaciones y hojas de calculo.
+- Necesitas skills probadas para busqueda de documentacion, automatizacion de navegador, planificacion, prompt engineering, frontend, PDF, documentos de Office, presentaciones y hojas de calculo.
 
 ## Empieza Por Aqui
 
@@ -25,7 +25,6 @@ Si al principio solo vas a instalar unas pocas skills, empieza por estas:
 - [planning-with-files](planning-with-files/SKILL.md): planificacion basada en archivos para tareas complejas, investigacion y trabajo de larga duracion.
 - [find-docs](find-docs/SKILL.md): consulta documentacion actual de librerias, referencias de API y ejemplos de Context7.
 - [agent-browser](agent-browser/SKILL.md): automatizacion de navegador para capturas, formularios, scraping y QA web.
-- [gh-fix-ci](gh-fix-ci/SKILL.md): inspecciona fallos de GitHub Actions y convierte los logs en un plan de correccion.
 
 ## Inicio Rapido En 1 Minuto
 
@@ -92,11 +91,6 @@ Despues puedes pedirlo de forma natural:
 - [tdd](tdd/SKILL.md): red-green-refactor test-first para funcionalidades, correcciones, refactors y cambios de comportamiento.
 - [systematic-debugging](systematic-debugging/SKILL.md): investiga la causa raiz de bugs, tests fallidos o comportamientos inesperados antes de proponer arreglos.
 
-### Flujo De Trabajo En GitHub
-
-- [gh-address-comments](gh-address-comments/SKILL.md): gestiona comentarios de revision e incidencias en la PR actual usando `gh`.
-- [gh-fix-ci](gh-fix-ci/SKILL.md): inspecciona checks fallidos de GitHub Actions, resume logs y planifica la solucion.
-
 ### Automatizacion y QA
 
 - [agent-browser](agent-browser/SKILL.md): automatizacion de navegador para navegacion, formularios, capturas y scraping.
@@ -104,20 +98,12 @@ Despues puedes pedirlo de forma natural:
 - [browser-trace](browser-trace/SKILL.md): captura trazas CDP, capturas de pantalla y dumps DOM para depurar automatizacion del navegador.
 - [opencli](opencli/opencli-usage/SKILL.md): convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.
 - [xquik-twitter](xquik-twitter/SKILL.md): busca datos de X/Twitter y ejecuta acciones de cuenta confirmadas mediante la API de Xquik.
-- [dogfood](dogfood/SKILL.md): pruebas exploratorias estructuradas con evidencia reproducible.
-- [electron](electron/SKILL.md): automatiza aplicaciones Electron mediante Chrome DevTools Protocol.
-
-`dogfood/` y `electron/` siguen vendorizados desde `vercel-labs/agent-browser`, pero upstream los movio de `skills/` a `skill-data/` en el commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` para que la deteccion del instalador solo exponga el skill bootstrap `agent-browser`. Este repositorio mantiene esos skills especializados como directorios de nivel superior porque upstream todavia los mantiene y siguen siendo utiles de forma directa.
-
 
 ### Frontend y Diseno
 
 - [ai-elements](ai-elements/SKILL.md): crea componentes de interfaz conversacional para la libreria `ai-elements`.
 - [huashu-design](huashu-design/SKILL.md): crea prototipos HTML de alta fidelidad, demos interactivas, decks, motion design, variantes, exportes de video y criticas de diseno.
-- [text-to-lottie](text-to-lottie/SKILL.md): crea animaciones Lottie JSON renderizables por Skia/Skottie en el reproductor oficial de Diffusion Studio.
-- [shader-dev](shader-dev/SKILL.md): tecnicas GLSL completas para efectos visuales en tiempo real compatibles con ShaderToy.
 - [better-icons](better-icons/SKILL.md): busca, explora y obtiene iconos SVG de mas de 200 bibliotecas de Iconify mediante CLI o MCP.
-- [`gsap-skills/`](gsap-skills/): 8 skills oficiales de animacion GSAP (core, timelines, ScrollTrigger, plugins, utils, React, rendimiento, frameworks).
 
 ### Utilidades y Creacion De Contenido
 
@@ -128,21 +114,6 @@ Despues puedes pedirlo de forma natural:
 - [minimax-xlsx](minimax-xlsx/SKILL.md): abre, crea, lee, analiza, edita y valida archivos Excel/hojas de calculo con un flujo XML de baja perdida.
 
 ## Paquetes De Skills Vendorizados
-
-[`gsap-skills/`](gsap-skills/) contiene un paquete centrado en animacion, vendorizado desde [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) en el commit `aed9cfd3277740755f6bfc1155c7aa645403b760`.
-
-Incluye:
-
-- `gsap-core`
-- `gsap-timeline`
-- `gsap-scrolltrigger`
-- `gsap-plugins`
-- `gsap-utils`
-- `gsap-react`
-- `gsap-performance`
-- `gsap-frameworks`
-
-La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) y [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
 [`planning-with-files/`](planning-with-files/) usa [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files) como baseline upstream. Este repositorio usa ese directorio upstream como baseline canonica para la skill local. Las diferencias locales se limitan a conservar el nombre publico `planning-with-files` y normalizar el frontmatter de `SKILL.md` para compatibilidad con `skills-ref`.
 
@@ -173,11 +144,7 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [exa-search](exa-search/SKILL.md)                                   | Usa Exa para investigacion web, de codigo y de empresas.                                                                                                                                                            | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Descubre skills existentes cuando los usuarios necesitan capacidades especializadas.                                                                                                                                | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | Crea prototipos HTML de alta fidelidad, demos interactivas, decks, motion design, variantes, exportes de video y criticas de diseno.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
-| [text-to-lottie](text-to-lottie/SKILL.md) | Crea animaciones Lottie JSON renderizables por Skia/Skottie en el reproductor oficial de Diffusion Studio. | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
-| [shader-dev](shader-dev/SKILL.md) | Tecnicas GLSL completas para efectos visuales en tiempo real compatibles con ShaderToy. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Obtiene la documentacion actual de APIs o SDK de terceros antes de escribir codigo.                                                                                                                                 | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [gh-address-comments](gh-address-comments/SKILL.md)                 | Responde a comentarios de revision y de issues en la rama actual con `gh`.                                                                                                                                          | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
-| [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Inspecciona fallos de GitHub Actions, descarga logs y prepara un plan de correccion.                                                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [grill-me](grill-me/SKILL.md)                                 | Entrevista al usuario sobre un plan o disenio hasta lograr entendimiento compartido.                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | Stress-test de planes contra lenguaje de dominio, `CONTEXT.md` y ADRs, con actualizacion inline de docs.                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Reusable one-question-at-a-time interview loop behind `grill-me` and `grill-with-docs`.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
@@ -186,36 +153,14 @@ La atribucion y los archivos legales se conservan en [`gsap-skills/NOTICE.md`](g
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Encuentra oportunidades de deepening que mejoran locality, leverage, testabilidad y navegacion por IA.                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Pautas de conducta al programar para reducir sobrecomplicacion, supuestos ocultos y cambios no verificables.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migra archivos de test desde assertions de tipo `as` a `@total-typescript/shoehorn`.                                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
-| [opensrc](opensrc/SKILL.md)                                         | Obtiene el codigo fuente de dependencias para dar a los agentes de IA un contexto de implementacion mas profundo.                                                                                                  | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.                                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [xquik-twitter](xquik-twitter/SKILL.md)                         | Busca datos de X/Twitter y ejecuta acciones de cuenta confirmadas mediante la API de Xquik.                                                                                               | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
-| [dogfood](dogfood/SKILL.md)                                         | Prueba aplicaciones web de forma sistematica y produce reportes de incidencias reproducibles con capturas y videos.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
-| [electron](electron/SKILL.md)                                       | Automatiza aplicaciones Electron mediante agent-browser y Chrome DevTools Protocol.                                                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Genera, rellena y remaqueta documentos PDF con un sistema de diseno basado en tokens. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`.                                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Genera, edita y lee presentaciones PowerPoint con PptxGenJS, flujos XML o markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | Usala antes de funcionalidades, correcciones, refactors o cambios de comportamiento; prefiere pruebas de integracion via interfaces publicas.                                                                       | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | Usala cuando encuentres cualquier bug, test fallido o comportamiento inesperado, antes de proponer arreglos.                                                                              | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Abre, crea, lee, analiza, edita y valida archivos Excel/hojas de calculo con un flujo XML de baja perdida. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
-
-Notas:
-- `dogfood` y `electron` vienen del `skill-data/` de upstream, no del `skills/`.
-- Upstream movio estos skills especializados en el commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` para que la deteccion del instalador solo encuentre el skill bootstrap `agent-browser`.
-- Este repositorio los conserva a proposito como skills vendorizados de nivel superior porque upstream sigue manteniendolos y siguen siendo utiles directamente.
-
-### Skills Vendorizadas De `gsap-skills/`
-
-| Skill                                                         | Descripcion                                                                                     | Source URL                                                                                            |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| [gsap-core](gsap-skills/gsap-core/SKILL.md)                   | API core: `gsap.to()` / `from()` / `fromTo()`, easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core)          |
-| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md)           | Timelines: secuenciacion, parametro position, labels, anidacion, control de reproduccion.       | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline)      |
-| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: animacion ligada al scroll, pinning, scrub, triggers, refresh, cleanup.          | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
-| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md)             | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase y mas.                         | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins)       |
-| [gsap-utils](gsap-skills/gsap-utils/SKILL.md)                 | Helpers de gsap.utils: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe.           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils)         |
-| [gsap-react](gsap-skills/gsap-react/SKILL.md)                 | React: useGSAP, refs, `gsap.context()`, cleanup, SSR.                                           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react)         |
-| [gsap-performance](gsap-skills/gsap-performance/SKILL.md)     | Rendimiento: transforms, will-change, batching, tips de ScrollTrigger.                          | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance)   |
-| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md)       | Vue, Svelte, etc.: lifecycle, scope de selectores, cleanup al desmontar.                        | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks)    |
-
 ## Contribuir
 
 Se aceptan contribuciones para nuevas skills o para mejorar las existentes.
@@ -228,5 +173,3 @@ Se aceptan contribuciones para nuevas skills o para mejorar las existentes.
 ## Licencia
 
 Este repositorio esta licenciado bajo [LICENSE](LICENSE).
-
-Algunas skills incluyen archivos adicionales de licencia o avisos de atribucion para activos especificos, incluidos [`diagnosing-bugs/`](diagnosing-bugs/), [`codebase-design/`](codebase-design/), [`domain-modeling/`](domain-modeling/), [`grilling/`](grilling/), [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`huashu-design/`](huashu-design/), [`text-to-lottie/`](text-to-lottie/), [`minimax-docx/`](minimax-docx/) y [`gsap-skills/`](gsap-skills/).

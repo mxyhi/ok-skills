@@ -6,17 +6,17 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **45 skill có thể tái sử dụng**: **37 skill cấp cao nhất** được duy trì trực tiếp trong repo này, cùng với **8 skill animation GSAP được vendored** dưới [`gsap-skills/`](gsap-skills/). Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **30 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
-**Các tình huống dùng phổ biến:** tra cứu tài liệu, tự động hóa trình duyệt, debug GitHub Actions, prompt engineering, workflow lập kế hoạch, thiết kế frontend, và xử lý PDF/Word/PPTX/XLSX.
+**Các tình huống dùng phổ biến:** tra cứu tài liệu, tự động hóa trình duyệt, prompt engineering, workflow lập kế hoạch, thiết kế frontend, và xử lý PDF/Word/PPTX/XLSX.
 
 ## Repo này phù hợp với ai
 
 - Bạn dùng Codex, Claude Code, Cursor, OpenClaw, Trae hoặc một AI coding agent khác và muốn dùng lại skill thay vì viết prompt ad-hoc.
 - Bạn duy trì workflow với `CLAUDE.md` / `AGENTS.md` / `SKILL.md` và muốn có hướng dẫn có thể dùng xuyên nhiều dự án.
-- Bạn cần các skill đã được kiểm chứng cho tra cứu tài liệu, tự động hóa trình duyệt, workflow GitHub, lập kế hoạch, prompt engineering, thiết kế frontend, PDF, tài liệu Office, slide deck và bảng tính.
+- Bạn cần các skill đã được kiểm chứng cho tra cứu tài liệu, tự động hóa trình duyệt, lập kế hoạch, prompt engineering, thiết kế frontend, PDF, tài liệu Office, slide deck và bảng tính.
 
 ## Bắt đầu từ đây
 
@@ -25,7 +25,6 @@ Nếu lúc đầu bạn chỉ cài vài skill, hãy bắt đầu với những s
 - [planning-with-files](planning-with-files/SKILL.md): lập kế hoạch dựa trên file cho tác vụ phức tạp, nghiên cứu và công việc kéo dài.
 - [find-docs](find-docs/SKILL.md): lấy tài liệu thư viện mới nhất, tham chiếu API và ví dụ được Context7 hỗ trợ.
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho ảnh chụp màn hình, biểu mẫu, scraping và web QA.
-- [gh-fix-ci](gh-fix-ci/SKILL.md): kiểm tra các check GitHub Actions thất bại và biến log thành kế hoạch sửa lỗi.
 
 ## Quick Start trong 1 phút
 
@@ -92,11 +91,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [tdd](tdd/SKILL.md): test-first red-green-refactor cho tính năng, bugfix, refactor và thay đổi hành vi.
 - [systematic-debugging](systematic-debugging/SKILL.md): điều tra có hệ thống nguyên nhân gốc của bug, test lỗi hoặc hành vi bất thường trước khi đề xuất cách sửa.
 
-### Workflow GitHub
-
-- [gh-address-comments](gh-address-comments/SKILL.md): xử lý comment review và issue trên PR hiện tại bằng `gh`.
-- [gh-fix-ci](gh-fix-ci/SKILL.md): kiểm tra các check GitHub Actions thất bại, tóm tắt log và lập kế hoạch sửa.
-
 ### Tự động hóa và QA
 
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho điều hướng, biểu mẫu, ảnh chụp màn hình và scraping.
@@ -105,19 +99,11 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [opencli](opencli/opencli-usage/SKILL.md): biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.
 - [xquik-twitter](xquik-twitter/SKILL.md): tìm kiếm dữ liệu X/Twitter và chạy thao tác tài khoản đã xác nhận qua Xquik API.
 
-- [dogfood](dogfood/SKILL.md): exploratory testing có cấu trúc cùng bằng chứng có thể tái hiện.
-- [electron](electron/SKILL.md): tự động hóa ứng dụng Electron desktop qua Chrome DevTools Protocol.
-
-`dogfood/` và `electron/` vẫn được vendored từ `vercel-labs/agent-browser`, nhưng upstream đã chuyển chúng từ `skills/` sang `skill-data/` trong commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` để logic discovery của installer chỉ lộ ra skill bootstrap `agent-browser`. Repo này vẫn giữ các specialized skills đó ở cấp top-level vì upstream vẫn đang duy trì chúng và chúng vẫn hữu dụng trực tiếp.
-
 ### Frontend và thiết kế
 
 - [ai-elements](ai-elements/SKILL.md): xây dựng các thành phần UI chat AI cho thư viện `ai-elements`.
 - [huashu-design](huashu-design/SKILL.md): tạo prototype HTML độ trung thực cao, demo tương tác, slide deck, motion design, biến thể thiết kế, video export và design critique.
-- [text-to-lottie](text-to-lottie/SKILL.md): tạo animation Lottie JSON render được bằng Skia/Skottie trong player Diffusion Studio chính thức.
-- [shader-dev](shader-dev/SKILL.md): kỹ thuật GLSL toàn diện cho hiệu ứng hình ảnh thời gian thực tương thích ShaderToy.
 - [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
-- [`gsap-skills/`](gsap-skills/): 8 skill animation GSAP chính thức (core, timeline, ScrollTrigger, plugins, utils, React, performance, frameworks).
 
 ### Tiện ích và biên soạn nội dung
 
@@ -128,21 +114,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [minimax-xlsx](minimax-xlsx/SKILL.md): mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát.
 
 ## Gói skill vendored
-
-[`gsap-skills/`](gsap-skills/) chứa một bundle animation được vendored từ [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) tại commit `aed9cfd3277740755f6bfc1155c7aa645403b760`.
-
-Gói này bao gồm:
-
-- `gsap-core`
-- `gsap-timeline`
-- `gsap-scrolltrigger`
-- `gsap-plugins`
-- `gsap-utils`
-- `gsap-react`
-- `gsap-performance`
-- `gsap-frameworks`
-
-Thông tin ghi nhận nguồn gốc và hồ sơ pháp lý được giữ trong [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) và [`gsap-skills/LICENSE`](gsap-skills/LICENSE).
 
 [`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files) làm upstream baseline. Repo này dùng thư mục upstream đó làm baseline canonical cho skill cục bộ. Khac biet cuc bo chi gom giu ten skill cong khai `planning-with-files` va chuan hoa frontmatter `SKILL.md` de tuong thich `skills-ref`.
 
@@ -173,11 +144,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [exa-search](exa-search/SKILL.md)                                   | Dùng Exa cho nghiên cứu web, code và công ty.                                                                                                                                              | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Khám phá các skill hiện có khi người dùng cần những năng lực chuyên biệt.                                                                                                                  | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | Tạo prototype HTML độ trung thực cao, demo tương tác, slide deck, motion design, biến thể thiết kế, video export và design critique.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
-| [text-to-lottie](text-to-lottie/SKILL.md) | Tạo animation Lottie JSON render được bằng Skia/Skottie trong player Diffusion Studio chính thức. | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
-| [shader-dev](shader-dev/SKILL.md) | Kỹ thuật GLSL toàn diện cho hiệu ứng hình ảnh thời gian thực tương thích ShaderToy. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Lấy tài liệu API hoặc SDK bên thứ ba hiện tại trước khi viết code.                                                                                                                         | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [gh-address-comments](gh-address-comments/SKILL.md)                 | Xử lý comment review PR và issue trên nhánh hiện tại bằng `gh`.                                                                                                                            | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
-| [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | Kiểm tra các check GitHub Actions thất bại, kéo log và lập kế hoạch sửa.                                                                                                                   | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [grill-me](grill-me/SKILL.md)                                 | Phong van lien tuc ve plan hoac design cho den khi dat hieu biet chung.                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | Stress-test plan voi domain language, `CONTEXT.md`, ADR va cap nhat tai lieu inline.                                                               | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Reusable one-question-at-a-time interview loop behind `grill-me` and `grill-with-docs`.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
@@ -186,36 +153,14 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Tìm cơ hội architecture deepening giúp tăng locality, leverage, testability và AI navigation.                                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Hướng dẫn hành vi coding giúp giảm overcomplication, giả định ẩn và thay đổi không kiểm chứng được.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migrate file test từ `as` type assertions sang `@total-typescript/shoehorn`.                                                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
-| [opensrc](opensrc/SKILL.md)                                         | Lấy mã nguồn của dependency để cung cấp cho AI agents bối cảnh triển khai sâu hơn.                                                                                                         | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [xquik-twitter](xquik-twitter/SKILL.md)                         | Tìm kiếm dữ liệu X/Twitter và chạy thao tác tài khoản đã xác nhận qua Xquik API.                                                                                                           | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
-| [dogfood](dogfood/SKILL.md)                                         | Kiểm thử web app một cách có hệ thống và tạo báo cáo lỗi có thể tái hiện với ảnh chụp và video.                                                                                            | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
-| [electron](electron/SKILL.md)                                       | Tự động hóa ứng dụng Electron desktop thông qua agent-browser và Chrome DevTools Protocol.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Tạo, điền và tái định dạng tài liệu PDF bằng hệ thiết kế token. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Tạo, chỉnh sửa và đọc bản trình bày PowerPoint bằng PptxGenJS, luồng XML hoặc markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | Dùng trước tính năng, bugfix, refactor hoặc thay đổi hành vi; ưu tiên integration-style tests qua public interface.                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | Dùng khi gặp bug, test lỗi hoặc hành vi bất thường, trước khi đề xuất cách sửa.                                                             | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | Mở, tạo, đọc, phân tích, chỉnh sửa và kiểm tra tệp Excel/bảng tính với quy trình XML ít mất mát. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
-
-Ghi chú:
-- `dogfood` và `electron` đến từ `skill-data/` của upstream, không phải `skills/`.
-- Upstream đã chuyển các specialized skills này trong commit `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` để installer discovery chỉ tìm thấy skill bootstrap `agent-browser`.
-- Repo này cố ý giữ chúng như các vendored top-level skills vì upstream vẫn duy trì và chúng vẫn hữu dụng trực tiếp.
-
-### Vendored `gsap-skills/` Skills
-
-| Skill                                                         | Mô tả                                                                                           | Source URL                                                                                            |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| [gsap-core](gsap-skills/gsap-core/SKILL.md)                   | Core API: `gsap.to()` / `from()` / `fromTo()`, easing, duration, stagger, defaults, matchMedia. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core)          |
-| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md)           | Timeline: sắp xếp chuỗi, position parameter, labels, nesting, playback.                         | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline)      |
-| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger: animation liên kết cuộn, pinning, scrub, triggers, refresh, cleanup.             | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
-| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md)             | Plugins: Flip, Draggable, MotionPath, ScrollToPlugin, CustomEase, v.v.                          | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins)       |
-| [gsap-utils](gsap-skills/gsap-utils/SKILL.md)                 | gsap.utils helpers: clamp, mapRange, normalize, random, snap, toArray, wrap, pipe.              | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils)         |
-| [gsap-react](gsap-skills/gsap-react/SKILL.md)                 | React: useGSAP, refs, `gsap.context()`, cleanup, SSR.                                           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react)         |
-| [gsap-performance](gsap-skills/gsap-performance/SKILL.md)     | Performance: transforms, will-change, batching, ScrollTrigger tips.                             | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance)   |
-| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md)       | Vue, Svelte, etc.: lifecycle, scoping selectors, cleanup khi unmount.                           | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks)    |
-
 ## Đóng góp
 
 Chúng tôi hoan nghênh đóng góp cho các skill mới hoặc cải tiến skill hiện có.
@@ -228,5 +173,3 @@ Chúng tôi hoan nghênh đóng góp cho các skill mới hoặc cải tiến sk
 ## Giấy phép
 
 Repo này được cấp phép theo [LICENSE](LICENSE).
-
-Một số skill có thêm file giấy phép hoặc ghi nhận nguồn cho tài sản và attribution riêng, bao gồm [`diagnosing-bugs/`](diagnosing-bugs/), [`codebase-design/`](codebase-design/), [`domain-modeling/`](domain-modeling/), [`grilling/`](grilling/), [`improve-codebase-architecture/`](improve-codebase-architecture/), [`migrate-to-shoehorn/`](migrate-to-shoehorn/), [`huashu-design/`](huashu-design/), [`text-to-lottie/`](text-to-lottie/), [`minimax-docx/`](minimax-docx/) và [`gsap-skills/`](gsap-skills/).

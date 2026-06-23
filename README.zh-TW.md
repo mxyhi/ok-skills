@@ -6,17 +6,17 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **45 個可重用技能**：其中 **37 個頂層技能** 由本倉直接維護，另有 **8 個 GSAP 動畫技能** 以 vendored bundle 形式放在 [`gsap-skills/`](gsap-skills/) 目錄下。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
+目前倉庫共收錄 **30 個可重用技能**，全部作為頂層技能目錄由本倉直接維護。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **CLAUDE.md / AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
-**高頻使用場景：** 最新文件查詢、瀏覽器自動化、GitHub Actions 排障、提示工程、複雜任務規劃、前端設計，以及 PDF / Word / PPTX / XLSX 內容處理。
+**高頻使用場景：** 最新文件查詢、瀏覽器自動化、提示工程、複雜任務規劃、前端設計，以及 PDF / Word / PPTX / XLSX 內容處理。
 
 ## 適合誰
 
 - 你正在使用 Codex、Claude Code、Cursor、OpenClaw、Trae 或其他 AI coding agent，希望重用技能，而不是每次臨時撰寫 prompt。
 - 你正在維護 `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 體系，希望同一套工作流能在不同專案之間攜帶與復用。
-- 你需要現成可用的文件查詢、瀏覽器自動化、GitHub 工作流、規劃、提示工程、前端設計、PDF、Office 文件、簡報與試算表技能。
+- 你需要現成可用的文件查詢、瀏覽器自動化、規劃、提示工程、前端設計、PDF、Office 文件、簡報與試算表技能。
 
 ## 建議先安裝這幾個
 
@@ -25,7 +25,6 @@
 - [planning-with-files](planning-with-files/SKILL.md)：適合複雜任務、調研任務與多輪推進任務的檔案式規劃。
 - [find-docs](find-docs/SKILL.md)：查詢最新函式庫文件、API 參考與 Context7 範例。
 - [agent-browser](agent-browser/SKILL.md)：瀏覽器自動化、截圖、抓取、表單填寫與 Web QA。
-- [gh-fix-ci](gh-fix-ci/SKILL.md)：讀取 GitHub Actions 失敗日誌並輸出修復方案。
 
 ## 1 分鐘快速開始
 
@@ -92,11 +91,6 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [tdd](tdd/SKILL.md)：功能、修復、重構或行為變更前執行 test-first red-green-refactor。
 - [systematic-debugging](systematic-debugging/SKILL.md)：遇到 bug、測試失敗或異常行為時，先系統化追查根因，再提出修復。
 
-### GitHub 工作流
-
-- [gh-address-comments](gh-address-comments/SKILL.md)：使用 `gh` 處理目前分支 PR 的 review / issue 留言。
-- [gh-fix-ci](gh-fix-ci/SKILL.md)：讀取 GitHub Actions 失敗日誌並制定修復計畫。
-
 ### 自動化與 QA
 
 - [agent-browser](agent-browser/SKILL.md)：瀏覽器導覽、表單、截圖、抓取與網頁測試。
@@ -105,19 +99,11 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [opencli](opencli/opencli-usage/SKILL.md)：將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。
 - [xquik-twitter](xquik-twitter/SKILL.md)：透過 Xquik API 搜尋 X/Twitter 資料，並執行需確認的帳號操作。
 
-- [dogfood](dogfood/SKILL.md)：系統化探索測試，並輸出可重現的證據。
-- [electron](electron/SKILL.md)：透過 Chrome DevTools Protocol 自動化 Electron 桌面應用。
-
-`dogfood/` 和 `electron/` 仍然 vendored 自 `vercel-labs/agent-browser`，但 upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中把它們從 `skills/` 挪到了 `skill-data/`，讓 installer 的發現邏輯只暴露引導用的 `agent-browser` skill。本倉仍把這兩個 specialized skills 保留為頂層目錄，因為它們依然由 upstream 維護，且可以直接使用。
-
 ### 前端與設計
 
 - [ai-elements](ai-elements/SKILL.md)：為 `ai-elements` 元件庫建立 AI 對話介面元件。
 - [huashu-design](huashu-design/SKILL.md)：用 HTML 交付高保真原型、互動 Demo、投影片、動畫、設計變體、影片匯出與設計評審。
-- [text-to-lottie](text-to-lottie/SKILL.md)：在官方 Diffusion Studio 播放器中編寫可由 Skia/Skottie 渲染的 Lottie JSON 動畫。
-- [shader-dev](shader-dev/SKILL.md)：提供系統化的 GLSL 著色器技巧，用於打造相容 ShaderToy 的即時視覺效果。
 - [better-icons](better-icons/SKILL.md)：透過 CLI 或 MCP 搜尋、瀏覽並取得 200+ Iconify 圖示庫中的 SVG 圖示。
-- [`gsap-skills/`](gsap-skills/)：8 個官方 GSAP 動畫技能包，涵蓋 core、timeline、ScrollTrigger、plugins、utils、React、performance、frameworks。
 
 ### 工具與內容製作
 
@@ -129,26 +115,10 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 ## Vendored Skill Packs
 
-[`gsap-skills/`](gsap-skills/) 目錄收錄了來自 [`greensock/gsap-skills`](https://github.com/greensock/gsap-skills) 的 GSAP 動畫技能包，目前同步基於提交 `aed9cfd3277740755f6bfc1155c7aa645403b760`。
-
-其中包括：
-
-- `gsap-core`
-- `gsap-timeline`
-- `gsap-scrolltrigger`
-- `gsap-plugins`
-- `gsap-utils`
-- `gsap-react`
-- `gsap-performance`
-- `gsap-frameworks`
-
-歸屬與法律文件保存在 [`gsap-skills/NOTICE.md`](gsap-skills/NOTICE.md) 與 [`gsap-skills/LICENSE`](gsap-skills/LICENSE)。
-
 [`planning-with-files/`](planning-with-files/) 對應的上游基線是 [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)。本倉將該上游目錄作為本地技能的規範基線；本地差異僅限保留公開技能名 `planning-with-files`，並為相容 `skills-ref` 規範化 `SKILL.md` frontmatter。
 
 ## 常見前置條件
 
-- 部分 GitHub 相關技能預設你已安裝並登入 `gh`。
 - 瀏覽器類技能通常需要可用的 Chrome/CDP 環境。
 - 文件查詢類技能可能依賴額外 CLI 或 MCP 工具，請以各自的 `SKILL.md` 為準。
 
@@ -173,11 +143,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 進行網頁、程式碼與公司調研。                                                                                                          | 自製                                                                                                                           |
 | [find-skills](find-skills/SKILL.md)                                 | 當使用者需要特定能力時，協助發現既有技能。                                                                                                     | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 用 HTML 建立高保真原型、互動演示、投影片、動畫、設計變體、影片匯出與設計評審。                                                                | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
-| [text-to-lottie](text-to-lottie/SKILL.md) | 在官方 Diffusion Studio 播放器中編寫可由 Skia/Skottie 渲染的 Lottie JSON 動畫。 | [diffusionstudio/lottie](https://github.com/diffusionstudio/lottie/tree/main/skills/text-to-lottie) |
-| [shader-dev](shader-dev/SKILL.md) | 提供系統化的 GLSL 著色器技巧，用於打造相容 ShaderToy 的即時視覺效果。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在撰寫第三方 API / SDK 程式碼前先抓取當前文件。                                                                                                | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [gh-address-comments](gh-address-comments/SKILL.md)                 | 使用 `gh` 處理目前分支 PR 的評審與 issue 留言。                                                                                                | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-address-comments)                                |
-| [gh-fix-ci](gh-fix-ci/SKILL.md)                                     | 檢查 GitHub Actions 失敗項、提取日誌並制定修復計畫。                                                                                           | [openai/skills](https://github.com/openai/skills/tree/main/skills/.curated/gh-fix-ci)                                          |
 | [grill-me](grill-me/SKILL.md)                                 | 透過持續追問計畫或設計，直到達成共同理解。                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | 用領域語言、`CONTEXT.md` 與 ADR 壓測計畫，並內聯更新文件。                                                                  | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Reusable one-question-at-a-time interview loop behind `grill-me` and `grill-with-docs`.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
@@ -186,36 +152,14 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 找出能提升 locality、leverage、可測試性與 AI 可導覽性的架構 deepening 機會。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 減少過度複雜、隱藏假設與不可驗證改動的編碼行為準則。                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 將測試檔案中的 `as` 型別斷言遷移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
-| [opensrc](opensrc/SKILL.md)                                         | 抓取依賴原始碼，為 AI agents 提供更深的實作上下文。                                                                                            | [vercel-labs/opensrc](https://github.com/vercel-labs/opensrc/tree/main/skills/opensrc)                                         |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [xquik-twitter](xquik-twitter/SKILL.md)                         | 透過 Xquik API 搜尋 X/Twitter 資料，並執行需確認的帳號操作。                                                                                  | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
-| [dogfood](dogfood/SKILL.md)                                         | 系統化測試 Web 應用，並產出附帶截圖與錄影的可重現問題報告。                                                                                    | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/dogfood)                                         |
-| [electron](electron/SKILL.md)                                       | 透過 agent-browser 與 Chrome DevTools Protocol 自動化 Electron 桌面應用。                                                                      | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skill-data/electron)                                        |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化設計系統生成、填寫與重排 PDF 文件。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 來建立、編輯與讀取 PowerPoint 簡報。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修復、重構或行為變更前使用；優先透過 public interface 做 integration-style 測試。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、測試失敗或異常行為時，在提出修復前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
 | [minimax-xlsx](minimax-xlsx/SKILL.md) | 以低損 XML 工作流開啟、建立、讀取、分析、編輯與驗證 Excel／試算表檔案。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
-
-說明：
-- `dogfood` 和 `electron` 的上游路徑在 `skill-data/`，不在 upstream 的 `skills/`。
-- upstream 在提交 `7c2ff0a2a624e86cec0bcc9cc0835aeff6a2edf0` 中遷移了這些 specialized skills，以便 installer 的發現邏輯只找到引導 skill `agent-browser`。
-- 本倉有意繼續把它們作為頂層 vendored skills 保留，因為它們仍在 upstream 持續維護，且具備直接使用價值。
-
-### Vendored `gsap-skills/` 技能
-
-| 技能                                                          | 說明                                                                                           | Source URL                                                                                            |
-| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| [gsap-core](gsap-skills/gsap-core/SKILL.md)                   | 核心 API：`gsap.to()` / `from()` / `fromTo()`，緩動、duration、stagger、defaults、matchMedia。 | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-core)          |
-| [gsap-timeline](gsap-skills/gsap-timeline/SKILL.md)           | Timeline：時序編排、position 參數、labels、巢狀與播放控制。                                    | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-timeline)      |
-| [gsap-scrolltrigger](gsap-skills/gsap-scrolltrigger/SKILL.md) | ScrollTrigger：滾動驅動動畫、pin、scrub、觸發器、refresh、清理。                               | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-scrolltrigger) |
-| [gsap-plugins](gsap-skills/gsap-plugins/SKILL.md)             | 外掛：Flip、Draggable、MotionPath、ScrollToPlugin、CustomEase 等。                             | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-plugins)       |
-| [gsap-utils](gsap-skills/gsap-utils/SKILL.md)                 | gsap.utils：clamp、mapRange、normalize、random、snap、toArray、wrap、pipe。                    | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-utils)         |
-| [gsap-react](gsap-skills/gsap-react/SKILL.md)                 | React：useGSAP、refs、`gsap.context()`、清理、SSR。                                            | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-react)         |
-| [gsap-performance](gsap-skills/gsap-performance/SKILL.md)     | 效能：transform 優先、will-change、批次處理、ScrollTrigger 效能建議。                          | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-performance)   |
-| [gsap-frameworks](gsap-skills/gsap-frameworks/SKILL.md)       | Vue、Svelte 等：生命週期、選擇器作用域、卸載清理。                                             | [greensock/gsap-skills](https://github.com/greensock/gsap-skills/tree/main/skills/gsap-frameworks)    |
-
 ## 貢獻
 
 歡迎為現有技能提出改進，或新增新的技能。
@@ -228,5 +172,3 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ## 授權
 
 本倉庫主授權條款見 [LICENSE](LICENSE)。
-
-部分技能目錄包含額外授權或歸屬說明文件，包括 [`diagnosing-bugs/`](diagnosing-bugs/), [`codebase-design/`](codebase-design/), [`domain-modeling/`](domain-modeling/), [`grilling/`](grilling/), [`improve-codebase-architecture/`](improve-codebase-architecture/)、[`migrate-to-shoehorn/`](migrate-to-shoehorn/)、[`huashu-design/`](huashu-design/)、[`text-to-lottie/`](text-to-lottie/)、[`minimax-docx/`](minimax-docx/) 與 [`gsap-skills/`](gsap-skills/)。

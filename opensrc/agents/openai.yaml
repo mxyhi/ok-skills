@@ -1,4 +1,0 @@
-interface:
-  display_name: "OpenSrc"
-  short_description: "Fetch dependency source code for deeper implementation context"
-  default_prompt: "Use $opensrc to fetch dependency source code before inspecting how a library works internally or reading package implementations."
