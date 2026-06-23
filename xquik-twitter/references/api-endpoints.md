@@ -51,7 +51,7 @@ Returns all keys with `id`, `name`, `prefix`, `isActive`, `createdAt`, `lastUsed
 ### Revoke API Key
 
 ```
-DELETE /api-keys/{id}
+delete request to `/api-keys/{id}`
 ```
 
 Permanent and irreversible. The key stops working immediately.
@@ -114,7 +114,7 @@ PATCH /monitors/{id}
 ### Delete Monitor
 
 ```
-DELETE /monitors/{id}
+delete request to `/monitors/{id}`
 ```
 
 Stops tracking and deletes all associated data.
@@ -126,10 +126,10 @@ GET /monitors/keywords
 POST /monitors/keywords
 GET /monitors/keywords/{id}
 PATCH /monitors/keywords/{id}
-DELETE /monitors/keywords/{id}
+delete request to `/monitors/keywords/{id}`
 ```
 
-Create and manage ongoing keyword monitors. Treat these as persistent resources: confirm the keyword query, event delivery plan, and ongoing cost before creating or enabling one.
+Create and manage ongoing keyword monitors. Treat these as persistent resources: confirm the keyword query, event delivery plan, and ongoing usage before creating or enabling one.
 
 ---
 
@@ -219,7 +219,7 @@ PATCH /webhooks/{id}
 ### Delete Webhook
 
 ```
-DELETE /webhooks/{id}
+delete request to `/webhooks/{id}`
 ```
 
 Permanently removes the webhook. All future deliveries are stopped.
@@ -352,7 +352,7 @@ Run a bulk data extraction job. See `references/extractions.md` for all 23 tool 
 }
 ```
 
-`resultsLimit` (optional): Maximum results to extract. Stops early instead of fetching all data. Useful for controlling costs.
+`resultsLimit` (optional): Maximum results to extract. Stops early instead of fetching all data. Useful for controlling usage.
 
 **Tweet Search Filters** (`tweet_search_extractor` only):
 
@@ -392,7 +392,7 @@ These filters are converted to X search operators and combined with `searchQuery
 POST /extractions/estimate
 ```
 
-Preview the cost before running. Same body as create.
+Preview usage before running. Same body as create.
 
 **Response:**
 ```json
@@ -433,7 +433,7 @@ Formats: `csv`, `json`, `md`, `md-document`, `pdf`, `txt`, `xlsx`. 100,000 row l
 
 ## X API (Direct Lookups)
 
-Metered operations that deduct credits from the account balance.
+Metered operations that require account access.
 
 ### Get Tweet
 
@@ -511,7 +511,7 @@ Returns `isFollowing` and `isFollowedBy` for both directions.
 GET /x/users/{id}/tweets
 ```
 
-Get a user's recent tweets by user ID. Metered (1 credit/tweet).
+Get a user's recent tweets by user ID. Metered per returned tweet.
 
 ### Batch Tweets
 
@@ -527,7 +527,7 @@ Get multiple tweets by comma-separated tweet IDs. Maximum 100 IDs.
 GET /x/users/{id}/likes
 ```
 
-Get tweets liked by a user. Metered (1 credit/result).
+Get tweets liked by a user. Metered per returned result.
 
 ### Get User Media
 
@@ -535,7 +535,7 @@ Get tweets liked by a user. Metered (1 credit/result).
 GET /x/users/{id}/media
 ```
 
-Get a user's media tweets (tweets containing photos/videos). Metered (1 credit/result).
+Get a user's media tweets (tweets containing photos/videos). Metered per returned result.
 
 ### Get Tweet Favoriters
 
@@ -543,7 +543,7 @@ Get a user's media tweets (tweets containing photos/videos). Metered (1 credit/r
 GET /x/tweets/{id}/favoriters
 ```
 
-Get users who liked a tweet. Metered (1 credit/result).
+Get users who liked a tweet. Metered per returned result.
 
 ### Tweet Conversation & Engagement Lists
 
@@ -573,7 +573,7 @@ Read followers, following, mentions, and verified followers for a username or nu
 GET /x/users/{id}/followers-you-know
 ```
 
-Get mutual followers (followers you know). Metered (1 credit/result).
+Get mutual followers (followers you know). Metered per returned result.
 
 ### X Lists
 
@@ -604,7 +604,7 @@ Search communities and read community metadata, members, moderators, or tweets. 
 GET /x/bookmarks
 ```
 
-Get bookmarked tweets. Requires a connected X account. Metered (1 credit/result).
+Get bookmarked tweets. Requires a connected X account. Metered per returned result.
 
 **Sensitive:** Returns private data. Confirm with user before calling.
 
@@ -614,7 +614,7 @@ Get bookmarked tweets. Requires a connected X account. Metered (1 credit/result)
 GET /x/bookmarks/folders
 ```
 
-Get bookmark folders. Requires a connected X account. Metered (1 credit).
+Get bookmark folders. Requires a connected X account. Metered.
 
 ### Get Notifications
 
@@ -622,7 +622,7 @@ Get bookmark folders. Requires a connected X account. Metered (1 credit).
 GET /x/notifications
 ```
 
-Get notifications with type filter. Requires a connected X account. Metered (1 credit/result).
+Get notifications with type filter. Requires a connected X account. Metered per returned result.
 
 **Sensitive:** Returns private data. Confirm with user before calling.
 
@@ -632,7 +632,7 @@ Get notifications with type filter. Requires a connected X account. Metered (1 c
 GET /x/timeline
 ```
 
-Get home timeline. Requires a connected X account. Metered (1 credit/result).
+Get home timeline. Requires a connected X account. Metered per returned result.
 
 **Sensitive:** Returns private data. Confirm with user before calling.
 
@@ -673,7 +673,7 @@ Download images, videos, and GIFs from tweets. Single or bulk (up to 50). Return
 }
 ```
 
-First download is metered. Subsequent requests for the same tweet return cached URLs at no cost (`cacheHit: true`). All downloads are saved to shareable gallery pages under `https://xquik.com/g/{token}`.
+First download is metered. Subsequent requests for the same tweet return cached URLs when `cacheHit: true`. All downloads are saved to shareable gallery pages under `https://xquik.com/g/{token}`.
 
 Returns `400 no_media` if the tweet has no downloadable media. Returns `400 too_many_tweets` if bulk array exceeds 50 items.
 
@@ -713,7 +713,7 @@ Metered. Plan access required. `/trends` is an alias of `/x/trends`. Cached, ref
 GET /radar
 ```
 
-Get trending topics and news from supported trend and news sources. Free.
+Get trending topics and news from supported trend and news sources.
 
 **Query parameters:**
 
@@ -763,7 +763,7 @@ Fields: `id`, `title`, `description?`, `url?`, `imageUrl?`, `source`, `sourceId`
 POST /compose
 ```
 
-Compose, refine, and score tweets using X algorithm data. Free, 3-step workflow.
+Compose, refine, and score tweets with Xquik style signals. Three-step workflow.
 
 **Body:**
 
@@ -868,7 +868,7 @@ Get a specific draft by ID.
 
 ### Delete Draft
 
-`DELETE /drafts/{id}`
+delete request to `/drafts/{id}`
 
 Delete a draft. Returns `204 No Content`.
 
@@ -882,7 +882,7 @@ Delete a draft. Returns `204 No Content`.
 
 `POST /styles`
 
-Fetch recent tweets from an X account and cache them for style analysis. **Consumes API usage credits.**
+Fetch recent tweets from an X account and cache them for style analysis. **Consumes metered API usage.**
 
 **Request body:**
 
@@ -938,7 +938,7 @@ List all cached tweet style profiles. Max 200 results, ordered by fetch date.
 
 `PUT /styles/{id}`
 
-Save a custom style profile from tweet texts. Free, no usage cost. The body `label` controls the saved style label and replaces any existing style with that label.
+Save a custom style profile from tweet texts. The body `label` controls the saved style label and replaces any existing style with that label.
 
 **Body:**
 
@@ -967,7 +967,7 @@ Get a cached style profile with full tweet data. `id` is the cached style label 
 
 ### Delete Cached Style
 
-`DELETE /styles/{id}`
+delete request to `/styles/{id}`
 
 Delete a cached style by label or username. Returns `204 No Content`.
 
@@ -1005,7 +1005,7 @@ Compare two cached tweet style profiles side by side.
 
 `GET /styles/{id}/performance`
 
-Get live engagement metrics for cached tweets for a cached style label or username. **Consumes API usage credits.**
+Get live engagement metrics for cached tweets for a cached style label or username. **Consumes metered API usage.**
 
 **Response (200):**
 
@@ -1034,7 +1034,7 @@ Get live engagement metrics for cached tweets for a cached style label or userna
 
 ## X Accounts (Connected)
 
-Manage connected X accounts for confirmation-gated write actions. All endpoints are free (no usage cost).
+Manage connected X accounts for confirmation-gated write actions.
 
 **Connecting or re-authenticating an X account is done by the user in the Xquik dashboard**, not via this skill. The skill never handles X login material. The agent should direct the user to the dashboard account page when a new account needs to be connected or an existing session needs to be refreshed.
 
@@ -1068,7 +1068,7 @@ Returns `{ id, username, displayName, isActive, createdAt }`.
 ### Disconnect X Account
 
 ```
-DELETE /x/accounts/{id}
+delete request to `/x/accounts/{id}`
 ```
 
 Permanently removes the account from Xquik. Returns `{ success: true }`. Before calling, confirm with the user.
@@ -1104,7 +1104,7 @@ POST /x/tweets
 ### Delete Tweet
 
 ```
-DELETE /x/tweets/{id}
+delete request to `/x/tweets/{id}`
 ```
 
 **Body:** `{ "account": "username" }`
@@ -1122,7 +1122,7 @@ POST /x/tweets/{id}/like
 ### Unlike Tweet
 
 ```
-DELETE /x/tweets/{id}/like
+delete request to `/x/tweets/{id}/like`
 ```
 
 **Body:** `{ "account": "username" }`
@@ -1138,7 +1138,7 @@ POST /x/tweets/{id}/retweet
 ### Unretweet
 
 ```
-DELETE /x/tweets/{id}/retweet
+delete request to `/x/tweets/{id}/retweet`
 ```
 
 **Body:** `{ "account": "username" }`
@@ -1156,7 +1156,7 @@ POST /x/users/{id}/follow
 ### Unfollow User
 
 ```
-DELETE /x/users/{id}/follow
+delete request to `/x/users/{id}/follow`
 ```
 
 **Body:** `{ "account": "username" }`
@@ -1171,7 +1171,7 @@ Remove a user from your followers without blocking them.
 
 **Body:** `{ "account": "username" }`
 
-**Cost:** 10 credits per call.
+**Usage:** Metered per call.
 
 ### Send DM
 
@@ -1194,9 +1194,9 @@ POST /x/dm/{userId}
 GET /x/dm/{userId}/history
 ```
 
-Get DM conversation history with a user. Requires a connected X account. Metered (1 credit/result).
+Get DM conversation history with a user. Requires a connected X account. Metered per returned result.
 
-**Sensitive:** Returns private DM conversations. Confirm with user before calling. Do not forward to other tools without consent.
+**Sensitive:** Returns private DM conversations. Confirm with user before calling. Forward to other tools only after explicit approval.
 
 ### Update Profile
 
@@ -1212,7 +1212,7 @@ PATCH /x/profile
 PATCH /x/profile/avatar
 ```
 
-Update profile avatar. Max 700 KB, GIF/JPEG/PNG. Metered (10 credits).
+Update profile avatar. Max 700 KB, GIF/JPEG/PNG. Metered.
 
 **Body:** FormData with `account` (required) and `file` (required, max 700 KB).
 
@@ -1222,7 +1222,7 @@ Update profile avatar. Max 700 KB, GIF/JPEG/PNG. Metered (10 credits).
 PATCH /x/profile/banner
 ```
 
-Update profile banner. Max 2 MB, GIF/JPEG/PNG. Metered (10 credits).
+Update profile banner. Max 2 MB, GIF/JPEG/PNG. Metered.
 
 **Body:** FormData with `account` (required) and `file` (required, max 2 MB).
 
@@ -1247,7 +1247,7 @@ POST /x/communities
 ### Delete Community
 
 ```
-DELETE /x/communities/{id}
+delete request to `/x/communities/{id}`
 ```
 
 **Body:** `{ "account": "username", "community_name": "..." }` (name required for confirmation)
@@ -1265,7 +1265,7 @@ POST /x/communities/{id}/join
 ### Leave Community
 
 ```
-DELETE /x/communities/{id}/join
+delete request to `/x/communities/{id}/join`
 ```
 
 **Body:** `{ "account": "username" }`
@@ -1288,7 +1288,7 @@ Check a pending write action by the ID returned from an earlier write response.
 GET /credits
 ```
 
-Get credit balance and lifetime usage fields. Free. Plan and credit changes are dashboard-only and intentionally omitted from this installable skill.
+Get credit balance and lifetime usage fields. Plan and credit changes are dashboard-only and intentionally omitted from this installable skill.
 
 ---
 

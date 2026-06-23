@@ -5,7 +5,9 @@ Snapshot checked against:
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
 - Official repo: `exa-labs/exa-mcp-server@253322139071596121f8ef35532443dba8b67017`
 - npm package: `exa-mcp-server@3.2.1`
-- Date checked: 2026-06-23
+- npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
+- npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
+- Date checked: 2026-06-24
 
 ## Base URL
 
@@ -111,6 +113,12 @@ Expected hosted anonymous tools from that request on 2026-06-23:
 - `get_code_context_exa`
 
 `deep_search_exa` was requested separately but did not register anonymously, matching official source behavior that requires a user-provided API key.
+
+Rechecked on 2026-06-24 with `deep_search_exa` included in `tools=`:
+
+- Returned: `web_search_exa`, `web_search_advanced_exa`, `company_research_exa`, `web_fetch_exa`, `people_search_exa`, `get_code_context_exa`
+- Did not return anonymously: `deep_search_exa`
+- npm package `exa-mcp-server@3.2.1` confirms `deep_search_exa` only registers when a user-provided API key is present.
 
 ## Direct HTTP Smoke Result
 

@@ -10,8 +10,8 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server`
-- Current npm package checked: `exa-mcp-server@3.2.1`
+- Official source: `exa-labs/exa-mcp-server@253322139071596121f8ef35532443dba8b67017`
+- Current npm package checked: `exa-mcp-server@3.2.1`; verified tarball SHA-256 `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
 Direct MCP HTTP is the required invocation model for this skill. `curl` is fine, but keep the session and SSE parsing in small shell helpers instead of repeating low-level flags at every call site.
@@ -60,7 +60,7 @@ Direct MCP HTTP is the required invocation model for this skill. `curl` is fine,
 
 ### `web_fetch_exa`
 
-- `urls` required: array of URLs. A single string may also be accepted by the server.
+- `urls` required: array of URLs. Batch multiple URLs in one call.
 - `maxCharacters` optional: default `3000`.
 
 ```json

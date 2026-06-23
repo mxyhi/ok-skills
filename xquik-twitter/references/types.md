@@ -19,8 +19,9 @@ Copy-pasteable TypeScript types for all Xquik API objects.
 - [Request Bodies](#request-bodies)
 - [MCP Output Schemas](#mcp-output-schemas)
 
+## Account
+
 ```typescript
-// ─── Account ─────────────────────────────────────────────
 
 interface Account {
   plan: "active" | "inactive";
@@ -43,7 +44,11 @@ interface Account {
   xUsername?: string;
 }
 
-// ─── Credits ────────────────────────────────────────────
+```
+
+## Credits
+
+```typescript
 
 interface CreditBalance {
   balance: string;              // Current credit balance, bigint string
@@ -51,7 +56,11 @@ interface CreditBalance {
   lifetimeUsed: string;         // Total credits consumed, bigint string
 }
 
-// ─── API Keys ────────────────────────────────────────────
+```
+
+## API Keys
+
+```typescript
 
 interface ApiKeyCreated {
   id: string;
@@ -70,7 +79,11 @@ interface ApiKey {
   lastUsedAt?: string;
 }
 
-// ─── Monitors ────────────────────────────────────────────
+```
+
+## Monitors
+
+```typescript
 
 interface Monitor {
   id: string;
@@ -87,9 +100,13 @@ type EventType =
   | "tweet.reply"
   | "tweet.retweet";
 
-// ─── Events ──────────────────────────────────────────────
+```
 
-interface Event {
+## Events
+
+```typescript
+
+interface XquikEvent {
   id: string;
   type: EventType;
   monitorId: string;
@@ -122,12 +139,16 @@ interface TweetEventData {
 type EventData = TweetEventData;
 
 interface EventList {
-  events: Event[];
+  events: XquikEvent[];
   hasMore: boolean;
   nextCursor?: string;
 }
 
-// ─── Webhooks ────────────────────────────────────────────
+```
+
+## Webhooks
+
+```typescript
 
 interface WebhookCreated {
   id: string;
@@ -162,7 +183,11 @@ interface WebhookPayload {
   data: EventData;
 }
 
-// ─── Draws ───────────────────────────────────────────────
+```
+
+## Draws
+
+```typescript
 
 interface Draw {
   id: string;
@@ -219,7 +244,11 @@ interface CreateDrawRequest {
   requiredMentions?: string[];
 }
 
-// ─── Extractions ─────────────────────────────────────────
+```
+
+## Extractions
+
+```typescript
 
 type ExtractionToolType =
   | "article_extractor"
@@ -322,7 +351,11 @@ interface CreateExtractionRequest {
   advancedQuery?: string;
 }
 
-// ─── X API ───────────────────────────────────────────────
+```
+
+## X API
+
+```typescript
 
 interface TweetMediaItem {
   mediaUrl: string;
@@ -388,7 +421,11 @@ interface FollowerCheck {
   isFollowedBy: boolean;
 }
 
-// ─── User Activity ──────────────────────────────────────
+```
+
+## User Activity
+
+```typescript
 
 interface UserTweetsResponse {
   tweets: Tweet[];
@@ -420,7 +457,11 @@ interface FollowersYouKnowResponse {
   next_cursor?: string;
 }
 
-// ─── Bookmarks & Timeline ───────────────────────────────
+```
+
+## Bookmarks & Timeline
+
+```typescript
 
 interface BookmarksResponse {
   tweets: Tweet[];
@@ -463,7 +504,11 @@ interface DmMessage {
   media?: TweetMediaItem[];
 }
 
-// ─── X Articles ─────────────────────────────────────────
+```
+
+## X Articles
+
+```typescript
 
 interface Article {
   title: string;
@@ -481,7 +526,11 @@ interface Article {
   };
 }
 
-// ─── Radar ───────────────────────────────────────────────
+```
+
+## Radar
+
+```typescript
 
 type RadarSource =
   | "github"
@@ -518,7 +567,11 @@ interface RadarItem {
   createdAt: string;
 }
 
-// ─── Download Media ─────────────────────────────────────
+```
+
+## Download Media
+
+```typescript
 
 interface DownloadMediaRequest {
   tweetInput?: string;  // Tweet URL or numeric tweet ID (single mode)
@@ -537,7 +590,11 @@ interface DownloadMediaBulkResponse {
   totalMedia: number;   // Total media items downloaded
 }
 
-// ─── Trends ──────────────────────────────────────────────
+```
+
+## Trends
+
+```typescript
 
 interface Trend {
   name: string;
@@ -552,7 +609,11 @@ interface TrendList {
   woeid: number;
 }
 
-// ─── Support ────────────────────────────────────────────
+```
+
+## Support
+
+```typescript
 
 interface SupportTicket {
   id: string;
@@ -574,14 +635,22 @@ interface CreateTicketRequest {
   body: string;
 }
 
-// ─── Error ───────────────────────────────────────────────
+```
+
+## Error
+
+```typescript
 
 interface ApiError {
   error: string;
   limit?: number;
 }
 
-// ─── Request Bodies ──────────────────────────────────────
+```
+
+## Request Bodies
+
+```typescript
 
 interface CreateMonitorRequest {
   username: string;
@@ -608,7 +677,11 @@ interface CreateApiKeyRequest {
   name?: string;
 }
 
-// --- Tweet Style Cache ---
+```
+
+## Tweet Style Cache
+
+```typescript
 
 interface TweetStyleCache {
   xUsername: string;
@@ -655,7 +728,11 @@ interface PerformanceTweet {
   bookmarkCount: number;
 }
 
-// --- Tweet Drafts ---
+```
+
+## Tweet Drafts
+
+```typescript
 
 interface TweetDraft {
   id: string;
@@ -672,7 +749,11 @@ interface TweetDraftList {
   hasMore: boolean;
 }
 
-// --- Account Identity ---
+```
+
+## Account Identity
+
+```typescript
 
 interface XIdentityResponse {
   success: boolean;
@@ -687,9 +768,9 @@ The REST API and MCP server use different field names for the same data. Map the
 | Type | REST API Field | MCP Field |
 |------|---------------|-----------|
 | **Monitor** | `username` | `xUsername` |
-| **Event** | `type` | `eventType` |
-| **Event** | `data` | `eventData` |
-| **Event** | `monitorId` | `monitoredAccountId` |
+| **XquikEvent** | `type` | `eventType` |
+| **XquikEvent** | `data` | `eventData` |
+| **XquikEvent** | `monitorId` | `monitoredAccountId` |
 | **UserProfile** | `followers` | `followersCount` |
 | **UserProfile** | `following` | `followingCount` |
 | **FollowerCheck** | `isFollowing` / `isFollowedBy` | `following` / `followedBy` |
@@ -700,8 +781,9 @@ The REST API and MCP server use different field names for the same data. Map the
 
 MCP tools return structured data with these shapes. Field names differ from the REST API (see mapping table above).
 
+## MCP: get-user-info
+
 ```typescript
-// ─── MCP: get-user-info ─────────────────────────────────
 
 interface McpUserInfo {
   username: string;           // X username (without @)
@@ -714,7 +796,11 @@ interface McpUserInfo {
   // Use REST GET /x/users/{id} for the full profile
 }
 
-// ─── MCP: search-tweets ─────────────────────────────────
+```
+
+## MCP: search-tweets
+
+```typescript
 
 interface McpSearchResult {
   tweets: {
@@ -728,7 +814,11 @@ interface McpSearchResult {
   }[];
 }
 
-// ─── MCP: lookup-tweet ──────────────────────────────────
+```
+
+## MCP: lookup-tweet
+
+```typescript
 
 interface McpTweetLookup {
   tweet: {
@@ -750,14 +840,22 @@ interface McpTweetLookup {
   };
 }
 
-// ─── MCP: check-follow ─────────────────────────────────
+```
+
+## MCP: check-follow
+
+```typescript
 
 interface McpFollowCheck {
   following: boolean;         // Whether the source follows the target
   followedBy: boolean;        // Whether the target follows the source
 }
 
-// ─── MCP: get-events ────────────────────────────────────
+```
+
+## MCP: get-events
+
+```typescript
 
 interface McpEventList {
   events: {
@@ -773,7 +871,11 @@ interface McpEventList {
   nextCursor?: string;        // Pass as afterCursor to fetch the next page
 }
 
-// ─── MCP: list-monitors ─────────────────────────────────
+```
+
+## MCP: list-monitors
+
+```typescript
 
 interface McpMonitorList {
   monitors: {
@@ -785,7 +887,11 @@ interface McpMonitorList {
   }[];
 }
 
-// ─── MCP: add-webhook ───────────────────────────────────
+```
+
+## MCP: add-webhook
+
+```typescript
 
 interface McpWebhookCreated {
   id: string;                 // Webhook ID
@@ -796,7 +902,11 @@ interface McpWebhookCreated {
   secret: string;             // HMAC signing secret for verifying webhook payloads. Store securely.
 }
 
-// ─── MCP: test-webhook ──────────────────────────────────
+```
+
+## MCP: test-webhook
+
+```typescript
 
 interface McpWebhookTest {
   success: boolean;
@@ -804,7 +914,11 @@ interface McpWebhookTest {
   error?: string;
 }
 
-// ─── MCP: run-extraction ────────────────────────────────
+```
+
+## MCP: run-extraction
+
+```typescript
 
 interface McpExtractionJob {
   id: string;                 // Extraction job ID (use with get-extraction for results)
@@ -813,7 +927,11 @@ interface McpExtractionJob {
   totalResults: number;       // Number of results extracted
 }
 
-// ─── MCP: estimate-extraction ───────────────────────────
+```
+
+## MCP: estimate-extraction
+
+```typescript
 
 interface McpExtractionEstimate {
   allowed?: boolean;          // Whether the extraction is allowed within budget
@@ -825,7 +943,11 @@ interface McpExtractionEstimate {
   error?: string;             // Error message if estimation failed
 }
 
-// ─── MCP: run-draw ──────────────────────────────────────
+```
+
+## MCP: run-draw
+
+```typescript
 
 interface McpDrawResult {
   id: string;                 // Draw ID (use with get-draw for full details)
@@ -840,7 +962,11 @@ interface McpDrawResult {
   }[];
 }
 
-// ─── MCP: get-draw ──────────────────────────────────────
+```
+
+## MCP: get-draw
+
+```typescript
 
 interface McpDrawDetails {
   draw: {
@@ -867,7 +993,11 @@ interface McpDrawDetails {
   }[];
 }
 
-// ─── MCP: get-account ───────────────────────────────────
+```
+
+## MCP: get-account
+
+```typescript
 
 interface McpAccount {
   plan: "active" | "inactive";
@@ -890,7 +1020,11 @@ interface McpAccount {
   xUsername?: string;
 }
 
-// ─── MCP: get-trends ────────────────────────────────────
+```
+
+## MCP: get-trends
+
+```typescript
 
 interface McpTrends {
   woeid: number;
@@ -903,7 +1037,11 @@ interface McpTrends {
   }[];
 }
 
-// ─── MCP: compose-tweet ────────────────────────────────
+```
+
+## MCP: compose-tweet
+
+```typescript
 
 interface McpComposeTweet {
   algorithmInsights: {
@@ -931,7 +1069,11 @@ interface McpComposeTweet {
   source: string;             // Attribution to algorithm source code
 }
 
-// ─── MCP: refine-tweet ─────────────────────────────────
+```
+
+## MCP: refine-tweet
+
+```typescript
 
 interface McpRefineTweet {
   compositionGuidance: string[];  // Targeted guidance based on user preferences
@@ -941,7 +1083,11 @@ interface McpRefineTweet {
   }[];
 }
 
-// ─── MCP: score-tweet ──────────────────────────────────
+```
+
+## MCP: score-tweet
+
+```typescript
 
 interface McpScoreTweet {
   totalChecks: number;        // Total number of checks performed
@@ -954,7 +1100,11 @@ interface McpScoreTweet {
   }[];
 }
 
-// ─── X Accounts (Connected) ──────────────────────────
+```
+
+## X Accounts (Connected)
+
+```typescript
 
 interface ConnectedXAccount {
   id: string;                 // Unique account ID
@@ -967,7 +1117,11 @@ interface ConnectedXAccount {
 // Connecting an X account is done by the user in the Xquik dashboard,
 // not through this skill. The skill never handles X login material.
 
-// ─── X Write ──────────────────────────────────────────
+```
+
+## X Write
+
+```typescript
 
 interface CreateTweetRequest {
   account: string;            // Connected X username or account ID

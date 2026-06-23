@@ -1,55 +1,31 @@
-# Operations: install, lifecycle, diagnose
+# Operations: daemon lifecycle and recovery
 
-Read this file when the health check in SKILL.md indicates the daemon is missing, not running, or the extension isn't connected — or when the user explicitly asks to install, start, stop, restart, or troubleshoot kimi-webbridge.
+Read this only when a tool call can't reach the daemon, or the user explicitly asks to install / start / troubleshoot kimi-webbridge.
 
-## Path convention
+## The daemon
 
-The `kimi-webbridge` binary always lives at `~/.kimi-webbridge/bin/kimi-webbridge`, regardless of how it was installed. Status, PID, and logs live under `~/.kimi-webbridge/`.
+The `kimi-webbridge` binary lives at `~/.kimi-webbridge/bin/kimi-webbridge` (Windows: `%USERPROFILE%\.kimi-webbridge\bin\kimi-webbridge.exe`) and serves a local HTTP daemon on `127.0.0.1:10086`. Status, PID, and logs live under `~/.kimi-webbridge/`.
 
-## Routing table (what to do based on status)
+## Recovery — what to do when a tool call fails
 
-Run: `~/.kimi-webbridge/bin/kimi-webbridge status`
+1. **Daemon not reachable (connection refused)** → start it yourself, don't ask the user. `start` is idempotent: it no-ops if the daemon is already up, and concurrent starts converge to a single daemon (the OS lets only one process bind port 10086).
+   - macOS / Linux: `~/.kimi-webbridge/bin/kimi-webbridge start`
+   - Windows: `& "$env:USERPROFILE\.kimi-webbridge\bin\kimi-webbridge.exe" start`
 
-| Observed | Action |
-|---|---|
-| `command not found` or binary missing | Not installed. Run: `curl -fsSL https://cdn.kimi.com/webbridge/install.sh \| bash` |
-| `{"running": false, ...}` | Daemon not running. Run: `~/.kimi-webbridge/bin/kimi-webbridge start` |
-| `{"running": true, "extension_connected": false, ...}` | Extension not connected. Tell the user: "If you've already installed the Kimi WebBridge extension, please open your browser and try again. If not yet installed, see https://www.kimi.com/features/webbridge (中文: https://www.kimi.com/zh-cn/features/webbridge) for install instructions." |
-| `{"running": true, "extension_connected": true, ...}` | Healthy. Return to the main SKILL.md to make tool calls. |
+   Then retry the tool call.
+2. **`command not found` / binary missing** → not installed. Point the user to the help page below to install it.
+3. **Extension won't connect, or anything still broken after a `start` + retry** → don't deep-troubleshoot. Point the user to the help page:
+   - English: https://www.kimi.com/features/webbridge
+   - 中文: https://www.kimi.com/zh-cn/features/webbridge
+
+## Do NOT do automatically
+
+Never run `stop` / `restart` / `uninstall` on your own. They kill the running daemon; if the user runs the **Kimi Desktop App** (which manages its own daemon), an external stop/restart also fights the app. If a hard restart is genuinely needed, ask the user to do it themselves — reopen the Kimi Desktop App, or run `kimi-webbridge restart` by hand.
 
 ## /status JSON fields
 
 - `running` (bool) — daemon listening on `:10086`
-- `port` (int) — 10086
 - `version` (string) — daemon build version
-- `extension_connected` (bool) — a WebSocket client is attached
+- `extension_connected` (bool) — a WebSocket client (the browser extension) is attached
 - `extension_id` (string) — the Chrome/Edge extension ID, empty if none
 - `uptime_seconds` (int)
-
-## Daily operations
-
-- **Check status:** `~/.kimi-webbridge/bin/kimi-webbridge status`
-- **Start:** `~/.kimi-webbridge/bin/kimi-webbridge start` (idempotent — safe to call when already running)
-- **Stop:** `~/.kimi-webbridge/bin/kimi-webbridge stop`
-- **Restart after unexpected state:** `~/.kimi-webbridge/bin/kimi-webbridge restart`
-- **View recent logs:** `~/.kimi-webbridge/bin/kimi-webbridge logs -n 100`
-- **Follow logs live:** `~/.kimi-webbridge/bin/kimi-webbridge logs -f`
-- **View previous run's logs:** `~/.kimi-webbridge/bin/kimi-webbridge logs --prev`
-
-## Install flags (install.sh)
-
-When running `install.sh`:
-
-- Default: install binary + start daemon + install skills to all detected AI agents
-- `--no-start`: install binary + skills, but don't start the daemon
-- `--no-skill`: install binary + start daemon, but skip skill installation
-- `-h` or `--help`: show usage
-
-## Diagnosing common failures
-
-| Symptom | Action |
-|---|---|
-| `start` fails with "address already in use" | `~/.kimi-webbridge/bin/kimi-webbridge stop && ~/.kimi-webbridge/bin/kimi-webbridge start`; if that fails, `lsof -i :10086` to find the conflicting process. |
-| Tool calls time out | `~/.kimi-webbridge/bin/kimi-webbridge logs -n 100` — check for `[error]` / `panic` lines. |
-| `extension_connected` stays `false` after install | Browser extension not running. If the user has it installed, ask them to open the browser and retry; otherwise direct them to https://www.kimi.com/features/webbridge (中文: https://www.kimi.com/zh-cn/features/webbridge). |
-| `status` returns `extension_connected: true` but tool call fails | May be a multi-browser conflict. `~/.kimi-webbridge/bin/kimi-webbridge logs` will show recent upgrade rejections. |
