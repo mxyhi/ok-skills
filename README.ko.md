@@ -115,7 +115,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 ## 벤더링된 스킬 팩
 
-[`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 공개 skill 이름 `planning-with-files` 유지와 `skills-ref` 호환을 위한 `SKILL.md` frontmatter 정규화로 제한됩니다.
+[`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 `skills-ref` 호환 `SKILL.md` frontmatter와 설치 위치에 독립적인 상대 script path 문서로 제한됩니다.
 
 ## 공통 전제 조건
 
@@ -156,7 +156,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다루는 스킬입니다.                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [xquik-twitter](xquik-twitter/SKILL.md)                         | Xquik API로 X/Twitter 데이터를 검색하고 승인된 계정 작업을 실행.                                                                                                      | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 토큰 기반 디자인 시스템으로 PDF를 생성, 입력, 재구성. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
+| [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML 워크플로, markitdown으로 PowerPoint를 생성, 편집, 읽기. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 버그, 테스트 실패, 예상치 못한 동작을 만났을 때 수정안을 내기 전에 사용.                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |

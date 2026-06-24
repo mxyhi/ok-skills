@@ -115,7 +115,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 ## Vendored Skill Packs
 
-[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.pi/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限保留公开技能名 `planning-with-files`，并为兼容 `skills-ref` 规范化 `SKILL.md` frontmatter。
+[`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限兼容 `skills-ref` 的 `SKILL.md` frontmatter，以及不依赖安装位置的相对脚本路径说明。
 
 ## 常见前置条件
 
@@ -155,7 +155,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [xquik-twitter](xquik-twitter/SKILL.md)                         | 通过 Xquik API 搜索 X/Twitter 数据，并执行需确认的账号操作。                                                                                  | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [minimax-pdf](minimax-pdf/SKILL.md) | 使用 token 化设计系统生成、填写和重排 PDF 文档。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
-| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.pi/skills/planning-with-files)   |
+| [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | 使用 PptxGenJS、XML 工作流或 markitdown 生成、编辑和读取 PowerPoint 演示文稿。 | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [systematic-debugging](systematic-debugging/SKILL.md)             | 遇到任何 bug、测试失败或异常行为时，在提出修复前先使用。                                                                                     | [obra/superpowers](https://github.com/obra/superpowers/tree/main/skills/systematic-debugging)                                  |
