@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 30개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 29개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -80,9 +80,8 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, `progress.md`를 사용하는 지속형 마크다운 계획 수립.
 - [autoresearch](autoresearch/SKILL.md): 명확한 목표, 지표, 검증 루프, keep/discard 게이트 기반의 자율 목표 지향 반복.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): 어려운 bug와 performance regression을 위한 엄격한 진단 루프.
-- [grill-me](grill-me/SKILL.md): 한 번에 한 질문씩 plan 또는 design을 압박 검증해 공동 이해에 도달.
 - [grill-with-docs](grill-with-docs/SKILL.md): domain language, `CONTEXT.md`, ADR 기준으로 plan을 검증하고 docs를 inline 업데이트.
-- [grilling](grilling/SKILL.md): reusable one-question-at-a-time interview loop behind `grill-me` and `grill-with-docs`.
+- [grilling](grilling/SKILL.md): 직접 grill session과 `grill-with-docs`에서 쓰는 reusable one-question-at-a-time interview loop.
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, AI navigation을 높이는 architecture deepening 기회를 찾음.
@@ -145,9 +144,8 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [find-skills](find-skills/SKILL.md)                                 | 사용자가 특정 기능을 필요로 할 때 기존 스킬을 탐색.                                                                                              | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 코드를 작성하기 전에 최신 서드파티 API 또는 SDK 문서를 가져옴.                                                                                   | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grill-me](grill-me/SKILL.md)                                 | plan 또는 design을 집요하게 질문해 공동 이해에 도달.                                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grill-me)                                |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language, `CONTEXT.md`, ADR 기준으로 plan을 stress-test하고 docs를 inline 업데이트.                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
-| [grilling](grilling/SKILL.md)                               | Reusable one-question-at-a-time interview loop behind `grill-me` and `grill-with-docs`.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
+| [grilling](grilling/SKILL.md)                               | 직접 grill session과 `grill-with-docs`에서 쓰는 reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality, leverage, testability, AI navigation을 높이는 architecture deepening 기회를 찾음.                                                      | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
