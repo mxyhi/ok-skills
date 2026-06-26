@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-このリポジトリには現在 **29 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
+このリポジトリには現在 **32 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -82,9 +82,12 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): hard bug と performance regression のための規律ある診断ループ。
 - [grill-with-docs](grill-with-docs/SKILL.md): domain language、`CONTEXT.md`、ADR に照らして plan を検証し、docs をその場で更新する。
 - [grilling](grilling/SKILL.md): 直接の grill session と `grill-with-docs` で使う一問ずつの reusable interview loop。
+- [handoff](handoff/SKILL.md): 現在の作業を、次の agent に渡せる redact 済み handoff document に圧縮する。
+- [teach](teach/SKILL.md): mission、resources、lessons、learning records を使う stateful teaching workspace を運用する。
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality、leverage、testability、AI navigation を高める architecture deepening の機会を見つける
+- [prototype](prototype/SKILL.md): throwaway logic / UI prototype で design question に素早く答える。
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): 過度な複雑化、隠れた前提、検証不能な変更を減らす coding guidelines。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): テスト内の `as` 型アサーションを `@total-typescript/shoehorn` へ移行する
 - [tdd](tdd/SKILL.md): 機能、バグ修正、リファクタリング、振る舞い変更の前に test-first red-green-refactor を徹底する
@@ -146,9 +149,12 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [get-api-docs](get-api-docs/SKILL.md)                               | コードを書く前に、外部 API や SDK の最新ドキュメントを取得する。                                                                                                                              | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language、`CONTEXT.md`、ADR に照らして plan を stress-test し、docs を inline 更新する。                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | 直接の grill session と `grill-with-docs` で使う一問ずつの reusable interview loop。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
+| [handoff](handoff/SKILL.md) | 現在の会話を、別 agent に渡せる redact 済み handoff document に圧縮する。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| [teach](teach/SKILL.md) | mission、resources、lessons、learning records を使って workspace 内で skill や concept を教える。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality、leverage、testability、AI navigation を高める architecture deepening の機会を見つける。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
+| [prototype](prototype/SKILL.md) | throwaway logic / UI prototype を作り、design question に素早く答える。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 過度な複雑化、隠れた前提、検証不能な変更を減らす coding guidelines。                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files の `as` type assertions を `@total-typescript/shoehorn` へ移行する。                                                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | ブラウザのログイン状態を再利用し、公開 API や AI 生成アダプタで Web サイトを CLI 化する。                                                                                                     | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |

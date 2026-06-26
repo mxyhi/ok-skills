@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **29 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **32 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -82,9 +82,12 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md)：面向疑难 bug 与性能回归的严格诊断循环。
 - [grill-with-docs](grill-with-docs/SKILL.md)：用领域语言、`CONTEXT.md` 与 ADR 压测计划，并在决策明确时同步更新文档。
 - [grilling](grilling/SKILL.md)：用于直接 grill 会话和 `grill-with-docs` 的一次一个问题访谈循环。
+- [handoff](handoff/SKILL.md): 把当前工作压缩成可交接给新 agent 的脱敏 handoff 文档。
+- [teach](teach/SKILL.md): 通过 mission、resources、lessons 和 learning records 维护持续教学 workspace。
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。
+- [prototype](prototype/SKILL.md): 构建一次性逻辑或 UI 原型，快速回答设计问题。
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md)：减少过度复杂、隐藏假设和不可验证改动的编码行为准则。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：把测试里的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。
 - [tdd](tdd/SKILL.md)：功能、修复、重构或行为变更前执行 test-first red-green-refactor。
@@ -145,9 +148,12 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在写第三方 API / SDK 代码前先抓当前文档。                                                                                                      | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | 用领域语言、`CONTEXT.md` 与 ADR 压测计划，并内联更新文档。                                                                  | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | 用于直接 grill 会话和 `grill-with-docs` 的一次一个问题访谈循环。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
+| [handoff](handoff/SKILL.md) | 把当前对话压缩成可交接给另一个 agent 的脱敏 handoff 文档。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| [teach](teach/SKILL.md) | 通过 mission、resources、lessons 和 learning records 在 workspace 中持续教学。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
+| [prototype](prototype/SKILL.md) | 构建一次性逻辑或 UI 原型，快速回答设计问题。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 减少过度复杂、隐藏假设和不可验证改动的编码行为准则。                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 把测试文件中的 `as` 类型断言迁移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
