@@ -10,7 +10,7 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server@253322139071596121f8ef35532443dba8b67017`
+- Official source: `exa-labs/exa-mcp-server@a4dcddf69b701debe9d7caca30e6fa4610ce553c`
 - Current npm package checked: `exa-mcp-server@3.2.1`; verified tarball SHA-256 `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
@@ -73,7 +73,7 @@ Direct MCP HTTP is the required invocation model for this skill. `curl` is fine,
 - `company_research_exa`: use `web_search_advanced_exa` with `category:"company"` instead. Schema is `companyName`, `numResults`; default `3`.
 - `people_search_exa`: use `web_search_advanced_exa` with `category:"people"` instead.
 - `crawling_exa`: use `web_fetch_exa` instead.
-- `deep_search_exa`: use `web_search_advanced_exa` instead; may require user-provided Exa API key and may not register on anonymous hosted MCP.
+- `deep_search_exa`: use `web_search_advanced_exa` instead; current hosted MCP requires OAuth or an API key when this tool is requested.
 - `deep_researcher_start` / `deep_researcher_check`: deprecated; use Exa Research API directly when needed.
 
 ## Curl Pattern

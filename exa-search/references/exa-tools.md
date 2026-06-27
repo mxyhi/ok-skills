@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@253322139071596121f8ef35532443dba8b67017`
+- Official repo: `exa-labs/exa-mcp-server@a4dcddf69b701debe9d7caca30e6fa4610ce553c`
 - npm package: `exa-mcp-server@3.2.1`
 - npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-06-24
+- Date checked: 2026-06-27
 
 ## Base URL
 
@@ -41,7 +41,7 @@ Snapshot checked against:
 | `people_search_exa` | `web_search_advanced_exa` with `category:"people"` | `query`, `numResults`; default `5` |
 | `crawling_exa` | `web_fetch_exa` | `urls`, `maxCharacters` |
 | `linkedin_search_exa` | `web_search_advanced_exa` with `category:"people"` | `query`, `numResults` |
-| `deep_search_exa` | `web_search_advanced_exa` | May require user-provided API key; not always registered anonymously |
+| `deep_search_exa` | `web_search_advanced_exa` | Requires OAuth or a user-provided API key on current hosted MCP when requested |
 | `deep_researcher_start` | Exa Research API | `instructions`, `model`, `outputSchema` |
 | `deep_researcher_check` | Exa Research API | `researchId` |
 
@@ -114,10 +114,10 @@ Expected hosted anonymous tools from that request on 2026-06-23:
 
 `deep_search_exa` was requested separately but did not register anonymously, matching official source behavior that requires a user-provided API key.
 
-Rechecked on 2026-06-24 with `deep_search_exa` included in `tools=`:
+Rechecked on 2026-06-27 with `deep_search_exa` included in `tools=`:
 
-- Returned: `web_search_exa`, `web_search_advanced_exa`, `company_research_exa`, `web_fetch_exa`, `people_search_exa`, `get_code_context_exa`
-- Did not return anonymously: `deep_search_exa`
+- Returned HTTP 401 with `Authentication required. Use OAuth or provide an API key.`
+- Without `deep_search_exa`, anonymous hosted MCP still returns `web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`, and requested deprecated tools.
 - npm package `exa-mcp-server@3.2.1` confirms `deep_search_exa` only registers when a user-provided API key is present.
 
 ## Direct HTTP Smoke Result
