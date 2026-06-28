@@ -7,7 +7,7 @@ Snapshot checked against:
 - npm package: `exa-mcp-server@3.2.1`
 - npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-06-27
+- Date checked: 2026-06-28
 
 ## Base URL
 
@@ -114,11 +114,12 @@ Expected hosted anonymous tools from that request on 2026-06-23:
 
 `deep_search_exa` was requested separately but did not register anonymously, matching official source behavior that requires a user-provided API key.
 
-Rechecked on 2026-06-27 with `deep_search_exa` included in `tools=`:
+Rechecked on 2026-06-28 with `deep_search_exa` included in `tools=`:
 
 - Returned HTTP 401 with `Authentication required. Use OAuth or provide an API key.`
 - Without `deep_search_exa`, anonymous hosted MCP still returns `web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`, and requested deprecated tools.
 - npm package `exa-mcp-server@3.2.1` confirms `deep_search_exa` only registers when a user-provided API key is present.
+- `web_search_advanced_exa` still exposes deprecated `highlightsNumSentences` and `highlightsPerUrl`; prefer `highlightsMaxCharacters`.
 
 ## Direct HTTP Smoke Result
 
