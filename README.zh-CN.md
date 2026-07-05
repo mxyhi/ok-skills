@@ -6,7 +6,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **32 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **34 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -105,6 +105,8 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 - [ai-elements](ai-elements/SKILL.md)：为 `ai-elements` 组件库创建 AI 聊天界面组件。
 - [huashu-design](huashu-design/SKILL.md)：用 HTML 交付高保真原型、交互 Demo、幻灯片、动画、设计变体、视频导出和设计评审。
+- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md)：为前端页面生成高级设计参考图，每个 section 一张横向图。
+- [gpt-taste](gpt-taste/SKILL.md)：构建 AIDA 结构、GSAP 动效丰富、随机化布局的高级前端页面。
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
 
 ### 工具与内容生产
@@ -145,6 +147,8 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 做网页、代码和公司调研。                                                                                                              | 自制                                                                                                                           |
 | [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，发现已有技能。                                                                                                           | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 用 HTML 创建高保真原型、交互演示、幻灯片、动画、设计变体、视频导出和设计评审。                                                                | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | 为前端页面生成高级设计参考图，每个 section 一张横向图。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [gpt-taste](gpt-taste/SKILL.md) | 构建 AIDA 结构、GSAP 动效丰富、随机化布局的高级前端页面。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在写第三方 API / SDK 代码前先抓当前文档。                                                                                                      | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | 用领域语言、`CONTEXT.md` 与 ADR 压测计划，并内联更新文档。                                                                  | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | 用于直接 grill 会话和 `grill-with-docs` 的一次一个问题访谈循环。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |

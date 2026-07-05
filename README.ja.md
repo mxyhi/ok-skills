@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-このリポジトリには現在 **32 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
+このリポジトリには現在 **34 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -105,6 +105,8 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` ライブラリ向けの AI チャット UI コンポーネントを構築する
 - [huashu-design](huashu-design/SKILL.md): 高品質な HTML プロトタイプ、インタラクティブデモ、スライド、motion design、デザイン variants、動画書き出し、design critique を作る。
+- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): frontend 向けの高品質な参照画像を、section ごとに 1 枚の横長画像として生成する。
+- [gpt-taste](gpt-taste/SKILL.md): AIDA 構成、豊かな motion、ランダム化 layout、GSAP pattern を持つ frontend ページを作る。
 - [better-icons](better-icons/SKILL.md): CLI または MCP で 200 以上の Iconify ライブラリを検索し、SVG アイコンを取得する
 
 ### Utilities & Authoring
@@ -146,6 +148,8 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [exa-search](exa-search/SKILL.md)                                   | Exa を使って web、code、company research を行う。                                                                                                                                             | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | ユーザーが必要とする specialized capability に対して既存 skill を見つける。                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 高品質な HTML プロトタイプ、インタラクティブデモ、スライド、motion design、デザイン variants、動画書き出し、design critique を作る。                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | frontend 向けの高品質な参照画像を、section ごとに 1 枚の横長画像として生成する。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [gpt-taste](gpt-taste/SKILL.md) | AIDA 構成、豊かな motion、ランダム化 layout、GSAP pattern を持つ frontend ページを作る。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | コードを書く前に、外部 API や SDK の最新ドキュメントを取得する。                                                                                                                              | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language、`CONTEXT.md`、ADR に照らして plan を stress-test し、docs を inline 更新する。                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | 直接の grill session と `grill-with-docs` で使う一問ずつの reusable interview loop。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |

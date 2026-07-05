@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **32 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **34 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -105,6 +105,8 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 - [ai-elements](ai-elements/SKILL.md): `ai-elements` library के लिए AI chat UI components बनाएं।
 - [huashu-design](huashu-design/SKILL.md): high-fidelity HTML prototypes, interactive demos, slide decks, motion design, variants, video exports, aur design critiques banayein.
+- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): premium frontend reference images banayein, har section ke liye ek horizontal image.
+- [gpt-taste](gpt-taste/SKILL.md): AIDA-structured, motion-rich frontend pages random layouts aur GSAP patterns ke sath banayein.
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
 
 ### Utilities & Authoring
@@ -146,6 +148,8 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [exa-search](exa-search/SKILL.md)                                   | web, code, और company research के लिए Exa का उपयोग करें।                                                                                                                                     | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | जब users को specialized capabilities चाहिए हों, तब existing skills खोजें।                                                                                                                    | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | High-fidelity HTML prototypes, interactive demos, slide decks, motion design, variants, video exports, aur design critiques banayein.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Premium frontend reference images banayein, har section ke liye ek horizontal image. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [gpt-taste](gpt-taste/SKILL.md) | AIDA-structured, motion-rich frontend pages random layouts aur GSAP patterns ke sath banayein. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | code लिखने से पहले current third-party API या SDK docs fetch करें।                                                                                                                           | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language, `CONTEXT.md`, और ADRs के against plan को stress-test करके docs inline update करना.                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Direct grill sessions और `grill-with-docs` के लिए reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |

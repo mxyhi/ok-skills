@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **32 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **34 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -105,6 +105,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 - [ai-elements](ai-elements/SKILL.md): создание AI chat UI components для библиотеки `ai-elements`.
 - [huashu-design](huashu-design/SKILL.md): создавать high-fidelity HTML prototypes, interactive demos, slide decks, motion design, design variants, video exports и design critique.
+- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): генерировать premium frontend reference images, по одному горизонтальному изображению на section.
+- [gpt-taste](gpt-taste/SKILL.md): создавать AIDA-structured, motion-rich frontend pages с random layouts и GSAP patterns.
 - [better-icons](better-icons/SKILL.md): искать, просматривать и получать SVG-иконки из более чем 200 библиотек Iconify через CLI или MCP.
 
 ### Utilities & Authoring
@@ -146,6 +148,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [exa-search](exa-search/SKILL.md)                                   | Use Exa for web, code, and company research.                                                                                                                                                 | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Discover existing skills when users need specialized capabilities.                                                                                                                           | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | Создавать high-fidelity HTML prototypes, interactive demos, slide decks, motion design, design variants, video exports и design critique.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Генерировать premium frontend reference images, по одному горизонтальному изображению на section. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [gpt-taste](gpt-taste/SKILL.md) | Создавать AIDA-structured, motion-rich frontend pages с random layouts и GSAP patterns. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Fetch current third-party API or SDK docs before writing code.                                                                                                                               | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | Stress-test plan против domain language, `CONTEXT.md` и ADRs с inline обновлением docs.                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Reusable one-question-at-a-time interview loop для прямых grill sessions и `grill-with-docs`.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |

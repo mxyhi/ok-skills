@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **32 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **34 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -105,6 +105,8 @@ Danach kannst du natürlich formulieren:
 
 - [ai-elements](ai-elements/SKILL.md): AI-Chat-UI-Komponenten für die Bibliothek `ai-elements` erstellen.
 - [huashu-design](huashu-design/SKILL.md): Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.
+- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): Premium-Frontend-Referenzbilder erzeugen, ein horizontales Bild pro Section.
+- [gpt-taste](gpt-taste/SKILL.md): AIDA-strukturierte, motion-reiche Frontend-Seiten mit randomisierten Layouts und GSAP-Patterns bauen.
 - [better-icons](better-icons/SKILL.md): SVG-Icons aus mehr als 200 Iconify-Bibliotheken per CLI oder MCP suchen, durchsuchen und abrufen.
 
 ### Utilities und Content-Erstellung
@@ -146,6 +148,8 @@ Danach kannst du natürlich formulieren:
 | [exa-search](exa-search/SKILL.md)                                   | Exa für Web-, Code- und Unternehmensrecherche verwenden.                                                                                                                                                           | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Vorhandene Skills entdecken, wenn Benutzer spezialisierte Fähigkeiten benötigen.                                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
+| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Premium-Frontend-Referenzbilder erzeugen, ein horizontales Bild pro Section. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [gpt-taste](gpt-taste/SKILL.md) | AIDA-strukturierte, motion-reiche Frontend-Seiten mit randomisierten Layouts und GSAP-Patterns bauen. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Aktuelle Dokumentation zu APIs oder SDKs von Drittanbietern abrufen, bevor Code geschrieben wird.                                                                                                                  | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grill-with-docs](grill-with-docs/SKILL.md)                   | Plaene gegen Domain-Sprache, `CONTEXT.md` und ADRs stress-testen und Dokumentation inline aktualisieren.                                               | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
 | [grilling](grilling/SKILL.md)                               | Wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions und `grill-with-docs`.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
