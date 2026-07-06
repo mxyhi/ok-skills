@@ -354,13 +354,20 @@ NarrationStage 自动检测 `window.__recording`：
 skill 根目录下 `.env`（已 gitignore）：
 
 ```
-DOUBAO_TTS_API_KEY=<your_key>
-DOUBAO_TTS_VOICE_ID=<your_clone_voice_id>
-DOUBAO_TTS_CLUSTER=volcano_icl
-DOUBAO_TTS_ENDPOINT=https://openspeech.bytedance.com/api/v1/tts
+DOUBAO_TTS_API_KEY=<your_api_key>
+DOUBAO_TTS_VOICE_ID=zh_female_xiaohe_uranus_bigtts
+DOUBAO_TTS_ENDPOINT=https://openspeech.bytedance.com/api/v3/tts/unidirectional
 ```
 
-参考 `.env.example` 模板。豆包语音克隆音色 ID 在火山引擎控制台获取。
+也可使用控制台的 App ID + Access Token 鉴权：
+
+```
+DOUBAO_APP_ID=<your_app_id>
+DOUBAO_ACCESS_KEY=<your_access_token>
+DOUBAO_TTS_VOICE_ID=zh_female_xiaohe_uranus_bigtts
+```
+
+`DOUBAO_TTS_RESOURCE_ID` 默认按音色自动推断：`S_` 克隆音色使用 `seed-icl-1.0`，`uranus` 官方音色使用 `seed-tts-2.0`，其他官方音色使用 `seed-tts-1.0`。
 
 ## 标准工作流（10 步）
 
@@ -379,7 +386,7 @@ DOUBAO_TTS_ENDPOINT=https://openspeech.bytedance.com/api/v1/tts
 
 | 问题 | 解决 |
 |---|---|
-| TTS API 报错 | 检查 .env 里 `DOUBAO_TTS_API_KEY` 是否正确 |
+| TTS API 报错 | 检查 .env 里 `DOUBAO_TTS_API_KEY`，或 `DOUBAO_APP_ID` + `DOUBAO_ACCESS_KEY` 是否正确 |
 | 某段音频明显比脚本长/短 | 该段文本里有奇怪标点或 emoji，TTS 解析异常 → 改稿 |
 | cue absoluteTime 不准 | 段内子段拼接时 ffmpeg 有问题 → 检查 mp3 编码一致性 |
 | 录视频结果有黑屏 | render-video.js 没拿到 `window.__ready` 信号 → 检查 NarrationStage 是否正常挂载 |

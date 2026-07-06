@@ -20,6 +20,10 @@ param(
     [switch]$Gate
 )
 
+# issue #195: per-invocation opt-out (PLANNING_DISABLED=1) for one-shot/CI
+# sessions that share a cwd with a plan but never opted into it.
+if ($env:PLANNING_DISABLED -eq '1') { exit 0 }
+
 if ($PlanFile -ne "") {
     $PlanDir = Split-Path -Parent $PlanFile
     if ($PlanDir -eq "") { $PlanDir = "." }
@@ -72,6 +76,13 @@ $pendingInline = ([regex]::Matches($content, "\[pending\]")).Count
 $COMPLETE = [Math]::Max($completePrimary, $completeInline)
 $IN_PROGRESS = [Math]::Max($inProgressPrimary, $inProgressInline)
 $PENDING = [Math]::Max($pendingPrimary, $pendingInline)
+
+# issue #191: no "### Phase" headings -> not a phase-structured plan. Report
+# nothing rather than a false "0/0 phases complete" status. With TOTAL=0 the
+# gate can never legitimately block (IN_PROGRESS is also 0), so exit is safe.
+if ($TOTAL -eq 0) {
+    exit 0
+}
 
 # advisory_report: the v2.43 status echo.
 function Write-AdvisoryReport {

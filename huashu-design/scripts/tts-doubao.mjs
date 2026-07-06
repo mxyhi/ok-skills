@@ -13,10 +13,12 @@
  * 依赖：Node 18+（自带 fetch/crypto）、ffprobe（测时长，brew install ffmpeg）
  *
  * env（自动从 skill 根目录 .env 读取，也可走 process.env 覆盖）：
- *   DOUBAO_TTS_API_KEY     必填
+ *   DOUBAO_TTS_API_KEY     可选（新版 API Key 鉴权）
+ *   DOUBAO_APP_ID          可选（控制台 App ID，与 DOUBAO_ACCESS_KEY 配套）
+ *   DOUBAO_ACCESS_KEY      可选（控制台 Access Token，与 DOUBAO_APP_ID 配套）
  *   DOUBAO_TTS_VOICE_ID    必填（音色 id）
- *   DOUBAO_TTS_CLUSTER     默认 volcano_icl
- *   DOUBAO_TTS_ENDPOINT    默认 https://openspeech.bytedance.com/api/v1/tts
+ *   DOUBAO_TTS_RESOURCE_ID 可选（默认按音色自动推断）
+ *   DOUBAO_TTS_ENDPOINT    默认 https://openspeech.bytedance.com/api/v3/tts/unidirectional
  */
 
 import fs from 'node:fs';
@@ -90,36 +92,101 @@ function getDuration(filePath) {
   }
 }
 
-async function tts({ text, voice, speed, encoding }) {
-  const apiKey = process.env.DOUBAO_TTS_API_KEY;
-  const cluster = process.env.DOUBAO_TTS_CLUSTER || 'volcano_icl';
-  const endpoint = process.env.DOUBAO_TTS_ENDPOINT || 'https://openspeech.bytedance.com/api/v1/tts';
-  const voiceId = voice || process.env.DOUBAO_TTS_VOICE_ID;
+function inferResourceId(voiceId) {
+  if (voiceId.startsWith('S_')) return 'seed-icl-1.0';
+  if (voiceId.includes('uranus')) return 'seed-tts-2.0';
+  return 'seed-tts-1.0';
+}
 
-  if (!apiKey) throw new Error('缺 DOUBAO_TTS_API_KEY（检查 .env）');
+function speedToSpeechRate(speed) {
+  const ratio = parseFloat(speed);
+  if (!Number.isFinite(ratio)) return 0;
+  return Math.max(-50, Math.min(100, Math.round((ratio - 1) * 100)));
+}
+
+function buildAuthHeaders({ requestId, resourceId }) {
+  const apiKey = process.env.DOUBAO_TTS_API_KEY;
+  const appId = process.env.DOUBAO_APP_ID;
+  const accessKey = process.env.DOUBAO_ACCESS_KEY;
+  const headers = {
+    'Content-Type': 'application/json',
+    'X-Api-Resource-Id': resourceId,
+    'X-Api-Request-Id': requestId,
+  };
+
+  if (apiKey) {
+    headers['X-Api-Key'] = apiKey;
+    return headers;
+  }
+
+  if (!appId) throw new Error('缺 DOUBAO_TTS_API_KEY 或 DOUBAO_APP_ID（检查 .env）');
+  if (!accessKey) throw new Error('缺 DOUBAO_ACCESS_KEY（检查 .env）');
+
+  headers['X-Api-App-Id'] = appId;
+  headers['X-Api-Access-Key'] = accessKey;
+  return headers;
+}
+
+async function readV3Audio(res) {
+  const text = await res.text();
+  const chunks = [];
+  let finalCode = null;
+  let finalMessage = '';
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    let json;
+    try {
+      json = JSON.parse(trimmed);
+    } catch (e) {
+      throw new Error(`API 响应行不是 JSON：${trimmed.slice(0, 200)}`);
+    }
+
+    const code = json.code ?? 0;
+    if (code === 20000000) {
+      finalCode = code;
+      finalMessage = json.message || '';
+      break;
+    }
+    if (code !== 0) {
+      throw new Error(`API 返回错误 code=${code} msg=${json.message || JSON.stringify(json)}`);
+    }
+    if (json.data) chunks.push(Buffer.from(json.data, 'base64'));
+  }
+
+  if (!chunks.length) {
+    const detail = finalCode ? `结束码 ${finalCode} ${finalMessage}` : text.slice(0, 500);
+    throw new Error(`API 响应无音频数据：${detail}`);
+  }
+  return Buffer.concat(chunks);
+}
+
+async function tts({ text, voice, speed, encoding }) {
+  const endpoint = process.env.DOUBAO_TTS_ENDPOINT || 'https://openspeech.bytedance.com/api/v3/tts/unidirectional';
+  const voiceId = voice || process.env.DOUBAO_TTS_VOICE_ID || process.env.DOUBAO_SPEAKER;
+  const resourceId = process.env.DOUBAO_TTS_RESOURCE_ID || inferResourceId(voiceId || '');
+  const requestId = randomUUID();
+
   if (!voiceId) throw new Error('缺 DOUBAO_TTS_VOICE_ID（检查 .env 或用 --voice 传）');
 
   const body = {
-    app: { cluster },
     user: { uid: 'huashu-design' },
-    audio: {
-      voice_type: voiceId,
-      encoding,
-      speed_ratio: parseFloat(speed),
-    },
-    request: {
-      reqid: randomUUID(),
+    req_params: {
       text,
-      operation: 'query',
+      speaker: voiceId,
+      audio_params: {
+        format: encoding,
+        sample_rate: 24000,
+        speech_rate: speedToSpeechRate(speed),
+      },
     },
   };
 
   const res = await fetch(endpoint, {
     method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'Content-Type': 'application/json',
-    },
+    headers: buildAuthHeaders({ requestId, resourceId }),
     body: JSON.stringify(body),
   });
 
@@ -128,16 +195,7 @@ async function tts({ text, voice, speed, encoding }) {
     throw new Error(`HTTP ${res.status}: ${errText.slice(0, 500)}`);
   }
 
-  const json = await res.json();
-  // 豆包标准返回：{ code, message, data: "<base64 audio>", ... }
-  // code === 3000 表示成功
-  if (json.code !== undefined && json.code !== 3000) {
-    throw new Error(`API 返回错误 code=${json.code} msg=${json.message || JSON.stringify(json)}`);
-  }
-  if (!json.data) {
-    throw new Error(`API 响应无 data 字段：${JSON.stringify(json).slice(0, 500)}`);
-  }
-  return Buffer.from(json.data, 'base64');
+  return readV3Audio(res);
 }
 
 async function main() {

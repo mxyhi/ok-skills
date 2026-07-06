@@ -284,6 +284,20 @@ Thanks to Anthropic for writing the Claude Design prompts so clearly. This kind 
 
 ---
 
+## Available Languages
+
+Community-maintained translations of this skill. Translation quality and license terms are the responsibility of each maintainer — please check the linked repo before relying on it.
+
+| Language | Maintainer | Repository |
+|---|---|---|
+| English | [@namandhakad712](https://github.com/namandhakad712) | [namandhakad712/huashu-design-en](https://github.com/namandhakad712/huashu-design-en) |
+| 한국어 (Korean) | [@ktkarchive](https://github.com/ktkarchive) | [ktkarchive/ktk-design](https://github.com/ktkarchive/ktk-design) |
+| Tiếng Việt (Vietnamese) | [@letrquan](https://github.com/letrquan) | [letrquan/huashu-design](https://github.com/letrquan/huashu-design) |
+
+Want to add your language? Fork the repo, translate `SKILL.md` + `README.md`, and open an issue here so we can link it.
+
+---
+
 ## License
 
 **Relicensed to MIT on 2026-05-14.** This skill was previously released under a Personal Use License that restricted commercial use. That restriction is now removed.

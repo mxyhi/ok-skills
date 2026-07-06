@@ -3,7 +3,7 @@ name: kimi-webbridge
 description: |
   Kimi WebBridge lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", or asks to read/interact with any website. Use even for simple-sounding browser requests — the daemon handles all complexity.
 metadata:
-  version: "1.10.1"
+  version: "1.10.3"
 ---
 
 # Kimi WebBridge
@@ -15,7 +15,7 @@ Control the user's real browser (with their login sessions) via a local daemon a
 | Tool | Args | Returns | Note |
 |------|------|---------|------|
 | `navigate` | `url`, `newTab`(bool), `group_title` | `{success, url, tabId}` | First call opens a tab — see [Tabs](#tabs-and-the-current-tab). `group_title` sets the group's visible label |
-| `find_tab` | `url`, `active`(bool) | `{success, url, tabId}` | Select an already-open tab as the current one — see [Tabs](#tabs-and-the-current-tab) |
+| `find_tab` | `url`, `active`(bool) | `{success, url, tabId, borrowed}` | Re-select a tab **this session** opened; `active:true` borrows the tab the **user** is viewing — see [Tabs](#tabs-and-the-current-tab) |
 | `snapshot` | — | `{url, title, tree}` with `@e` refs | **Accessibility tree** (text) — use this to read page content and locate elements |
 | `click` | `selector` (@e ref or CSS) | `{success, tag, text}` | Synthetic `el.click()` |
 | `fill` | `selector`, `value` | `{success, tag, mode}` | Works on `<input>`/`<textarea>` AND `[contenteditable]` (ProseMirror/Lexical/Slate). `mode` is `"value"` or `"contenteditable"` |
@@ -34,8 +34,9 @@ Control the user's real browser (with their login sessions) via a local daemon a
 Single-tab tools (`snapshot`, `click`, `fill`, `screenshot`, `save_as_pdf`) act on the **current tab** — the one you most recently opened with `navigate` or selected with `find_tab`.
 
 - **Opening pages**: use `newTab:true` when pages should coexist (comparing, cross-referencing); omit it to send the current tab to a new URL.
-- **Going back to an earlier tab**: call `find_tab` to make a tab you already opened the current one again. Pass the tab's **full URL** — take it from `list_tabs` or the earlier `navigate` result. A bare root domain (`kimi.com`) may miss a `www.kimi.com` tab, so prefer the exact URL. `active:true` picks the tab the user is currently viewing — use it when the user asks to act on a page they already have open ("use my open X tab" / "the X page I'm viewing"); otherwise the leftmost match wins.
-- If `find_tab` returns "no open tab found", the page isn't open — `navigate` with `newTab:true` instead.
+- **Going back to an earlier tab**: call `find_tab` to make a tab **you opened earlier in this session** the current one again. Pass the tab's **full URL** — take it from `list_tabs` or the earlier `navigate` result. A bare root domain (`kimi.com`) may miss a `www.kimi.com` tab, so prefer the exact URL. By default `find_tab` searches **only this session's own tabs** — it never reaches into the user's other tabs or windows.
+- **Acting on a page the user already has open**: pass `active:true` ("use my open X tab" / "the X page I'm viewing"). It **borrows** the tab the user is currently viewing (returns `borrowed:true`); the borrowed tab is operated in place — it is not pulled into the session's tab group.
+- If `find_tab` errors with "no tab matching … in this session", the page isn't open in this session — `navigate` with `newTab:true` instead.
 
 ```bash
 curl -s -X POST http://127.0.0.1:10086/command \
@@ -65,8 +66,6 @@ curl.exe -s -X POST http://127.0.0.1:10086/command -H "Content-Type: application
 
 3. Delete the temp file as soon as the request returns — don't leave request bodies on disk.
 
-The bash one-liner examples elsewhere in this document are for brevity — on Windows, send the same JSON via the file-body pattern above instead of inlining it.
-
 ## Sessions
 
 **One task = one session = one tab group.** A `session` collects every tab the task opens into one tab group, so the user sees a single group for "what the agent is doing right now". Pass it as a **top-level field** of the request body (not inside `args`).
@@ -74,6 +73,7 @@ The bash one-liner examples elsewhere in this document are for brevity — on Wi
 - **Pick one session name at the task's start, put it on every command, and never switch mid-task — even across different sites.** Switching session names per site is the #1 cause of fragmented tab groups.
 - Name it after the **task**, not the site (`camping-research`, `phone-compare`). Use multiple sessions only for genuinely unrelated parallel tasks.
 - `group_title` is the human-readable group label — write it in the user's language, on the **first** `navigate` of the task.
+- When you create the group (the first `navigate` of a task), tell the user once that this task's pages are collected under group «title», and that you'll close them whenever they ask.
 
 ```bash
 # First tab: set session + a human label (in the user's language)
@@ -84,7 +84,7 @@ curl -s -X POST http://127.0.0.1:10086/command \
   -d '{"action":"navigate","args":{"url":"https://www.moonshot.cn","newTab":true},"session":"k26-research"}'
 ```
 
-When the task is done and the user no longer needs the pages, `close_session` clears the group. If they might follow up, deliver your answer first and leave the tabs open — closing too eagerly throws away work they can still see.
+Closing is always user-initiated: call `close_session` only when the user explicitly asks ("close those", "clear the tabs"). It clears the whole group in one call.
 
 ## Screenshots
 
@@ -171,7 +171,7 @@ Never run `stop` / `restart` / `uninstall` automatically — those kill a runnin
 
 ## Version mismatches
 
-If a tool returns an error containing **"Please update the Kimi WebBridge extension"**, the user's browser extension is older than this skill. Don't retry, and don't try to reconcile versions yourself — just tell the user, in their language, to update the extension and retry:
+If a tool returns an error containing **"Please update the Kimi WebBridge extension"**, the user's browser extension is older than this skill. Don't try to reconcile versions yourself — just tell the user, in their language, to update the extension and retry:
 
 - English: https://www.kimi.com/features/webbridge
 - 中文: https://www.kimi.com/zh-cn/features/webbridge

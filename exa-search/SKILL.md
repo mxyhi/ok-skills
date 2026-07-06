@@ -10,7 +10,7 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server@a4dcddf69b701debe9d7caca30e6fa4610ce553c`
+- Official source: `exa-labs/exa-mcp-server@c4b419adb3ce2674ad062b15f0d42f8b8cee05c5`
 - Current npm package checked: `exa-mcp-server@3.2.1`; verified tarball SHA-256 `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 

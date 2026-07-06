@@ -340,6 +340,11 @@
   fit(); show(current);
   if (hashMatch) setMode('present'); else { setMode('overview'); buildOverview(); }
 
+  // Reclaim focus after clicking inside iframe so keyboard nav keeps working (#23)
+  window.addEventListener('blur', () => {
+    setTimeout(() => window.focus(), 100);
+  });
+
   window.addEventListener('beforeprint', () => { printStack.innerHTML = ''; deck.forEach(item => { const f = document.createElement('iframe'); f.src = item.file; printStack.appendChild(f); }); printStack.style.display = 'block'; stage.style.display = 'none'; });
   window.addEventListener('afterprint', () => { printStack.innerHTML = ''; printStack.style.display = 'none'; stage.style.display = ''; });
 })();

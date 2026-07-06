@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@a4dcddf69b701debe9d7caca30e6fa4610ce553c`
+- Official repo: `exa-labs/exa-mcp-server@c4b419adb3ce2674ad062b15f0d42f8b8cee05c5`
 - npm package: `exa-mcp-server@3.2.1`
 - npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-06-28
+- Date checked: 2026-07-06
 
 ## Base URL
 
@@ -120,6 +120,13 @@ Rechecked on 2026-06-28 with `deep_search_exa` included in `tools=`:
 - Without `deep_search_exa`, anonymous hosted MCP still returns `web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`, and requested deprecated tools.
 - npm package `exa-mcp-server@3.2.1` confirms `deep_search_exa` only registers when a user-provided API key is present.
 - `web_search_advanced_exa` still exposes deprecated `highlightsNumSentences` and `highlightsPerUrl`; prefer `highlightsMaxCharacters`.
+
+Rechecked on 2026-07-06:
+
+- Official repo `main` is `c4b419adb3ce2674ad062b15f0d42f8b8cee05c5`.
+- npm latest remains `exa-mcp-server@3.2.1`, package `gitHead` remains `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`, and tarball SHA-256 remains `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`.
+- Anonymous hosted schema still returns `web_search_exa`, `web_search_advanced_exa`, `company_research_exa`, `web_fetch_exa`, `people_search_exa`, and `get_code_context_exa` with the same parameter surface.
+- Requesting only `deep_search_exa` still returns HTTP 401 `Authentication required. Use OAuth or provide an API key.`
 
 ## Direct HTTP Smoke Result
 

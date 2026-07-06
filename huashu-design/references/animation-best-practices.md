@@ -490,7 +490,7 @@ stage.style.transform = `
 | **本文件** | 正向运动设计语法 | 「**应该这样做**」 |
 
 **调用顺序**：
-1. 先看 SKILL.md 工作流程 Step 3 的位置四问（决定叙事角色和视觉温度）
+1. 先看 SKILL.md 工作流程 Step 3 的form推导五问（决定叙事角色和视觉温度）
 2. 选定方向后读本文件确定**运动语言**（配方 A/B/C）
 3. 写代码时参考 `animations.md` 和 `animation-pitfalls.md`
 4. 导出视频时走 `audio-design-rules.md` + `sfx-library.md`
