@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **33 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **28 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -80,14 +80,10 @@ Danach kannst du natürlich formulieren:
 - [planning-with-files](planning-with-files/SKILL.md): persistente Markdown-Planung mit `task_plan.md`, `findings.md` und `progress.md`.
 - [autoresearch](autoresearch/SKILL.md): autonome zielgerichtete Iteration mit expliziten Zielen, Metriken, Verifikationsschleifen und Keep/Discard-Gates.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): disziplinierte Diagnose-Schleife fuer schwierige Bugs und Performance-Regressionen.
-- [grill-with-docs](grill-with-docs/SKILL.md): Plaene gegen Domain-Sprache, `CONTEXT.md` und ADRs pruefen und Dokumentation inline aktualisieren.
-- [grilling](grilling/SKILL.md): wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions und `grill-with-docs`.
-- [handoff](handoff/SKILL.md): aktuelle Arbeit in ein redigiertes Handoff-Dokument fuer einen frischen Agenten verdichten.
+- [grilling](grilling/SKILL.md): wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions.
 - [teach](teach/SKILL.md): ein stateful Teaching-Workspace mit Mission, Ressourcen, Lessons und Learning Records fuehren.
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.
-- [prototype](prototype/SKILL.md): Throwaway-Logik- oder UI-Prototypen bauen, um Designfragen schnell zu beantworten.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): `as`-Type-Assertions in Tests nach `@total-typescript/shoehorn` migrieren.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor fur Features, Bugfixes, Refactorings und Verhaltensaenderungen.
@@ -98,7 +94,6 @@ Danach kannst du natürlich formulieren:
 - [kimi-webbridge](kimi-webbridge/SKILL.md): Steuert den echten Browser des Nutzers über einen lokalen Daemon für Navigation, Formulare, Screenshots, Seitenlesen und angemeldete Sessions.
 - [browser-trace](browser-trace/SKILL.md): CDP-Traces, Screenshots und DOM-Dumps für Browser-Automation-Runs erfassen und pro Seite aufteilen.
 - [opencli](opencli/opencli-usage/SKILL.md): Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern als CLI nutzen.
-- [x-twitter-scraper](x-twitter-scraper/SKILL.md): X/Twitter-Daten suchen und bestaetigte Kontoaktionen ueber die Xquik API ausfuehren.
 
 ### Frontend und Design
 
@@ -150,18 +145,13 @@ Danach kannst du natürlich formulieren:
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Premium-Frontend-Referenzbilder erzeugen, ein horizontales Bild pro Section. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
 | [gpt-taste](gpt-taste/SKILL.md) | AIDA-strukturierte, motion-reiche Frontend-Seiten mit randomisierten Layouts und GSAP-Patterns bauen. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Aktuelle Dokumentation zu APIs oder SDKs von Drittanbietern abrufen, bevor Code geschrieben wird.                                                                                                                  | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grill-with-docs](grill-with-docs/SKILL.md)                   | Plaene gegen Domain-Sprache, `CONTEXT.md` und ADRs stress-testen und Dokumentation inline aktualisieren.                                               | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
-| [grilling](grilling/SKILL.md)                               | Wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions und `grill-with-docs`.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
-| [handoff](handoff/SKILL.md) | Verdichtet die aktuelle Unterhaltung in ein redigiertes Handoff-Dokument fuer einen anderen Agenten. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| [grilling](grilling/SKILL.md)                               | Wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | Vermittelt Skills oder Konzepte in einem stateful Workspace mit Mission, Ressourcen, Lessons und Learning Records. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.                                                                                                           | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
-| [prototype](prototype/SKILL.md) | Baut Throwaway-Logik- oder UI-Prototypen, um Designfragen schnell zu beantworten. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Testdateien von `as`-Type-Assertions zu `@total-typescript/shoehorn` migrieren.                                                                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern in CLI-Befehle verwandeln.                                                                                                 | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
-| [x-twitter-scraper](x-twitter-scraper/SKILL.md)                         | X/Twitter-Daten suchen und bestaetigte Kontoaktionen ueber die Xquik API ausfuehren.                                                                                                      | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [minimax-pdf](minimax-pdf/SKILL.md) | PDF-Dokumente mit einem tokenbasierten Designsystem erzeugen, ausfüllen und neu formatieren. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | PowerPoint-Präsentationen mit PptxGenJS, XML-Workflows oder markitdown erzeugen, bearbeiten und lesen. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |

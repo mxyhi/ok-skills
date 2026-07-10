@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **33 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **28 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -80,14 +80,10 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, और `progress.md` के साथ persistent markdown planning.
 - [autoresearch](autoresearch/SKILL.md): clear goals, metrics, verify loops, और keep/discard gates के साथ autonomous goal-directed iteration.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): कठिन bugs और performance regressions के लिए disciplined diagnosis loop.
-- [grill-with-docs](grill-with-docs/SKILL.md): plan को domain language, `CONTEXT.md`, और ADRs के खिलाफ जांचते हुए docs inline update करना.
-- [grilling](grilling/SKILL.md): direct grill sessions और `grill-with-docs` के लिए reusable one-question-at-a-time interview loop.
-- [handoff](handoff/SKILL.md): current work को fresh agent के लिए redacted handoff document में compact करें.
+- [grilling](grilling/SKILL.md): direct grill sessions के लिए reusable one-question-at-a-time interview loop.
 - [teach](teach/SKILL.md): missions, resources, lessons, और learning records के साथ stateful teaching workspace चलाएं.
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।
-- [prototype](prototype/SKILL.md): design questions का जल्दी जवाब देने के लिए throwaway logic या UI prototypes बनाएं.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): tests में `as` type assertions को `@total-typescript/shoehorn` में migrate करें।
 - [tdd](tdd/SKILL.md): feature, bugfix, refactor, या behavior change से पहले test-first red-green-refactor लागू करता है।
@@ -98,7 +94,6 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [kimi-webbridge](kimi-webbridge/SKILL.md): local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।
 - [browser-trace](browser-trace/SKILL.md): browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।
 - [opencli](opencli/opencli-usage/SKILL.md): browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलें।
-- [x-twitter-scraper](x-twitter-scraper/SKILL.md): Xquik API से X/Twitter data खोजें और confirmed account actions चलाएं।
 
 ### Frontend & Design
 
@@ -150,18 +145,13 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Premium frontend reference images banayein, har section ke liye ek horizontal image. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
 | [gpt-taste](gpt-taste/SKILL.md) | AIDA-structured, motion-rich frontend pages random layouts aur GSAP patterns ke sath banayein. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | code लिखने से पहले current third-party API या SDK docs fetch करें।                                                                                                                           | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grill-with-docs](grill-with-docs/SKILL.md)                   | domain language, `CONTEXT.md`, और ADRs के against plan को stress-test करके docs inline update करना.                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
-| [grilling](grilling/SKILL.md)                               | Direct grill sessions और `grill-with-docs` के लिए reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
-| [handoff](handoff/SKILL.md) | Current conversation को दूसरे agent के लिए redacted handoff document में compact करता है. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| [grilling](grilling/SKILL.md)                               | Direct grill sessions के लिए reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | missions, resources, lessons, और learning records वाले workspace में skill या concept सिखाता है. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
-| [prototype](prototype/SKILL.md) | Design questions का जल्दी जवाब देने के लिए throwaway logic या UI prototypes बनाता है. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files को `as` type assertions से `@total-typescript/shoehorn` में migrate करें।                                                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
-| [x-twitter-scraper](x-twitter-scraper/SKILL.md)                         | Xquik API से X/Twitter data खोजें और confirmed account actions चलाएं।                                                                                                                       | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |

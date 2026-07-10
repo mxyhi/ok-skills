@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `CLAUDE.md` / `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **33 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
+Este repositorio incluye actualmente **28 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **CLAUDE.md / AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -80,14 +80,10 @@ Despues puedes pedirlo de forma natural:
 - [planning-with-files](planning-with-files/SKILL.md): planificacion persistente en Markdown con `task_plan.md`, `findings.md` y `progress.md`.
 - [autoresearch](autoresearch/SKILL.md): iteracion autonoma orientada a objetivos con metas, metricas, ciclos de verificacion y compuertas keep/discard.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): bucle disciplinado de diagnostico para bugs dificiles y regresiones de rendimiento.
-- [grill-with-docs](grill-with-docs/SKILL.md): valida planes contra lenguaje de dominio, `CONTEXT.md` y ADRs, actualizando docs inline.
-- [grilling](grilling/SKILL.md): bucle reutilizable de entrevista pregunta por pregunta para sesiones grill directas y `grill-with-docs`.
-- [handoff](handoff/SKILL.md): compacta el trabajo actual en un documento handoff redactado para un agente nuevo.
+- [grilling](grilling/SKILL.md): bucle reutilizable de entrevista pregunta por pregunta para sesiones grill directas.
 - [teach](teach/SKILL.md): mantiene un workspace de ensenanza con mission, resources, lessons y learning records.
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): encuentra oportunidades de deepening que mejoran locality, leverage, testabilidad y navegacion por IA.
-- [prototype](prototype/SKILL.md): crea prototipos descartables de logica o UI para responder preguntas de diseno rapido.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): pautas de conducta al programar para reducir sobrecomplicacion, supuestos ocultos y cambios no verificables.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migra assertions de tipo `as` en tests a `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): red-green-refactor test-first para funcionalidades, correcciones, refactors y cambios de comportamiento.
@@ -98,7 +94,6 @@ Despues puedes pedirlo de forma natural:
 - [kimi-webbridge](kimi-webbridge/SKILL.md): controla el navegador real del usuario mediante un daemon local para navegacion, formularios, capturas, lectura de paginas y sesiones autenticadas.
 - [browser-trace](browser-trace/SKILL.md): captura trazas CDP, capturas de pantalla y dumps DOM para depurar automatizacion del navegador.
 - [opencli](opencli/opencli-usage/SKILL.md): convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.
-- [x-twitter-scraper](x-twitter-scraper/SKILL.md): busca datos de X/Twitter y ejecuta acciones de cuenta confirmadas mediante la API de Xquik.
 
 ### Frontend y Diseno
 
@@ -150,18 +145,13 @@ Despues puedes pedirlo de forma natural:
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Genera referencias visuales premium para frontend, una imagen horizontal por seccion. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
 | [gpt-taste](gpt-taste/SKILL.md) | Crea paginas frontend con estructura AIDA, layouts aleatorios y patrones GSAP. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Obtiene la documentacion actual de APIs o SDK de terceros antes de escribir codigo.                                                                                                                                 | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grill-with-docs](grill-with-docs/SKILL.md)                   | Stress-test de planes contra lenguaje de dominio, `CONTEXT.md` y ADRs, con actualizacion inline de docs.                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs)                          |
-| [grilling](grilling/SKILL.md)                               | Bucle reutilizable de entrevista pregunta por pregunta para sesiones grill directas y `grill-with-docs`.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
-| [handoff](handoff/SKILL.md) | Compacta la conversacion actual en un documento handoff redactado para otro agente. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) |
+| [grilling](grilling/SKILL.md)                               | Bucle reutilizable de entrevista pregunta por pregunta para sesiones grill directas.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | Ensena una skill o concepto en un workspace con mission, resources, lessons y learning records. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Encuentra oportunidades de deepening que mejoran locality, leverage, testabilidad y navegacion por IA.                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
-| [prototype](prototype/SKILL.md) | Crea prototipos descartables de logica o UI para responder preguntas de diseno rapido. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Pautas de conducta al programar para reducir sobrecomplicacion, supuestos ocultos y cambios no verificables.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migra archivos de test desde assertions de tipo `as` a `@total-typescript/shoehorn`.                                                                                                                            | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Convierte sitios web en comandos CLI con reutilizacion de sesion del navegador, APIs publicas y adaptadores generados por IA.                                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
-| [x-twitter-scraper](x-twitter-scraper/SKILL.md)                         | Busca datos de X/Twitter y ejecuta acciones de cuenta confirmadas mediante la API de Xquik.                                                                                               | [Xquik-dev/x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper/tree/master/skills/x-twitter-scraper)             |
 | [minimax-pdf](minimax-pdf/SKILL.md) | Genera, rellena y remaqueta documentos PDF con un sistema de diseno basado en tokens. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Planificacion basada en archivos para tareas complejas mediante `task_plan.md`, `findings.md` y `progress.md`.                                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [pptx-generator](pptx-generator/SKILL.md) | Genera, edita y lee presentaciones PowerPoint con PptxGenJS, flujos XML o markitdown. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
