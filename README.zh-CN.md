@@ -1,10 +1,10 @@
-# OK Skills：面向 Codex、Claude Code、Cursor、OpenClaw 等工具的 AI Agent Skills 集合
+# OK Skills：面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code 等工具的 AI Agent Skills 集合
 
 [English](README.md) | 简体中文 | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Tiếng Việt](README.vi.md) | [Русский](README.ru.md) | [हिन्दी](README.hi.md)
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
+这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
 当前仓库共收录 **28 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
@@ -14,7 +14,7 @@
 
 ## 适合谁
 
-- 你在用 Codex、Claude Code、Cursor、OpenClaw、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
+- 你在用 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 或其他 AI coding agent，希望复用技能而不是每次临时写 prompt。
 - 你在维护 `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 体系，希望不同项目之间可以迁移同一套工作流。
 - 你需要现成的文档查询、浏览器自动化、规划、提示工程、前端设计、PDF、Office 文档、演示文稿和表格类技能。
 
@@ -32,6 +32,18 @@
 mkdir -p ~/.agents/skills
 cd ~/.agents/skills
 git clone https://github.com/mxyhi/ok-skills.git ok-skills
+```
+
+如果使用 Autohand Code，可以把仓库 clone 到用户级或项目级 skills 目录：
+
+```bash
+# 用户级 skills
+mkdir -p ~/.autohand/skills
+git clone https://github.com/mxyhi/ok-skills.git ~/.autohand/skills/ok-skills
+
+# 项目级 skills
+mkdir -p .autohand/skills
+git clone https://github.com/mxyhi/ok-skills.git .autohand/skills/ok-skills
 ```
 
 clone 后仓库位于 `~/.agents/skills/ok-skills`，其内部目录已经符合预期布局：

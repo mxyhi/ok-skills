@@ -1,10 +1,10 @@
-# OK Skills: AI Coding Agent Skills for Codex, Claude Code, Cursor, OpenClaw, and More
+# OK Skills: AI Coding Agent Skills for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, and More
 
 English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [Deutsch](README.de.md) | [Español](README.es.md) | [Tiếng Việt](README.vi.md) | [Русский](README.ru.md) | [हिन्दी](README.hi.md)
 
 [![Mentioned in Awesome Codex CLI](https://awesome.re/mentioned-badge.svg)](https://github.com/RoggeOhta/awesome-codex-cli)
 
-Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Trae, and other `SKILL.md`-compatible tools.
+Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
 This repo currently bundles **28 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
@@ -14,7 +14,7 @@ If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills
 
 ## Who This Repo Is For
 
-- You use Codex, Claude Code, Cursor, OpenClaw, Trae, or another AI coding agent and want reusable skills instead of ad-hoc prompts.
+- You use Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, or another AI coding agent and want reusable skills instead of ad-hoc prompts.
 - You maintain `CLAUDE.md` / `AGENTS.md` / `SKILL.md` workflows and want portable instructions that work across projects.
 - You need battle-tested skills for docs lookup, browser automation, planning, prompt engineering, frontend design, PDFs, Office documents, slide decks, and spreadsheets.
 
@@ -32,6 +32,18 @@ If you only install a few skills first, start with these:
 mkdir -p ~/.agents/skills
 cd ~/.agents/skills
 git clone https://github.com/mxyhi/ok-skills.git ok-skills
+```
+
+For Autohand Code, clone the repo into either the user-level or project-level skills directory:
+
+```bash
+# User-level skills
+mkdir -p ~/.autohand/skills
+git clone https://github.com/mxyhi/ok-skills.git ~/.autohand/skills/ok-skills
+
+# Project-level skills
+mkdir -p .autohand/skills
+git clone https://github.com/mxyhi/ok-skills.git .autohand/skills/ok-skills
 ```
 
 After cloning, the repo lives at `~/.agents/skills/ok-skills`, and the directories inside already follow the expected layout:
