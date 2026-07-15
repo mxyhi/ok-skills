@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@c4b419adb3ce2674ad062b15f0d42f8b8cee05c5`
+- Official repo: `exa-labs/exa-mcp-server@8823cbea80b6ec5999c6217cccd91660fe953b97`
 - npm package: `exa-mcp-server@3.2.1`
 - npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-07-06
+- Date checked: 2026-07-15
 
 ## Base URL
 
@@ -123,7 +123,7 @@ Rechecked on 2026-06-28 with `deep_search_exa` included in `tools=`:
 
 Rechecked on 2026-07-06:
 
-- Official repo `main` is `c4b419adb3ce2674ad062b15f0d42f8b8cee05c5`.
+- Official repo `main` is `8823cbea80b6ec5999c6217cccd91660fe953b97`.
 - npm latest remains `exa-mcp-server@3.2.1`, package `gitHead` remains `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`, and tarball SHA-256 remains `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`.
 - Anonymous hosted schema still returns `web_search_exa`, `web_search_advanced_exa`, `company_research_exa`, `web_fetch_exa`, `people_search_exa`, and `get_code_context_exa` with the same parameter surface.
 - Requesting only `deep_search_exa` still returns HTTP 401 `Authentication required. Use OAuth or provide an API key.`
@@ -137,3 +137,9 @@ No-proxy direct HTTP passed on 2026-06-23:
 - `tools/call web_search_exa`: returned `isError=false` and formatted search text
 - `tools/call web_search_advanced_exa`: returned `isError=false` and JSON text
 - `tools/call web_fetch_exa`: returned `isError=false` and fetched page text
+
+Rechecked on 2026-07-15:
+- Official repo `main` advanced to `8823cbea80b6ec5999c6217cccd91660fe953b97`.
+- npm latest remains `exa-mcp-server@3.2.1`, package `gitHead` remains `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`, and tarball SHA-256 remains `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`.
+- Hosted `initialize` still returns `serverInfo.version=3.2.1`.
+- No skill body/tool-choice change required beyond source SHA refresh.
