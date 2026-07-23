@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 31개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 27개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -108,11 +108,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 ### 유틸리티 및 문서 작업
 
-- [minimax-docx](minimax-docx/SKILL.md): OpenXML SDK(.NET) 기반의 전문 DOCX 생성, 편집, 서식화.
-- [minimax-pdf](minimax-pdf/SKILL.md): 토큰 기반 디자인 시스템으로 PDF를 생성, 입력, 재구성.
-- [pptx-generator](pptx-generator/SKILL.md): PptxGenJS, XML 워크플로, markitdown으로 PowerPoint를 생성, 편집, 읽기.
 - [huashu-design](huashu-design/SKILL.md): HTML deck, editable PPTX, MP4/GIF motion pieces, narrated design videos를 만든다.
-- [minimax-xlsx](minimax-xlsx/SKILL.md): 손실을 최소화한 XML 워크플로로 Excel/스프레드시트를 열고, 생성하고, 분석·편집·검증.
 
 ## 벤더링된 스킬 팩
 
@@ -141,7 +137,6 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 어려운 bug와 performance regression을 위한 엄격한 진단 루프.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI를 사용해 최신 문서, API 레퍼런스, 코드 예제를 조회.                                                                                 | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
-| [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK(.NET) 기반의 전문 DOCX 생성, 편집, 서식화. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | Exa를 사용해 웹, 코드, 회사 정보를 조사.                                                                                                         | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | 사용자가 특정 기능을 필요로 할 때 기존 스킬을 탐색.                                                                                              | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
@@ -157,12 +152,9 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 과도한 복잡성, 숨은 가정, 검증 불가능한 변경을 줄이는 코딩 행동 지침.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 테스트 파일의 `as` 타입 단언을 `@total-typescript/shoehorn`으로 마이그레이션.                                                                    | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다루는 스킬입니다.                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
-| [minimax-pdf](minimax-pdf/SKILL.md) | 토큰 기반 디자인 시스템으로 PDF를 생성, 입력, 재구성. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | 중국어 우선 제품 의사결정 Agent로 핵심 병목, 우선순위, 성장, 지표, 운영 및 협업을 진단.                                                       | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
-| [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML 워크플로, markitdown으로 PowerPoint를 생성, 편집, 읽기. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
-| [minimax-xlsx](minimax-xlsx/SKILL.md) | 손실을 최소화한 XML 워크플로로 Excel/스프레드시트를 열고, 생성하고, 분석·편집·검증. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 ## 기여하기
 
 새 스킬 추가나 기존 스킬 개선 기여를 환영합니다.

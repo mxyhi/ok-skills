@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **31 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **27 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -108,11 +108,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 ### Utilities & Authoring
 
-- [minimax-docx](minimax-docx/SKILL.md): OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting.
-- [minimax-pdf](minimax-pdf/SKILL.md): token-based design system ke saath PDF documents generate, fill, aur reformat karein.
-- [pptx-generator](pptx-generator/SKILL.md): PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein.
 - [huashu-design](huashu-design/SKILL.md): HTML decks, editable PPTX, MP4/GIF motion pieces, aur narrated design videos banayein.
-- [minimax-xlsx](minimax-xlsx/SKILL.md): low-loss XML workflow ke saath Excel/spreadsheet files open, create, read, analyze, edit, aur validate karein.
 
 ## Vendored Skill Packs
 
@@ -141,7 +137,6 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode jo caveman style me bolkar response tokens kam karta hai aur technical accuracy banaye rakhta hai.                                                       | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | कठिन bugs और performance regressions के लिए disciplined diagnosis loop.                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | current documentation, API references, और code examples के लिए Context7 CLI का उपयोग करें।                                                                                                   | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
-| [minimax-docx](minimax-docx/SKILL.md) | OpenXML SDK (.NET) ke saath professional DOCX creation, editing, aur formatting. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-docx) |
 | [exa-search](exa-search/SKILL.md)                                   | web, code, और company research के लिए Exa का उपयोग करें।                                                                                                                                     | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | जब users को specialized capabilities चाहिए हों, तब existing skills खोजें।                                                                                                                    | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | High-fidelity HTML prototypes, interactive demos, slide decks, motion design, variants, video exports, aur design critiques banayein.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
@@ -157,12 +152,9 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files को `as` type assertions से `@total-typescript/shoehorn` में migrate करें।                                                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
-| [minimax-pdf](minimax-pdf/SKILL.md) | Token-based design system ke saath PDF documents generate, fill, aur reformat karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-pdf) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinese-first product decision agent for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.                                                   | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
-| [pptx-generator](pptx-generator/SKILL.md) | PptxGenJS, XML workflows, ya markitdown ke saath PowerPoint presentations generate, edit, aur read karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/pptx-generator) |
 | [tdd](tdd/SKILL.md)                                                 | किसी भी feature, bugfix, refactor, या behavior change से पहले उपयोग करें; public interface integration-style tests को प्राथमिकता देता है।                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
-| [minimax-xlsx](minimax-xlsx/SKILL.md) | Low-loss XML workflow ke saath Excel/spreadsheet files open, create, read, analyze, edit, aur validate karein. | [MiniMax-AI/skills](https://github.com/MiniMax-AI/skills/tree/main/skills/minimax-xlsx) |
 ## Contributing
 
 नई skills या existing skills में improvements के लिए contributions का स्वागत है।
