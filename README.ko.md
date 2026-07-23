@@ -6,17 +6,15 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 27개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 15개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
-**주요 사용 장면:** 최신 문서 조회, 브라우저 자동화, 프롬프트 엔지니어링, 복잡한 작업 계획, 프런트엔드 디자인, 그리고 PDF / Word / PPTX / XLSX 문서 작업.
 
 ## 이 저장소가 맞는 사람
 
 - Codex, Claude Code, Cursor, OpenClaw, Trae 또는 다른 AI 코딩 에이전트를 사용하며, 일회성 프롬프트 대신 재사용 가능한 스킬을 원한다.
 - `CLAUDE.md` / `AGENTS.md` / `SKILL.md` 기반 워크플로를 운영하며, 프로젝트 간에 이식 가능한 지침을 원한다.
-- 문서 조회, 브라우저 자동화, 계획 수립, 프롬프트 엔지니어링, 프런트엔드 디자인, PDF, Office 문서, 슬라이드, 스프레드시트용 검증된 스킬이 필요하다.
 
 ## 먼저 설치할 추천 스킬
 
@@ -72,43 +70,30 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 - [find-docs](find-docs/SKILL.md): 최신 문서 조회에 집중한 Context7 CLI 워크플로.
 - [exa-search](exa-search/SKILL.md): Exa 도구를 활용한 웹, 코드, 회사 조사.
-- [get-api-docs](get-api-docs/SKILL.md): 코드를 작성하기 전에 최신 서드파티 API 및 SDK 문서를 가져옴.
 - [find-skills](find-skills/SKILL.md): 사용자가 특정 기능을 원할 때 기존 스킬을 찾아줌.
 
 ### 계획 및 프롬프트
 
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, `progress.md`를 사용하는 지속형 마크다운 계획 수립.
-- [product-decision-agent](product-decision-agent/SKILL.md): 중국어 우선 제품 의사결정 Agent로 핵심 병목, 우선순위, 성장, 지표, 운영 및 협업을 진단.
 - [autoresearch](autoresearch/SKILL.md): 명확한 목표, 지표, 검증 루프, keep/discard 게이트 기반의 자율 목표 지향 반복.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): 어려운 bug와 performance regression을 위한 엄격한 진단 루프.
 - [grilling](grilling/SKILL.md): 직접 grill session에서 쓰는 reusable one-question-at-a-time interview loop.
 - [teach](teach/SKILL.md): mission, resources, lessons, learning records를 쓰는 stateful teaching workspace 운영.
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
-- [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
-- [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, AI navigation을 높이는 architecture deepening 기회를 찾음.
-- [prototype](prototype/SKILL.md): throwaway logic 또는 UI prototype으로 design question에 빠르게 답함.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): 과도한 복잡성, 숨은 가정, 검증 불가능한 변경을 줄이는 코딩 행동 지침.
-- [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): 테스트의 `as` 타입 단언을 `@total-typescript/shoehorn`으로 마이그레이션.
 - [tdd](tdd/SKILL.md): 기능, 버그 수정, 리팩터링, 동작 변경 전에 test-first red-green-refactor 적용.
 
 ### 자동화 및 QA
 
 - [agent-browser](agent-browser/SKILL.md): 탐색, 폼, 스크린샷, 스크래핑을 위한 브라우저 자동화.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.
-- [browser-trace](browser-trace/SKILL.md): 브라우저 자동화 실행의 CDP trace, 스크린샷, DOM dump를 캡처하고 페이지별로 나눠 디버깅합니다.
-- [opencli](opencli/opencli-usage/SKILL.md): 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다룹니다.
 
 ### 프런트엔드 및 디자인
 
-- [ai-elements](ai-elements/SKILL.md): `ai-elements` 라이브러리를 위한 AI 채팅 UI 컴포넌트 제작.
-- [huashu-design](huashu-design/SKILL.md): 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.
-- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): 프런트엔드용 프리미엄 레퍼런스 이미지를 section마다 가로 이미지 1장씩 생성한다.
-- [gpt-taste](gpt-taste/SKILL.md): AIDA 구조, 풍부한 motion, 랜덤 layout, GSAP pattern이 있는 프런트엔드 페이지를 만든다.
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
 
 ### 유틸리티 및 문서 작업
 
-- [huashu-design](huashu-design/SKILL.md): HTML deck, editable PPTX, MP4/GIF motion pieces, narrated design videos를 만든다.
 
 ## 벤더링된 스킬 팩
 
@@ -129,31 +114,19 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | Skill                                                               | 설명                                                                                                                                             | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
-| [ai-elements](ai-elements/SKILL.md)                                 | 조합형 패턴과 shadcn/ui 관례를 따라 ai-elements 라이브러리용 AI 채팅 UI 컴포넌트를 생성.                                                         | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
 | [autoresearch](autoresearch/SKILL.md)                               | 수정, 검증, keep/discard, 반복 워크플로를 위한 자율 목표 지향 반복 엔진.                                                                                 | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.                                    | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
-| [browser-trace](browser-trace/SKILL.md)                             | 브라우저 자동화 디버깅용 CDP trace, 스크린샷, DOM dump를 캡처합니다.                                                                               | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 어려운 bug와 performance regression을 위한 엄격한 진단 루프.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI를 사용해 최신 문서, API 레퍼런스, 코드 예제를 조회.                                                                                 | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Exa를 사용해 웹, 코드, 회사 정보를 조사.                                                                                                         | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | 사용자가 특정 기능을 필요로 할 때 기존 스킬을 탐색.                                                                                              | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
-| [huashu-design](huashu-design/SKILL.md)                           | 고충실도 HTML 프로토타입, 인터랙티브 데모, 슬라이드 덱, motion design, 디자인 variants, 영상 export, 디자인 critique를 만든다.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
-| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | 프런트엔드용 프리미엄 레퍼런스 이미지를 section마다 가로 이미지 1장씩 생성한다. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
-| [gpt-taste](gpt-taste/SKILL.md) | AIDA 구조, 풍부한 motion, 랜덤 layout, GSAP pattern이 있는 프런트엔드 페이지를 만든다. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
-| [get-api-docs](get-api-docs/SKILL.md)                               | 코드를 작성하기 전에 최신 서드파티 API 또는 SDK 문서를 가져옴.                                                                                   | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grilling](grilling/SKILL.md)                               | 직접 grill session에서 쓰는 reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | mission, resources, lessons, learning records를 통해 workspace 안에서 skill이나 concept을 가르칩니다. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
-| [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
-| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality, leverage, testability, AI navigation을 높이는 architecture deepening 기회를 찾음.                                                      | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
-| [prototype](prototype/SKILL.md) | throwaway logic 또는 UI prototype을 만들어 design question에 빠르게 답합니다. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 과도한 복잡성, 숨은 가정, 검증 불가능한 변경을 줄이는 코딩 행동 지침.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
-| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 테스트 파일의 `as` 타입 단언을 `@total-typescript/shoehorn`으로 마이그레이션.                                                                    | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
-| [opencli](opencli/opencli-usage/SKILL.md)                                         | 브라우저 로그인 상태 재사용, 공개 API 접근, AI 생성 어댑터로 웹사이트를 CLI처럼 다루는 스킬입니다.                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
-| [product-decision-agent](product-decision-agent/SKILL.md)           | 중국어 우선 제품 의사결정 Agent로 핵심 병목, 우선순위, 성장, 지표, 운영 및 협업을 진단.                                                       | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 ## 기여하기
 

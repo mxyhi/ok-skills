@@ -6,17 +6,15 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **27 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **15 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
-**Häufige Einsatzfälle:** aktuelle Dokumentation nachschlagen, Browser-Automatisierung, Prompt Engineering, Planung komplexer Aufgaben, Frontend-Design sowie PDF / Word / PPTX / XLSX Authoring.
 
 ## Für wen dieses Repository gedacht ist
 
 - Du nutzt Codex, Claude Code, Cursor, OpenClaw, Trae oder einen anderen AI Coding Agent und möchtest wiederverwendbare Skills statt ad-hoc Prompts.
 - Du pflegst Workflows auf Basis von `CLAUDE.md` / `AGENTS.md` / `SKILL.md` und willst portable Anleitungen, die projektübergreifend funktionieren.
-- Du brauchst erprobte Skills für Dokumentationsrecherche, Browser-Automatisierung, Planung, Prompt Engineering, Frontend-Design, PDFs, Office-Dokumente, Foliensätze und Tabellen.
 
 ## Einstieg
 
@@ -72,43 +70,30 @@ Danach kannst du natürlich formulieren:
 
 - [find-docs](find-docs/SKILL.md): fokussierter Context7-CLI-Workflow für aktuelle Dokumentationssuche.
 - [exa-search](exa-search/SKILL.md): Web-, Code- und Unternehmensrecherche mit Exa-Suchwerkzeugen.
-- [get-api-docs](get-api-docs/SKILL.md): aktuelle Third-Party-API- und SDK-Dokumentation vor dem Coden abrufen.
 - [find-skills](find-skills/SKILL.md): vorhandene Skills finden, wenn ein Benutzer nach einer Fähigkeit fragt.
 
 ### Planung und Prompting
 
 - [planning-with-files](planning-with-files/SKILL.md): persistente Markdown-Planung mit `task_plan.md`, `findings.md` und `progress.md`.
-- [product-decision-agent](product-decision-agent/SKILL.md): Chinesischsprachiger Product-Decision-Agent für Engpassdiagnose, Priorisierung, Wachstum, Kennzahlen, Betrieb und teamübergreifende Umsetzung.
 - [autoresearch](autoresearch/SKILL.md): autonome zielgerichtete Iteration mit expliziten Zielen, Metriken, Verifikationsschleifen und Keep/Discard-Gates.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): disziplinierte Diagnose-Schleife fuer schwierige Bugs und Performance-Regressionen.
 - [grilling](grilling/SKILL.md): wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions.
 - [teach](teach/SKILL.md): ein stateful Teaching-Workspace mit Mission, Ressourcen, Lessons und Learning Records fuehren.
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
-- [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
-- [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.
-- [prototype](prototype/SKILL.md): Throwaway-Logik- oder UI-Prototypen bauen, um Designfragen schnell zu beantworten.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.
-- [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): `as`-Type-Assertions in Tests nach `@total-typescript/shoehorn` migrieren.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor fur Features, Bugfixes, Refactorings und Verhaltensaenderungen.
 
 ### Automatisierung und QA
 
 - [agent-browser](agent-browser/SKILL.md): Browser-Automatisierung für Navigation, Formulare, Screenshots und Scraping.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): Steuert den echten Browser des Nutzers über einen lokalen Daemon für Navigation, Formulare, Screenshots, Seitenlesen und angemeldete Sessions.
-- [browser-trace](browser-trace/SKILL.md): CDP-Traces, Screenshots und DOM-Dumps für Browser-Automation-Runs erfassen und pro Seite aufteilen.
-- [opencli](opencli/opencli-usage/SKILL.md): Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern als CLI nutzen.
 
 ### Frontend und Design
 
-- [ai-elements](ai-elements/SKILL.md): AI-Chat-UI-Komponenten für die Bibliothek `ai-elements` erstellen.
-- [huashu-design](huashu-design/SKILL.md): Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.
-- [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): Premium-Frontend-Referenzbilder erzeugen, ein horizontales Bild pro Section.
-- [gpt-taste](gpt-taste/SKILL.md): AIDA-strukturierte, motion-reiche Frontend-Seiten mit randomisierten Layouts und GSAP-Patterns bauen.
 - [better-icons](better-icons/SKILL.md): SVG-Icons aus mehr als 200 Iconify-Bibliotheken per CLI oder MCP suchen, durchsuchen und abrufen.
 
 ### Utilities und Content-Erstellung
 
-- [huashu-design](huashu-design/SKILL.md): HTML-Decks, editierbare PPTX-Exporte, MP4/GIF-Motion Pieces und vertonte Designvideos erstellen.
 
 ## Vendorte Skill-Pakete
 
@@ -129,31 +114,19 @@ Danach kannst du natürlich formulieren:
 | Skill                                                               | Beschreibung                                                                                                                                                                                                       | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser-Automatisierungs-CLI für AI Agents: Navigation, Formularausfüllung, Screenshots, Extraktion und Web-Tests.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
-| [ai-elements](ai-elements/SKILL.md)                                 | Neue AI-Chat-Oberflächenkomponenten für die ai-elements-Bibliothek mit komponierbaren Mustern und shadcn/ui-Konventionen erstellen.                                                                                | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
 | [autoresearch](autoresearch/SKILL.md)                               | Autonome zielgerichtete Iterations-Engine für Modify-, Verify-, Keep/Discard- und Repeat-Workflows.                                                                                     | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | Durchsuche über 200 Iconify-Bibliotheken und hole SVG-Icons per CLI oder MCP-Tools.                                                                                                                                | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | Steuert den echten Browser des Nutzers über einen lokalen Daemon für Navigation, Formulare, Screenshots, Seitenlesen und angemeldete Sessions.                                                                       | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
-| [browser-trace](browser-trace/SKILL.md)                             | CDP-Traces, Screenshots und DOM-Dumps für Browser-Automation-Debugging erfassen.                                                                                     | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Ultrasparsamer Kommunikationsmodus, der Antwort-Tokens im Hoehlenmenschenstil reduziert, ohne technische Genauigkeit zu verlieren.                                                         | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | Disziplinierte Diagnose-Schleife fuer schwierige Bugs und Performance-Regressionen.                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Die Context7 CLI für aktuelle Dokumentation, API-Referenzen und Codebeispiele verwenden.                                                                                                                          | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Exa für Web-, Code- und Unternehmensrecherche verwenden.                                                                                                                                                           | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Vorhandene Skills entdecken, wenn Benutzer spezialisierte Fähigkeiten benötigen.                                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
-| [huashu-design](huashu-design/SKILL.md)                           | Hochwertige HTML-Prototypen, interaktive Demos, Foliendecks, Motion Design, Designvarianten, Videoexports und Designkritiken erstellen.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
-| [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Premium-Frontend-Referenzbilder erzeugen, ein horizontales Bild pro Section. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
-| [gpt-taste](gpt-taste/SKILL.md) | AIDA-strukturierte, motion-reiche Frontend-Seiten mit randomisierten Layouts und GSAP-Patterns bauen. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
-| [get-api-docs](get-api-docs/SKILL.md)                               | Aktuelle Dokumentation zu APIs oder SDKs von Drittanbietern abrufen, bevor Code geschrieben wird.                                                                                                                  | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grilling](grilling/SKILL.md)                               | Wiederverwendbare One-question-at-a-time Interview-Schleife fuer direkte Grill-Sessions.                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | Vermittelt Skills oder Konzepte in einem stateful Workspace mit Mission, Ressourcen, Lessons und Learning Records. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
-| [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
-| [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.                                                                                                           | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
-| [prototype](prototype/SKILL.md) | Baut Throwaway-Logik- oder UI-Prototypen, um Designfragen schnell zu beantworten. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
-| [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Testdateien von `as`-Type-Assertions zu `@total-typescript/shoehorn` migrieren.                                                                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
-| [opencli](opencli/opencli-usage/SKILL.md)                                         | Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern in CLI-Befehle verwandeln.                                                                                                 | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
-| [product-decision-agent](product-decision-agent/SKILL.md)           | Chinesischsprachiger Product-Decision-Agent für Engpassdiagnose, Priorisierung, Wachstum, Kennzahlen, Betrieb und teamübergreifende Umsetzung.                                                                 | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | Vor Features, Bugfixes, Refactorings oder Verhaltensaenderungen verwenden; bevorzugt Integrationstests ueber public interfaces.                                                                                    | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 ## Mitwirken
 
