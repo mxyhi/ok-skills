@@ -1,0 +1,42 @@
+name: Guard Global Essentials PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  close-unauthorized-pr:
+    # This job never checks out or executes code from the pull request.
+    if: >-
+      github.event.pull_request.base.ref == 'global-essentials' &&
+      github.event.pull_request.user.login != 'mxyhi'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close unauthorized PR
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pullNumber = context.payload.pull_request.number;
+            const author = context.payload.pull_request.user.login;
+            const message = [
+              'This branch is reserved for the repository author\'s global installation.',
+              'Please target `main` for public contributions.'
+            ].join(' ');
+
+            core.info(`Closing unauthorized PR #${pullNumber} from ${author}`);
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: pullNumber,
+              body: message
+            });
+            await github.rest.pulls.update({
+              owner,
+              repo,
+              pull_number: pullNumber,
+              state: 'closed'
+            });
