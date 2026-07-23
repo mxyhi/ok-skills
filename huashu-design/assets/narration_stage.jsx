@@ -403,12 +403,64 @@ const NarrationStageLib = (() => {
    *   maxLen    单行最大视觉长度，默认 13
    *
    * 深底场景：把 color 改成 '#fff'，haloColor 改成 'rgba(0,0,0,0.85)' 即可。
+   *
+   * 卡拉OK模式（字级高亮，需 timeline chunks 里带 words——narrate-pipeline.mjs 默认输出）：
+   *   karaoke       true 开启，默认 false。整行显示，读到哪个字哪个字变色
+   *   karaokeColor  已读字的颜色，默认品牌橙 '#e8590c'
+   *   chunk 没有 words 数据时自动回落到普通 chunk 模式，调用方不用做判断。
+   *   注意：words 是 TN 后文本（"2025"→"二零二五"），卡拉OK行直接由 words 拼出，
+   *   保证高亮与发音严格对齐（与 chunk.text 原文可能有差异）。
    */
-  function Subtitles({ bottom = 90, fontSize = 32, color = '#1a1a1a', haloColor = 'rgba(245,241,232,0.9)', maxLen = 13 } = {}) {
+  function splitWordsToLines(words, maxLen = 13) {
+    // 把字级时间戳 token 贪心打包成 ≤maxLen 的行；强标点（。！？）后强制换行，绝不跨句号
+    const lines = [];
+    let cur = [];
+    let curLen = 0;
+    for (const w of words) {
+      const wLen = visualLen(w.text);
+      if (cur.length > 0 && curLen + wLen > maxLen) { lines.push(cur); cur = []; curLen = 0; }
+      cur.push(w);
+      curLen += wLen;
+      if (/[。！？]\s*$/.test(w.text)) { lines.push(cur); cur = []; curLen = 0; }
+    }
+    if (cur.length > 0) lines.push(cur);
+    return lines;
+  }
+
+  function Subtitles({ bottom = 90, fontSize = 32, color = '#1a1a1a', haloColor = 'rgba(245,241,232,0.9)', maxLen = 13, karaoke = false, karaokeColor = '#e8590c' } = {}) {
     const { time, scene } = React.useContext(NarrationContext);
     if (!scene || !scene.chunks) return null;
     const active = scene.chunks.find(c => time >= c.absoluteStart && time < c.absoluteEnd);
     if (!active) return null;
+
+    // —— 卡拉OK模式：整行显示 + 逐字高亮（读到即变色，无 CSS transition，seek 渲染确定性）——
+    if (karaoke && active.words && active.words.length > 0) {
+      const wordLines = splitWordsToLines(active.words, maxLen);
+      let activeWLine = wordLines[0];
+      for (const ln of wordLines) {
+        if (time >= ln[0].absoluteStart) activeWLine = ln;
+        else break;
+      }
+      const lineStart = activeWLine[0].absoluteStart;
+      const lineProg = Math.max(0, Math.min(1, (time - (lineStart - 0.15)) / 0.15)); // 行提前 0.15s 淡入
+      return React.createElement('div', {
+        style: { position: 'absolute', left: 0, right: 0, bottom, display: 'flex', justifyContent: 'center', pointerEvents: 'none', zIndex: 50 },
+      }, React.createElement('div', {
+        key: lineStart,
+        style: {
+          fontFamily: '"PingFang SC", "Noto Sans SC", -apple-system, sans-serif',
+          fontSize, fontWeight: 600,
+          letterSpacing: '0.04em', lineHeight: 1.2, textAlign: 'center',
+          textShadow: `0 0 6px ${haloColor}, 0 0 12px ${haloColor}, 0 1px 2px rgba(255,255,255,0.5)`,
+          opacity: lineProg, transform: `translateY(${(1 - lineProg) * 4}px)`,
+        },
+      }, activeWLine.map((w, i) => React.createElement('span', {
+        key: i,
+        style: { color: time >= w.absoluteStart ? karaokeColor : color },
+      }, w.text))));
+    }
+
+    // —— 普通 chunk 模式（原有行为，不变）——
     const lines = splitChunkToLines(active.text, maxLen);
     if (lines.length === 0) return null;
     const totalLen = lines.reduce((s, l) => s + visualLen(l), 0);
@@ -468,7 +520,7 @@ const NarrationStageLib = (() => {
     return Math.max(0, v);
   }
 
-  return { NarrationStage, Scene, Cue, useNarration, useSceneFade, Subtitles, splitChunkToLines };
+  return { NarrationStage, Scene, Cue, useNarration, useSceneFade, Subtitles, splitChunkToLines, splitWordsToLines };
 })();
 
 if (typeof window !== 'undefined') {

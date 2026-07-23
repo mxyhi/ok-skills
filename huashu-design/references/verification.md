@@ -181,3 +181,20 @@ python verify.py design.html --output ./screenshots/
 # headless=false，打开真实浏览器给你看
 python verify.py design.html --show
 ```
+
+## 视频产物硬校验（verify-video.sh）
+
+渲染出的 MP4/成片不靠肉眼过，用脚本硬校验（HTML 合成侧的校验由 `hyperframes check` 五门审计负责，这个脚本只管产物侧）：
+
+```bash
+# 成品（默认要求有音轨）
+bash scripts/verify-video.sh final.mp4 --duration=22 --fps=60 --width=1920 --height=1080
+
+# 无声中间产物
+bash scripts/verify-video.sh raw.mp4 --duration=10 --fps=60 --no-audio
+
+# 刻意黑场开场的电影风
+bash scripts/verify-video.sh film.mp4 --duration=30 --fps=60 --allow-black-open
+```
+
+检查项：分辨率/帧率、时长误差（±2%）、audio stream 存在性（无音轨=半成品铁律的机器执行）、首尾黑帧（blackdetect，录制起点偏移/loop 回跳的典型症状）、LUFS 响度（成品目标 -14±4）。exit code 非 0 就不许交付。

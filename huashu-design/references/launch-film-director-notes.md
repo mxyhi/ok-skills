@@ -31,6 +31,8 @@
 
 任一为「是」就走流程。三个都「否」就跳过，直接用 [animations.md](animations.md) 的标准流程。
 
+> 🔴 **前置门（先于本流程）**：launch film 也必须先过 SKILL.md 的三方向硬门——每方向一张「方向板」（hero 关键帧真实静帧 + 色板 + 气质句 + 参照），用户选定方向后，万字 director's notes 才围绕选定方向展开。指定了「Apple 级」等风格词不豁免（2026-07-18 HuaStudio 实锤）。
+
 ---
 
 ## 3. Director's Notes 的 5 大部分结构

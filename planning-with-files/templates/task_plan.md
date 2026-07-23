@@ -1,5 +1,5 @@
 # Task Plan: [Brief Description]
-<!-- 
+<!--
   WHAT: This is your roadmap for the entire task. Think of it as your "working memory on disk."
   WHY: After 50+ tool calls, your original goals can get forgotten. This file keeps them fresh.
   WHEN: Create this FIRST, before starting any work. Update after each phase completes.
@@ -12,6 +12,14 @@
   EXAMPLE: "Create a Python CLI todo app with add, list, and delete functionality."
 -->
 [One sentence describing the end state]
+
+## Next Step
+<!--
+  WHAT: The single next action you are about to take. Keep it to one imperative line.
+  WHY: Sits right after the goal, so every hook injection carries the immediate action.
+  WHEN: Update whenever a phase status changes or the next action changes.
+-->
+[The single next action. Update whenever phase status changes.]
 
 ## Current Phase
 <!-- 

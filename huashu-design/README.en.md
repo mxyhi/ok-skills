@@ -55,6 +55,18 @@ npx skills add alchaincyf/huashu-design
 npx skills add alchaincyf/huashu-design
 ```
 
+> **Verify after install**: this skill is more than a single SKILL.md — the `references/`, `assets/`, `scripts/`, and `demos/` subdirectories hold 99 referenced recipes, scripts, and assets that the skill depends on. After installing, check the install path (e.g. `~/.claude/skills/huashu-design/`); if you only see SKILL.md and none of those subdirectories, your `skills` CLI is too old (≤1.5.15 had a bug that synced only the single file, fixed in 1.5.19). Upgrade and reinstall:
+>
+> ```bash
+> npm i -g skills@latest        # or npx skills@latest add alchaincyf/huashu-design
+> ```
+>
+> If it's still wrong after upgrading, fall back to a `git clone` install — clone the repo into any skills directory:
+>
+> ```bash
+> git clone https://github.com/alchaincyf/huashu-design.git ~/.claude/skills/huashu-design
+> ```
+
 Then just talk to Claude Code:
 
 ```

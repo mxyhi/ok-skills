@@ -240,6 +240,11 @@ LLM 全称 Large Language Model，[[cue:bigmodel]]它是一个有几千亿参数
           end: number,
           absoluteStart: number,   // 整轨绝对时间（对齐 voiceover.mp3）
           absoluteEnd: number,
+          // words: 字级时间戳（TTS enable_subtitle 实测返回，默认带；--no-timestamps 关闭）
+          // 注意 text 是 TN 后文本（"2025"→"二零二五"），标点附在前一个字上
+          words: [
+            { text: string, start: number, end: number, absoluteStart: number, absoluteEnd: number }
+          ],
         }
       ],
       cues: [
@@ -283,6 +288,17 @@ const { NarrationStage, Subtitles } = NarrationStageLib;
 | 切句规则 | **绝不跨句号截断**：先按 `。！？` 切句，每句再按 `，、；：` 合并到 ≤maxLen | 按字数硬切，把「这是好的」切成「这是好」+「的」 |
 
 `<Subtitles />` 默认按以上规则跑，不需要传 props。深底场景：`<Subtitles color="#fff" haloColor="rgba(0,0,0,0.85)" />`。
+
+### 卡拉OK模式（字级高亮）
+
+```jsx
+<Subtitles karaoke />                          {/* 读到哪个字哪个字变品牌橙 #e8590c */}
+<Subtitles karaoke karaokeColor="#0a84ff" />   {/* 自定义高亮色 */}
+```
+
+- 依赖 timeline chunks 里的 `words` 字级时间戳（narrate-pipeline.mjs 默认输出；豆包 TTS v3 `enable_subtitle`，需 2.0 资源，仅中英文）
+- 整行显示、逐字变色，行切分复用 ≤maxLen + 不跨句号规则（由 words 拼行，与发音严格对齐）
+- chunk 没有 words 时自动回落普通 chunk 模式，调用方无需判断
 
 ### 切句算法（已在 narration_stage.jsx 内置）
 

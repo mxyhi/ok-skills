@@ -10,7 +10,7 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server@8823cbea80b6ec5999c6217cccd91660fe953b97`
+- Official source: `exa-labs/exa-mcp-server@0de23f94b7e8539192bdc2008c16592156ada870`
 - Current npm package checked: `exa-mcp-server@3.2.1`; verified tarball SHA-256 `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
@@ -44,7 +44,8 @@ Direct MCP HTTP is the required invocation model for this skill. `curl` is fine,
 - `query` required.
 - Common optional filters: `numResults`, `type` (`auto` | `fast` | `instant`), `category`, `includeDomains`, `excludeDomains`, `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`, `includeText`, `excludeText`, `userLocation`, `moderation`, `additionalQueries`.
 - Content controls: `textMaxCharacters`, `contextMaxCharacters`, `enableSummary`, `summaryQuery`, `enableHighlights`, `highlightsMaxCharacters`, `highlightsQuery`, `maxAgeHours`, `livecrawlTimeout`, `subpages`, `subpageTarget`.
-- Categories include `company`, `research paper`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`.
+- Deprecated highlight controls: `highlightsNumSentences`, `highlightsPerUrl`; prefer `highlightsMaxCharacters`.
+- Categories include `company`, `publication`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`.
 
 ```json
 {

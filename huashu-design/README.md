@@ -67,6 +67,18 @@ npx skills add alchaincyf/huashu-design
 npx skills add alchaincyf/huashu-design
 ```
 
+> **装完先自检**：这个 skill 不只是 SKILL.md 一个文件，`references/`、`assets/`、`scripts/`、`demos/` 四个子目录里有 99 处被引用的配方、脚本、素材，缺一不可。装完看一眼安装目录（如 `~/.claude/skills/huashu-design/`），如果只有 SKILL.md、没有那几个子目录，说明你的 `skills` CLI 版本太旧（≤1.5.15 有个只同步单文件的 bug，已在 1.5.19 修复）。升级后再装一次即可：
+>
+> ```bash
+> npm i -g skills@latest        # 或 npx skills@latest add alchaincyf/huashu-design
+> ```
+>
+> 升级后仍异常，就用 `git clone` 兜底安装，把仓库克隆到任意 skills 目录即可：
+>
+> ```bash
+> git clone https://github.com/alchaincyf/huashu-design.git ~/.claude/skills/huashu-design
+> ```
+
 然后在 Claude Code / Codex / Cursor 等任意支持 skills 的 agent 里直接说话：
 
 ```

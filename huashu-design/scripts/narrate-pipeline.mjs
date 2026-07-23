@@ -48,6 +48,7 @@ function parseArgs(argv) {
     const a = argv[i];
     if (a === '--script') args.script = argv[++i];
     else if (a === '--out-dir') args.outDir = argv[++i];
+    else if (a === '--no-timestamps') args.noTimestamps = true;
     else if (a === '--help' || a === '-h') args.help = true;
   }
   return args;
@@ -59,6 +60,7 @@ narrate-pipeline.mjs · L2 长解说总指挥
 
   --script <path>     解说稿 .md 文件（必填）
   --out-dir <path>    输出目录（必填）
+  --no-timestamps     不请求字级时间戳（默认请求，chunks 里带 words 供卡拉OK字幕）
 
 输出：<out-dir>/voiceover.mp3 + <out-dir>/timeline.json
 `.trim());
@@ -130,15 +132,31 @@ function getDuration(filePath) {
   return parseFloat(out.trim());
 }
 
+let timestampsBroken = false; // 时间戳请求失败一次后，后续 chunk 全部降级，避免反复重试
+
 function callTTS(text, outPath, opts) {
   const args = ['--text', text, '--out', outPath];
   if (opts.voice) args.push('--voice', opts.voice);
   if (opts.speed) args.push('--speed', String(opts.speed));
-  const out = execFileSync('node', [TTS_SCRIPT, ...args], {
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'inherit'],
-  });
-  return JSON.parse(out.trim());
+  const wantTimestamps = opts.timestamps && !timestampsBroken;
+  if (wantTimestamps) args.push('--timestamps');
+  try {
+    const out = execFileSync('node', [TTS_SCRIPT, ...args], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'inherit'],
+    });
+    return JSON.parse(out.trim());
+  } catch (e) {
+    if (!wantTimestamps) throw e;
+    // 字级时间戳可能不被当前音色/资源支持（仅 2.0 资源+中英文）——降级重试，不带时间戳
+    timestampsBroken = true;
+    console.error('[narrate] ⚠ 带 --timestamps 的 TTS 失败，降级为无时间戳模式（timeline 不含 words，卡拉OK字幕不可用）');
+    const out = execFileSync('node', [TTS_SCRIPT, ...args.filter((a) => a !== '--timestamps')], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'inherit'],
+    });
+    return JSON.parse(out.trim());
+  }
 }
 
 function ffmpegConcat(inputs, output) {
@@ -183,6 +201,7 @@ async function main() {
   const voice = meta.voice || undefined;
   const speed = meta.speed ? parseFloat(meta.speed) : 1.0;
   const gap = meta.gap ? parseFloat(meta.gap) : 0.3;
+  const timestamps = !args.noTimestamps && meta.timestamps !== 'false';
 
   console.error(`[narrate] script=${path.basename(scriptPath)} scenes=${scenes.length} voice=${voice || '(env)'} speed=${speed} gap=${gap}s`);
 
@@ -225,7 +244,7 @@ async function main() {
         continue;
       }
       const chunkPath = path.join(tmpDir, `${scene.id}-${j}.mp3`);
-      const result = callTTS(chunk.text, chunkPath, { voice, speed });
+      const result = callTTS(chunk.text, chunkPath, { voice, speed, timestamps });
       const chunkStart = sceneInternalCursor;
       chunkFiles.push(chunkPath);
       sceneInternalCursor += result.duration;
@@ -234,6 +253,12 @@ async function main() {
         start: chunkStart,
         end: sceneInternalCursor,
         duration: result.duration,
+        // 字级时间戳（TTS 实测，TN 后文本）：换算成段内相对时间
+        words: (result.words || []).map((w) => ({
+          text: w.text,
+          start: chunkStart + w.start,
+          end: chunkStart + w.end,
+        })),
       });
       console.error(`  chunk ${j}: ${result.duration.toFixed(2)}s · ${chunk.text.length} 字 · ${chunk.text.slice(0, 30)}${chunk.text.length > 30 ? '…' : ''}`);
       if (chunk.cueAfter) {
@@ -268,12 +293,20 @@ async function main() {
       audio: path.relative(outDir, sceneAudio),
       text: scene.raw.replace(/\[\[cue:[\w-]+\]\]/g, ''),
       // chunks: 用于字幕逐句显示。start/end 是段内相对时间，absoluteStart/absoluteEnd 是整轨绝对时间
+      // words: 字级时间戳（卡拉OK字幕用；TN 后文本，可能与 chunk.text 不完全一致）。空数组=不可用
       chunks: chunkRecords.map((c) => ({
         text: c.text,
         start: c.start,
         end: c.end,
         absoluteStart: cursor + c.start,
         absoluteEnd: cursor + c.end,
+        words: (c.words || []).map((w) => ({
+          text: w.text,
+          start: w.start,
+          end: w.end,
+          absoluteStart: cursor + w.start,
+          absoluteEnd: cursor + w.end,
+        })),
       })),
       cues: cueRecords.map((c) => ({
         id: c.id,
@@ -306,6 +339,9 @@ async function main() {
   console.error(`  段数:      ${timeline.scenes.length}`);
   const totalCues = timeline.scenes.reduce((sum, s) => sum + s.cues.length, 0);
   console.error(`  cue 数:    ${totalCues}`);
+  const totalWords = timeline.scenes.reduce(
+    (sum, s) => sum + s.chunks.reduce((a, c) => a + (c.words ? c.words.length : 0), 0), 0);
+  console.error(`  字级时间戳: ${totalWords > 0 ? `${totalWords} words（<Subtitles karaoke /> 可用）` : '无'}`);
 }
 
 main().catch((err) => {

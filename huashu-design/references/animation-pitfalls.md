@@ -381,6 +381,30 @@ bash convert-formats.sh input.mp4 --minterpolate
 
 **和坑 #15 的关系**：#15 讲「单文件别用 `src=` 外链 `.jsx`（file:// CORS）」；本坑更进一步——连 React/Babel/字体的**远程 CDN 在受限网络下也会断**，要做到真自包含必须全内联 + 构建期 transpile。
 
+## 18. 【HyperFrames】CSS transition + class 切换在 seek 渲染下不确定
+
+CSS `transition` 走的是墙钟，不是时间轴。逐帧 seek 渲染时每帧都是独立截图，transition 的中间态取决于「seek 到这帧时过了多久墙钟时间」——完全不确定，可能永远停在起始值，也可能随机停在中间。c3 迁移实测（2026-07-17）：`.watermark-br` 用 `transition: opacity 0.6s` + class 切换，seek 渲染下透明度不听话。
+
+**修法**：渲染路径上的一切状态变化都用 tween 或 t 的纯函数表达。迁移老 demo 时全文搜 `transition:`，逐个改成 `render(t)` 里的 lerp；新写合成从一开始就不写 transition。hover 等交互态的 transition 无所谓（渲染时不触发）。
+
+## 19. 【HyperFrames】代理 tween 首帧不触发 —— 手动补 `render(0)`
+
+用代理 tween 把 `render(t)` 挂进 GSAP timeline 时（老 demo 适配器路线），timeline 停在 t=0 的状态下 `onUpdate` 不一定被调用——首帧可能是 HTML 的静态未初始化状态而非 `render(0)` 的画面。
+
+**修法**：注册 timeline 后手动同步调一次 `render(0)`。配方全文见 `references/hyperframes-backend.md`。
+
+## 20. 【HyperFrames】contrast 门与暗色电影风冲突 —— 用 `--no-contrast`，其余四门必须 0 error
+
+`npm run check` 的 contrast 门按 WCAG AA 4.5:1 检查所有文字。暗色 cinematic 设计里 16-40% 透明度的水印、mono 标签、装饰性文字是**刻意的**低对比（电影感的一部分），会成片报错，且框架没有逐元素豁免机制。c3 实测 42 个 contrast error 全部是设计本意。
+
+**修法**：暗色电影风产出用 `npx hyperframes check --no-contrast`，lint/runtime/layout/motion 四门仍必须 0 error。**亮底信息型产出不要跳 contrast**——那种场景下的报错通常是真的可读性问题（可读性硬底线见 SKILL.md Fallback 节）。
+
+## 21. 【HyperFrames/GSAP】fromTo 的 immediateRender 幻影 —— 元素提前数秒出现
+
+GSAP 的 `fromTo()` 默认 `immediateRender: true`：build timeline 时就把 from 态渲染到元素上。如果 from 态本身可见（`autoAlpha > 0`），元素会在它的 tween 开始前就出现在画面里——火花、点击圈、涟漪、扬尘这类「短促特效」最容易中招（B00 实测一次踩了 4 处：特效在归位时刻前几秒就挂在画面上）。
+
+**修法**：所有 from 态可见的 `fromTo()` 显式加 `immediateRender: false`；或改成「set 初始隐藏 + to」。自查方式：渲染后抽每幕开头帧，看有没有「不该在场的特效元素」。
+
 ## 快速自查清单（开工前 5 秒）
 
 - [ ] 每个 `position: absolute` 的父元素都有 `position: relative`？
@@ -400,3 +424,7 @@ bash convert-formats.sh input.mp4 --minterpolate
 - [ ] 单文件交付的 HTML：`animations.jsx` 是内联的，不是 `src="..."`？（file:// 下 external .jsx 会 CORS 黑屏）
 - [ ] 跨 scene 出现的元素（chapter 标签/水印/scene 编号）没有硬编码颜色？在每个 scene 底色下都可见？
 - [ ] 要离线/真自包含：React+ReactDOM 本地内联、**app 和 `animations.jsx` 引擎都过 Babel transpile**、字体用系统字体？（见坑 #17；引擎含 JSX，漏 transpile 必报 `Unexpected token '<'`）
+- [ ] 【HyperFrames】渲染路径上没有 CSS `transition`？状态变化全是 tween 或 t 的纯函数？（坑 #18）
+- [ ] 【HyperFrames】代理 tween 场景注册后补了 `render(0)`？（坑 #19）
+- [ ] 【HyperFrames】check 过了？暗色电影风用 `--no-contrast`，其余四门 0 error？（坑 #20）
+- [ ] 【HyperFrames/GSAP】from 态可见的 `fromTo()` 全部加了 `immediateRender:false`？（坑 #21，B00 实测 4 处幻影）

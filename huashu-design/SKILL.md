@@ -1,6 +1,6 @@
 ---
 name: huashu-design
-description: 花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。
+description: 花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审。任何新设计100%先出三个方向初稿给用户选（指定风格/品牌也不豁免），选定后才执行。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。
 ---
 
 # 花叔Design · Huashu-Design
@@ -28,16 +28,17 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 任务信号 | 入口 |
 |---------|------|
 | 提到具体品牌/产品名 | 核心原则#0 事实验证 → §1.a 资产协议 → 标准流程 |
-| 没给风格参考（最常见） | Fallback 顾问模式 Phase 1-5 → 回标准流程 Step 2 |
+| 🔴 任何会产出新视觉设计的任务（**无论有没有风格参考、有没有品牌名，100% 必走**） | 三方向硬门：Fallback Phase 1-5 出三版真实初稿等用户选 → 回标准流程 Step 2 |
 | 幻灯片/PPT | 标准流程 + Step 1 deck 交付链 + 「技术红线」架构选型 |
-| 动画/导出 MP4/GIF | 标准流程 + Step 9；动手前必读 `references/animation-pitfalls.md` |
+| 动画/导出 MP4/GIF | 标准流程 + Step 9；**新动画项目默认走 HyperFrames 后端**（选型边界+契约 → `references/hyperframes-backend.md`，GSAP 实现配方 → `references/gsap-recipes.md`）；动手前必读 `references/animation-pitfalls.md` |
 | 带解说长视频（≥1分钟） | Step 9.5 → `references/voiceover-pipeline.md` |
-| launch film/品牌宣传片（「Apple级」「超级碗品质」） | 先写万字 director's notes → `references/launch-film-director-notes.md` |
+| launch film/品牌宣传片（「Apple级」「超级碗品质」） | **三方向硬门先行**（方向板级初稿，见 Fallback「三方向初稿形态」）→ 用户选定后再写万字 director's notes → `references/launch-film-director-notes.md` |
 | App/iOS 原型 | 「App / iOS 原型专属守则」（覆盖通用规则） |
 | 评审/打分 | Step 10 → `references/critique-guide.md` |
 | 弱 runtime（无 subagent/非 Claude） | 上述任一条 + 「弱 runtime 降级模式」 |
 
 例：「做个咖啡主题的 PPT」= 第 2 行 + 第 3 行——Fallback 出三版（咖啡是主题不是品牌，不找 logo），deck 骨架统一用概览墙模板。
+再例：「做个苹果宣传片风格的 30s 动画」——**指定了风格也照走三方向门**，在 Apple 语境内出 3 个差异化诠释的方向板让用户选（如深空暗场版 / 大白底衬线版 / 产品色沉浸版）。风格词收窄的是解释空间，不豁免选择权。
 
 ## 核心原则 #0 · 事实验证先于假设（优先级最高，凌驾所有其他流程）
 
@@ -180,18 +181,23 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 > - 用户什么都没有 → 下面三套逻辑只是帮他**起步、打破惯性**的脚手架，不是终点。
 > - `design-styles.md` 的 40 种是「没思路时翻的弹药」，**不是必须从这里选的清单**。过多的硬性风格要求是负担、是无聊——别被风格库绑架，内容永远优先。
 
-**什么时候触发**：
-- 用户需求模糊（"做个好看的"、"帮我设计"、"这个怎么样"、"做个XX"没有具体参考）
-- 用户明确要"推荐风格"、"给几个方向"、"选个哲学"、"想看不同风格"
-- 项目和品牌没有任何 design context（既没有 design system，又找不到参考）
-- 用户主动说"我也不知道要什么风格"
+**🔴 什么时候触发（100% 硬门，2026-07-18 起）**：
+**任何会产出新视觉设计的任务，无一例外**——需求模糊触发、需求清晰也触发、用户指定了风格（「Apple 宣传片风格」「Stripe 那种感觉」）**同样触发**、给了品牌名/品牌资产**同样触发**。做任何设计前，必须先提供三个差异化方向（含真实初稿）给用户选择，用户选定后才进入执行。
 
-**什么时候 skip**：
-- 用户已经给了明确的风格参考（Figma / 截图 / 品牌规范）→ 直接走「核心哲学 #1」主干流程
-- 用户已经说清楚要什么（"做个 Apple Silicon 风格的发布会动画"）→ 直接进 Junior Designer 流程
-- 小修小补、明确的工具调用（"帮我把这段 HTML 变成 PDF"）→ skip
+> **为什么连指定风格也不豁免**（2026-07-18 HuaStudio 宣传片实锤）：用户说「苹果宣传片风格 30s 动画」，AI 判定「已说清楚要什么」跳过三方向直接执行自选方案——被用户抓现行。「Apple 风格」是一个语境不是一个设计：深空暗场、大白底衬线、产品色沉浸都是合法诠释，选哪个是用户的权利。**风格词收窄解释空间，不转移选择权。**指定风格时的三方向 = 在该风格语境内做三个差异化诠释（三套逻辑照跑，轮盘改为在语境兼容的风格子集里抽）；给了品牌名时的三方向 = 三版全部基于 §1.a 取到的同一套品牌资产，差异在设计诠释。
 
-不确定就用最轻量版：**列出 3 个差异化方向让用户二选一，不展开不生成**——尊重用户节奏。
+**唯一豁免（仅此三种，全部要在 `direction-approved.md` 落档原话/理由）**：
+- 用户**本次会话明说**跳过（「不用出三版」「直接做」「就按上次那个方向」）
+- **已选定方向后的迭代**（同一项目内改稿、加镜、换素材——方向已经是用户选的，不重新过门）
+- **非设计的机械操作**（HTML 转 PDF、导出、截图、修 bug、纯文字改动）
+
+**三方向初稿形态（按产出类型定义，必须是看得见的真实视觉，不是文字描述）**：
+- 网页 / 信息图 / 原型 → 每方向 1 个完整 HTML + 截图
+- 多页 deck → 每方向 2 页代表页（兼作 showcase）
+- **动画 / 宣传片 → 每方向 1 张「方向板」**：hero 关键帧的真实 HTML 静帧截图 ×1-2 + 色板条 + 一句气质定位 + 参照作品名。❌ 不是三支成片（成本失控），✅ 但必须是渲出来的画面不是嘴说
+- 封面 / 单图 → 每方向 1 张真实出图
+
+**展示后必须停**：三方向摆出来后**结束回合等用户选择**，不得自行选定继续执行——包括 autonomous / 无人值守会话（这是真正只有用户能做的决策，停轮不算阻塞）。
 
 ### 完整流程（7 个 Phase，顺序执行；Phase 3.5 是图片前置半步）
 
@@ -205,8 +211,8 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 
 ⏱️ **无应答策略**：问题发出后，若用户**没回应任何信息**（只丢了最初那句模糊需求就没下文）→ 不要枯等。按 best judgment 补齐假设（标 assumption），直接往下跑完 Phase 2-4 把三版真实视觉摆出来——**用「看得见的东西」代替继续追问**（正好呼应选择无效铁律）。
 
-> 用户给了**具体品牌/产品名（能去官网找到 logo 的那种，如 Stripe / DJI / 某 App）**或品牌资产/参考站 → **跳出 Fallback**，走「核心哲学 #1」+「§1.a 核心资产协议」主干。
-> ⚠️ **但普通主题名不算品牌名**：「咖啡 / 鹦鹉 / 历史 / 健身」这类是**内容主题**，不是可找 logo 的品牌——**继续走 Fallback，不要跑去找「咖啡的 logo」空转**。Fallback 正是服务「给了主题、但没给品牌/风格参考」这种最常见的情况。
+> 用户给了**具体品牌/产品名（能去官网找到 logo 的那种，如 Stripe / DJI / 某 App）**或品牌资产/参考站 → **加走「§1.a 核心资产协议」取齐资产，但不跳出三方向门**：三个方向全部基于同一套真实品牌资产做，差异在设计诠释（旧规则「品牌名→跳出 Fallback」已废止，2026-07-18）。
+> ⚠️ **普通主题名不算品牌名**：「咖啡 / 鹦鹉 / 历史 / 健身」这类是**内容主题**，不是可找 logo 的品牌——不要跑去找「咖啡的 logo」空转。
 
 **Phase 2 · 顾问式重述**（**≥200 字**，把需求真正嚼透，不是敷衍一句）
 用自己的话深入重述本质需求、受众、场景、情感基调、用户没说出口的潜在期待。以「基于这个理解，我**直接做 3 个不同方向的真实版本给你看**」结尾——❌ 不要以「你想选哪个方向？」结尾（见 Phase 3 铁律）。
@@ -266,7 +272,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 - **三版的布局骨架必须互异**：导航/构图/内容区结构至少一项结构性不同，不许两版共用同一骨架只换色换字体（盲测实锤：共用骨架会被评审一眼识破「换皮」）
 - 🔴 **可读性硬底线（任何风格温度都不豁免，包括「奢侈留白」的安静派）**：正文 ≥14px、标签/注释 ≥12px、正文对比度 ≥4.5:1；留白必须是**构图**（首屏有明确视觉锚点，视线有落点），不是内容缺席。盲测实锤：安静派做过头 = 「大片死白+微缩字号，第一眼像页面渲染坏了」，直接输给普通 baseline
 - 纯 HTML/CSS 单文件；**内容必需的图用 Phase 3.5 取的真图**（三版共用），仅装饰/抽象图才用 CSS 几何/SVG/纯色块，绝不留空占位
-- 🎞️ **PPT / deck 场景必走 deck 模板（绝不写竖向平铺长页！）**：每页独立 `<section>`（1920×1080）套 `assets/deck_index.html` 外壳，三版只换视觉风格、deck 骨架统一（架构规则与概览墙细节见「技术红线」+ `references/slide-decks.md`）。截图按**单页** 1920×1080 截；**单页内容绝不自带页码/进度标记**——页码由 deck 外壳统一承载（实测出过「02/03」+「6/16」双页码打架）
+- 🎞️ **PPT / deck 场景必走 deck 模板（绝不写竖向平铺长页！）**：每页独立 `<section>`（1920×1080）套 `assets/deck_index.html` 外壳，三版只换视觉风格、deck 骨架统一（架构规则与概览墙细节见「技术红线」+ `references/slide-decks.md`）。截图按**单页** 1920×1080 截；**单页内容绝不自带页码/进度标记**——页码由 deck 外壳统一承载（实测出过「02/03」+「6/16」双页码打架）。**多页deck走Fallback时，三版各出2页代表页**（兼作deck链的showcase），选定方向后再批量其余页
 - 存当前**项目目录**（`项目名/design-demos/[逻辑名].html`）——❌ 禁 `_temp/`（花叔铁律）
 - 截图：`npx playwright screenshot file:///path.html out.png --viewport-size=1440,900`（PPT 用 1920,1080）
 - ✅ **产出自检（防偷懒，进 Phase 5 前必查）**：确认 `design-demos/` 下真有 **3 个 .html**——少于 3 个 = 没走完三套逻辑，补齐再往下，不许只做一版交差
@@ -275,7 +281,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 > 仅当用户**已确认有生图能力**时，AI 生成型风格才走 `huashu-gpt-image`（见 `design-styles.md` 尾部「AI 生图专用风格」）；否则一律 HTML。
 > 完整 40 种风格库（网页 20+PPT 20，含还原度/温度/HTML 实现/开源字体）→ `references/design-styles.md`。
 
-**Phase 5 · 用户基于「看到的真实视觉」选择**（第一次有效选择）：看完三版真实截图，选一版深化 / 混合（"轮盘版的配色 + 设计师版的布局"）/ 微调 / 全部重来 → 重跑三套逻辑。
+**Phase 5 · 用户基于「看到的真实视觉」选择**（第一次有效选择）：看完三版真实截图，选一版深化 / 混合（"轮盘版的配色 + 设计师版的布局"）/ 微调 / 全部重来 → 重跑三套逻辑。**用户选定后，立刻把「展示了哪几版、截图路径、用户选择原话」写入项目目录 `direction-approved.md`**（Gate文件协议）。
 
 **Phase 6 · 进入主干执行**
 用户选定（或混合）后 → 回到「核心哲学」+「工作流程」的 Junior Designer pass，把那一版做扎实。这时已有明确 design context，不再凭空。
@@ -308,7 +314,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
    - 新任务或模糊任务必须问clarifying questions，详见 `references/workflow.md`。一次focused一轮问题通常够，小修小补跳过。
    - 🛑 **检查点1：问题清单一次性发给用户，等用户批量答完再往下走**。不要边问边做。
    - 🛑 **幻灯片/PPT 任务走固定交付链，开工不问格式**：HTML deck（每页独立 HTML + `assets/deck_index.html` 概览墙）→ 完成后**自动**出 PDF（`scripts/export_deck_pdf.mjs`，不问直接给）→ **询问**才出可编辑 PPTX（best-effort 衍生物，**绝不**为迁就 html2pptx 约束而降级 HTML 设计，转不出就如实说损失了什么）。**≥5 页必须先做 2 页 showcase 定 grammar 再批量**——跳过 = 方向错返工 N 次而非 2 次。完整规则 + 交付格式决策树见 `references/slide-decks.md`。
-   - ⚡ **只要用户没给明确风格参考（没 design system、没截图/Figma、没指定某某具体风格）→ 走「设计方向顾问（Fallback 模式）」大节，完成 Phase 1-5（用户从三版里选定方向）后，再回到这里 Step 2**。门槛要低：「做个XX」只要不带风格词就触发——宁可多推 3 个方向让用户选，也不要模型自己闷头选一个极简就开做。
+   - 🔴 **三方向硬门（100%，无关风格参考有无）**：任何新视觉设计，先走「设计方向顾问（Fallback 模式）」大节完成 Phase 1-5——三版真实初稿摆给用户、**用户选定后**才回到这里 Step 2。用户给了风格词/品牌名只改变三方向的取材方式（见 Fallback 节），不豁免这道门。唯一例外见 Fallback「唯一豁免」清单，豁免必须落档 `direction-approved.md`。
 2. **探索资源 + 抽核心资产**（不只是抽色值）：读 design system、linked files、上传的截图/代码。**涉及具体品牌时必走 §1.a「核心资产协议」五步**，产出 `brand-spec.md`。
    - 🛑 **检查点2·资产自检**：开工前确认核心资产到位——实体产品要有产品图（不是 CSS 剪影）、数字产品要有 logo+UI 截图、色值从真实 HTML/SVG 抽取。缺了就停下补，不硬做。
    - 如果用户没给 context 且挖不出资产，先走设计方向顾问 Fallback，再按 `references/design-context.md` 的品位锚点兜底。
@@ -333,6 +339,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
    🛑 **检查点5：交付前自己肉眼过一遍浏览器**。AI写的代码经常有interaction bug。
 8. **总结**：极简，只说caveats和next steps。
 9. **（默认）导出视频 · 必带 SFX + BGM**：动画 HTML 的**默认交付形态是带音频的 MP4**，不是纯画面。无声版本等于半成品——用户潜意识感知「画在动但没声音响应」，廉价感的根源就在这里。流水线：
+   - **新动画项目默认 HyperFrames 后端**：`npm run check`（五门审计，暗色电影风 `--no-contrast`）→ `npx hyperframes render --fps 60` → `scripts/verify-video.sh` 产物硬校验。选型边界与老 demo 适配器配方见 `references/hyperframes-backend.md`；弱 runtime/单文件交付/纯交互演示仍走下面的自研管线
    - `scripts/render-video.js` 录 25fps 纯画面 MP4（只是中间产物，**不是成品**）
    - 需要**真 60fps / 确定性 / B站作品集交付**且动画走 Stage 时钟时，改用 `scripts/render-video-seek.js --fps=60`（逐帧 seek，免插帧、无黑帧，详见 `references/video-export.md`）
    - `scripts/convert-formats.sh` 派生 60fps MP4 + palette 优化 GIF（视平台需要）
@@ -340,6 +347,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
    - SFX 按 `references/audio-design-rules.md` 设计 cue 清单（时间轴 + 音效类型），用 `assets/sfx/<category>/*.mp3` 37 个预制资源，按配方 A/B/C/D 选密度（发布 hero ≈ 6个/10s，工具演示 ≈ 0-2个/10s）
    - **BGM + SFX 双轨制必须同时做**——只做 BGM 是 ⅓ 分完成度；SFX 占高频、BGM 占低频，频段隔离见 audio-design-rules.md 的 ffmpeg 模板
    - 交付前 `ffprobe -select_streams a` 确认有 audio stream，没有则不是成品
+   - **（终渲后）AI看片评审**：`python3 scripts/ai-review-video.py <成片> [导演稿.md]` 出结构化报告（黑帧/死段/hero贯穿/过渡类型/音效空打），流程与局限见 `references/ai-video-review.md`
    - **跳过音频的条件**：用户明确说「不要音频」「纯画面」「我要自己配音」——否则默认带。
    - 参考完整流程见 `references/video-export.md` + `references/audio-design-rules.md` + `references/sfx-library.md`。
 9.5. **（带解说时走这条）解说驱动动画 · L2 长概念视频**：用户要做「5-20 分钟解释一个概念」、「带配音的教程」、「长篇科普视频」时——**不要先做动画再配音**，那会让画面节奏跟解说对不上。改走 `references/voiceover-pipeline.md` 的解说驱动流程：
@@ -352,6 +360,18 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 10. **（可选）专家评审**：用户若提「评审」「好不好看」「review」「打分」，或你对产出有疑问想主动质检，按 `references/critique-guide.md` 走 5 维度评审——哲学一致性 / 视觉层级 / 细节执行 / 功能性 / 创新性各 0-10 分，输出总评 + Keep（做得好的）+ Fix（严重程度 ⚠️致命 / ⚡重要 / 💡优化）+ Quick Wins（5 分钟能做的前 3 件事）。评审设计不评设计师。
 
 **检查点原则**：碰到🛑就停下，明确告诉用户"我做了X，下一步打算Y，你确认吗？"然后真的**等**。不要说完自己就开始做。
+
+### 🔴 Gate文件协议（检查点的物化，任何授权语气不豁免）
+
+检查点容易在长会话里被「继续/开工/快点」的惯性冲掉（2026-07-17 B00实测：跳过方向确认渲210s全片→整片视觉返工）。所以三个关键检查点物化为**项目目录里必须存在的文件**——文件不在=环节没做，任何模型都能自查，hook也能硬拦：
+
+| Gate文件 | 对应环节 | 什么时候必须有 |
+|---|---|---|
+| `brand-spec.md` | §1.a资产协议产物 | 涉及具体品牌/产品的任何设计 |
+| `direction-approved.md` | 三方向真实视觉展示+**用户选择原话**记录（含三版初稿截图路径）。🔴 **没有「已有明确design context」豁免通道**（该通道2026-07-18被实锤滥用后废止）——唯一合法豁免=Fallback「唯一豁免」三种情形，且必须记用户原话/迭代来源 | 实现开工前；**≥45s长片渲染前有hook硬检查**（scripts/design-gate-hook.sh，缺文件block渲染，用户明说跳过用SKIP_DESIGN_GATE=1显式放行） |
+| `导演稿.md`/director's notes | 长片/launch film的分镜与**视觉密度条款**（标准+参照标杆+氛围层清单，见animation-best-practices §6.5） | ≥20s动画开工前；launch film级（品牌宣传片/「Apple级」预期）在此基线上按launch-film-director-notes.md升级为万字notes——导演稿是底线，万字notes是launch film的加强版，不是两套并行要求 |
+
+**「用户说继续」授权的是进入下一步，不是跳过该步内部的gate**。跳过必须用户明说，且把「用户明示跳过」写进对应gate文件。**弱runtime降级模式不豁免gate文件**——降级第5条允许把检查点问答换成assumption清单，但三个gate文件本身照写（写文件不耗上下文），assumption清单就写进对应gate文件里。
 **两套检查点的衔接**：主干用 🛑 检查点1-5，Fallback 用 🔴 CHECKPOINT（Phase 3.5 图片前置 + logo 子门）。从 Fallback Phase 1-5 走完回到主干 Step 2 时，检查点1（问题清单）已被 Phase 1 的澄清覆盖，**跳过不重复问**；检查点2 起照常执行。
 
 ### 问问题的要点
@@ -369,7 +389,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 场景 | 触发条件 | 处理动作 |
 |------|---------|---------|
 | 需求模糊到无法着手 | 用户只给一句模糊描述（如"做个好看的页面"） | 主动列3个可能方向让用户选（如"落地页 / Dashboard / 产品详情页"），而不是直接问10个问题 |
-| 用户拒绝回答问题清单 | 用户说"不要问了，直接做" | 尊重节奏，用best judgment做1个主方案+1个差异明显的变体，交付时**明确标注assumption**，方便用户定位要改哪里 |
+| 用户拒绝回答问题清单 | 用户说"不要问了，直接做" | **拒答问题≠跳过三方向**：问题可以不问（自己补assumption），方向门照走——直接出三版初稿摆给用户选。仅当用户明说「别出三版/一版就行」才降为1主+1变体，并在`direction-approved.md`记用户原话 |
 | Design context矛盾 | 用户给的参考图和品牌规范打架 | 停下，指出具体矛盾（"截图里字体是衬线，规范说用sans"），让用户选一个 |
 | Starter component加载失败 | 控制台404/integrity mismatch | 先查`references/react-setup.md`常见报错表；还不行降级纯HTML+CSS不用React，保证产出可用 |
 | 时间紧迫要快交付 | 用户说"30分钟内要" | 跳过Junior pass直接Full pass，只做1个方案，交付时**明确标注"未经early validation"**，提醒用户质量可能打折 |
@@ -444,6 +464,8 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 做幻灯片 | `references/slide-decks.md` + `assets/deck_index.html`（默认多文件概览墙）+ `scripts/gen_deck_thumbs.mjs`（画廊缩略图）+ `assets/deck_stage.js`（仅 ≤5 页单文件） |
 | 导出可编辑 PPTX（html2pptx 4 条硬约束） | `references/editable-pptx.md` + `scripts/html2pptx.js` |
 | 做动画/motion（**先读 pitfalls**）| `references/animation-pitfalls.md` + `references/animations.md` + `assets/animations.jsx` |
+| **HyperFrames 渲染后端**（新动画默认；选型边界/合成契约/老demo迁移/check流程） | `references/hyperframes-backend.md` |
+| **设计语言的 GSAP 实现配方**（easing 映射/运动语言8条/五段叙事骨架/seek 安全规则） | `references/gsap-recipes.md` |
 | **动画的正向设计语法**（Anthropic 级叙事/运动/节奏/表达风格）| `references/animation-best-practices.md`（5 段叙事+Expo easing+运动语言 8 条+3 种场景配方）|
 | **带解说的长动画 / 长概念视频**（5-20 分钟带配音、解说驱动画面、TTS 实测时长生成 timeline）| `references/voiceover-pipeline.md`（铁律：连续运动叙事、禁 PowerPoint 切换）+ `assets/narration_stage.jsx` + `scripts/{tts-doubao,narrate-pipeline}.mjs` + `scripts/{mix-voiceover,render-narration}.sh` |
 | 做Tweaks实时调参 | `references/tweaks-system.md` |

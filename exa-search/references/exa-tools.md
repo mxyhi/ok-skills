@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@8823cbea80b6ec5999c6217cccd91660fe953b97`
+- Official repo: `exa-labs/exa-mcp-server@0de23f94b7e8539192bdc2008c16592156ada870`
 - npm package: `exa-mcp-server@3.2.1`
 - npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
 - npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-07-15
+- Date checked: 2026-07-23
 
 ## Base URL
 
@@ -54,7 +54,7 @@ Required:
 Optional:
 
 - Search tuning: `numResults`, `type` (`auto` | `fast` | `instant`)
-- Category: `company`, `research paper`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`
+- Category: `company`, `publication`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`
 - Domain filters: `includeDomains`, `excludeDomains`
 - Date filters: `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`
 - Text filters: `includeText`, `excludeText`
@@ -143,3 +143,8 @@ Rechecked on 2026-07-15:
 - npm latest remains `exa-mcp-server@3.2.1`, package `gitHead` remains `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`, and tarball SHA-256 remains `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`.
 - Hosted `initialize` still returns `serverInfo.version=3.2.1`.
 - No skill body/tool-choice change required beyond source SHA refresh.
+
+Rechecked on 2026-07-23:
+- Official repo `main` advanced to `0de23f94b7e8539192bdc2008c16592156ada870`.
+- npm latest remains `exa-mcp-server@3.2.1`; package `gitHead` and tarball SHA-256 remain unchanged.
+- Hosted advanced schema now uses category `publication` instead of `research paper` and exposes deprecated `highlightsNumSentences` / `highlightsPerUrl` compatibility fields.
