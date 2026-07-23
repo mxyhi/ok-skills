@@ -92,9 +92,6 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 - [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
 
-### Tiện ích và biên soạn nội dung
-
-
 ## Gói skill vendored
 
 [`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) làm upstream baseline. Repo này dùng thư mục upstream đó làm baseline canonical cho skill cục bộ. Khac biet cuc bo chi gom frontmatter `SKILL.md` tuong thich `skills-ref` va tai lieu dung duong dan script tuong doi khong phu thuoc vi tri cai dat.

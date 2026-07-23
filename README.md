@@ -106,9 +106,6 @@ Then ask naturally:
 
 - [better-icons](better-icons/SKILL.md): search, browse, and retrieve SVG icons from 200+ Iconify libraries via CLI or MCP.
 
-### Utilities & Authoring
-
-
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) as its upstream baseline. This repository keeps that upstream directory as the canonical baseline for the local skill. Local differences are limited to `skills-ref`-compatible `SKILL.md` frontmatter and install-location-independent relative script paths in docs.

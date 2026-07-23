@@ -92,9 +92,6 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 - [better-icons](better-icons/SKILL.md): искать, просматривать и получать SVG-иконки из более чем 200 библиотек Iconify через CLI или MCP.
 
-### Utilities & Authoring
-
-
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) использует [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) как upstream baseline. В этом репозитории этот upstream-каталог используется как canonical baseline для локального skill. Локальные отличия ограничены совместимым со `skills-ref` frontmatter в `SKILL.md` и не зависящими от места установки относительными путями к scripts в документации.

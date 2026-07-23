@@ -92,9 +92,6 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
 
-### Utilities & Authoring
-
-
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) है। यह repository local skill के लिए उसी upstream directory को canonical baseline मानती है। Local differences सिर्फ `skills-ref`-compatible `SKILL.md` frontmatter और install-location-independent relative script path docs तक सीमित हैं।

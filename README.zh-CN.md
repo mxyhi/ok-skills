@@ -106,9 +106,6 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
 
-### 工具与内容生产
-
-
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限兼容 `skills-ref` 的 `SKILL.md` frontmatter，以及不依赖安装位置的相对脚本路径说明。

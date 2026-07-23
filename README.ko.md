@@ -92,9 +92,6 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
 
-### 유틸리티 및 문서 작업
-
-
 ## 벤더링된 스킬 팩
 
 [`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 `skills-ref` 호환 `SKILL.md` frontmatter와 설치 위치에 독립적인 상대 script path 문서로 제한됩니다.
