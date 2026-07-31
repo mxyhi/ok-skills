@@ -8,7 +8,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **16 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **17 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -82,6 +82,7 @@ Then ask naturally:
 
 ### Research & Docs
 
+- [ax](ax/SKILL.md): AI-era curl for agents — fetch, discover page structure, and extract structured data without throwaway parsers.
 - [find-docs](find-docs/SKILL.md): focused Context7 CLI workflow for current documentation lookup.
 - [exa-search](exa-search/SKILL.md): web, code, and company research with Exa search tools.
 - [get-api-docs](get-api-docs/SKILL.md): fetch current third-party API and SDK documentation before coding.
@@ -113,6 +114,7 @@ Then ask naturally:
 
 ## Common Prerequisites
 
+- The `ax` skill requires the `ax` CLI (`curl -fsSL https://ax.yusuke.run/install | sh`).
 - Some skills assume `gh` is installed and authenticated.
 - Browser-focused skills may require a Chrome/CDP-capable environment.
 - Third-party doc lookup skills may depend on external CLIs or MCP tools; check each `SKILL.md` for details.
@@ -125,6 +127,7 @@ Then ask naturally:
 
 | Skill                                                               | Description                                                                                                                                                                             | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | AI-era curl for agents: fetch URLs, discover page structure, and extract structured data without throwaway parsers.                                                                  | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | Autonomous goal-directed iteration engine for modify, verify, keep/discard, and repeat workflows.                                                                                      | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons through CLI or MCP tools.                                                                                                          | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 16개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 17개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -68,6 +68,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 ### 조사 및 문서
 
+- [ax](ax/SKILL.md): AI 시대의 curl. URL 가져오기, 페이지 구조 탐색, 구조화 데이터 추출을 일회성 파서 없이 수행.
 - [find-docs](find-docs/SKILL.md): 최신 문서 조회에 집중한 Context7 CLI 워크플로.
 - [exa-search](exa-search/SKILL.md): Exa 도구를 활용한 웹, 코드, 회사 조사.
 - [get-api-docs](get-api-docs/SKILL.md): 코드를 작성하기 전에 최신 서드파티 API 및 SDK 문서를 가져옴.
@@ -99,6 +100,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 ## 공통 전제 조건
 
+- `ax` skill은 `ax` CLI가 필요합니다(`curl -fsSL https://ax.yusuke.run/install | sh`).
 - 일부 스킬은 `gh`가 설치되어 있고 로그인되어 있다고 가정합니다.
 - 브라우저 관련 스킬은 Chrome/CDP를 사용할 수 있는 환경이 필요할 수 있습니다.
 - 서드파티 문서 조회 스킬은 외부 CLI 또는 MCP 도구에 의존할 수 있으므로, 자세한 내용은 각 `SKILL.md`를 확인하세요.
@@ -111,6 +113,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 | Skill                                                               | 설명                                                                                                                                             | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | AI 시대의 curl. URL 가져오기, 페이지 구조 탐색, 구조화 데이터 추출을 일회성 파서 없이 수행.                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | 수정, 검증, keep/discard, 반복 워크플로를 위한 자율 목표 지향 반복 엔진.                                                                                 | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

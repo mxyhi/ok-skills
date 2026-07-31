@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **16 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **17 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -68,6 +68,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 ### Nghiên cứu và tài liệu
 
+- [ax](ax/SKILL.md): curl thời AI — fetch, khám phá cấu trúc trang và trích xuất dữ liệu có cấu trúc mà không cần parser dùng một lần.
 - [find-docs](find-docs/SKILL.md): workflow Context7 CLI tập trung vào tra cứu tài liệu mới nhất.
 - [exa-search](exa-search/SKILL.md): nghiên cứu web, code và công ty bằng các công cụ tìm kiếm Exa.
 - [get-api-docs](get-api-docs/SKILL.md): lấy tài liệu API và SDK bên thứ ba mới nhất trước khi viết code.
@@ -99,6 +100,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 ## Các điều kiện tiên quyết phổ biến
 
+- Skill `ax` cần CLI `ax` (`curl -fsSL https://ax.yusuke.run/install | sh`).
 - Một số skill giả định rằng `gh` đã được cài đặt và đăng nhập.
 - Các skill thiên về trình duyệt có thể cần môi trường hỗ trợ Chrome/CDP.
 - Các skill tra cứu tài liệu bên thứ ba có thể phụ thuộc vào CLI hoặc công cụ MCP bên ngoài; hãy kiểm tra từng `SKILL.md` để biết chi tiết.
@@ -111,6 +113,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 
 | Skill                                                               | Mô tả                                                                                                                                                                                      | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | curl thời AI: fetch URL, khám phá cấu trúc trang và trích xuất dữ liệu có cấu trúc mà không cần parser dùng một lần.                                                                   | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web.                                                                           | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | Engine lặp tự động theo mục tiêu cho workflow modify, verify, keep/discard và repeat.                                                                                                    | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP.                                                                                                                     | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

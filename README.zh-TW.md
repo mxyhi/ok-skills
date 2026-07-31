@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **16 個可重用技能**，全部作為頂層技能目錄由本倉直接維護。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
+目前倉庫共收錄 **17 個可重用技能**，全部作為頂層技能目錄由本倉直接維護。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **CLAUDE.md / AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -68,6 +68,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 ### 調研與文件
 
+- [ax](ax/SKILL.md)：AI 時代的 curl：抓取、發現頁面結構、提取結構化資料，取代臨時解析腳本。
 - [find-docs](find-docs/SKILL.md)：專注於最新文件查詢的 Context7 CLI 工作流。
 - [exa-search](exa-search/SKILL.md)：使用 Exa 進行網頁、程式碼與公司調研。
 - [get-api-docs](get-api-docs/SKILL.md)：撰寫第三方 API / SDK 程式碼前先抓取當前文件。
@@ -99,6 +100,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 ## 常見前置條件
 
+- `ax` 技能依賴 `ax` CLI（`curl -fsSL https://ax.yusuke.run/install | sh`）。
 - 瀏覽器類技能通常需要可用的 Chrome/CDP 環境。
 - 文件查詢類技能可能依賴額外 CLI 或 MCP 工具，請以各自的 `SKILL.md` 為準。
 
@@ -110,6 +112,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 | 技能                                                                | 說明                                                                                                                                           | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | AI 時代的 curl：抓取 URL、發現頁面結構、提取結構化資料，取代臨時解析腳本。                                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的瀏覽器自動化：導覽、表單、截圖、資料擷取與網頁測試。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | 自主目標導向迭代引擎，覆蓋修改、驗證、保留/丟棄與重複推進工作流。                                                                          | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | 透過 CLI 或 MCP 工具搜尋 200+ Iconify 圖示庫並取得 SVG 圖示。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

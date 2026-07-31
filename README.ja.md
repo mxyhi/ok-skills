@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-このリポジトリには現在 **16 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
+このリポジトリには現在 **17 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -68,6 +68,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 ### Research & Docs
 
+- [ax](ax/SKILL.md): AI 時代の curl。URL 取得・ページ構造の発見・構造化データ抽出を、使い捨てパーサなしで行う。
 - [find-docs](find-docs/SKILL.md): 最新 docs lookup に特化した Context7 CLI ワークフロー
 - [exa-search](exa-search/SKILL.md): Exa ツールを使った web、code、company research
 - [get-api-docs](get-api-docs/SKILL.md): コーディング前に外部 API / SDK の最新ドキュメントを取得
@@ -99,6 +100,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 ## よくある前提条件
 
+- `ax` skill は `ax` CLI が必要です（`curl -fsSL https://ax.yusuke.run/install | sh`）。
 - 一部の skills は `gh` がインストール済みかつ認証済みであることを前提にしています。
 - ブラウザ系 skills では、Chrome / CDP を使える実行環境が必要になる場合があります。
 - 外部 docs lookup 系の skills は追加の CLI や MCP tools に依存することがあります。詳細は各 `SKILL.md` を確認してください。
@@ -111,6 +113,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 | Skill                                                               | 説明                                                                                                                                                                                          | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | AI 時代の curl。URL 取得・ページ構造の発見・構造化データ抽出を、使い捨てパーサなしで行う。                                                                                          | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents 向けのブラウザ自動化 CLI。ナビゲーション、フォーム入力、スクリーンショット、データ抽出、Web テストに対応。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | modify、verify、keep/discard、repeat workflows のための自律的な goal-directed iteration engine。                                                                                       | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | CLI または MCP ツールで 200 以上の Iconify ライブラリを検索し、SVG アイコンを取得する。                                                                                                       | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

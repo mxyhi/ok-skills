@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `CLAUDE.md` / `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **16 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
+Este repositorio incluye actualmente **17 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **CLAUDE.md / AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -68,6 +68,7 @@ Despues puedes pedirlo de forma natural:
 
 ### Investigacion y Documentacion
 
+- [ax](ax/SKILL.md): curl de la era de la IA: fetch, descubrir estructura de página y extraer datos estructurados sin parsers desechables.
 - [find-docs](find-docs/SKILL.md): flujo de Context7 CLI centrado en buscar documentacion actual.
 - [exa-search](exa-search/SKILL.md): investigacion web, de codigo y de empresas con herramientas de Exa.
 - [get-api-docs](get-api-docs/SKILL.md): recupera la documentacion actual de APIs y SDK de terceros antes de programar.
@@ -99,6 +100,7 @@ Despues puedes pedirlo de forma natural:
 
 ## Requisitos Habituales
 
+- El skill `ax` requiere la CLI `ax` (`curl -fsSL https://ax.yusuke.run/install | sh`).
 - Algunas skills asumen que `gh` esta instalado y autenticado.
 - Las skills centradas en navegador pueden requerir un entorno compatible con Chrome/CDP.
 - Las skills de consulta de documentacion de terceros pueden depender de CLI externas o herramientas MCP; revisa cada `SKILL.md` para los detalles.
@@ -111,6 +113,7 @@ Despues puedes pedirlo de forma natural:
 
 | Skill                                                               | Descripcion                                                                                                                                                                                                         | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | curl de la era de la IA: fetch de URLs, descubrir estructura de página y extraer datos estructurados sin parsers desechables.                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | CLI de automatizacion de navegador para agentes de IA: navegacion, formularios, capturas, extraccion y pruebas web.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | Motor de iteracion autonoma orientada a objetivos para flujos de modificar, verificar, conservar/descartar y repetir.                                                                    | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | Busca en mas de 200 bibliotecas de Iconify y obtiene iconos SVG mediante CLI o herramientas MCP.                                                                                                                    | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |

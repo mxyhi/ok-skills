@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **16 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **17 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -68,6 +68,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 ### Research & Docs
 
+- [ax](ax/SKILL.md): AI-era curl — URL fetch, page structure discover, structured data extract; throwaway parsers की जरूरत नहीं।
 - [find-docs](find-docs/SKILL.md): current docs lookup के लिए focused Context7 CLI workflow.
 - [exa-search](exa-search/SKILL.md): Exa search tools के साथ web, code, और company research.
 - [get-api-docs](get-api-docs/SKILL.md): coding शुरू करने से पहले current third-party API और SDK documentation fetch करें।
@@ -99,6 +100,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 ## सामान्य prerequisites
 
+- `ax` skill को `ax` CLI चाहिए (`curl -fsSL https://ax.yusuke.run/install | sh`).
 - कुछ skills मानकर चलती हैं कि `gh` installed और authenticated है।
 - Browser-focused skills के लिए Chrome/CDP-capable environment की आवश्यकता हो सकती है।
 - Third-party doc lookup skills external CLIs या MCP tools पर निर्भर हो सकती हैं; विवरण के लिए संबंधित `SKILL.md` देखें।
@@ -111,6 +113,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 | Skill                                                               | विवरण                                                                                                                                                                                        | Source URL                                                                                                                     |
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [ax](ax/SKILL.md)                                                   | AI-era curl: URL fetch, page structure discover, structured data extract — throwaway parsers की जरूरत नहीं।                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents के लिए browser automation CLI: navigation, form filling, screenshots, extraction, और web testing.                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [autoresearch](autoresearch/SKILL.md)                               | Modify, verify, keep/discard, aur repeat workflows ke liye autonomous goal-directed iteration engine.                                                                                      | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
 | [better-icons](better-icons/SKILL.md)                               | CLI या MCP tools के जरिए 200+ Iconify libraries खोजें और SVG icons प्राप्त करें।                                                                                                             | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
