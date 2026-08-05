@@ -122,6 +122,7 @@ Then ask naturally:
 
 ### Utilities & Authoring
 
+- [bopomofo-rescue](bopomofo-rescue/SKILL.md): recover Chinese typed on a Taiwanese Bopomofo (注音) keyboard while the IME was stuck in English mode, e.g. su3cl3a8 → 你好嗎.
 - [huashu-design](huashu-design/SKILL.md): create HTML decks, editable PPTX exports, MP4/GIF motion pieces, and narrated design videos.
 
 ## Vendored Skill Packs
@@ -148,6 +149,7 @@ Then ask naturally:
 | [ax](ax/SKILL.md)                                                   | AI-era curl: fetch URLs, discover page structure, and extract structured data from HTML without throwaway parsing scripts.                                                  | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                             |
 
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons through CLI or MCP tools.                                                                                                          | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [bopomofo-rescue](bopomofo-rescue/SKILL.md) | Recover Chinese typed on a Taiwanese Bopomofo (注音) keyboard while the IME was stuck in English mode, e.g. su3cl3a8 → 你好嗎. | [Oliviaiii/bopomofo-rescue](https://github.com/Oliviaiii/bopomofo-rescue) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | Control the user's real browser through a local daemon for navigation, forms, screenshots, page reading, and authenticated sessions.                                                   | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [browser-trace](browser-trace/SKILL.md)                             | Capture CDP traces, screenshots, and DOM dumps for browser automation debugging.                                                                                                        | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode that cuts response tokens by speaking like caveman while keeping technical accuracy.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |

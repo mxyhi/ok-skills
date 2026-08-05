@@ -122,6 +122,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 ### 工具与内容生产
 
+- [bopomofo-rescue](bopomofo-rescue/SKILL.md)：把忘记切换输入法、用台湾注音键盘打出的英数乱码还原成中文，例如 su3cl3a8 → 你好吗。
 - [huashu-design](huashu-design/SKILL.md)：制作 HTML deck、可编辑 PPTX、MP4/GIF 动画和带解说的设计视频。
 
 ## Vendored Skill Packs
@@ -147,6 +148,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [ax](ax/SKILL.md)                                                   | AI 时代的 curl：抓取 URL、发现页面结构、从 HTML 结构化提取数据，无需临时解析脚本。                                                                                                                          | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                             |
 
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [bopomofo-rescue](bopomofo-rescue/SKILL.md) | 把忘记切换输入法、用台湾注音键盘打出的英数乱码还原成中文，例如 su3cl3a8 → 你好吗。 | [Oliviaiii/bopomofo-rescue](https://github.com/Oliviaiii/bopomofo-rescue) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。                                                          | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [browser-trace](browser-trace/SKILL.md)                             | 采集浏览器自动化调试所需的 CDP trace、截图和 DOM dump。                                                                                     | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
