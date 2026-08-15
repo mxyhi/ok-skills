@@ -10,8 +10,9 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server@0de23f94b7e8539192bdc2008c16592156ada870`
-- Current npm package checked: `exa-mcp-server@3.2.1`; verified tarball SHA-256 `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
+- Official source: `exa-labs/exa-mcp-server@e64c11f2d3b4400ffbda8ccdd9658a450cc9d270`
+- Current npm package checked: `exa-mcp-server@3.4.0`; verified tarball SHA-256 `cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19`
+- Hosted MCP `serverInfo.version` still reports `3.2.1`; tool schemas below are from live `tools/list` on 2026-08-15
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
 Direct MCP HTTP is the required invocation model for this skill. `curl` is fine, but keep the session and SSE parsing in small shell helpers instead of repeating low-level flags at every call site.

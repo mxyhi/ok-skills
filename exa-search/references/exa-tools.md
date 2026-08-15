@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@0de23f94b7e8539192bdc2008c16592156ada870`
-- npm package: `exa-mcp-server@3.2.1`
-- npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
-- npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-07-23
+- Official repo: `exa-labs/exa-mcp-server@e64c11f2d3b4400ffbda8ccdd9658a450cc9d270`
+- npm package: `exa-mcp-server@3.4.0`
+- npm tarball SHA-256: `cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19`
+- Hosted MCP `serverInfo.version`: `3.2.1` (npm 3.4.0 / official HEAD checked; hosted tool schemas unchanged)
+- Date checked: 2026-08-15
 
 ## Base URL
 

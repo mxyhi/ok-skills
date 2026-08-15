@@ -2,7 +2,7 @@
 name: autoresearch
 description: "Autonomous iteration loop: modify, verify, keep/discard against any metric"
 metadata:
-  version: "2.2.1"
+  version: "2.2.2"
 ---
 
 # Autoresearch — Autonomous Goal-directed Iteration
@@ -64,6 +64,8 @@ Print a banner on every invocation: `[autoresearch] mode: classic | orchestrator
 ## Orchestrator
 
 Activated when a plain-language goal is given without `Metric:`/`Verify:`. Classifies the goal into a **Goal archetype** — see `references/orchestrator-routing.md` for the archetype table and router decision table.
+
+Resolve every `scripts/...` path below relative to this installed skill directory, never relative to the caller's working directory.
 
 **Two modes based on archetype:**
 - **Orchestration loop** — predicate-bearing archetypes (ship-ready, optimize-metric, fix-broken, harden, build-feature, explore). Goal has a mechanical Success predicate; the loop runs until that predicate is met.

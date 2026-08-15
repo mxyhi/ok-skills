@@ -69,7 +69,7 @@ if [ -f "${INJ}" ]; then
     OUT="$(sh "${INJ}" --context=userprompt 2>/dev/null)" || OUT=""
     if [ -z "${OUT}" ]; then
         if [ -n "${RES}" ] || [ -f task_plan.md ]; then
-            fail "injection: a plan resolves but inject-plan.sh emitted NOTHING — hooks are dark. Known silent causes: pre-v3.6.0 with a Windows-native realpath on PATH; PLANNING_DISABLED=1; a plan dir outside the project root."
+            fail "injection: a plan resolves but inject-plan.sh emitted NOTHING — hooks are dark. Known silent causes: pre-v3.6.0 with a Windows-native realpath on PATH; PLANNING_DISABLED=1; a plan dir outside the project root; a stale .planning/sessions/ dir with no attached session (silences pretool/precompact fires entirely — the userprompt fire names it)."
         else
             ok "injection: silent because no plan exists here (correct behavior)"
         fi
@@ -80,6 +80,17 @@ if [ -f "${INJ}" ]; then
                 ;;
             *'requires attested plan'*)
                 warn "injection: v3 mode without attestation — run attest-plan once to arm injection"
+                ;;
+            *'Session isolation is armed'*)
+                # Refusal notice, not plan context: reporting its byte count as
+                # PASS told a dark user their hooks were fine.
+                warn "injection: session isolation refuses this session — attach it with PWF_SESSION_ID=<id> plus .planning/sessions/<id>.attached, or delete the .planning/sessions/ dir (stale ones survive earlier Codex use and copied project trees) to turn isolation off"
+                ;;
+            *'Ambiguous plan'*)
+                warn "injection: nested-plan ambiguity — a project directly below this cwd carries its own plan, so hooks refuse to guess. Pin the thread with PWF_PLAN_ROOT=<absolute project root> or PLAN_ID=<slug>"
+                ;;
+            *'PWF_PLAN_ROOT is not a directory'*)
+                warn "injection: PWF_PLAN_ROOT points at a missing directory — fix or unset the pin; a broken pin fails closed and injects nothing"
                 ;;
             *)
                 BYTES="$(printf '%s' "${OUT}" | wc -c | tr -d '[:space:]')"

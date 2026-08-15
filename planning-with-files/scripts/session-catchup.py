@@ -94,11 +94,24 @@ def normalize_path(project_path: str) -> str:
     return p
 
 
-def _claude_sanitize(path_str: str) -> str:
-    """Claude Code's project-dir name: every character outside [A-Za-z0-9_-]
-    becomes '-'; underscores and the leading dash of POSIX absolute paths are
-    KEPT (real stores look like -home-user-proj and C--Users-x-My_Repo)."""
-    return re.sub(r'[^A-Za-z0-9_-]', '-', path_str)
+def _claude_sanitize(path_str: str, astral_width: int = 2) -> str:
+    """Claude Code's project-dir name for a project path.
+
+    Every character outside [A-Za-z0-9_-] becomes '-', and the leading dash of
+    POSIX absolute paths is kept (real stores look like -home-user-proj). The
+    count is in UTF-16 code units rather than codepoints, so a non-BMP
+    character such as an emoji in a folder name costs TWO dashes; passing
+    astral_width=1 produces the codepoint-width spelling for older stores.
+
+    Underscores are NOT universally kept: current versions fold '_' to '-'
+    while older stores kept it, and both spellings are live on disk, so
+    get_claude_project_dir() probes both.
+    """
+    return re.sub(
+        r'[^A-Za-z0-9_-]',
+        lambda m: '-' * (astral_width if ord(m.group()) > 0xFFFF else 1),
+        path_str,
+    )
 
 
 def _newest_session_cwd_matches(project_dir: Path, normalized: str) -> bool:
@@ -144,9 +157,11 @@ def get_claude_project_dir(project_path: str) -> Path:
 
     primary = _claude_sanitize(normalized)
     candidates = [primary]
-    legacy_underscore = primary.replace('_', '-')
-    if legacy_underscore not in candidates:
-        candidates.append(legacy_underscore)
+    for width in (2, 1):
+        exact = _claude_sanitize(normalized, width)
+        for spelling in (exact, exact.replace('_', '-')):
+            if spelling not in candidates:
+                candidates.append(spelling)
     for cand in list(candidates):
         stripped = cand[1:] if cand.startswith('-') else cand
         if stripped and stripped not in candidates:
@@ -169,6 +184,72 @@ def get_sessions_sorted(project_dir: Path) -> List[Path]:
     sessions = list(project_dir.glob('*.jsonl'))
     main_sessions = [s for s in sessions if not s.name.startswith('agent-')]
     return sorted(main_sessions, key=safe_stat_mtime, reverse=True)
+
+
+def claude_session_cwd(session_file: Path) -> Optional[str]:
+    """The cwd a Claude Code transcript records, or None if it records none."""
+    try:
+        with open(session_file, 'r', encoding='utf-8', errors='replace') as f:
+            for _ in range(50):
+                line = f.readline()
+                if not line:
+                    break
+                data = json_loads(line)
+                if data:
+                    cwd = data.get('cwd')
+                    if isinstance(cwd, str) and cwd:
+                        return cwd
+    except OSError:
+        return None
+    return None
+
+
+def same_project_path(left: str, right: str) -> bool:
+    """Compare two absolute paths the way the host filesystem would."""
+    a, b = normalize_for_compare(left), normalize_for_compare(right)
+    if os.name == 'nt':
+        a, b = a.lower(), b.lower()
+    return a == b
+
+
+def filter_sessions_by_cwd(sessions: List[Path], project_path: str) -> Tuple[List[Path], Optional[str]]:
+    """Drop transcripts that positively belong to a different project.
+
+    Claude Code folds project paths into a single directory name, so two
+    projects whose paths differ only in folded characters (client.acme and
+    client-acme both fold to client-acme) share one store. Without this
+    filter a catchup in one of them prints the other's conversation into the
+    fresh context.
+
+    Fail open: transcripts that record no cwd are kept, because that field is
+    not present in every generation of the format, and a store whose sessions
+    all record another project is reported rather than silently used.
+    Returns (sessions_to_use, notice).
+    """
+    project_cmp = normalize_path(project_path)
+    mine: List[Path] = []
+    unknown: List[Path] = []
+    foreign: List[str] = []
+    for session in sessions:
+        cwd = claude_session_cwd(session)
+        if cwd is None:
+            unknown.append(session)
+        elif same_project_path(cwd, project_cmp):
+            mine.append(session)
+        else:
+            foreign.append(cwd)
+
+    if mine:
+        keep = [s for s in sessions if s in mine or s in unknown]
+        return keep, None
+    if foreign:
+        return [], (
+            "[planning-with-files] Session catchup skipped: "
+            f"{Path(sorted(set(foreign))[0]).name} and this project share one "
+            "~/.claude/projects directory, so no transcript here belongs to "
+            f"{project_cmp}."
+        )
+    return unknown, None
 
 
 def safe_stat_mtime(path: Path) -> float:
@@ -258,7 +339,12 @@ def get_session_candidates(project_path: str) -> Tuple[str, Iterable[Path]]:
 
     claude_project_dir = get_claude_project_dir(project_path)
     if claude_project_dir.exists():
-        return 'claude', get_sessions_sorted(claude_project_dir)
+        sessions, notice = filter_sessions_by_cwd(
+            get_sessions_sorted(claude_project_dir), project_path
+        )
+        if notice:
+            print(notice)
+        return 'claude', sessions
     return 'claude', []
 
 

@@ -18,6 +18,26 @@ param(
 
 $projectRoot = (Get-Location).Path
 
+# PWF_PLAN_ROOT: absolute plan-root binding (issue #212), mirroring
+# resolve-plan-dir.sh. A thread whose cwd is a shared PARENT of the real
+# project resolves the parent's plan and never sees the nested one;
+# PWF_PLAN_ROOT names the project root whose .planning must be used. Highest
+# precedence: it overrides both the cwd default and the -PlanRoot argument
+# (an adapter passing ".planning" is spelling out the cwd default, not
+# overriding a user's deliberate pin). A pin that is not a directory fails
+# CLOSED: the resolver emits nothing, so no caller can be handed the
+# ambiguous cwd plan the pin was escaping (injection routes own the
+# user-facing notice; stdout here is the data channel). Containment is then
+# checked against the pinned root. Unset keeps legacy behavior unchanged.
+if ($env:PWF_PLAN_ROOT) {
+    if (Test-Path -LiteralPath $env:PWF_PLAN_ROOT -PathType Container) {
+        $projectRoot = $env:PWF_PLAN_ROOT
+        $PlanRoot = Join-Path $env:PWF_PLAN_ROOT ".planning"
+    } else {
+        exit 0
+    }
+}
+
 # Same shape as the sh resolver's slug_is_valid: first char [A-Za-z0-9_],
 # rest [A-Za-z0-9._-]. Blocks traversal tokens before any path is built.
 function Test-ValidSlug {

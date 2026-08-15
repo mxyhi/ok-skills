@@ -3,7 +3,7 @@ name: kimi-webbridge
 description: |
   Kimi WebBridge lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", or asks to read/interact with any website. Use even for simple-sounding browser requests — the daemon handles all complexity.
 metadata:
-  version: "1.11.3"
+  version: "1.11.6"
 ---
 
 # Kimi WebBridge
@@ -54,6 +54,17 @@ curl -s -X POST http://127.0.0.1:10086/command \
   -H 'Content-Type: application/json' \
   -d '{"action":"navigate","args":{"url":"https://example.com","newTab":true,"group_title":"My task"},"session":"my-task"}'
 ```
+
+If the inline call fails — a shell quoting/syntax error from bash, or an HTTP 400 from the daemon — do **not** retry the same command unchanged. Resend the request as a file body:
+
+1. Write the JSON body to a **uniquely-named** temp file with your own file-write tool — never with shell `echo`/heredoc, which mangles the JSON the same way. Use a fresh name per request (e.g. `/tmp/webbridge-req-<random>.json`).
+2. POST the file:
+
+```bash
+curl -s -X POST http://127.0.0.1:10086/command -H 'Content-Type: application/json' --data-binary @/tmp/webbridge-req-<random>.json
+```
+
+3. Delete the temp file as soon as the request returns.
 
 **Windows (PowerShell / cmd)** — the shell corrupts non-ASCII characters (Chinese etc.) carried inline in command arguments or pipes; they reach the daemon as `?` and the text is unrecoverable. Send **every** request as a file body instead:
 
