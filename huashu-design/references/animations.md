@@ -94,15 +94,12 @@ function SlideIn({ children, from = 'left' }) {
 }
 ```
 
-### 3. 逐字打字机
+### 3. 打字效果（⚠️ 先分清两种场景，别用逐字蹦）
 
-```jsx
-function Typewriter({ text }) {
-  const { t } = useSprite();
-  const charCount = Math.floor(text.length * Math.min(t * 2, 1));
-  return <span>{text.slice(0, charCount)}</span>;
-}
-```
+匀速逐字 Typewriter 是官方反例（best-practices「AI slop」清单：像老电影字幕）。按内容选正解：
+
+- **AI 输出**（token 流式涌现）→ Chunk Reveal：不规律块状涌现，见 `animation-best-practices.md` §4.5 / `gsap-recipes.md` §3.4
+- **用户输入**（真人在输入框打字）→ 3f/字符 + 光标常亮转闪烁 + 偶发退格，见 `ui-demo-animation.md` 八式③
 
 ### 4. 数字计数
 
@@ -235,15 +232,9 @@ function Scene() {
 这个skill做的是**HTML动画**（在浏览器里跑的）。如果最终产出要作为视频素材：
 
 - **短动画/concept demo**：用这里的方法做HTML动画 → 屏幕录制
-- **长视频/叙事**：本 skill 专注 HTML 动画，长视频用 AI 视频生成类 skill 或专业视频软件
+- **长视频/叙事**（5-20 分钟带解说）：走 SKILL.md Step 9.5 解说驱动管线（`voiceover-pipeline.md`），不外推给其他工具
 - **motion graphics**：专业的After Effects/Motion Canvas更合适
 
-## 关于Popmotion等库
+## 需要物理动画（spring / decay）时
 
-如果你真的需要物理动画（spring、decay、keyframes with precise timing），我们的engine搞不定，可以fallback到Popmotion：
-
-```html
-<script src="https://unpkg.com/popmotion@11.0.5/dist/popmotion.min.js"></script>
-```
-
-但**先试试我们的engine**。90%的情况够用。
+不要引 Popmotion（CDN 在受限网络必挂，违反自包含原则，见 `animation-pitfalls.md` #17）。spring 需求走 GSAP：`elastic.out` / `back.out` 及自定义 springEase 映射见 `gsap-recipes.md` §1.2；落地余震用 dampedSettle 闭式解（`camera-language.md` §9）。

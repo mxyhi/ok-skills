@@ -405,6 +405,30 @@ GSAP 的 `fromTo()` 默认 `immediateRender: true`：build timeline 时就把 fr
 
 **修法**：所有 from 态可见的 `fromTo()` 显式加 `immediateRender: false`；或改成「set 初始隐藏 + to」。自查方式：渲染后抽每幕开头帧，看有没有「不该在场的特效元素」。
 
+## 22. 【镜头】3D/放大模式下文字发糊 —— 放大走 CSS zoom 不走 transform scale
+
+**症状**：用 `transform: scale()` 推近页面（尤其 3D perspective 模式下），文字发糊，倍率越高越糊，2x 以上不可交付。
+
+**根因**：Chromium 按元素的**布局尺寸**栅格化，再把位图放大。scale 只放大位图。
+
+**解法**（shotcraft 判例，全库最贵知识）：相机层的放大走 **CSS `zoom` 属性**（布局级缩放，按放大后尺寸重新 layout 并栅格化，文字任意倍率锐利）。坐标换算和完整公式见 `camera-language.md` §3.4、`gsap-recipes.md` §9.2。注意：`zoom` 每帧触发 re-layout，是「禁 tween 布局属性」的唯一合法例外，只许用在 `#world` 相机层；离线逐帧渲染下渲染时长变慢属正常，产物质量优先。配套：全页截图 2x 起，特写另备 4x 切片在推进期 6f 交叉淡入。
+
+## 23. 【镜头】perspective 被中间层打断 —— 3D 瞬间变平
+
+**症状**：设好了 `perspective` + `preserve-3d`，渲出来完全没有 3D 感，所有层平贴。
+
+**根因**：`#camera` 与 3D 子元素之间的**任何中间层**加了 `overflow: hidden`、`filter`、`opacity < 1`、`clip-path` 之一，都会创建新 stacking context，flatten 掉 preserve-3d。
+
+**解法**：3D 模式下滤镜/透明度效果只加在**最内层元素**上；容器链上逐层检查上述四类属性。排查口诀：从 `#camera` 到出问题的元素，中间每一层都 `getComputedStyle` 查一遍这四项。
+
+## 24. 【镜头】pan 露边 —— 平移时露出画布外空白
+
+**症状**：镜头平移/摇镜时画面边缘露出白边或黑边。
+
+**根因**：`#world` 尺寸只做到和视口一样大，镜头一动就出界。
+
+**解法**：`#world` 四周外扩 bleed ≥ 最大 pan 振幅 + 8% 安全边距（camera-language §3.3）。背景层/氛围层要跟着铺满 bleed 区，别只铺视口。自查：把 timeline seek 到每段 pan 的两个端点截图，看四边。
+
 ## 快速自查清单（开工前 5 秒）
 
 - [ ] 每个 `position: absolute` 的父元素都有 `position: relative`？
@@ -428,3 +452,6 @@ GSAP 的 `fromTo()` 默认 `immediateRender: true`：build timeline 时就把 fr
 - [ ] 【HyperFrames】代理 tween 场景注册后补了 `render(0)`？（坑 #19）
 - [ ] 【HyperFrames】check 过了？暗色电影风用 `--no-contrast`，其余四门 0 error？（坑 #20）
 - [ ] 【HyperFrames/GSAP】from 态可见的 `fromTo()` 全部加了 `immediateRender:false`？（坑 #21，B00 实测 4 处幻影）
+- [ ] 【镜头】3D/放大特写走了 CSS `zoom`，没有 scale 放大发糊？（坑 #22）
+- [ ] 【镜头】`#camera` 到 3D 元素的中间层没有 overflow/filter/opacity/clip-path？（坑 #23）
+- [ ] 【镜头】`#world` 外扩了 bleed，pan 端点截图四边无露白？（坑 #24）

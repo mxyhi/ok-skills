@@ -360,12 +360,16 @@ NarrationStage 自动检测 `window.__recording`：
 
 | 脚本 | 输入 | 输出 |
 |---|---|---|
-| `scripts/tts-doubao.mjs` | 单段文本 | 单个 mp3 + 实测时长 |
+| `scripts/cloud/tts-doubao.mjs` | 单段文本 | 单个 mp3 + 实测时长 |
 | `scripts/narrate-pipeline.mjs` | 解说稿 .md | voiceover.mp3 + timeline.json |
 | `scripts/mix-voiceover.sh` | 视频 + voiceover.mp3 [+ BGM] | 带音频的 MP4 |
 | `scripts/render-narration.sh` | 解说 HTML + timeline.json | 最终 MP4（录制 + 混音一条龙）|
 
 ## .env 配置
+
+> ⚠️ TTS 是可选云能力：解说稿文本会发送到豆包 TTS 官方接口（openspeech.bytedance.com），
+> 使用你自己的 key。脚本首次调用需 `--yes` 或 `HUASHU_CLOUD_OK=1` 显式确认，
+> endpoint 强制校验字节官方域名白名单。数据流向声明见仓库根 `SECURITY.md`。
 
 skill 根目录下 `.env`（已 gitignore）：
 
@@ -388,7 +392,7 @@ DOUBAO_TTS_VOICE_ID=zh_female_xiaohe_uranus_bigtts
 ## 标准工作流（10 步）
 
 1. **写解说稿**：解说稿是源代码。先把整段口播写完整，标段标题 `## scene-id`，关键句前加 `[[cue:xx]]`
-2. **跑 narrate-pipeline**：`node scripts/narrate-pipeline.mjs --script script.md --out-dir _narration`
+2. **跑 narrate-pipeline**：`node scripts/narrate-pipeline.mjs --script script.md --out-dir _narration --yes`（`--yes`=确认文本发送豆包TTS）
 3. **听整段 voiceover.mp3**：节奏不对回去改稿。**这一步决定整片质量上限**
 4. **🛑 设计前先回答铁律**：hero element 是什么？它在每段是什么状态？跨场景怎么 morph？答不上不要写代码
 5. **写动画 HTML**：用 NarrationStage + 一个或几个 hero element 跨 scene 演戏

@@ -19,6 +19,10 @@
 
 ## 项目脚手架
 
+> ⚠️ 安装预警：`hyperframes init` 除了生成项目文件，还会把 **19 个 hyperframes skill 安装到
+> `~/.claude/skills/`**（渲染后端的合成契约文档，纯文档无可执行 hook）。介意的话先跑
+> `npx hyperframes docs` 看本地文档清单再决定是否 init。
+
 ```bash
 npx -y hyperframes init 项目名 --example blank   # 非交互必须带 --example
 cd 项目名 && npm install

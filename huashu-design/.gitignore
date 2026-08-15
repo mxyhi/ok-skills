@@ -35,3 +35,4 @@ _style-research/
 
 # Demo 大视频（用 GitHub Releases 分发，不进仓库膨胀）
 demos/**/*.mp4
+__pycache__/

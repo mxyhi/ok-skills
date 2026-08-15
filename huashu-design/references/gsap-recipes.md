@@ -651,3 +651,151 @@ proxy 大黑盒里的动画对审计工具是不透明的。
 - [ ] blur / filter 全部走 CSS 变量，动过 blur 的元素有 `will-change: filter`？
 - [ ] sub-composition 里入场全用 `fromTo` 不用 `from`？
 - [ ] `npx hyperframes check` 通过（暗色片 `--no-contrast`，其余 0 error）？
+
+---
+
+## 9 · Camera Rig 配方 · 镜头运动的实现层
+
+为什么：镜头运动和元素动画抢同一个 transform 是运镜混乱的技术根源
+（camera-language.md §3）。所有镜头级 tween 收口到专职 rig 容器，
+相机状态用一个 proxy 对象承载，每帧由它推导出全部相机 DOM 状态，seek-safe。
+
+### 9.1 rig 容器结构（静态骨架）
+
+```html
+<div id="viewport">                <!-- 固定视口 -->
+  <div id="camera">                <!-- 镜头层：只有相机 transform -->
+    <div id="world">...</div>      <!-- 世界层：元素动画只发生在这里面 -->
+  </div>
+  <div id="hud">...</div>          <!-- 字幕/角标：#camera 的兄弟，天然静止 -->
+</div>
+```
+
+```css
+#viewport { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+#camera   { position: absolute; inset: 0; perspective-origin: 960px 540px; }
+#world    { position: absolute; transform-origin: 0 0; will-change: transform; }
+/* pan 露边保险：#world 尺寸 ≥ 视口 + 最大 pan 振幅 + 8% 边距（camera-language §3.3） */
+```
+
+### 9.2 相机 proxy + PageCam 关键帧翻译
+
+相机是一个普通对象，GSAP tween 它的字段，`onUpdate` 里把状态写进 DOM。
+一切由 cam 推导，回拖也正确（同 §3.4 chunk reveal 的 proxy 思路）：
+
+```js
+const cam = { cx: 960, cy: 540, zoom: 1, rotX: 0, rotY: 0, rotZ: 0, persp: 1200 };
+const camEl = document.querySelector("#camera");
+const world = document.querySelector("#world");
+
+// ── 平面模式（纯 zoom + pan，无旋转）──────────────────────────
+function applyCam() {
+  world.style.transform =
+    `translate(${960 - cam.cx * cam.zoom}px, ${540 - cam.cy * cam.zoom}px) scale(${cam.zoom})`;
+  applyCounter();
+}
+
+// ── 3D 模式（有 rotX/rotY/rotZ）· 放大走 CSS zoom 属性，不走 scale ──
+// 布局级缩放让 Chromium 按放大后尺寸栅格化，根治 3D 下文字发糊
+// （camera-language §3.4，全库最贵知识）。zoom 改变坐标系，translate 要除以 zoom。
+function applyCam3d() {
+  camEl.style.perspective = `${cam.persp * cam.zoom}px`;
+  world.style.zoom = cam.zoom;
+  world.style.transformOrigin = `${cam.cx}px ${cam.cy}px`;
+  world.style.transform =
+    `translate(${960 / cam.zoom - cam.cx}px, ${540 / cam.zoom - cam.cy}px)` +
+    ` rotateY(${cam.rotY}deg) rotateX(${cam.rotX}deg) rotateZ(${cam.rotZ}deg)`;
+  applyCounter();
+}
+```
+
+注意：CSS `zoom` 每帧触发 re-layout，是 §6.2 reflow 禁令的**唯一合法例外**，
+只允许用在 `#world` 相机层。HyperFrames / Playwright 离线逐帧渲染下单帧耗时不影响产物；
+实时 preview 掉帧属正常，以渲染产物为准。
+
+### 9.3 对数时长 helper（固定 duration 是业余感的来源）
+
+```js
+// camera-language §4.2：1→2x 正好 0.55s，任何幅度的 zoom 视觉速度一致
+function zoomDur(z1, z2) {
+  return gsap.utils.clamp(0.30, 0.94,
+    0.55 * Math.abs(Math.log(z2 / z1)) / Math.LN2);
+}
+```
+
+### 9.4 镜头段落写法（推近 → hold → 平移 → 谢幕拉出）
+
+镜头 tween 全部驱动 cam，easing 按 camera-language §4.1：
+主动推拉 `power3.inOut`，跟随式 `cubic-bezier(0.33,0,0.15,1)`（自定义 ease 见下）。
+
+```js
+const followEase = gsap.parseEase("0.33,0,0.15,1");   // shotcraft 相机默认
+
+// 定场微推：开机即 1.06x，3s 缓出回全景（片长 >14s 且首镜 >7s 时才加）
+tl.fromTo(cam, { zoom: 1.06 },
+  { zoom: 1, duration: 3.0, ease: "power2.out", onUpdate: applyCam }, 0);
+
+// 推近特写：目标点 (1240, 430)，1 → 1.8x，时长由公式给
+tl.to(cam, { cx: 1240, cy: 430, zoom: 1.8,
+  duration: zoomDur(1, 1.8), ease: "power3.inOut", onUpdate: applyCam },
+  "s2_generate");
+// 镜头到位后 hold ≥1.2s 再走（不写 tween 就是 hold）
+
+// 中距焦点转移：不回 1x，直接平移过去（镜间语法：0.22-0.45 改平移）
+tl.to(cam, { cx: 880, cy: 620,
+  duration: 0.7, ease: followEase, onUpdate: applyCam }, "s3_process+=1.5");
+
+// 谢幕：0.55s 拉出 + ≥0.8s 全景停顿，data-duration 覆盖到停顿末尾
+tl.to(cam, { cx: 960, cy: 540, zoom: 1,
+  duration: 0.55, ease: "power3.inOut", onUpdate: applyCam }, "s5_hold");
+
+window.__timelines["main"] = tl;
+applyCam();   // 首帧保险：timeline 停在 t=0 时 onUpdate 不触发（§6.3）
+```
+
+镜头预算不写在代码里，写在排镜时：相邻镜头 tween 起点间隔 ≥2.6s、
+15s 窗口 ≤4-5 个、<1.25x 的 zoom 不排（camera-language §0/§4.4）。
+
+### 9.5 counter-transform · 跟随字幕/标注保持字号恒定
+
+字幕和 chrome 首选放 `#hud`（不跟镜头，零成本）。必须挂在 world 内、
+跟着元素走但字号要恒定的标注，反向抵消镜头缩放：
+
+```js
+const counters = gsap.utils.toArray(".cam-counter");   // 需要恒定字号的标注
+function applyCounter() {
+  const inv = 1 / cam.zoom;
+  counters.forEach((el) => { el.style.transform = `scale(${inv})`; });
+}
+```
+
+`.cam-counter` 自身的入场动画写在其**子元素**上，避免和 counter scale 抢 transform。
+
+### 9.6 多层 parallax · 全部由 cam 推导
+
+每层不给独立 tween，速度系数乘同一个相机位移（层间系数比 ≥2 倍、≤4 层，
+camera-language §8.1），天然同步、天然 seek-safe：
+
+```js
+const LAYERS = [
+  { el: document.querySelector("#bg"),  k: 0.35 },
+  { el: document.querySelector("#mid"), k: 0.7  },
+  { el: document.querySelector("#fg"),  k: 1.4  },
+];
+function applyParallax() {
+  const dx = 960 - cam.cx, dy = 540 - cam.cy;    // 相机位移
+  LAYERS.forEach(({ el, k }) => {
+    el.style.transform = `translate(${dx * k}px, ${dy * k}px)`;
+  });
+}
+// 把 applyParallax() 追加进 applyCam() 末尾即可
+```
+
+### 9.7 Camera Rig 自检（追加到 §8 清单）
+
+- [ ] 镜头 tween 只动 cam proxy，`#world` 内元素没有被相机 tween 碰过？
+- [ ] 注册 timeline 后补了 `applyCam()` 首帧？
+- [ ] 3D 文字特写用了 CSS `zoom`，没有 `scale()` 放大发糊？
+- [ ] `zoom` 属性只出现在 `#world` 上（reflow 例外不扩散）？
+- [ ] 推拉时长全部来自 `zoomDur()`，没有手写常数？
+- [ ] 谢幕拉出后有 ≥0.8s 无 tween 的全景 hold？

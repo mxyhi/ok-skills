@@ -82,7 +82,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 - [product-decision-agent](product-decision-agent/SKILL.md): 중국어 우선 제품 의사결정 Agent로 핵심 병목, 우선순위, 성장, 지표, 운영 및 협업을 진단.
 - [autoresearch](autoresearch/SKILL.md): 명확한 목표, 지표, 검증 루프, keep/discard 게이트 기반의 자율 목표 지향 반복.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): 어려운 bug와 performance regression을 위한 엄격한 진단 루프.
-- [grilling](grilling/SKILL.md): 직접 grill session에서 쓰는 reusable one-question-at-a-time interview loop.
+- [grilling](grilling/SKILL.md): 직접 grill session에서 쓰는 reusable design-tree interview loop.
 - [teach](teach/SKILL.md): mission, resources, lessons, learning records를 쓰는 stateful teaching workspace 운영.
 - [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
@@ -146,7 +146,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | 프런트엔드용 프리미엄 레퍼런스 이미지를 section마다 가로 이미지 1장씩 생성한다. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
 | [gpt-taste](gpt-taste/SKILL.md) | AIDA 구조, 풍부한 motion, 랜덤 layout, GSAP pattern이 있는 프런트엔드 페이지를 만든다. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 코드를 작성하기 전에 최신 서드파티 API 또는 SDK 문서를 가져옴.                                                                                   | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grilling](grilling/SKILL.md)                               | 직접 grill session에서 쓰는 reusable one-question-at-a-time interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
+| [grilling](grilling/SKILL.md)                               | 직접 grill session에서 쓰는 reusable design-tree interview loop.                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | mission, resources, lessons, learning records를 통해 workspace 안에서 skill이나 concept을 가르칩니다. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
 | [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |

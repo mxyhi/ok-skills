@@ -24,7 +24,7 @@ Extract from $ARGUMENTS:
 ## Setup / Probe-on-launch
 
 1. Auto-detect per-dimension verify commands: `package.json` scripts, `Makefile`, `nx`, migrate config, bench/snapshot/size scripts.
-2. AskUserQuestion (single batch) to confirm detected commands + base ref + which dimensions to run.
+2. request_user_input (single batch) to confirm detected commands + base ref + which dimensions to run.
 3. **Auto-skip probe** when CI / no-TTY / `--mode autonomous` / complete-config / chained-handoff — log the inferred config instead of asking.
 
 ## Classification Phase (first-class, before any differential)
@@ -71,11 +71,11 @@ Run candidate verify vs baseline metric → compute `regressed` bool + 0-100 `su
 
 ## Verdict
 
-- Any HARD `regressed=true` with `classification=eligible` → **UNSTABLE** (green→red hard-blocks).
+- Any HARD `regressed=true` with `classification=regression-eligible` → **UNSTABLE** (green→red hard-blocks).
 - Else `stability_score = Σ(weight × dim_subscore)` over SCORE dims that ran (flakiness .30 / performance .30 / resource .20 / visual .20, renormalized over present dims). **STABLE iff ≥ 95** (`REG_THRESHOLD`/weights overridable).
 - Print the **score math** (per-dim contribution table) + declare **dims-ran vs UNAVAILABLE** — an UNAVAILABLE dimension is always listed, never silently passed.
 
-Backed by `scripts/score-regression.sh verdict <results.tsv>` (exit 0 STABLE / 1 UNSTABLE).
+Backed by `scripts/score-regression.sh verdict <results.tsv>` relative to the installed Autoresearch skill directory, never the caller's working directory (exit 0 STABLE / 1 UNSTABLE).
 
 ## Hunter (root cause)
 

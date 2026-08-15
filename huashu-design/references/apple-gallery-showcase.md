@@ -227,7 +227,7 @@ const T = {
   s4_walloff: [21.1, 21.8], s4_in: [21.8, 22.7], s4_hold: [23.7, 25.0],
 };
 
-// 核心 easing
+// 核心 easing（v9 历史实现用 cubic；新项目主 easing 默认 expoOut，见 best-practices §2 / hero-case-study 模式1 的修正）
 const easeOut = t => 1 - Math.pow(1 - t, 3);
 const easeInOut = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
 function lerp(time, start, end, fromV, toV, easing) {

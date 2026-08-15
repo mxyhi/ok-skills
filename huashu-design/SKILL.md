@@ -19,7 +19,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 - **动画Demo**：时间轴驱动的motion design，做视频素材或概念演示
 - **信息图/可视化**：精确排版、数据驱动、印刷级质量
 
-不适用场景：生产级Web App、SEO网站、需要后端的动态系统——这些用frontend-design skill。
+不适用场景：生产级Web App、SEO网站、需要后端的动态系统——这些不走本 skill。
 
 ## 任务路由：一张表定入口
 
@@ -30,7 +30,8 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 提到具体品牌/产品名 | 核心原则#0 事实验证 → §1.a 资产协议 → 标准流程 |
 | 🔴 任何会产出新视觉设计的任务（**无论有没有风格参考、有没有品牌名，100% 必走**） | 三方向硬门：Fallback Phase 1-5 出三版真实初稿等用户选 → 回标准流程 Step 2 |
 | 幻灯片/PPT | 标准流程 + Step 1 deck 交付链 + 「技术红线」架构选型 |
-| 动画/导出 MP4/GIF | 标准流程 + Step 9；**新动画项目默认走 HyperFrames 后端**（选型边界+契约 → `references/hyperframes-backend.md`，GSAP 实现配方 → `references/gsap-recipes.md`）；动手前必读 `references/animation-pitfalls.md` |
+| 动画/导出 MP4/GIF | 标准流程 + Step 9；**任何动画开工前先按 `references/storyboard-basics.md` 出轻量分镜卡**（每一镜先是一张会动的封面）；镜头级运动（zoom/pan/转场）必读 `references/camera-language.md`；**新动画项目默认走 HyperFrames 后端**（选型边界+契约 → `references/hyperframes-backend.md`，GSAP 实现配方 → `references/gsap-recipes.md`）；动手前必读 `references/animation-pitfalls.md` |
+| 🖥️ **宣传的产品有 UI 界面**（产品动画/功能演示/商单，画面主角是一个界面） | 上一行动画链 + **单一入口 `references/ui-demo-animation.md`**（截图运镜 vs HTML 重建决策树 + UI 展示八式 + `assets/cursor.jsx` 光标组件）；UI 截图取材走 §1.a 资产协议 |
 | 带解说长视频（≥1分钟） | Step 9.5 → `references/voiceover-pipeline.md` |
 | launch film/品牌宣传片（「Apple级」「超级碗品质」） | **三方向硬门先行**（方向板级初稿，见 Fallback「三方向初稿形态」）→ 用户选定后再写万字 director's notes → `references/launch-film-director-notes.md` |
 | App/iOS 原型 | 「App / iOS 原型专属守则」（覆盖通用规则） |
@@ -78,7 +79,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 
 好的hi-fi设计**一定**是从已有上下文长出来的。先问用户是否有design system/UI kit/codebase/Figma/截图。**凭空做hi-fi是last resort，一定会产出generic的作品**。如果用户说没有，先帮他去找（看项目里有没有，看有没有参考品牌）。
 
-**如果还是没有，或者用户需求表达很模糊**（如"做个好看的页面"、"帮我设计"、"不知道要什么风格"、"做个XX"没有具体参考），**不要凭通用直觉硬做**——进入 **设计方向顾问模式**，从 HTML 原生 40 种风格库（网页 20+PPT 20）里给 3 个差异化方向让用户选。完整流程见下方「设计方向顾问（Fallback 模式）」大节。
+**如果还是没有，或者用户需求表达很模糊**（如"做个好看的页面"、"帮我设计"、"不知道要什么风格"、"做个XX"没有具体参考），**不要凭通用直觉硬做**——进入 **设计方向顾问模式**，从 HTML 原生 60 种风格库（网页 20+PPT 20+信息图 20）里给 3 个差异化方向让用户选。完整流程见下方「设计方向顾问（Fallback 模式）」大节。
 
 #### 1.a 核心资产协议（涉及具体品牌时强制执行）
 
@@ -179,7 +180,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 > ⚖️ **根本立场（先读，统领本节）**：skill 的职责是**帮用户规避最差的设计**——守住反 slop 下限，**不是规定「好设计长什么样」**。真正的好设计**从用户的需求和提供的内容里长出来**，不在内置风格库里。所以：
 > - 用户给了内容/品牌/参考 → 设计就从那里展开，**别套库**。
 > - 用户什么都没有 → 下面三套逻辑只是帮他**起步、打破惯性**的脚手架，不是终点。
-> - `design-styles.md` 的 40 种是「没思路时翻的弹药」，**不是必须从这里选的清单**。过多的硬性风格要求是负担、是无聊——别被风格库绑架，内容永远优先。
+> - `design-styles.md` 的 60 种是「没思路时翻的弹药」，**不是必须从这里选的清单**。过多的硬性风格要求是负担、是无聊——别被风格库绑架，内容永远优先。
 
 **🔴 什么时候触发（100% 硬门，2026-07-18 起）**：
 **任何会产出新视觉设计的任务，无一例外**——需求模糊触发、需求清晰也触发、用户指定了风格（「Apple 宣传片风格」「Stripe 那种感觉」）**同样触发**、给了品牌名/品牌资产**同样触发**。做任何设计前，必须先提供三个差异化方向（含真实初稿）给用户选择，用户选定后才进入执行。
@@ -259,7 +260,14 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 每个 subagent 拿同一份 spec + 同一份用户真实内容，各按一套逻辑产出一版**纯 HTML/CSS**（default 无生图）真实视觉：
 
 **逻辑一 · 🎲 秒数轮盘（随机 · 20 选 1）**
-跑 `date +%S` 取秒数，算 `秒数 % 20 + 1` 得 1-20，从 `design-styles.md` **对应半区**（做网页用网页 20 种 / 做 PPT 用 PPT 20 种）取那一号风格，subagent 严格按其视觉 DNA + HTML 实现做。作用：用时间掷骰子，强制打破模型「每次都偷选安全极简」的确定性偏好。抽到还原度<70% 的（如 Memphis 做旧纹理）须标注「该部分用纯色块降级，不假装做出原版质感」。
+跑 `date +%S` 取秒数，算 `秒数 % 20 + 1` 得 1-20，从 `design-styles.md` **对应分区**取那一号风格，subagent 严格按其视觉 DNA + HTML 实现做。分区三选一，按**产出形态**判不按题材判：
+- 可点击的站点/落地页/官网/Dashboard 原型 → **网页 20 种**
+- 要翻页的 deck/PPT/演示（含 deck 里的数据页）→ **PPT 20 种**
+- 一张或一组以数据为主角、能脱离交互独立阅读的图 → **信息图 20 种**
+
+作用：用时间掷骰子，强制打破模型「每次都偷选安全极简」的确定性偏好。抽到还原度<70% 的（如 Memphis 做旧纹理）须标注「该部分用纯色块降级，不假装做出原版质感」。
+
+⚠️ 信息图分区是 2026-08 补的。此前只有网页/PPT 两分，做信息图时轮盘只能落进网页分区，抽到的是社区站或落地页的风格，得靠临场硬掰才能成立——**别再把信息图往网页区塞**。
 
 **逻辑二 · 🏆 现实参照（标杆迁移）**
 选 1 个**世界上和该用户需求最相关、且你明确知道设计极出色（最好获奖：Awwwards / CSS Design Awards / FWA / Apple Design Award）**的真实网站 / PPT 模板 / iOS 原型作为参照标准。subagent 先用 WebSearch 核实该案例真实存在与其设计语言，拆解配色/字体/布局/标志元素，再迁移到用户内容上。作用：用真实世界的最高标准锚定，不靠凭空想象。
@@ -279,7 +287,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 - 三版全部完成后**一起展示三张截图**，每版标明：用了哪套逻辑、具体哪个风格/参照案例/设计师，一句话说为什么
 
 > 仅当用户**已确认有生图能力**时，AI 生成型风格才走 `huashu-gpt-image`（见 `design-styles.md` 尾部「AI 生图专用风格」）；否则一律 HTML。
-> 完整 40 种风格库（网页 20+PPT 20，含还原度/温度/HTML 实现/开源字体）→ `references/design-styles.md`。
+> 完整 60 种风格库（网页 20+PPT 20+信息图 20，含还原度/温度/HTML 实现/开源字体）→ `references/design-styles.md`。
 
 **Phase 5 · 用户基于「看到的真实视觉」选择**（第一次有效选择）：看完三版真实截图，选一版深化 / 混合（"轮盘版的配色 + 设计师版的布局"）/ 微调 / 全部重来 → 重跑三套逻辑。**用户选定后，立刻把「展示了哪几版、截图路径、用户选择原话」写入项目目录 `direction-approved.md`**（Gate文件协议）。
 
@@ -347,7 +355,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
    - SFX 按 `references/audio-design-rules.md` 设计 cue 清单（时间轴 + 音效类型），用 `assets/sfx/<category>/*.mp3` 37 个预制资源，按配方 A/B/C/D 选密度（发布 hero ≈ 6个/10s，工具演示 ≈ 0-2个/10s）
    - **BGM + SFX 双轨制必须同时做**——只做 BGM 是 ⅓ 分完成度；SFX 占高频、BGM 占低频，频段隔离见 audio-design-rules.md 的 ffmpeg 模板
    - 交付前 `ffprobe -select_streams a` 确认有 audio stream，没有则不是成品
-   - **（终渲后）AI看片评审**：`python3 scripts/ai-review-video.py <成片> [导演稿.md]` 出结构化报告（黑帧/死段/hero贯穿/过渡类型/音效空打），流程与局限见 `references/ai-video-review.md`
+   - **（终渲后）AI看片评审**（可选云能力，自备key+显式确认，见SECURITY.md）：`uv run scripts/cloud/ai-review-video.py --video <成片> --context 导演稿.md --yes` 出结构化报告（黑帧/死段/hero贯穿/过渡类型/音效空打），流程与局限见 `references/ai-video-review.md`；无key时用 `scripts/verify-video.sh` 截帧人工看
    - **跳过音频的条件**：用户明确说「不要音频」「纯画面」「我要自己配音」——否则默认带。
    - 参考完整流程见 `references/video-export.md` + `references/audio-design-rules.md` + `references/sfx-library.md`。
 9.5. **（带解说时走这条）解说驱动动画 · L2 长概念视频**：用户要做「5-20 分钟解释一个概念」、「带配音的教程」、「长篇科普视频」时——**不要先做动画再配音**，那会让画面节奏跟解说对不上。改走 `references/voiceover-pipeline.md` 的解说驱动流程：
@@ -369,7 +377,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 |---|---|---|
 | `brand-spec.md` | §1.a资产协议产物 | 涉及具体品牌/产品的任何设计 |
 | `direction-approved.md` | 三方向真实视觉展示+**用户选择原话**记录（含三版初稿截图路径）。🔴 **没有「已有明确design context」豁免通道**（该通道2026-07-18被实锤滥用后废止）——唯一合法豁免=Fallback「唯一豁免」三种情形，且必须记用户原话/迭代来源 | 实现开工前；**≥45s长片渲染前有hook硬检查**（scripts/design-gate-hook.sh，缺文件block渲染，用户明说跳过用SKIP_DESIGN_GATE=1显式放行） |
-| `导演稿.md`/director's notes | 长片/launch film的分镜与**视觉密度条款**（标准+参照标杆+氛围层清单，见animation-best-practices §6.5） | ≥20s动画开工前；launch film级（品牌宣传片/「Apple级」预期）在此基线上按launch-film-director-notes.md升级为万字notes——导演稿是底线，万字notes是launch film的加强版，不是两套并行要求 |
+| `导演稿.md`/director's notes | 长片/launch film的分镜与**视觉密度条款**（标准+参照标杆+氛围层清单，见animation-best-practices §6.5）。**最低要求=storyboard-basics.md §5的轻量分镜卡格式**（八字段/镜，含[CAMERA]列与验收帧号）| ≥20s动画开工前；<20s动画不强制导演稿但分镜卡照画（storyboard-basics §0）；launch film级（品牌宣传片/「Apple级」预期）在此基线上按launch-film-director-notes.md升级为万字notes——分镜卡是底线，万字notes是launch film的加强版，不是两套并行要求 |
 
 **「用户说继续」授权的是进入下一步，不是跳过该步内部的gate**。跳过必须用户明说，且把「用户明示跳过」写进对应gate文件。**弱runtime降级模式不豁免gate文件**——降级第5条允许把检查点问答换成assumption清单，但三个gate文件本身照写（写文件不耗上下文），assumption清单就写进对应gate文件里。
 **两套检查点的衔接**：主干用 🛑 检查点1-5，Fallback 用 🔴 CHECKPOINT（Phase 3.5 图片前置 + logo 子门）。从 Fallback Phase 1-5 走完回到主干 Step 2 时，检查点1（问题清单）已被 Phase 1 的澄清覆盖，**跳过不重复问**；检查点2 起照常执行。
@@ -447,6 +455,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | `android_frame.jsx` | Android App mockup | 设备bezel |
 | `macos_window.jsx` | 桌面App mockup | 窗口chrome + 红绿灯 |
 | `browser_window.jsx` | 网页在浏览器里的样子 | URL bar + tab bar |
+| `cursor.jsx` | 产品UI演示里的光标操作叙事 | macOS光标4形状 + CursorSprite弧线轨迹（Catmull-Rom+收敛手抖）+ ClickRipple双圈解耦 + hover联动 + GSAP/Stage双驱动，帧确定性 |
 
 用法：读取对应 assets 文件内容 → inline 进你的 HTML `<script>` 标签 → slot 进你的设计。
 
@@ -464,13 +473,16 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | 做幻灯片 | `references/slide-decks.md` + `assets/deck_index.html`（默认多文件概览墙）+ `scripts/gen_deck_thumbs.mjs`（画廊缩略图）+ `assets/deck_stage.js`（仅 ≤5 页单文件） |
 | 导出可编辑 PPTX（html2pptx 4 条硬约束） | `references/editable-pptx.md` + `scripts/html2pptx.js` |
 | 做动画/motion（**先读 pitfalls**）| `references/animation-pitfalls.md` + `references/animations.md` + `assets/animations.jsx` |
+| ⭐ **动画分镜/画面构图**（任何动画开工前；每一镜先是一张会动的封面：定格帧十一律+景别体系+能量骨架+轻量分镜卡） | `references/storyboard-basics.md`（launch-film 导演稿是它的重装版） |
+| ⭐ **镜头语言/运镜**（zoom/pan/orbit/parallax/转场；预算制+镜间语法+PageCam 相机数学+CSS zoom 栅格化） | `references/camera-language.md`（设计判断）+ `gsap-recipes.md` §9 Camera Rig（实现） |
+| ⭐ **产品UI展示动画**（画面主角是一个界面：截图vs重建决策树+UI展示八式+typing+光标+3D巡览） | `references/ui-demo-animation.md` + `assets/cursor.jsx` |
 | **HyperFrames 渲染后端**（新动画默认；选型边界/合成契约/老demo迁移/check流程） | `references/hyperframes-backend.md` |
 | **设计语言的 GSAP 实现配方**（easing 映射/运动语言8条/五段叙事骨架/seek 安全规则） | `references/gsap-recipes.md` |
 | **动画的正向设计语法**（Anthropic 级叙事/运动/节奏/表达风格）| `references/animation-best-practices.md`（5 段叙事+Expo easing+运动语言 8 条+3 种场景配方）|
-| **带解说的长动画 / 长概念视频**（5-20 分钟带配音、解说驱动画面、TTS 实测时长生成 timeline）| `references/voiceover-pipeline.md`（铁律：连续运动叙事、禁 PowerPoint 切换）+ `assets/narration_stage.jsx` + `scripts/{tts-doubao,narrate-pipeline}.mjs` + `scripts/{mix-voiceover,render-narration}.sh` |
+| **带解说的长动画 / 长概念视频**（5-20 分钟带配音、解说驱动画面、TTS 实测时长生成 timeline）| `references/voiceover-pipeline.md`（铁律：连续运动叙事、禁 PowerPoint 切换）+ `assets/narration_stage.jsx` + `scripts/cloud/tts-doubao.mjs`（可选云TTS，自备key，见SECURITY.md）+ `scripts/narrate-pipeline.mjs` + `scripts/{mix-voiceover,render-narration}.sh` |
 | 做Tweaks实时调参 | `references/tweaks-system.md` |
-| 没有design context怎么办 | `references/design-context.md`（薄 fallback） 或 `references/design-styles.md`（厚 fallback：HTML 原生 40 种风格库，网页 20+PPT 20，按温度分级） |
-| **需求模糊要推荐风格方向** | `references/design-styles.md`（40 种 HTML 原生风格库，含还原度/温度/开源字体）+ `assets/showcases/INDEX.md`（预制截图画廊） |
+| 没有design context怎么办 | `references/design-context.md`（薄 fallback） 或 `references/design-styles.md`（厚 fallback：HTML 原生 60 种风格库，网页 20+PPT 20+信息图 20，按温度分级） |
+| **需求模糊要推荐风格方向** | `references/design-styles.md`（60 种 HTML 原生风格库，含还原度/温度/开源字体）+ `assets/showcases/INDEX.md`（预制截图画廊） |
 | **按输出类型查场景模板**（封面/PPT/信息图） | `references/scene-templates.md` |
 | 输出完后验证 | `references/verification.md` + `scripts/verify.py` |
 | **设计评审/打分**（设计完成后可选） | `references/critique-guide.md`（5 维度评分+常见问题清单） |

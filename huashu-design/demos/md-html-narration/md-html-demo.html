@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>md还是html，这是个蠢问题 · 解说 demo (v3 · 字幕+持续运动+修溢出)</title>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -610,6 +611,21 @@ const App = () => (
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<script>
+  // ── Fit 1920 stage to viewport ─────────────────────────────────
+  // ≥1920（含录制用的 1920×1080）保持 1:1 原尺寸不缩放；
+  // 窄于 1920 才缩小，减 40 是 body 左右各 20px 的 padding
+  (function () {
+    var root = document.getElementById('root');
+    function rescale() {
+      var cw = document.documentElement.clientWidth;
+      root.style.zoom = cw >= 1920 ? 1 : (cw - 40) / 1920;
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  })();
 </script>
 </body>
 </html>

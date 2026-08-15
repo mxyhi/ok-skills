@@ -16,6 +16,29 @@
 set -u
 
 PLAN_ROOT="${1:-${PWD}/.planning}"
+
+# --- PWF_PLAN_ROOT: absolute plan-root binding (issue #212). ---
+# A thread whose cwd is a shared PARENT of the real project (e.g. /workspace
+# holding /workspace/project with its own .planning) resolves the parent's
+# plan on every call and never sees the nested one. PWF_PLAN_ROOT names the
+# project root whose .planning must be used. It is the highest-precedence
+# binding: it overrides both the ${PWD} default and the positional argument,
+# because an adapter passing ".planning" is spelling out the cwd default, not
+# overriding a user's deliberate pin. A pin that is not a directory fails
+# CLOSED: the resolver emits nothing, so no caller can be handed the
+# ambiguous cwd plan the pin was escaping (the injection routes own the
+# user-facing notice; stdout here is the data channel and must stay clean).
+# With the variable unset, behavior is byte-identical to the legacy shape.
+PWF_ROOT_PIN=""
+if [ -n "${PWF_PLAN_ROOT:-}" ]; then
+    if [ -d "${PWF_PLAN_ROOT}" ]; then
+        PWF_ROOT_PIN="${PWF_PLAN_ROOT}"
+        PLAN_ROOT="${PWF_PLAN_ROOT}/.planning"
+    else
+        exit 0
+    fi
+fi
+
 ACTIVE_FILE="${PLAN_ROOT}/.active_plan"
 
 # Plan-id safe-identifier check. Rejects whitespace, path separators, leading
@@ -104,12 +127,17 @@ canonicalize() {
 # backslash-normalized before comparison for Windows-native canonicalizers.
 # The root is computed once per run: the newest-mtime scan calls this guard
 # per plan dir, and each canonicalize costs a process spawn on Windows.
+#
+# With a PWF_PLAN_ROOT pin (issue #212) containment is checked against THAT
+# root instead of the cwd: candidates arrive ${PWF_PLAN_ROOT}/-prefixed, so
+# both sides canonicalize through the same path spelling. Unpinned keeps the
+# relative "." root — byte-identical to the legacy check.
 ROOT_REAL=""
 ROOT_REAL_SET=0
 is_within_root() {
     candidate="$1"
     if [ "${ROOT_REAL_SET}" = "0" ]; then
-        ROOT_REAL="$(canonicalize ".")" || ROOT_REAL=""
+        ROOT_REAL="$(canonicalize "${PWF_ROOT_PIN:-.}")" || ROOT_REAL=""
         norm_slashes "${ROOT_REAL}"
         ROOT_REAL="${NORM_OUT}"
         ROOT_REAL_SET=1
@@ -122,10 +150,16 @@ is_within_root() {
     # both sides from the same cwd base is the only spelling-stable comparison.
     # The emitted result keeps the original absolute candidate — only the
     # containment check uses the relative form.
-    case "${candidate}" in
-        "${PWD}"/*) check_target=".${candidate#"${PWD}"}" ;;
-        *) check_target="${candidate}" ;;
-    esac
+    # Pinned resolution skips the rewrite: candidate and root then share the
+    # ${PWF_PLAN_ROOT} spelling, so both canonicalize directly from it.
+    if [ -n "${PWF_ROOT_PIN}" ]; then
+        check_target="${candidate}"
+    else
+        case "${candidate}" in
+            "${PWD}"/*) check_target=".${candidate#"${PWD}"}" ;;
+            *) check_target="${candidate}" ;;
+        esac
+    fi
     cand_real="$(canonicalize "${check_target}")" || cand_real=""
     norm_slashes "${cand_real}"
     cand_real="${NORM_OUT}"

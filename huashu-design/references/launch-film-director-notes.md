@@ -81,13 +81,14 @@
 
 ### Part IV · Shot-by-Shot Storyboard（分镜脚本，约 5000-7000 字 · 占 60% 篇幅）
 
-每镜含 10 个字段（缺一不可）：
+每镜含 11 个字段（缺一不可）：
 
 ```
 SHOT NN · NAME
 [TIMECODE]    起止时间 + 时长
 [FUNCTION]    这一镜在故事弧中的功能（一句话）
 [VISUAL]      画面构图 + 元素位置 + 运动方向
+[CAMERA]      景别（远/全/中/近/特，对应 zoom 档位）+ 运镜动作 + 一句动机；「静止」也要写为什么静止；push-in 必须写具象锚点（词汇与预算见 camera-language.md，景别体系见 storyboard-basics.md §3）
 [TYPE]        排版 spec（字体 / 字号 / 字距 / 行高 / 颜色 / 对齐）
 [ANIM]        每元素 in/out 时机 + easing + duration + stagger + delay
 [AUDIO]       music beat + SFX cue（每镜对应 BGM 节奏 + 必含 SFX 时间表）

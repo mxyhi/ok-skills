@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>什么是 token · narration demo</title>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -196,6 +197,19 @@ const App = () => (
 );
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<script>
+  // ── Fit 1920 stage to viewport ─────────────────────────────────
+  // 只在窗口窄于 1920 时缩小，≥1920（含录制用的 1920×1080）保持 1:1 原尺寸
+  (function () {
+    var root = document.getElementById('root');
+    function rescale() {
+      root.style.zoom = Math.min(1, document.documentElement.clientWidth / 1920);
+    }
+    rescale();
+    window.addEventListener('resize', rescale);
+  })();
 </script>
 </body>
 </html>

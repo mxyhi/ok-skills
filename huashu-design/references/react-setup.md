@@ -137,9 +137,13 @@ window.claude = {
 };
 ```
 
-### 选项B：真调Anthropic API
+### 选项B：真调Anthropic API（不推荐，仅限本地演示）
 
 需要API key，用户必须在HTML里填入自己的key才能跑。**永远不要把key硬编码在HTML里**。
+
+⚠️ 安全边界：这个方案只适合本地`file://`打开、用完即关的演示。key会留在DOM/内存里——
+**不要部署这个页面、不要带着填了key的页面截图/录屏传播**。生产场景一律走本地proxy后端转发，
+浏览器端不碰key。默认优先选项A/C（完全不需要key）。
 
 ```html
 <input id="api-key" placeholder="粘贴你的Anthropic API key" />

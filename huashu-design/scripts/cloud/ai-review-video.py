@@ -9,10 +9,14 @@
 AI看片评审闭环 —— 渲染出的动画MP4喂给视频理解模型（seed-2.0-lite），
 按固定checklist逐段送审 + 全片低清扫一遍，汇总成结构化markdown评审报告。
 
+⚠️ 可选云能力：会把压缩后的成片片段发送到火山方舟官方接口（ark.cn-beijing.volces.com）
+做视频理解评审，使用你自己的 ARK_API_KEY。首次调用需 --yes 或 HUASHU_CLOUD_OK=1
+显式确认。数据流向声明见仓库根 SECURITY.md。本地免费替代：scripts/verify-video.sh 截帧人工看。
+
 Usage:
-    uv run ai-review-video.py --video 成片.mp4
-    uv run ai-review-video.py --video 成片.mp4 --context 导演稿.md
-    uv run ai-review-video.py --video 成片.mp4 --segment-len 60 --output 报告.md
+    uv run ai-review-video.py --video 成片.mp4 --yes
+    uv run ai-review-video.py --video 成片.mp4 --context 导演稿.md --yes
+    uv run ai-review-video.py --video 成片.mp4 --segment-len 60 --output 报告.md --yes
 
 调用链路：
     1. ffprobe 探测时长/音轨
@@ -23,8 +27,8 @@ Usage:
     5. 全片再压一版低清（960宽/10fps）单独送审，专查跨段叙事连贯/hero贯穿
     6. 文本汇总call：按checklist逐项合并，产出最终报告；分段原始发现保留在附录
 
-API key：只从 .env 读 ARK_API_KEY（写作/.env），绝不硬编码。
-代理：requests session 关闭 trust_env，免疫 ALL_PROXY 之类的历史坑。
+API key：优先读环境变量 ARK_API_KEY，其次读 skill 根目录 .env（只提取这一个变量），绝不硬编码。
+代理：requests session 关闭 trust_env（不继承本机代理配置），免疫 ALL_PROXY 之类残留代理导致的 TLS 报错。
 """
 
 import argparse
@@ -42,10 +46,7 @@ import requests
 
 API_URL = "https://ark.cn-beijing.volces.com/api/v3/responses"
 DEFAULT_MODEL = "doubao-seed-2-0-lite-260215"
-ENV_PATHS = [
-    Path("/Users/alchain/Documents/写作/.env"),
-    Path(__file__).resolve().parents[4] / "Documents/写作/.env",
-]
+ENV_PATH = Path(__file__).resolve().parents[2] / ".env"  # skill 根目录 .env（已 gitignore）
 MAX_SEGMENT_MB = 8  # 单段压缩产物超过这个值就再压一档
 
 CHECKLIST = """\
@@ -75,17 +76,16 @@ def log(msg):
 
 
 def load_api_key():
-    for p in ENV_PATHS:
-        if p.exists():
-            for line in p.read_text(encoding="utf-8").splitlines():
-                line = line.strip()
-                if line and not line.startswith("#") and "=" in line:
-                    k, v = line.split("=", 1)
-                    os.environ.setdefault(k.strip(), v.strip())
-            break
     key = os.getenv("ARK_API_KEY")
+    if not key and ENV_PATH.exists():
+        # 只提取 ARK_API_KEY 一个变量，不把 .env 整文件灌进环境
+        for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line.startswith("ARK_API_KEY") and "=" in line:
+                key = line.split("=", 1)[1].strip().strip("'\"")
+                break
     if not key or key.startswith("your_"):
-        sys.exit("Error: ARK_API_KEY 未配置（写作/.env），拒绝继续。不编造评审结果。")
+        sys.exit("Error: ARK_API_KEY 未配置（skill 根目录 .env 或环境变量），拒绝继续。不编造评审结果。")
     return key
 
 
@@ -258,11 +258,20 @@ def main():
     ap.add_argument("--segment-len", type=int, default=60, help="分段长度秒（默认60）")
     ap.add_argument("--model", default=DEFAULT_MODEL, help=f"模型（默认{DEFAULT_MODEL}）")
     ap.add_argument("--output", "-o", help="报告路径（默认视频同目录<视频名>-AI评审.md）")
+    ap.add_argument("--yes", action="store_true",
+                    help="确认将压缩后的视频段发送到火山方舟官方接口（或设 HUASHU_CLOUD_OK=1）")
     args = ap.parse_args()
 
     video = Path(args.video).resolve()
     if not video.exists():
         sys.exit(f"Error: 视频不存在 {video}")
+
+    if not args.yes and os.getenv("HUASHU_CLOUD_OK") != "1":
+        sys.exit(
+            f"[云能力确认] 本次将把 {video.name} 压缩后分段发送到 ark.cn-beijing.volces.com"
+            "（火山方舟官方接口，使用你自己的 ARK_API_KEY 做视频理解评审）。\n"
+            "确认无误请重跑并加 --yes，或设置环境变量 HUASHU_CLOUD_OK=1。"
+            "数据流向声明见 SECURITY.md；本地免费替代：scripts/verify-video.sh。")
     out_path = Path(args.output) if args.output else video.parent / f"{video.stem}-AI评审.md"
 
     context_text = ""

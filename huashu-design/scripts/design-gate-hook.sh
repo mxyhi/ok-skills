@@ -11,6 +11,10 @@
 #   - 项目目录（或上两级）存在 direction-approved.md
 #   - 命令里显式带 SKIP_DESIGN_GATE=1（花叔明说跳过时用，可审计）
 #
+# 安全声明：本hook**不会被skill自动安装**——SKILL.md/README没有任何写入settings.json的
+# 指令，只有你手动把它配进settings.json后才生效。行为上限：对匹配的长片渲染命令exit 2
+# 阻止执行并打印原因，无网络请求、无文件写入、无删除。见仓库根SECURITY.md。
+#
 # settings.json配置：PreToolUse / matcher "Bash" / command指向本脚本
 
 INPUT=$(cat)

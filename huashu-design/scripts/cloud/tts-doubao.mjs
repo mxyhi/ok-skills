@@ -2,10 +2,14 @@
 /**
  * tts-doubao.mjs · 豆包语音 TTS（火山引擎 openspeech）
  *
+ * ⚠️ 可选云能力：本脚本会把待配音文本发送到字节跳动官方 TTS 接口（openspeech.bytedance.com），
+ * 使用你自己的 key，endpoint 强制校验域名白名单。首次调用需 --yes 或 HUASHU_CLOUD_OK=1
+ * 显式确认。数据流向声明见仓库根 SECURITY.md。
+ *
  * 用法：
- *   node scripts/tts-doubao.mjs --text "你好" --out demo.mp3
- *   node scripts/tts-doubao.mjs --text-file script.txt --out out.mp3 --speed 1.0
- *   node scripts/tts-doubao.mjs --text "你好" --out demo.mp3 --timestamps   # 附带字级时间戳
+ *   node scripts/cloud/tts-doubao.mjs --text "你好" --out demo.mp3 --yes
+ *   node scripts/cloud/tts-doubao.mjs --text-file script.txt --out out.mp3 --speed 1.0 --yes
+ *   node scripts/cloud/tts-doubao.mjs --text "你好" --out demo.mp3 --timestamps --yes   # 附带字级时间戳
  *
  * 输出：
  *   - mp3 文件写到 --out 路径
@@ -32,7 +36,7 @@ import { fileURLToPath } from 'node:url';
 import { randomUUID } from 'node:crypto';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SKILL_ROOT = path.resolve(__dirname, '..');
+const SKILL_ROOT = path.resolve(__dirname, '..', '..');
 
 function loadEnv() {
   const envPath = path.join(SKILL_ROOT, '.env');
@@ -64,6 +68,7 @@ function parseArgs(argv) {
     else if (a === '--voice') args.voice = argv[++i];
     else if (a === '--encoding') args.encoding = argv[++i];
     else if (a === '--timestamps') args.timestamps = true;
+    else if (a === '--yes') args.yes = true;
     else if (a === '--help' || a === '-h') args.help = true;
   }
   return args;
@@ -80,6 +85,7 @@ tts-doubao.mjs · 豆包语音 TTS
   --voice <voice_id>    覆盖 .env 里的音色 id
   --encoding <ext>      mp3 / wav / pcm，默认 mp3
   --timestamps          请求字级时间戳（enable_subtitle），结果 JSON 多一个 words 数组
+  --yes                 确认将文本发送到豆包 TTS 官方接口（或设 HUASHU_CLOUD_OK=1）
 `.trim());
   process.exit(1);
 }
@@ -182,8 +188,15 @@ async function readV3Audio(res) {
   return { audio: Buffer.concat(chunks), words };
 }
 
+// endpoint 域名白名单：key 和文本只允许发往字节官方域名，防 .env 被篡改后重定向
+const ALLOWED_ENDPOINT_HOSTS = /(^|\.)(bytedance\.com|volces\.com)$/;
+
 async function tts({ text, voice, speed, encoding, timestamps }) {
   const endpoint = process.env.DOUBAO_TTS_ENDPOINT || 'https://openspeech.bytedance.com/api/v3/tts/unidirectional';
+  const host = new URL(endpoint).hostname;
+  if (!ALLOWED_ENDPOINT_HOSTS.test(host)) {
+    throw new Error(`DOUBAO_TTS_ENDPOINT 域名 ${host} 不在白名单（*.bytedance.com / *.volces.com），拒绝发送`);
+  }
   const voiceId = voice || process.env.DOUBAO_TTS_VOICE_ID || process.env.DOUBAO_SPEAKER;
   const resourceId = process.env.DOUBAO_TTS_RESOURCE_ID || inferResourceId(voiceId || '');
   const requestId = randomUUID();
@@ -234,6 +247,15 @@ async function main() {
   if (!args.out) {
     console.error('错：缺 --out');
     usage();
+  }
+
+  if (!args.yes && process.env.HUASHU_CLOUD_OK !== '1') {
+    const host = new URL(process.env.DOUBAO_TTS_ENDPOINT || 'https://openspeech.bytedance.com').hostname;
+    console.error(
+      `[云能力确认] 本次将把约${text.length}字文本发送到 ${host}（豆包TTS官方接口，使用你自己的key合成语音）。\n` +
+      `确认无误请重跑并加 --yes，或设置环境变量 HUASHU_CLOUD_OK=1。数据流向声明见 SECURITY.md。`,
+    );
+    process.exit(2);
   }
 
   const outPath = path.resolve(args.out);

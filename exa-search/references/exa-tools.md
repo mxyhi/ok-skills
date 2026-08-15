@@ -3,11 +3,11 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@0de23f94b7e8539192bdc2008c16592156ada870`
-- npm package: `exa-mcp-server@3.2.1`
-- npm tarball SHA-256: `675688dffcd746b8bb6ac7f077b64b7382c4a305f948d44ba526e67be50396df`
-- npm package `gitHead`: `74438bc48ea9853e2e3e56f72535edc4f5c34bf6`
-- Date checked: 2026-07-23
+- Official repo: `exa-labs/exa-mcp-server@e64c11f2d3b4400ffbda8ccdd9658a450cc9d270`
+- npm package: `exa-mcp-server@3.4.0`
+- npm tarball SHA-256: `cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19`
+- npm package `gitHead`: `a664592b5dd7c5598b70158c771dcc5c2a4fb2c1`
+- Date checked: 2026-08-15
 
 ## Base URL
 
@@ -148,3 +148,10 @@ Rechecked on 2026-07-23:
 - Official repo `main` advanced to `0de23f94b7e8539192bdc2008c16592156ada870`.
 - npm latest remains `exa-mcp-server@3.2.1`; package `gitHead` and tarball SHA-256 remain unchanged.
 - Hosted advanced schema now uses category `publication` instead of `research paper` and exposes deprecated `highlightsNumSentences` / `highlightsPerUrl` compatibility fields.
+
+Rechecked on 2026-08-15:
+- Official repo `main` advanced to `e64c11f2d3b4400ffbda8ccdd9658a450cc9d270`.
+- npm latest is `exa-mcp-server@3.4.0`; package `gitHead` is `a664592b5dd7c5598b70158c771dcc5c2a4fb2c1`; tarball SHA-256 is `cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19`.
+- Hosted `initialize` still returns `serverInfo.version=3.2.1`.
+- Anonymous hosted `tools/list` still returns `web_search_exa`, `web_search_advanced_exa`, `company_research_exa`, `web_fetch_exa`, `people_search_exa`, and `get_code_context_exa` with the same parameter surface, including category `publication` and deprecated highlight compatibility fields.
+- No skill body/tool-choice change required beyond source SHA and npm metadata refresh.

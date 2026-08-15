@@ -35,12 +35,12 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync, execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SKILL_ROOT = path.resolve(__dirname, '..');
-const TTS_SCRIPT = path.join(__dirname, 'tts-doubao.mjs');
+const TTS_SCRIPT = path.join(__dirname, 'cloud', 'tts-doubao.mjs');
 
 function parseArgs(argv) {
   const args = {};
@@ -49,6 +49,7 @@ function parseArgs(argv) {
     if (a === '--script') args.script = argv[++i];
     else if (a === '--out-dir') args.outDir = argv[++i];
     else if (a === '--no-timestamps') args.noTimestamps = true;
+    else if (a === '--yes') args.yes = true;
     else if (a === '--help' || a === '-h') args.help = true;
   }
   return args;
@@ -61,6 +62,7 @@ narrate-pipeline.mjs · L2 长解说总指挥
   --script <path>     解说稿 .md 文件（必填）
   --out-dir <path>    输出目录（必填）
   --no-timestamps     不请求字级时间戳（默认请求，chunks 里带 words 供卡拉OK字幕）
+  --yes               确认将解说稿文本发送到豆包 TTS 官方接口（或设 HUASHU_CLOUD_OK=1）
 
 输出：<out-dir>/voiceover.mp3 + <out-dir>/timeline.json
 `.trim());
@@ -135,7 +137,8 @@ function getDuration(filePath) {
 let timestampsBroken = false; // 时间戳请求失败一次后，后续 chunk 全部降级，避免反复重试
 
 function callTTS(text, outPath, opts) {
-  const args = ['--text', text, '--out', outPath];
+  // 同意门已在本管线入口过（见 main），子进程直接带 --yes
+  const args = ['--text', text, '--out', outPath, '--yes'];
   if (opts.voice) args.push('--voice', opts.voice);
   if (opts.speed) args.push('--speed', String(opts.speed));
   const wantTimestamps = opts.timestamps && !timestampsBroken;
@@ -166,16 +169,19 @@ function ffmpegConcat(inputs, output) {
     listFile,
     inputs.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join('\n'),
   );
-  execSync(
-    `ffmpeg -y -f concat -safe 0 -i "${listFile}" -c copy "${output}"`,
+  execFileSync(
+    'ffmpeg',
+    ['-y', '-f', 'concat', '-safe', '0', '-i', listFile, '-c', 'copy', output],
     { stdio: ['ignore', 'pipe', 'pipe'] },
   );
   fs.unlinkSync(listFile);
 }
 
 function makeSilence(duration, outPath) {
-  execSync(
-    `ffmpeg -y -f lavfi -i anullsrc=r=24000:cl=mono -t ${duration} -q:a 9 -acodec libmp3lame "${outPath}"`,
+  execFileSync(
+    'ffmpeg',
+    ['-y', '-f', 'lavfi', '-i', 'anullsrc=r=24000:cl=mono', '-t', String(duration),
+     '-q:a', '9', '-acodec', 'libmp3lame', outPath],
     { stdio: ['ignore', 'pipe', 'pipe'] },
   );
 }
@@ -183,6 +189,15 @@ function makeSilence(duration, outPath) {
 async function main() {
   const args = parseArgs(process.argv);
   if (args.help || !args.script || !args.outDir) usage();
+
+  if (!args.yes && process.env.HUASHU_CLOUD_OK !== '1') {
+    console.error(
+      '[云能力确认] 本管线会把解说稿文本分段发送到豆包TTS官方接口（openspeech.bytedance.com，' +
+      '使用你自己的key合成配音）。\n确认无误请重跑并加 --yes，或设置环境变量 HUASHU_CLOUD_OK=1。' +
+      '数据流向声明见 SECURITY.md。',
+    );
+    process.exit(2);
+  }
 
   const scriptPath = path.resolve(args.script);
   const outDir = path.resolve(args.outDir);
