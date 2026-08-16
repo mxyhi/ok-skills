@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **28 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **29 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -106,6 +106,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): premium frontend reference images banayein, har section ke liye ek horizontal image.
 - [gpt-taste](gpt-taste/SKILL.md): AIDA-structured, motion-rich frontend pages random layouts aur GSAP patterns ke sath banayein.
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
+- [diagram-design](diagram-design/SKILL.md): branded editorial diagrams ko standalone HTML/SVG/PNG banayein — architecture, flowchart, sequence, aur 24 aur types. draw.io ya Mermaid redraw.
 
 ### Utilities & Authoring
 
@@ -120,6 +121,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - कुछ skills मानकर चलती हैं कि `gh` installed और authenticated है।
 - Browser-focused skills के लिए Chrome/CDP-capable environment की आवश्यकता हो सकती है।
 - Third-party doc lookup skills external CLIs या MCP tools पर निर्भर हो सकती हैं; विवरण के लिए संबंधित `SKILL.md` देखें।
+- diagram-design PNG export के लिए Playwright और Chromium चाहिए: `pip install playwright && playwright install chromium`।
 
 ## पूरा Skill Index
 
@@ -139,6 +141,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [browser-trace](browser-trace/SKILL.md)                             | browser automation debugging के लिए CDP traces, screenshots, और DOM dumps capture करें।                                                                                  | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Ultra-compressed communication mode jo caveman style me bolkar response tokens kam karta hai aur technical accuracy banaye rakhta hai.                                                       | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | कठिन bugs और performance regressions के लिए disciplined diagnosis loop.                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
+| [diagram-design](diagram-design/SKILL.md)                           | Branded editorial HTML/SVG/PNG diagrams (27 types). draw.io या Mermaid sources redraw करें।                                                               | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design)                 |
 | [find-docs](find-docs/SKILL.md)                                     | current documentation, API references, और code examples के लिए Context7 CLI का उपयोग करें।                                                                                                   | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | web, code, और company research के लिए Exa का उपयोग करें।                                                                                                                                     | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | जब users को specialized capabilities चाहिए हों, तब existing skills खोजें।                                                                                                                    | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |

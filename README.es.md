@@ -6,7 +6,7 @@
 
 Coleccion curada de skills para agentes de programacion con IA y playbooks de `CLAUDE.md` / `AGENTS.md` para Codex, Claude Code, Cursor, OpenClaw, Trae y otras herramientas compatibles con `SKILL.md`.
 
-Este repositorio incluye actualmente **28 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
+Este repositorio incluye actualmente **29 skills reutilizables**, todas mantenidas directamente como directorios de skill de nivel superior en este repo. Clonalo en `~/.agents/skills/ok-skills`; los directorios internos ya siguen la estructura esperada por los flujos basados en `AGENTS.md`, y [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) aporta un agent playbook orientado a Claude Code.
 
 Si estas buscando **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, playbooks reutilizables de **CLAUDE.md / AGENTS.md** o ejemplos practicos de **SKILL.md**, este repositorio esta organizado para ser facil de encontrar y facil de usar desde el primer clon.
 
@@ -106,6 +106,7 @@ Despues puedes pedirlo de forma natural:
 - [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): genera referencias visuales premium para frontend, una imagen horizontal por seccion.
 - [gpt-taste](gpt-taste/SKILL.md): crea paginas frontend con estructura AIDA, layouts aleatorios y patrones GSAP.
 - [better-icons](better-icons/SKILL.md): busca, explora y obtiene iconos SVG de mas de 200 bibliotecas de Iconify mediante CLI o MCP.
+- [diagram-design](diagram-design/SKILL.md): crea diagramas editoriales con marca como HTML/SVG/PNG autonomos — arquitectura, flowchart, secuencia y 24 tipos mas. Redibuja draw.io o Mermaid.
 
 ### Utilidades y Creacion De Contenido
 
@@ -120,6 +121,7 @@ Despues puedes pedirlo de forma natural:
 - Algunas skills asumen que `gh` esta instalado y autenticado.
 - Las skills centradas en navegador pueden requerir un entorno compatible con Chrome/CDP.
 - Las skills de consulta de documentacion de terceros pueden depender de CLI externas o herramientas MCP; revisa cada `SKILL.md` para los detalles.
+- La exportacion PNG de diagram-design necesita Playwright y Chromium: `pip install playwright && playwright install chromium`.
 
 ## Indice Completo De Skills
 
@@ -139,6 +141,7 @@ Despues puedes pedirlo de forma natural:
 | [browser-trace](browser-trace/SKILL.md)                             | Captura trazas CDP, capturas de pantalla y dumps DOM para depurar automatizacion del navegador.                                                                    | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [caveman](caveman/SKILL.md)                                         | Modo de comunicacion ultra comprimido que reduce tokens de respuesta hablando como cavernicola sin perder precision tecnica.                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | Bucle disciplinado de diagnostico para bugs dificiles y regresiones de rendimiento.                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
+| [diagram-design](diagram-design/SKILL.md)                           | Crea diagramas editoriales HTML/SVG/PNG (27 tipos). Redibuja fuentes draw.io o Mermaid.                                                               | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design)                 |
 | [find-docs](find-docs/SKILL.md)                                     | Usa Context7 CLI para consultar documentacion actual, referencias de API y ejemplos de codigo.                                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Usa Exa para investigacion web, de codigo y de empresas.                                                                                                                                                            | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | Descubre skills existentes cuando los usuarios necesitan capacidades especializadas.                                                                                                                                | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
