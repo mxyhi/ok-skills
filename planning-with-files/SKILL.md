@@ -49,13 +49,13 @@ Work like Manus: Use persistent markdown files as your "working memory on disk."
 **Before starting work**, check for unsynced context from a previous session:
 
 ```bash
-# From this planning-with-files skill directory.
-$(command -v python3 || command -v python) scripts/session-catchup.py <project-dir>
+# Linux/macOS (auto-detects python3 or python)
+$(command -v python3 || command -v python) scripts/session-catchup.py "$(pwd)"
 ```
 
 ```powershell
-# From this planning-with-files skill directory.
-python .\scripts\session-catchup.py <project-dir>
+# Windows PowerShell
+python ".\scripts\session-catchup.py" (Get-Location)
 ```
 
 If catchup report shows unsynced context:
