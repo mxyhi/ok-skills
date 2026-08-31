@@ -107,7 +107,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 前端与设计
 
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
-- [diagram-design](diagram-design/SKILL.md)：27 种编辑级 HTML/SVG 图，支持品牌 token 和 draw.io/Mermaid 重绘。
+- [diagram-design](diagram-design/SKILL.md)：39 种编辑级 HTML/SVG 图，支持品牌 token 和 draw.io/Mermaid 重绘。
 
 ## Vendored Skill Packs
 
@@ -135,7 +135,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。                                                          | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [caveman](caveman/SKILL.md)                                         | 用“洞穴人”式极简表达压缩回复 tokens，同时保留完整技术准确性，并支持多档强度。                                                                  | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 面向疑难 bug 与性能回归的严格诊断循环。                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
-| [diagram-design](diagram-design/SKILL.md)                             | 27 种编辑级 HTML/SVG/PNG 图；可接入品牌 token；可重绘 draw.io 或 Mermaid 源。                                                                                                | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) |
+| [diagram-design](diagram-design/SKILL.md)                             | 39 种编辑级 HTML/SVG/PNG 图；可接入品牌 token；可重绘 draw.io 或 Mermaid 源。                                                                                                | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) |
 | [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查询最新文档、API 参考和代码示例。                                                                                           | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 做网页、代码和公司调研。                                                                                                              | 自制                                                                                                                           |
 | [find-skills](find-skills/SKILL.md)                                 | 当用户需要特定能力时，发现已有技能。                                                                                                           | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |

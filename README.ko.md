@@ -93,7 +93,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 ### 프런트엔드 및 디자인
 
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
-- [diagram-design](diagram-design/SKILL.md): 27종 에디토리얼 HTML/SVG 다이어그램. 브랜드 token과 draw.io/Mermaid 재작성 지원.
+- [diagram-design](diagram-design/SKILL.md): 39종 에디토리얼 HTML/SVG 다이어그램. 브랜드 token과 draw.io/Mermaid 재작성 지원.
 
 ## 벤더링된 스킬 팩
 
@@ -122,7 +122,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.                                    | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 어려운 bug와 performance regression을 위한 엄격한 진단 루프.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
-| [diagram-design](diagram-design/SKILL.md)                             | 27종 에디토리얼 HTML/SVG/PNG 다이어그램. 브랜드 token 지원. draw.io/Mermaid 재작성.                                                                                                | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) |
+| [diagram-design](diagram-design/SKILL.md)                             | 39종 에디토리얼 HTML/SVG/PNG 다이어그램. 브랜드 token 지원. draw.io/Mermaid 재작성.                                                                                                | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design) |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI를 사용해 최신 문서, API 레퍼런스, 코드 예제를 조회.                                                                                 | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Exa를 사용해 웹, 코드, 회사 정보를 조사.                                                                                                         | Custom                                                                                                                         |
 | [find-skills](find-skills/SKILL.md)                                 | 사용자가 특정 기능을 필요로 할 때 기존 스킬을 탐색.                                                                                              | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
