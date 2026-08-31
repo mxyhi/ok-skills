@@ -24,6 +24,21 @@
 
 set -e
 
+usage() {
+    cat << 'EOF'
+Usage: init-session.sh [OPTIONS] [PROJECT NAME]
+
+Initialize task_plan.md, findings.md, and progress.md for a planning session.
+
+Options:
+  -t, --template TYPE  Use the default or analytics template.
+      --plan-dir       Create an isolated plan directory without a name.
+      --autonomous     Enable autonomous mode and plan attestation.
+      --gated          Enable autonomous mode with the completion gate.
+  -h, --help           Print this help and exit without changing files.
+EOF
+}
+
 TEMPLATE="default"
 PROJECT_NAME=""
 USE_PLAN_DIR=0
@@ -50,6 +65,10 @@ while [ $# -gt 0 ]; do
         --gated)
             MODE="gated"
             shift
+            ;;
+        --help|-h)
+            usage
+            exit 0
             ;;
         *)
             if [ -z "$PROJECT_NAME" ]; then

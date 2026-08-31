@@ -6,7 +6,7 @@
 -->
 
 ## Goal
-<!-- 
+<!--
   WHAT: One clear sentence describing what you're trying to achieve.
   WHY: This is your north star. Re-reading this keeps you focused on the end state.
   EXAMPLE: "Create a Python CLI todo app with add, list, and delete functionality."

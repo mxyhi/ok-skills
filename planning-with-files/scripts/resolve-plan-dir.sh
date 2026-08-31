@@ -31,7 +31,12 @@ PLAN_ROOT="${1:-${PWD}/.planning}"
 # With the variable unset, behavior is byte-identical to the legacy shape.
 PWF_ROOT_PIN=""
 if [ -n "${PWF_PLAN_ROOT:-}" ]; then
-    if [ -d "${PWF_PLAN_ROOT}" ]; then
+    case "${PWF_PLAN_ROOT}" in
+        \\\\*|//*|[A-Za-z]:[!\\/]*) _pwf_pin_absolute=0 ;;
+        /*|[A-Za-z]:[\\/]*) _pwf_pin_absolute=1 ;;
+        *) _pwf_pin_absolute=0 ;;
+    esac
+    if [ "$_pwf_pin_absolute" = "1" ] && [ -d "${PWF_PLAN_ROOT}" ]; then
         PWF_ROOT_PIN="${PWF_PLAN_ROOT}"
         PLAN_ROOT="${PWF_PLAN_ROOT}/.planning"
     else

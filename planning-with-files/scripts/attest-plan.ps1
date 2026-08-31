@@ -31,42 +31,374 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+$script:IsWindowsHost = [Environment]::OSVersion.Platform -eq [PlatformID]::Win32NT
+if ($script:IsWindowsHost -and -not ("PwfAttestationNative" -as [type])) {
+    Add-Type -TypeDefinition @'
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using Microsoft.Win32.SafeHandles;
+
+public static class PwfAttestationNative {
+    private const uint GENERIC_READ = 0x80000000;
+    private const uint GENERIC_WRITE = 0x40000000;
+    private const uint DELETE = 0x00010000;
+    private const uint FILE_READ_ATTRIBUTES = 0x00000080;
+    private const uint FILE_SHARE_READ = 0x00000001;
+    private const uint FILE_SHARE_WRITE = 0x00000002;
+    private const uint FILE_SHARE_DELETE = 0x00000004;
+    private const uint CREATE_NEW = 1;
+    private const uint OPEN_EXISTING = 3;
+    private const uint FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
+    private const uint FILE_FLAG_OPEN_REPARSE_POINT = 0x00200000;
+    private const uint FILE_ATTRIBUTE_REPARSE_POINT = 0x00000400;
+    private const int FileAttributeTagInfo = 9;
+    private const int FileDispositionInfo = 4;
+    private const int ERROR_FILE_EXISTS = 80;
+    private const int ERROR_ALREADY_EXISTS = 183;
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct FILE_ATTRIBUTE_TAG_INFO {
+        public uint FileAttributes;
+        public uint ReparseTag;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct BY_HANDLE_FILE_INFORMATION {
+        public uint FileAttributes;
+        public System.Runtime.InteropServices.ComTypes.FILETIME CreationTime;
+        public System.Runtime.InteropServices.ComTypes.FILETIME LastAccessTime;
+        public System.Runtime.InteropServices.ComTypes.FILETIME LastWriteTime;
+        public uint VolumeSerialNumber;
+        public uint FileSizeHigh;
+        public uint FileSizeLow;
+        public uint NumberOfLinks;
+        public uint FileIndexHigh;
+        public uint FileIndexLow;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    private struct FILE_DISPOSITION_INFO {
+        [MarshalAs(UnmanagedType.Bool)] public bool DeleteFile;
+    }
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern SafeFileHandle CreateFileW(
+        string name, uint access, uint share, IntPtr security,
+        uint creation, uint flags, IntPtr template);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetFileInformationByHandleEx(
+        SafeFileHandle handle, int infoClass,
+        out FILE_ATTRIBUTE_TAG_INFO info, uint size);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool GetFileInformationByHandle(
+        SafeFileHandle handle, out BY_HANDLE_FILE_INFORMATION info);
+
+    [DllImport("kernel32.dll", SetLastError = true)]
+    private static extern bool SetFileInformationByHandle(
+        SafeFileHandle handle, int infoClass,
+        ref FILE_DISPOSITION_INFO info, uint size);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern uint GetFinalPathNameByHandleW(
+        SafeFileHandle handle, StringBuilder path, uint length, uint flags);
+
+    private static void ValidateRegular(SafeFileHandle handle, bool singleLink) {
+        FILE_ATTRIBUTE_TAG_INFO tag;
+        if (!GetFileInformationByHandleEx(
+            handle, FileAttributeTagInfo, out tag,
+            (uint)Marshal.SizeOf(typeof(FILE_ATTRIBUTE_TAG_INFO))))
+            throw new Win32Exception(Marshal.GetLastWin32Error());
+        if ((tag.FileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) != 0)
+            throw new IOException("Refusing a reparse-point file.");
+        if ((tag.FileAttributes & (uint)FileAttributes.Directory) != 0)
+            throw new IOException("Refusing a directory where a regular file is required.");
+        if (singleLink) {
+            BY_HANDLE_FILE_INFORMATION info;
+            if (!GetFileInformationByHandle(handle, out info))
+                throw new Win32Exception(Marshal.GetLastWin32Error());
+            if (info.NumberOfLinks != 1)
+                throw new IOException("Refusing a multiply-linked attestation file.");
+        }
+    }
+
+    public static SafeFileHandle OpenRead(string path, bool singleLink) {
+        SafeFileHandle handle = CreateFileW(
+            path, GENERIC_READ | FILE_READ_ATTRIBUTES,
+            FILE_SHARE_READ, IntPtr.Zero, OPEN_EXISTING,
+            FILE_FLAG_OPEN_REPARSE_POINT, IntPtr.Zero);
+        if (handle.IsInvalid) throw new Win32Exception(Marshal.GetLastWin32Error());
+        try { ValidateRegular(handle, singleLink); return handle; }
+        catch { handle.Dispose(); throw; }
+    }
+
+    public static SafeFileHandle OpenAttestationWrite(string path) {
+        uint access = GENERIC_READ | GENERIC_WRITE | DELETE | FILE_READ_ATTRIBUTES;
+        SafeFileHandle handle = CreateFileW(
+            path, access, 0, IntPtr.Zero, CREATE_NEW,
+            FILE_FLAG_OPEN_REPARSE_POINT, IntPtr.Zero);
+        if (handle.IsInvalid) {
+            int error = Marshal.GetLastWin32Error();
+            if (error != ERROR_FILE_EXISTS && error != ERROR_ALREADY_EXISTS)
+                throw new Win32Exception(error);
+            handle = CreateFileW(
+                path, access, 0, IntPtr.Zero, OPEN_EXISTING,
+                FILE_FLAG_OPEN_REPARSE_POINT, IntPtr.Zero);
+            if (handle.IsInvalid) throw new Win32Exception(Marshal.GetLastWin32Error());
+        }
+        try { ValidateRegular(handle, true); return handle; }
+        catch { handle.Dispose(); throw; }
+    }
+
+    public static SafeFileHandle OpenDelete(string path) {
+        SafeFileHandle handle = CreateFileW(
+            path, DELETE | FILE_READ_ATTRIBUTES, 0, IntPtr.Zero, OPEN_EXISTING,
+            FILE_FLAG_OPEN_REPARSE_POINT, IntPtr.Zero);
+        if (handle.IsInvalid) throw new Win32Exception(Marshal.GetLastWin32Error());
+        try { ValidateRegular(handle, true); return handle; }
+        catch { handle.Dispose(); throw; }
+    }
+
+    public static void DeleteOpened(SafeFileHandle handle) {
+        FILE_DISPOSITION_INFO info = new FILE_DISPOSITION_INFO { DeleteFile = true };
+        if (!SetFileInformationByHandle(
+            handle, FileDispositionInfo, ref info,
+            (uint)Marshal.SizeOf(typeof(FILE_DISPOSITION_INFO))))
+            throw new Win32Exception(Marshal.GetLastWin32Error());
+    }
+
+    public static string FinalPath(SafeFileHandle handle) {
+        StringBuilder buffer = new StringBuilder(32768);
+        uint length = GetFinalPathNameByHandleW(handle, buffer, (uint)buffer.Capacity, 0);
+        if (length == 0 || length >= buffer.Capacity)
+            throw new Win32Exception(Marshal.GetLastWin32Error());
+        string result = buffer.ToString();
+        if (result.StartsWith(@"\\?\UNC\", StringComparison.OrdinalIgnoreCase))
+            return @"\\" + result.Substring(8);
+        if (result.StartsWith(@"\\?\", StringComparison.OrdinalIgnoreCase))
+            return result.Substring(4);
+        return result;
+    }
+
+    public static string FileIdentity(SafeFileHandle handle) {
+        BY_HANDLE_FILE_INFORMATION info;
+        if (!GetFileInformationByHandle(handle, out info))
+            throw new Win32Exception(Marshal.GetLastWin32Error());
+        return info.VolumeSerialNumber.ToString("X8") + ":" +
+            info.FileIndexHigh.ToString("X8") + info.FileIndexLow.ToString("X8");
+    }
+
+    public static string FinalDirectoryPath(string path) {
+        using (SafeFileHandle handle = OpenDirectory(path)) {
+            return FinalPath(handle);
+        }
+    }
+
+    public static SafeFileHandle OpenDirectory(string path) {
+        SafeFileHandle handle = CreateFileW(
+            path, 0, FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+            IntPtr.Zero, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, IntPtr.Zero);
+        if (handle.IsInvalid) throw new Win32Exception(Marshal.GetLastWin32Error());
+        return handle;
+    }
+}
+'@
+}
+
+$script:SecurityRootHandle = $null
+$script:SecurityRootFinalPath = $null
+if ($script:IsWindowsHost) {
+    $securityRootPath = (Get-Location).Path
+    if ($env:PWF_PLAN_ROOT) {
+        $pin = $env:PWF_PLAN_ROOT
+        $isUnc = $pin.StartsWith('\\') -or $pin.StartsWith('//')
+        if (-not [IO.Path]::IsPathFullyQualified($pin) -or $isUnc) {
+            throw "[plan-attest] PWF_PLAN_ROOT must be an absolute local path."
+        }
+        $securityRootPath = $pin
+    }
+    $script:SecurityRootHandle = [PwfAttestationNative]::OpenDirectory($securityRootPath)
+    $script:SecurityRootFinalPath = [PwfAttestationNative]::FinalPath($script:SecurityRootHandle).TrimEnd('\', '/')
+}
+
+function Test-FinalPathWithinSecurityRoot {
+    param([string] $FinalPath)
+    $candidate = $FinalPath.TrimEnd('\', '/')
+    if ([string]::Equals($candidate, $script:SecurityRootFinalPath, [StringComparison]::OrdinalIgnoreCase)) {
+        return $true
+    }
+    return $candidate.StartsWith(
+        $script:SecurityRootFinalPath + [IO.Path]::DirectorySeparatorChar,
+        [StringComparison]::OrdinalIgnoreCase
+    )
+}
+
+function Open-TrustedDirectory {
+    param([string] $ExpectedDirectory)
+    $handle = [PwfAttestationNative]::OpenDirectory($ExpectedDirectory)
+    try {
+        $finalPath = [PwfAttestationNative]::FinalPath($handle).TrimEnd('\', '/')
+        if (-not (Test-FinalPathWithinSecurityRoot $finalPath)) {
+            throw "Refusing a plan directory outside the frozen project root."
+        }
+        return [PSCustomObject]@{
+            Handle = $handle
+            FinalPath = $finalPath
+            Identity = [PwfAttestationNative]::FileIdentity($handle)
+        }
+    } catch {
+        $handle.Dispose()
+        throw
+    }
+}
+
+function Assert-HandleParent {
+    param(
+        [Microsoft.Win32.SafeHandles.SafeFileHandle] $Handle,
+        [string] $ExpectedDirectoryFinal,
+        [string] $ExpectedDirectoryIdentity
+    )
+    if (-not $script:IsWindowsHost) { return }
+    $openedPath = [PwfAttestationNative]::FinalPath($Handle)
+    $openedParent = (Split-Path -Parent $openedPath).TrimEnd('\', '/')
+    if (-not [string]::Equals($openedParent, $ExpectedDirectoryFinal, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "Refusing file outside the expected plan directory."
+    }
+    $parentHandle = [PwfAttestationNative]::OpenDirectory($openedParent)
+    try {
+        $openedIdentity = [PwfAttestationNative]::FileIdentity($parentHandle)
+        if (-not [string]::Equals($openedIdentity, $ExpectedDirectoryIdentity, [StringComparison]::Ordinal)) {
+            throw "Refusing a file whose parent directory identity changed."
+        }
+    } finally {
+        $parentHandle.Dispose()
+    }
+}
+
+function Open-SafeReadStream {
+    param([string] $Path, [string] $ExpectedDirectory, [switch] $SingleLink)
+    if (-not $script:IsWindowsHost) {
+        throw "[plan-attest] Safe no-follow descriptor operations are unavailable in this PowerShell script on Unix. Use scripts/attest-plan.sh instead."
+    }
+    $directory = Open-TrustedDirectory -ExpectedDirectory $ExpectedDirectory
+    try {
+        $handle = [PwfAttestationNative]::OpenRead($Path, [bool]$SingleLink)
+        try {
+            Assert-HandleParent -Handle $handle -ExpectedDirectoryFinal $directory.FinalPath -ExpectedDirectoryIdentity $directory.Identity
+            return New-Object System.IO.FileStream($handle, [IO.FileAccess]::Read)
+        } catch {
+            $handle.Dispose()
+            throw
+        }
+    } finally {
+        $directory.Handle.Dispose()
+    }
+}
+
+function Read-SafeText {
+    param([string] $Path, [string] $ExpectedDirectory, [int64] $MaxBytes)
+    $stream = Open-SafeReadStream -Path $Path -ExpectedDirectory $ExpectedDirectory -SingleLink
+    try {
+        if ($stream.Length -gt $MaxBytes) { throw "Refusing oversized metadata file."
+        }
+        $buffer = New-Object byte[] ([int]$stream.Length)
+        $offset = 0
+        while ($offset -lt $buffer.Length) {
+            $read = $stream.Read($buffer, $offset, $buffer.Length - $offset)
+            if ($read -le 0) { break }
+            $offset += $read
+        }
+        return [Text.Encoding]::UTF8.GetString($buffer, 0, $offset)
+    } finally {
+        $stream.Dispose()
+    }
+}
+
+function Write-SafeAscii {
+    param([string] $Path, [string] $ExpectedDirectory, [string] $Value)
+    $bytes = [Text.Encoding]::ASCII.GetBytes($Value)
+    if (-not $script:IsWindowsHost) {
+        throw "[plan-attest] Safe no-follow descriptor operations are unavailable in this PowerShell script on Unix. Use scripts/attest-plan.sh instead."
+    }
+    $directory = Open-TrustedDirectory -ExpectedDirectory $ExpectedDirectory
+    try {
+        $handle = [PwfAttestationNative]::OpenAttestationWrite($Path)
+        try {
+            Assert-HandleParent -Handle $handle -ExpectedDirectoryFinal $directory.FinalPath -ExpectedDirectoryIdentity $directory.Identity
+            $stream = New-Object System.IO.FileStream($handle, [IO.FileAccess]::ReadWrite)
+            $handle = $null
+            try {
+                $stream.SetLength(0)
+                $stream.Write($bytes, 0, $bytes.Length)
+                $stream.Flush($true)
+                $stream.Position = 0
+                $verify = New-Object byte[] $bytes.Length
+                $read = $stream.Read($verify, 0, $verify.Length)
+                return [Text.Encoding]::ASCII.GetString($verify, 0, $read)
+            } finally {
+                $stream.Dispose()
+            }
+        } finally {
+            if ($handle) { $handle.Dispose() }
+        }
+    } finally {
+        $directory.Handle.Dispose()
+    }
+}
+
+function Remove-SafeFile {
+    param([string] $Path, [string] $ExpectedDirectory)
+    if (-not $script:IsWindowsHost) {
+        throw "[plan-attest] Safe no-follow descriptor operations are unavailable in this PowerShell script on Unix. Use scripts/attest-plan.sh instead."
+    }
+    $directory = Open-TrustedDirectory -ExpectedDirectory $ExpectedDirectory
+    try {
+        $handle = [PwfAttestationNative]::OpenDelete($Path)
+        try {
+            Assert-HandleParent -Handle $handle -ExpectedDirectoryFinal $directory.FinalPath -ExpectedDirectoryIdentity $directory.Identity
+            [PwfAttestationNative]::DeleteOpened($handle)
+        } finally {
+            $handle.Dispose()
+        }
+    } finally {
+        $directory.Handle.Dispose()
+    }
+}
+
+function Resolve-ContainedPlanFile {
+    param(
+        [string] $Candidate,
+        [string] $ExpectedDirectory
+    )
+    if (-not (Test-Path -LiteralPath $Candidate -PathType Leaf)) { return $null }
+    try {
+        $stream = Open-SafeReadStream -Path $Candidate -ExpectedDirectory $ExpectedDirectory
+        $stream.Dispose()
+        return (Get-Item -LiteralPath $Candidate -Force -ErrorAction Stop).FullName
+    } catch { return $null }
+}
+
 function Resolve-PlanFile {
-    $planRoot = Join-Path (Get-Location) ".planning"
-
-    if ($env:PLAN_ID) {
-        $candidate = Join-Path $planRoot $env:PLAN_ID
-        $planFile  = Join-Path $candidate "task_plan.md"
-        if (Test-Path -LiteralPath $planFile) { return (Resolve-Path -LiteralPath $planFile).Path }
+    $resolver = Join-Path $PSScriptRoot "resolve-plan-dir.ps1"
+    if (-not (Test-Path -LiteralPath $resolver -PathType Leaf)) { return $null }
+    $resolvedDir = @(& $resolver | Where-Object { $_ }) | Select-Object -First 1
+    if ($resolvedDir) {
+        $planFile = Join-Path $resolvedDir "task_plan.md"
+        return (Resolve-ContainedPlanFile -Candidate $planFile -ExpectedDirectory $resolvedDir)
     }
 
-    $activePointer = Join-Path $planRoot ".active_plan"
-    if (Test-Path -LiteralPath $activePointer) {
-        $planId = (Get-Content -LiteralPath $activePointer -Raw).Trim()
-        if ($planId) {
-            $candidate = Join-Path $planRoot $planId
-            $planFile  = Join-Path $candidate "task_plan.md"
-            if (Test-Path -LiteralPath $planFile) { return (Resolve-Path -LiteralPath $planFile).Path }
-        }
-    }
-
-    if (Test-Path -LiteralPath $planRoot) {
-        $newest = Get-ChildItem -LiteralPath $planRoot -Directory -ErrorAction SilentlyContinue |
-            Where-Object { -not $_.Name.StartsWith(".") } |
-            Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName "task_plan.md") } |
-            Sort-Object LastWriteTime -Descending |
-            Select-Object -First 1
-        if ($newest) {
-            return (Resolve-Path -LiteralPath (Join-Path $newest.FullName "task_plan.md")).Path
-        }
-    }
+    # An explicit pin or a scoped selector that failed validation must never
+    # fall through and attest an unrelated legacy-root plan.
+    if ($env:PWF_PLAN_ROOT -or $env:PLAN_ID) { return $null }
+    $activePointer = Join-Path (Join-Path (Get-Location) ".planning") ".active_plan"
+    if (Test-Path -LiteralPath $activePointer) { return $null }
 
     $legacy = Join-Path (Get-Location) "task_plan.md"
-    if (Test-Path -LiteralPath $legacy) {
-        return (Resolve-Path -LiteralPath $legacy).Path
-    }
-
-    return $null
+    return (Resolve-ContainedPlanFile -Candidate $legacy -ExpectedDirectory (Get-Location).Path)
 }
 
 function Get-AttestationPath {
@@ -86,18 +418,19 @@ if (-not $planFile) {
 }
 
 $attestationFile = Get-AttestationPath -PlanFile $planFile
+$attestationDir = Split-Path -Parent $attestationFile
 
 if ($Show) {
-    if (Test-Path -LiteralPath $attestationFile) {
+    if (Get-Item -LiteralPath $attestationFile -Force -ErrorAction SilentlyContinue) {
         Write-Output "Plan: $planFile"
         Write-Output "Attestation: $attestationFile"
-        Write-Output ("SHA-256: " + (Get-Content -LiteralPath $attestationFile -Raw).Trim())
+        Write-Output ("SHA-256: " + (Read-SafeText -Path $attestationFile -ExpectedDirectory $attestationDir -MaxBytes 4096).Trim())
         # Nonce (security A1.4): surface the per-plan nonce if init-session
         # generated one next to the attestation. Informational only here; the
         # hooks consume it to build collision-proof BEGIN/END delimiters.
         $nonceFile = Join-Path (Split-Path -Parent $attestationFile) ".nonce"
-        if (Test-Path -LiteralPath $nonceFile) {
-            $nonceVal = (Get-Content -LiteralPath $nonceFile -Raw).Trim()
+        if (Get-Item -LiteralPath $nonceFile -Force -ErrorAction SilentlyContinue) {
+            $nonceVal = (Read-SafeText -Path $nonceFile -ExpectedDirectory $attestationDir -MaxBytes 4096).Trim()
             if ($nonceVal) { Write-Output "Nonce: $nonceVal" }
         }
     } else {
@@ -108,8 +441,8 @@ if ($Show) {
 }
 
 if ($Clear) {
-    if (Test-Path -LiteralPath $attestationFile) {
-        Remove-Item -LiteralPath $attestationFile -Force
+    if (Get-Item -LiteralPath $attestationFile -Force -ErrorAction SilentlyContinue) {
+        Remove-SafeFile -Path $attestationFile -ExpectedDirectory $attestationDir
         Write-Output "[plan-attest] Cleared attestation for $planFile."
     } else {
         Write-Output "[plan-attest] No attestation to clear."
@@ -117,13 +450,23 @@ if ($Clear) {
     exit 0
 }
 
-$hashVal = (Get-FileHash -LiteralPath $planFile -Algorithm SHA256).Hash.ToLowerInvariant()
-Set-Content -LiteralPath $attestationFile -Value $hashVal -NoNewline -Encoding ascii
+$planStream = Open-SafeReadStream -Path $planFile -ExpectedDirectory (Split-Path -Parent $planFile)
+try {
+    $sha256 = [Security.Cryptography.SHA256]::Create()
+    try {
+        $hashBytes = $sha256.ComputeHash($planStream)
+    } finally {
+        $sha256.Dispose()
+    }
+} finally {
+    $planStream.Dispose()
+}
+$hashVal = ([BitConverter]::ToString($hashBytes)).Replace("-", "").ToLowerInvariant()
+$storedHash = Write-SafeAscii -Path $attestationFile -ExpectedDirectory $attestationDir -Value $hashVal
 
 # Integrity verification (security A2.1): confirm the on-disk attestation
 # matches the intended hash before reporting success. A silent write failure
 # (permissions, full disk) must not leave a stale attestation and exit clean.
-$storedHash = (Get-Content -LiteralPath $attestationFile -Raw -ErrorAction SilentlyContinue)
 if ($null -ne $storedHash) { $storedHash = $storedHash.Trim() }
 if ($storedHash -ne $hashVal) {
     Write-Error "[plan-attest] Attestation write verification FAILED for $attestationFile. Expected $hashVal, found $storedHash. The plan is NOT attested."

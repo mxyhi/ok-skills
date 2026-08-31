@@ -1,42 +1,9 @@
 ---
 name: planning-with-files
 description: "Manus-style persistent file-based planning for AI coding agents: keeps task_plan.md, findings.md, and progress.md on disk so work survives context loss and /clear. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring 5+ tool calls. Supports automatic session recovery after /clear."
-user-invocable: true
 allowed-tools: "Read Write Edit Bash Glob Grep"
-hooks:
-  # Generated dispatch block: the 11 IDE and language variants share one
-  # template (parity locked by tests/test_skill_hook_dispatch_parity.py).
-  # Candidate order, first existing file wins: PWF_SCRIPT_DIR (explicit user
-  # override for workspace or other nonstandard installs), CLAUDE_SKILL_DIR,
-  # host env var, host user-level install dirs, then the two .claude paths.
-  # Deliberate asymmetry: only UserPromptSubmit reports an unresolved script,
-  # once per prompt. PreToolUse and PreCompact fire per tool call and Stop
-  # carries no plan body, so a notice there would be spam; they stay silent.
-  UserPromptSubmit:
-    - hooks:
-        - type: command
-          command: "SH=\"\"; for c in \"${PWF_SCRIPT_DIR}/inject-plan.sh\" \"${CLAUDE_SKILL_DIR}/scripts/inject-plan.sh\" \"$HOME/.codex/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/plugins/marketplaces/planning-with-files/scripts/inject-plan.sh\"; do [ -f \"$c\" ] && { SH=\"$c\"; break; }; done; if [ -n \"$SH\" ]; then sh \"$SH\" --context=userprompt; else echo \"[planning-with-files] hook script not found; plan injection is off. Set PWF_SCRIPT_DIR to the skill's scripts directory, or install the skill to a user-level path.\"; fi; exit 0"
-  PreToolUse:
-    - matcher: "Write|Edit|Bash|Read|Glob|Grep"
-      hooks:
-        - type: command
-          command: "SH=\"\"; for c in \"${PWF_SCRIPT_DIR}/inject-plan.sh\" \"${CLAUDE_SKILL_DIR}/scripts/inject-plan.sh\" \"$HOME/.codex/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/plugins/marketplaces/planning-with-files/scripts/inject-plan.sh\"; do [ -f \"$c\" ] && { SH=\"$c\"; break; }; done; [ -n \"$SH\" ] && sh \"$SH\" --context=pretool; exit 0"
-  PostToolUse:
-    - matcher: "Write|Edit"
-      hooks:
-        - type: command
-          command: "if [ -f task_plan.md ] || [ -f .planning/.active_plan ] || ls .planning/*/task_plan.md >/dev/null 2>&1; then echo '[planning-with-files] Update progress.md with what you just did. If a phase is now complete, update task_plan.md status.'; fi"
-  Stop:
-    - hooks:
-        - type: command
-          command: "PS1_T=\"\"; for c in \"${PWF_SCRIPT_DIR}/check-complete.ps1\" \"${CLAUDE_SKILL_DIR}/scripts/check-complete.ps1\" \"$HOME/.codex/skills/planning-with-files/scripts/check-complete.ps1\" \"$HOME/.claude/skills/planning-with-files/scripts/check-complete.ps1\" \"$HOME/.claude/plugins/marketplaces/planning-with-files/scripts/check-complete.ps1\"; do [ -f \"$c\" ] && { PS1_T=\"$c\"; break; }; done; SH_T=\"\"; for c in \"${PWF_SCRIPT_DIR}/check-complete.sh\" \"${CLAUDE_SKILL_DIR}/scripts/check-complete.sh\" \"$HOME/.codex/skills/planning-with-files/scripts/check-complete.sh\" \"$HOME/.claude/skills/planning-with-files/scripts/check-complete.sh\" \"$HOME/.claude/plugins/marketplaces/planning-with-files/scripts/check-complete.sh\"; do [ -f \"$c\" ] && { SH_T=\"$c\"; break; }; done; case \"$(uname -s 2>/dev/null)\" in MINGW*|MSYS*|CYGWIN*) if [ -n \"$PS1_T\" ] && [ -f \"$PS1_T\" ]; then powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File \"$PS1_T\" 2>/dev/null; elif [ -n \"$SH_T\" ] && [ -f \"$SH_T\" ]; then sh \"$SH_T\" 2>/dev/null; fi ;; *) if [ -n \"$SH_T\" ] && [ -f \"$SH_T\" ]; then sh \"$SH_T\" 2>/dev/null; elif [ -n \"$PS1_T\" ] && [ -f \"$PS1_T\" ]; then powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File \"$PS1_T\" 2>/dev/null; fi ;; esac; exit 0"
-  PreCompact:
-    - matcher: "*"
-      hooks:
-        - type: command
-          command: "SH=\"\"; for c in \"${PWF_SCRIPT_DIR}/inject-plan.sh\" \"${CLAUDE_SKILL_DIR}/scripts/inject-plan.sh\" \"$HOME/.codex/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/skills/planning-with-files/scripts/inject-plan.sh\" \"$HOME/.claude/plugins/marketplaces/planning-with-files/scripts/inject-plan.sh\"; do [ -f \"$c\" ] && { SH=\"$c\"; break; }; done; [ -n \"$SH\" ] && sh \"$SH\" --context=precompact; exit 0"
 metadata:
-  version: "3.10.1"
+  version: "3.11.2"
 
 ---
 
