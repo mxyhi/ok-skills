@@ -1,0 +1,9 @@
+*.bak
+SKILL.md.bak*
+lessons/
+__pycache__/
+.DS_Store
+tmp/
+language.txt
+start_time.txt
+gh-pages/

@@ -77,7 +77,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 ### 계획 및 프롬프트
 
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`, `findings.md`, `progress.md`를 사용하는 지속형 마크다운 계획 수립.
-- [autoresearch](autoresearch/SKILL.md): 명확한 목표, 지표, 검증 루프, keep/discard 게이트 기반의 자율 목표 지향 반복.
+- [deep-research](deep-research/SKILL.md): 병렬 장 작성, 최신 데이터 타기팅, 다국어 출력, 내장 품질 검사를 지원하는 전문 심층 연구 보고서 생성.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): 어려운 bug와 performance regression을 위한 엄격한 진단 루프.
 - [grilling](grilling/SKILL.md): 직접 grill session에서 쓰는 reusable one-question-at-a-time interview loop.
 - [teach](teach/SKILL.md): mission, resources, lessons, learning records를 쓰는 stateful teaching workspace 운영.
@@ -117,7 +117,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 시대의 curl. URL 가져오기, 페이지 구조 탐색, 구조화 데이터 추출을 일회성 파서 없이 수행.                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
-| [autoresearch](autoresearch/SKILL.md)                               | 수정, 검증, keep/discard, 반복 워크플로를 위한 자율 목표 지향 반복 엔진.                                                                                 | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
+| [deep-research](deep-research/SKILL.md)                             | 병렬 장 작성, 최신 데이터 타기팅, 다국어 출력, 내장 품질 검사를 지원하는 전문 심층 연구 보고서 생성.                                      | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.                                    | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [caveman](caveman/SKILL.md)                                         | 기술 정확성은 유지한 채 원시인 말투의 초압축 응답으로 토큰 사용량을 줄입니다.                                                                    | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |

@@ -77,7 +77,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 規劃與提示工程
 
 - [planning-with-files](planning-with-files/SKILL.md)：透過 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。
-- [autoresearch](autoresearch/SKILL.md)：以明確目標、度量、驗證迴圈和保留/丟棄門禁驅動自主迭代。
+- [deep-research](deep-research/SKILL.md)：生成專業深度調研報告，支援並行章節撰寫、最新資料定向、多語言輸出和內建品質檢查。
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md)：面向疑難 bug 與效能回歸的嚴格診斷迴圈。
 - [grilling](grilling/SKILL.md)：用於直接 grill 會話 的一次一題訪談循環。
 - [teach](teach/SKILL.md): 透過 mission、resources、lessons 與 learning records 維護持續教學 workspace。
@@ -116,7 +116,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 時代的 curl：抓取 URL、發現頁面結構、提取結構化資料，取代臨時解析腳本。                                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的瀏覽器自動化：導覽、表單、截圖、資料擷取與網頁測試。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
-| [autoresearch](autoresearch/SKILL.md)                               | 自主目標導向迭代引擎，覆蓋修改、驗證、保留/丟棄與重複推進工作流。                                                                          | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
+| [deep-research](deep-research/SKILL.md)                             | 生成專業深度調研報告，支援並行章節撰寫、最新資料定向、多語言輸出和內建品質檢查。                                                            | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | 透過 CLI 或 MCP 工具搜尋 200+ Iconify 圖示庫並取得 SVG 圖示。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 透過本機守護行程控制使用者的真實瀏覽器，用於導覽、表單填寫、截圖、頁面讀取和登入狀態工作階段。                                                | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [caveman](caveman/SKILL.md)                                         | 用「穴居人」式極簡表達壓縮回覆 tokens，同時保留完整技術準確性，並支援多段強度。                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |

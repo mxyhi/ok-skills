@@ -77,7 +77,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 ### Planning & Prompting
 
 - [planning-with-files](planning-with-files/SKILL.md): `task_plan.md`、`findings.md`、`progress.md` を使った永続的な markdown planning
-- [autoresearch](autoresearch/SKILL.md): 明確な goal、metric、verify loop、keep/discard gate による自律的な goal-directed iteration
+- [deep-research](deep-research/SKILL.md): 並列章執筆、最新データ指定、多言語出力、組み込み品質チェックに対応する専門的な深層調査レポート生成。
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): hard bug と performance regression のための規律ある診断ループ。
 - [grilling](grilling/SKILL.md): 直接の grill session で使う一問ずつの reusable interview loop。
 - [teach](teach/SKILL.md): mission、resources、lessons、learning records を使う stateful teaching workspace を運用する。
@@ -117,7 +117,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 時代の curl。URL 取得・ページ構造の発見・構造化データ抽出を、使い捨てパーサなしで行う。                                                                                          | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents 向けのブラウザ自動化 CLI。ナビゲーション、フォーム入力、スクリーンショット、データ抽出、Web テストに対応。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
-| [autoresearch](autoresearch/SKILL.md)                               | modify、verify、keep/discard、repeat workflows のための自律的な goal-directed iteration engine。                                                                                       | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
+| [deep-research](deep-research/SKILL.md)                             | 並列章執筆、最新データ指定、多言語出力、組み込み品質チェックに対応する専門的な深層調査レポート生成。                                       | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI または MCP ツールで 200 以上の Iconify ライブラリを検索し、SVG アイコンを取得する。                                                                                                       | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | ローカルデーモン経由でユーザーの実ブラウザを操作し、ナビゲーション、フォーム入力、スクリーンショット、ページ読解、ログイン済みセッションに対応します。                                      | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [caveman](caveman/SKILL.md)                                         | 技術的な正確性を保ったまま、洞穴人風の超短文で応答トークンを削減する。                                                                          | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
