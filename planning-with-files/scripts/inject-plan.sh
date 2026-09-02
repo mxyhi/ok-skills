@@ -27,27 +27,26 @@
 
 set -u
 
-# Select a working interpreter, not merely the first executable name on PATH.
+# Validate candidate interpreters supplied by the selector wrappers below.
 # Windows Store app aliases can exist as python3.exe while refusing every
 # script invocation. Probe candidates privately and fail closed if none runs.
-select_python() {
-    # PWF_TRUSTED_PYTHON is the explicit trust path. PYTHON_BIN remains a
-    # compatibility alias. PATH discovery is a deliberate fallback: the hook
-    # treats the caller's PATH as executable trust, but still requires the
-    # resolved candidate to be an absolute regular executable.
-    for _sp_candidate in "${PWF_TRUSTED_PYTHON:-}" "${PYTHON_BIN:-}" "$(command -v python3 2>/dev/null)" "$(command -v python 2>/dev/null)"; do
+select_python_candidates() {
+    for _sp_candidate in "$@"; do
         [ -n "$_sp_candidate" ] || continue
+        is_windowsapps_path "$_sp_candidate" && continue
         case "$_sp_candidate" in
             \\\\*|//*) continue ;;
             [A-Za-z]:[\\/]*)
                 # Git Bash cannot reliably test or invoke C:\... spelling.
-                # Convert before every filesystem predicate and invocation.
-                command -v cygpath >/dev/null 2>&1 || continue
-                _sp_candidate="$(cygpath -u "$_sp_candidate" 2>/dev/null)" || continue
+                # Convert with Git Bash's fixed system helper, never PATH.
+                _sp_cygpath="/usr/bin/cygpath.exe"
+                [ -f "$_sp_cygpath" ] && [ -x "$_sp_cygpath" ] || continue
+                _sp_candidate="$("$_sp_cygpath" -u "$_sp_candidate" 2>/dev/null)" || continue
                 ;;
             /*) ;;
             *) continue ;;
         esac
+        is_windowsapps_path "$_sp_candidate" && continue
         [ -f "$_sp_candidate" ] || continue
         [ -x "$_sp_candidate" ] || continue
         if "$_sp_candidate" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 8) else 1)' >/dev/null 2>&1; then
@@ -56,6 +55,21 @@ select_python() {
         fi
     done
     return 1
+}
+
+# Containment may use only an interpreter path the caller explicitly trusted.
+select_explicit_python() {
+    select_python_candidates "${PWF_TRUSTED_PYTHON:-}" "${PYTHON_BIN:-}"
+}
+
+# After containment succeeds, PATH discovery remains a compatibility fallback
+# for hosts that do not export an interpreter path to direct hook invocations.
+select_python() {
+    select_python_candidates \
+        "${PWF_TRUSTED_PYTHON:-}" \
+        "${PYTHON_BIN:-}" \
+        "$(command -v python3 2>/dev/null)" \
+        "$(command -v python 2>/dev/null)"
 }
 
 # issue #195: per-invocation opt-out (PLANNING_DISABLED=1) for one-shot/CI
@@ -154,13 +168,24 @@ norm_slashes() {
     done
 }
 
-# Portable path canonicalizer. realpath first (Linux, modern coreutils),
-# then readlink -f (older GNU), then python3/python os.path.realpath. Prints
-# the canonical absolute path on success; prints nothing and returns 1 on a
-# full miss so the caller can decide what to do. No python spawn on the happy
-# path: realpath/readlink cover Linux, WSL, Git-Bash, and modern macOS.
-# (Copied verbatim from resolve-plan-dir.sh so hook injection gets the same
-# symlink containment as the resolver — see security A1.3.)
+# Return true when a candidate path names the Microsoft Store WindowsApps
+# directory. Matching is case-insensitive and works after slash normalization.
+is_windowsapps_path() {
+    norm_slashes "$1"
+    case "${NORM_OUT}" in
+        [Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]|\
+        [Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]/*|\
+        */[Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]|\
+        */[Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]/*) return 0 ;;
+    esac
+    return 1
+}
+
+# Portable path canonicalizer. realpath first (Linux, modern coreutils), then
+# readlink -f (older GNU), then the interpreter already validated by
+# select_python(). Prints the canonical absolute path on success; prints
+# nothing and returns 1 on a full miss so the caller can decide what to do.
+# The fallback must not rediscover or execute an unvalidated PATH interpreter.
 canonicalize() {
     target="$1"
     if command -v realpath >/dev/null 2>&1; then
@@ -171,12 +196,8 @@ canonicalize() {
         out="$(readlink -f "${target}" 2>/dev/null)" && [ -n "${out}" ] && {
             printf "%s\n" "${out}"; return 0; }
     fi
-    if command -v python3 >/dev/null 2>&1; then
-        out="$(python3 -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
-            && [ -n "${out}" ] && { printf "%s\n" "${out}"; return 0; }
-    fi
-    if command -v python >/dev/null 2>&1; then
-        out="$(python -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
+    if [ -n "${PWF_PYTHON:-}" ]; then
+        out="$("${PWF_PYTHON}" -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
             && [ -n "${out}" ] && { printf "%s\n" "${out}"; return 0; }
     fi
     return 1
@@ -256,9 +277,9 @@ fi
 if [ -z "$RESOLVED" ] && [ -f "${PLAN_PREFIX}task_plan.md" ]; then RESOLVED="${PLAN_PREFIX}."; SCOPE="root"; fi
 [ -z "$RESOLVED" ] && exit 0
 
-# Do not probe or execute any interpreter until a real, contained plan exists.
-# This keeps opt-out and no-plan hook fires side-effect free even when an
-# untrusted PYTHON_BIN or PATH entry points at an executable canary.
+# Do not probe or execute any interpreter until a real plan exists. Before
+# containment, only an explicit PWF_TRUSTED_PYTHON or PYTHON_BIN may be used.
+# PATH discovery remains deferred until containment succeeds.
 if [ "$SCOPE" = "root" ]; then
     PRECHECK_PLAN_FILE="${PLAN_PREFIX}task_plan.md"
 else
@@ -266,8 +287,9 @@ else
 fi
 [ -f "$PRECHECK_PLAN_FILE" ] || exit 0
 [ -L "$PRECHECK_PLAN_FILE" ] && exit 0
+PWF_PYTHON="$(select_explicit_python 2>/dev/null)" || PWF_PYTHON=""
 is_within_root "$PRECHECK_PLAN_FILE" || exit 0
-PWF_PYTHON="$(select_python 2>/dev/null)" || PWF_PYTHON=""
+[ -n "$PWF_PYTHON" ] || PWF_PYTHON="$(select_python 2>/dev/null)" || PWF_PYTHON=""
 
 # Session attachment is evaluated only after plan existence is proven. A
 # stale sessions directory without any plan must not cause interpreter probes.

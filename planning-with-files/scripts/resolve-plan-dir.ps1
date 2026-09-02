@@ -140,14 +140,17 @@ if ($env:PLAN_ID) {
     }
 }
 
-if (Test-Path -LiteralPath $activeFile) {
-    $activeItem = Get-Item -LiteralPath $activeFile -Force -ErrorAction SilentlyContinue
-    if ($activeItem -and -not $activeItem.PSIsContainer -and
-        (($activeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0)) {
-        $planId = (Get-Content -LiteralPath $activeFile -Raw).Trim()
-    } else {
-        $planId = $null
+# Get-Item observes the link object even when its target is missing, unlike
+# Test-Path which follows the target. An active pointer that is a directory or
+# reparse point is an unsafe/ambiguous selector and must terminate resolution;
+# falling through would silently select and expose the newest unrelated plan.
+$activeItem = Get-Item -LiteralPath $activeFile -Force -ErrorAction SilentlyContinue
+if ($activeItem) {
+    if ($activeItem.PSIsContainer -or
+        (($activeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)) {
+        exit 0
     }
+    $planId = (Get-Content -LiteralPath $activeFile -Raw).Trim()
     if ($planId -and (Test-ValidSlug $planId)) {
         $candidate = Join-Path $PlanRoot $planId
         if ((Test-Path $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {

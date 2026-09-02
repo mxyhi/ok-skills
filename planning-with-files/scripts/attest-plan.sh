@@ -9,7 +9,8 @@
 #   1. $PLAN_ID env var → ./.planning/$PLAN_ID/
 #   2. ./.planning/.active_plan
 #   3. Newest ./.planning/<dir>/ by mtime
-#   4. Legacy ./task_plan.md at project root
+#   4. Current directory when it is .planning/<valid-slug>/
+#   5. Legacy ./task_plan.md at project root
 #
 # Usage:
 #   sh scripts/attest-plan.sh         # attest the active plan
@@ -21,6 +22,25 @@ set -u
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 RESOLVER="${SCRIPT_DIR}/resolve-plan-dir.sh"
 
+slug_is_valid() {
+    case "$1" in
+        '') return 1 ;;
+        *[!A-Za-z0-9._-]*) return 1 ;;
+        [A-Za-z0-9_]*) return 0 ;;
+    esac
+    return 1
+}
+
+resolve_from_slug_cwd() {
+    slug_cwd="$(pwd -P 2>/dev/null)" || return 1
+    planning_dir="${slug_cwd%/*}"
+    [ "${planning_dir##*/}" = ".planning" ] || return 1
+    plan_id="${slug_cwd##*/}"
+    slug_is_valid "${plan_id}" || return 1
+    [ -f "${slug_cwd}/task_plan.md" ] || return 1
+    printf "%s\n" "${slug_cwd}/task_plan.md"
+}
+
 resolve_plan_file() {
     plan_dir=""
     if [ -f "${RESOLVER}" ]; then
@@ -30,6 +50,22 @@ resolve_plan_file() {
         printf "%s\n" "${plan_dir}/task_plan.md"
         return 0
     fi
+
+    # Explicit selectors are bindings, not hints. If the shared resolver
+    # rejected one, do not attest a different plan through a cwd fallback.
+    if [ -n "${PWF_PLAN_ROOT:-}" ] || [ -n "${PLAN_ID:-}" ]; then
+        return 1
+    fi
+
+    # An absolute script path does not change the invoking shell's cwd. When
+    # that cwd is a slug plan directory, keep slug-mode storage semantics
+    # instead of misclassifying its task_plan.md as a legacy root plan.
+    slug_plan_file="$(resolve_from_slug_cwd)" || slug_plan_file=""
+    if [ -n "${slug_plan_file}" ]; then
+        printf "%s\n" "${slug_plan_file}"
+        return 0
+    fi
+
     if [ -f "./task_plan.md" ]; then
         printf "%s\n" "./task_plan.md"
         return 0
