@@ -1,0 +1,267 @@
+{
+  "version": 1,
+  "description": "Deep-research 优质源列表。Task 2 启动时自动读取，按存活状态动态注入 prompt。死源自动跳过，不影响流程。",
+  "sources": [
+    {
+      "id": "semantic_scholar",
+      "name": "Semantic Scholar",
+      "type": "academic",
+      "url_template": "https://api.semanticscholar.org/graph/v1/paper/search?query={query}&limit=5",
+      "lang": ["en"],
+      "health_url": "https://api.semanticscholar.org/graph/v1/paper/search?query=test&limit=1",
+      "priority": 1
+    },
+    {
+      "id": "arxiv",
+      "name": "arXiv",
+      "type": "academic",
+      "url_template": "https://export.arxiv.org/api/query?search_query=all:{query}&start=0&max_results=5",
+      "lang": ["en"],
+      "health_url": "https://export.arxiv.org/api/query?search_query=all:test&start=0&max_results=1",
+      "priority": 1
+    },
+    {
+      "id": "pubmed",
+      "name": "PubMed",
+      "type": "academic",
+      "url_template": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term={query}&retmax=5&retmode=json",
+      "lang": ["en"],
+      "health_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=test&retmax=1&retmode=json",
+      "priority": 1
+    },
+    {
+      "id": "google_scholar",
+      "name": "Google Scholar",
+      "type": "academic",
+      "url_template": "https://scholar.google.com/scholar?q={query}&hl=en&as_sdt=0%2C5&as_ylo=2020",
+      "lang": ["en"],
+      "health_url": "https://scholar.google.com",
+      "priority": 1
+    },
+    {
+      "id": "world_bank",
+      "name": "World Bank",
+      "type": "data",
+      "url_template": "https://www.worldbank.org/en/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.worldbank.org",
+      "priority": 2
+    },
+    {
+      "id": "imf",
+      "name": "IMF",
+      "type": "data",
+      "url_template": "https://www.imf.org/en/Search#q={query}&sort=relevancy",
+      "lang": ["en"],
+      "health_url": "https://www.imf.org",
+      "priority": 2
+    },
+    {
+      "id": "our_world_in_data",
+      "name": "Our World in Data",
+      "type": "data",
+      "url_template": "https://ourworldindata.org/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://ourworldindata.org",
+      "priority": 2
+    },
+    {
+      "id": "who",
+      "name": "WHO",
+      "type": "data",
+      "url_template": "https://www.who.int/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.who.int",
+      "priority": 2
+    },
+    {
+      "id": "reuters",
+      "name": "Reuters",
+      "type": "news",
+      "url_template": "https://www.reuters.com/search/news?blob={query}",
+      "lang": ["en"],
+      "health_url": "https://www.reuters.com",
+      "priority": 2
+    },
+    {
+      "id": "bbc",
+      "name": "BBC",
+      "type": "news",
+      "url_template": "https://www.bbc.com/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.bbc.com",
+      "priority": 2
+    },
+    {
+      "id": "the_guardian",
+      "name": "The Guardian",
+      "type": "news",
+      "url_template": "https://www.theguardian.com/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.theguardian.com",
+      "priority": 2
+    },
+    {
+      "id": "economist",
+      "name": "The Economist",
+      "type": "news",
+      "url_template": "https://www.economist.com/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.economist.com",
+      "priority": 2
+    },
+    {
+      "id": "nature",
+      "name": "Nature",
+      "type": "academic",
+      "url_template": "https://www.nature.com/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://www.nature.com",
+      "priority": 1
+    },
+    {
+      "id": "science_direct",
+      "name": "ScienceDirect",
+      "type": "academic",
+      "url_template": "https://www.sciencedirect.com/search?qs={query}",
+      "lang": ["en"],
+      "health_url": "https://www.sciencedirect.com",
+      "priority": 1
+    },
+    {
+      "id": "wikipedia",
+      "name": "Wikipedia",
+      "type": "reference",
+      "url_template": "https://en.wikipedia.org/w/index.php?search={query}&title=Special:Search",
+      "lang": ["en"],
+      "health_url": "https://en.wikipedia.org",
+      "priority": 3
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "type": "tech",
+      "url_template": "https://github.com/search?q={query}&type=repositories",
+      "lang": ["en"],
+      "health_url": "https://github.com",
+      "priority": 3
+    },
+    {
+      "id": "stackoverflow",
+      "name": "Stack Overflow",
+      "type": "tech",
+      "url_template": "https://stackoverflow.com/search?q={query}",
+      "lang": ["en"],
+      "health_url": "https://stackoverflow.com",
+      "priority": 3
+    },
+    {
+      "id": "wikipedia_zh",
+      "name": "维基百科（中文）",
+      "type": "reference",
+      "url_template": "https://zh.wikipedia.org/w/index.php?search={query}&title=Special:Search",
+      "lang": ["zh"],
+      "health_url": "https://zh.wikipedia.org",
+      "priority": 3
+    },
+    {
+      "id": "baidu_baike",
+      "name": "百度百科",
+      "type": "reference",
+      "url_template": "https://baike.baidu.com/item/{query}",
+      "lang": ["zh"],
+      "health_url": "https://baike.baidu.com",
+      "priority": 3
+    },
+    {
+      "id": "zhihu",
+      "name": "知乎",
+      "type": "media",
+      "url_template": "https://www.zhihu.com/search?type=content&q={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.zhihu.com",
+      "priority": 3
+    },
+    {
+      "id": "36kr",
+      "name": "36氪",
+      "type": "media",
+      "url_template": "https://36kr.com/search/articles/{query}",
+      "lang": ["zh"],
+      "health_url": "https://36kr.com",
+      "priority": 3
+    },
+    {
+      "id": "thepaper",
+      "name": "澎湃新闻",
+      "type": "news",
+      "url_template": "https://www.thepaper.cn/search?keyword={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.thepaper.cn",
+      "priority": 3
+    },
+    {
+      "id": "199it",
+      "name": "199IT",
+      "type": "data",
+      "url_template": "https://www.199it.com/?s={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.199it.com",
+      "priority": 3
+    },
+    {
+      "id": "iresearch",
+      "name": "艾瑞咨询",
+      "type": "data",
+      "url_template": "https://report.iresearch.cn/search.aspx?key={query}",
+      "lang": ["zh"],
+      "health_url": "https://report.iresearch.cn",
+      "priority": 3
+    },
+    {
+      "id": "eastmoney",
+      "name": "东方财富",
+      "type": "data",
+      "url_template": "https://so.eastmoney.com/news/s?keyword={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.eastmoney.com",
+      "priority": 3
+    },
+    {
+      "id": "huxiu",
+      "name": "虎嗅",
+      "type": "media",
+      "url_template": "https://www.huxiu.com/search.html?q={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.huxiu.com",
+      "priority": 3
+    },
+    {
+      "id": "csdn",
+      "name": "CSDN",
+      "type": "tech",
+      "url_template": "https://so.csdn.net/so/search?q={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.csdn.net",
+      "priority": 3
+    },
+    {
+      "id": "douban",
+      "name": "豆瓣",
+      "type": "media",
+      "url_template": "https://www.douban.com/search?q={query}",
+      "lang": ["zh"],
+      "health_url": "https://www.douban.com",
+      "priority": 3
+    },
+    {
+      "id": "weibo",
+      "name": "微博",
+      "type": "media",
+      "url_template": "https://s.weibo.com/weibo?q={query}",
+      "lang": ["zh"],
+      "health_url": "https://weibo.com",
+      "priority": 3
+    }
+  ]
+}
