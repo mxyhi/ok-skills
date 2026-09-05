@@ -53,6 +53,12 @@ resolve_plan_dir() {
         printf "%s\n" "${plan_dir}"
         return 0
     fi
+    # Explicit selectors are bindings, not hints (issue #237). This script
+    # WRITES ledger rows into the plan dir it picks, so a legacy cwd fallback
+    # after a rejected selector files another plan's run history.
+    if [ -n "${PLAN_ID:-}" ] || [ -n "${PWF_PLAN_ROOT:-}" ]; then
+        return 1
+    fi
     # Legacy single-file mode: ledger lives beside ./task_plan.md at root.
     printf "%s\n" "."
     return 0
@@ -274,7 +280,10 @@ AGENT="$(sanitize_agent "${AGENT}")"
 SUMMARY="$(printf '%s' "${SUMMARY}" | cut -c1-200)"
 SUMMARY="$(utf8_trim_incomplete "${SUMMARY}")"
 
-PLAN_DIR="$(resolve_plan_dir)"
+PLAN_DIR="$(resolve_plan_dir)" || {
+    printf "[ledger-append] An explicit PLAN_ID or PWF_PLAN_ROOT did not resolve to a plan directory; nothing was written and no other plan was substituted.\n" >&2
+    exit 1
+}
 LEDGER_FILE="${PLAN_DIR}/ledger-${AGENT}.jsonl"
 LOCK_FILE="${PLAN_DIR}/.ledger_lock"
 

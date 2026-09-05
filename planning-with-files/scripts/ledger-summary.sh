@@ -68,6 +68,15 @@ if [ -n "${ARG_DIR}" ]; then
 elif [ -f "${RESOLVER}" ]; then
     PLAN_DIR="$(sh "${RESOLVER}" 2>/dev/null)"
     if [ -z "${PLAN_DIR}" ] || [ ! -d "${PLAN_DIR}" ]; then
+        # Explicit selectors are bindings, not hints (issue #237). A rejected
+        # PLAN_ID or PWF_PLAN_ROOT must not fall back to the cwd: this summary
+        # is injected into autonomous turns, so reporting the ROOT plan's
+        # phase counts under a mistyped pin feeds the loop another plan's
+        # termination signal. Degrade loudly, the same way a missing resolver
+        # already does.
+        if [ -n "${PLAN_ID:-}" ] || [ -n "${PWF_PLAN_ROOT:-}" ]; then
+            emit_unavailable "explicit PLAN_ID or PWF_PLAN_ROOT did not resolve"
+        fi
         PLAN_DIR="."
     fi
 else

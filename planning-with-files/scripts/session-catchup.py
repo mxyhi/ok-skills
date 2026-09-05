@@ -5,7 +5,10 @@ Session Catchup Script for planning-with-files
 Analyzes the previous session to find unsynced context after the last
 planning file update. Designed to run on SessionStart.
 
-Usage: python3 session-catchup.py [project-path]
+Automatic callers use no-history mode and never inspect host session stores.
+Aggregate metadata and transcript excerpts require explicit requests.
+
+Usage: python3 session-catchup.py [--no-history|--metadata|--replay] [project-path]
 """
 
 import hashlib
@@ -383,7 +386,9 @@ def get_codex_sessions(project_path: str) -> Iterable[Path]:
             yield session
 
 
-def get_session_candidates(project_path: str) -> Tuple[str, Iterable[Path]]:
+def get_session_candidates(
+    project_path: str, *, emit_notices: bool = True
+) -> Tuple[str, Iterable[Path]]:
     script_path = Path(__file__).resolve().as_posix().lower()
     if script_path.endswith('/.codex/skills/planning-with-files/scripts/session-catchup.py'):
         return 'codex', get_codex_sessions(project_path)
@@ -396,7 +401,7 @@ def get_session_candidates(project_path: str) -> Tuple[str, Iterable[Path]]:
         sessions, notice = filter_sessions_by_cwd(
             get_sessions_sorted(claude_project_dir), project_path
         )
-        if notice:
+        if notice and emit_notices:
             print(notice)
         return 'claude', sessions
     return 'claude', []
@@ -490,13 +495,45 @@ def _format_opencode_part(data: Dict[str, Any], session_id: str) -> Optional[Dic
     return None
 
 
-def opencode_catchup(project_path: str) -> None:
+def emit_metadata_report(runtime_name: str, unsynced_count: int) -> None:
+    """Report availability without disclosing transcript-derived bytes."""
+    print("\n[planning-with-files] SESSION CATCHUP AVAILABLE")
+    print(f"Runtime: {runtime_name}")
+    print(f"Unsynced entries: {unsynced_count}")
+    print("Transcript excerpts are excluded from metadata mode.")
+    print("Run session-catchup.py --replay to inspect bounded same-project excerpts.")
+
+
+def parse_cli_args(argv: List[str]) -> Tuple[str, str]:
+    """Return (mode, project_path), defaulting to zero host-history access."""
+    mode = 'no-history'
+    project_path: Optional[str] = None
+    for arg in argv[1:]:
+        if arg == '--no-history':
+            mode = 'no-history'
+        elif arg == '--metadata':
+            mode = 'metadata'
+        elif arg == '--replay':
+            mode = 'replay'
+        elif arg.startswith('-'):
+            raise SystemExit(f"unknown option: {arg}")
+        elif project_path is None:
+            project_path = arg
+        else:
+            raise SystemExit("only one project path may be provided")
+    return mode, project_path or os.getcwd()
+
+
+def opencode_catchup(project_path: str, mode: str = 'no-history') -> None:
     """Session catchup for OpenCode SQLite (v2.38.0+).
 
     Schema as of sst/opencode dev @ 2026-05-14:
       session (id, directory, time_created, ...)
       part    (id, session_id, message_id, time_created, data TEXT JSON)
     """
+    if mode == 'no-history':
+        return
+
     import sqlite3
 
     db_path = get_opencode_db_path()
@@ -601,6 +638,10 @@ def opencode_catchup(project_path: str) -> None:
     conn.close()
 
     if not parts:
+        return
+
+    if mode != 'replay':
+        emit_metadata_report('opencode', len(parts))
         return
 
     print(f"\n[planning-with-files] SESSION CATCHUP DETECTED (IDE: opencode)")
@@ -860,7 +901,13 @@ def extract_messages_after(messages: List[Dict[str, Any]], after_line: int) -> L
 
 
 def main():
-    project_path = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
+    mode, project_path = parse_cli_args(sys.argv)
+
+    # SessionStart and bare CLI execution are deliberately zero-access. Keep
+    # this before planning-file checks, IDE detection, home-directory probes,
+    # and transcript database discovery.
+    if mode == 'no-history':
+        return
 
     # Check if planning files exist (indicates active task)
     has_planning_files = any(
@@ -870,10 +917,12 @@ def main():
         # No planning files in this project; skip catchup to avoid noise.
         return
 
-    runtime_name, sessions = get_session_candidates(project_path)
+    runtime_name, sessions = get_session_candidates(
+        project_path, emit_notices=(mode == 'replay')
+    )
 
     if runtime_name == 'opencode':
-        opencode_catchup(project_path)
+        opencode_catchup(project_path, mode=mode)
         return
 
     # Find a substantial previous session
@@ -898,6 +947,10 @@ def main():
     messages_after = extract_messages_after(messages, last_update_line)
 
     if not messages_after:
+        return
+
+    if mode != 'replay':
+        emit_metadata_report(runtime_name, len(messages_after))
         return
 
     # Output catchup report

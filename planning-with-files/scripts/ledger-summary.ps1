@@ -31,9 +31,15 @@ $ErrorActionPreference = "Stop"
 function Resolve-PlanDir {
     $planRoot = Join-Path (Get-Location) ".planning"
 
+    # A set PLAN_ID is a BINDING, not a hint (issue #237). A selector that
+    # names no plan directory stops resolution instead of falling through to
+    # .active_plan, newest-by-mtime and finally the cwd: summarizing another
+    # plan's ledger under a mistyped pin is the same wrong-plan harm that let
+    # a typo attest the wrong file.
     if ($env:PLAN_ID) {
         $candidate = Join-Path $planRoot $env:PLAN_ID
         if (Test-Path -LiteralPath $candidate -PathType Container) { return $candidate }
+        return $null
     }
 
     $activePointer = Join-Path $planRoot ".active_plan"
@@ -58,6 +64,15 @@ function Resolve-PlanDir {
 }
 
 $planDir  = Resolve-PlanDir
+if (-not $planDir) {
+    # Loud degradation, same contract as ledger-summary.sh's emit_unavailable:
+    # a rejected PLAN_ID binding must not report the ROOT plan's phase counts,
+    # because an autonomous loop reads those counts as its termination signal.
+    Write-Output "=== RUN LEDGER ==="
+    Write-Output "ledger: unavailable (explicit PLAN_ID did not resolve)"
+    Write-Output "=================="
+    exit 0
+}
 $planFile = Join-Path $planDir "task_plan.md"
 
 # --- Phase counts: same patterns as check-complete.ps1 ---

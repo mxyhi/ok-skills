@@ -32,6 +32,9 @@ param(
 $ErrorActionPreference = "Stop"
 
 $script:IsWindowsHost = [Environment]::OSVersion.Platform -eq [PlatformID]::Win32NT
+if (-not $script:IsWindowsHost) {
+    throw "Safe no-follow descriptor operations are unavailable in this PowerShell script on Unix. Use scripts/attest-plan.sh instead."
+}
 if ($script:IsWindowsHost -and -not ("PwfAttestationNative" -as [type])) {
     Add-Type -TypeDefinition @'
 using System;
@@ -382,6 +385,21 @@ function Resolve-ContainedPlanFile {
     } catch { return $null }
 }
 
+function Test-SlugPlanDirectory {
+    param([string] $Directory)
+    try {
+        $finalDirectory = [PwfAttestationNative]::FinalDirectoryPath($Directory)
+    } catch {
+        return $false
+    }
+    $planningDirectory = Split-Path -Parent $finalDirectory
+    $planId = Split-Path -Leaf $finalDirectory
+    return (
+        (Split-Path -Leaf $planningDirectory) -eq ".planning" -and
+        $planId -match '^[A-Za-z0-9_][A-Za-z0-9._-]*$'
+    )
+}
+
 function Resolve-PlanFile {
     $resolver = Join-Path $PSScriptRoot "resolve-plan-dir.ps1"
     if (-not (Test-Path -LiteralPath $resolver -PathType Leaf)) { return $null }
@@ -395,10 +413,17 @@ function Resolve-PlanFile {
     # fall through and attest an unrelated legacy-root plan.
     if ($env:PWF_PLAN_ROOT -or $env:PLAN_ID) { return $null }
     $activePointer = Join-Path (Join-Path (Get-Location) ".planning") ".active_plan"
-    if (Test-Path -LiteralPath $activePointer) { return $null }
+    $activePointerItem = Get-Item -LiteralPath $activePointer -Force -ErrorAction SilentlyContinue
+    if ($activePointerItem) { return $null }
 
-    $legacy = Join-Path (Get-Location) "task_plan.md"
-    return (Resolve-ContainedPlanFile -Candidate $legacy -ExpectedDirectory (Get-Location).Path)
+    $currentDirectory = (Get-Location).Path
+    if (Test-SlugPlanDirectory $currentDirectory) {
+        $slugPlan = Join-Path $currentDirectory "task_plan.md"
+        return (Resolve-ContainedPlanFile -Candidate $slugPlan -ExpectedDirectory $currentDirectory)
+    }
+
+    $legacy = Join-Path $currentDirectory "task_plan.md"
+    return (Resolve-ContainedPlanFile -Candidate $legacy -ExpectedDirectory $currentDirectory)
 }
 
 function Get-AttestationPath {
@@ -406,6 +431,9 @@ function Get-AttestationPath {
     $planDir = Split-Path -Parent $PlanFile
     $cwd     = (Get-Location).Path
     if ($planDir -eq $cwd) {
+        if (Test-SlugPlanDirectory $cwd) {
+            return (Join-Path $cwd ".attestation")
+        }
         return (Join-Path $cwd ".plan-attestation")
     }
     return (Join-Path $planDir ".attestation")

@@ -27,27 +27,26 @@
 
 set -u
 
-# Select a working interpreter, not merely the first executable name on PATH.
+# Validate candidate interpreters supplied by the selector wrappers below.
 # Windows Store app aliases can exist as python3.exe while refusing every
 # script invocation. Probe candidates privately and fail closed if none runs.
-select_python() {
-    # PWF_TRUSTED_PYTHON is the explicit trust path. PYTHON_BIN remains a
-    # compatibility alias. PATH discovery is a deliberate fallback: the hook
-    # treats the caller's PATH as executable trust, but still requires the
-    # resolved candidate to be an absolute regular executable.
-    for _sp_candidate in "${PWF_TRUSTED_PYTHON:-}" "${PYTHON_BIN:-}" "$(command -v python3 2>/dev/null)" "$(command -v python 2>/dev/null)"; do
+select_python_candidates() {
+    for _sp_candidate in "$@"; do
         [ -n "$_sp_candidate" ] || continue
+        is_windowsapps_path "$_sp_candidate" && continue
         case "$_sp_candidate" in
             \\\\*|//*) continue ;;
             [A-Za-z]:[\\/]*)
                 # Git Bash cannot reliably test or invoke C:\... spelling.
-                # Convert before every filesystem predicate and invocation.
-                command -v cygpath >/dev/null 2>&1 || continue
-                _sp_candidate="$(cygpath -u "$_sp_candidate" 2>/dev/null)" || continue
+                # Convert with Git Bash's fixed system helper, never PATH.
+                _sp_cygpath="/usr/bin/cygpath.exe"
+                [ -f "$_sp_cygpath" ] && [ -x "$_sp_cygpath" ] || continue
+                _sp_candidate="$("$_sp_cygpath" -u "$_sp_candidate" 2>/dev/null)" || continue
                 ;;
             /*) ;;
             *) continue ;;
         esac
+        is_windowsapps_path "$_sp_candidate" && continue
         [ -f "$_sp_candidate" ] || continue
         [ -x "$_sp_candidate" ] || continue
         if "$_sp_candidate" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 8) else 1)' >/dev/null 2>&1; then
@@ -56,6 +55,21 @@ select_python() {
         fi
     done
     return 1
+}
+
+# Containment may use only an interpreter path the caller explicitly trusted.
+select_explicit_python() {
+    select_python_candidates "${PWF_TRUSTED_PYTHON:-}" "${PYTHON_BIN:-}"
+}
+
+# After containment succeeds, PATH discovery remains a compatibility fallback
+# for hosts that do not export an interpreter path to direct hook invocations.
+select_python() {
+    select_python_candidates \
+        "${PWF_TRUSTED_PYTHON:-}" \
+        "${PYTHON_BIN:-}" \
+        "$(command -v python3 2>/dev/null)" \
+        "$(command -v python 2>/dev/null)"
 }
 
 # issue #195: per-invocation opt-out (PLANNING_DISABLED=1) for one-shot/CI
@@ -154,13 +168,24 @@ norm_slashes() {
     done
 }
 
-# Portable path canonicalizer. realpath first (Linux, modern coreutils),
-# then readlink -f (older GNU), then python3/python os.path.realpath. Prints
-# the canonical absolute path on success; prints nothing and returns 1 on a
-# full miss so the caller can decide what to do. No python spawn on the happy
-# path: realpath/readlink cover Linux, WSL, Git-Bash, and modern macOS.
-# (Copied verbatim from resolve-plan-dir.sh so hook injection gets the same
-# symlink containment as the resolver — see security A1.3.)
+# Return true when a candidate path names the Microsoft Store WindowsApps
+# directory. Matching is case-insensitive and works after slash normalization.
+is_windowsapps_path() {
+    norm_slashes "$1"
+    case "${NORM_OUT}" in
+        [Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]|\
+        [Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]/*|\
+        */[Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]|\
+        */[Ww][Ii][Nn][Dd][Oo][Ww][Ss][Aa][Pp][Pp][Ss]/*) return 0 ;;
+    esac
+    return 1
+}
+
+# Portable path canonicalizer. realpath first (Linux, modern coreutils), then
+# readlink -f (older GNU), then the interpreter already validated by
+# select_python(). Prints the canonical absolute path on success; prints
+# nothing and returns 1 on a full miss so the caller can decide what to do.
+# The fallback must not rediscover or execute an unvalidated PATH interpreter.
 canonicalize() {
     target="$1"
     if command -v realpath >/dev/null 2>&1; then
@@ -171,12 +196,8 @@ canonicalize() {
         out="$(readlink -f "${target}" 2>/dev/null)" && [ -n "${out}" ] && {
             printf "%s\n" "${out}"; return 0; }
     fi
-    if command -v python3 >/dev/null 2>&1; then
-        out="$(python3 -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
-            && [ -n "${out}" ] && { printf "%s\n" "${out}"; return 0; }
-    fi
-    if command -v python >/dev/null 2>&1; then
-        out="$(python -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
+    if [ -n "${PWF_PYTHON:-}" ]; then
+        out="$("${PWF_PYTHON}" -c "import os,sys;print(os.path.realpath(sys.argv[1]))" "${target}" 2>/dev/null)" \
             && [ -n "${out}" ] && { printf "%s\n" "${out}"; return 0; }
     fi
     return 1
@@ -233,8 +254,28 @@ SCOPE=""
 EXPLICIT=0
 [ -n "$PLAN_PREFIX" ] && EXPLICIT=1
 [ "$SESSION_ATTACHED" = "1" ] && EXPLICIT=1
-if [ -n "${PLAN_ID:-}" ] && slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
-    RESOLVED="${PLAN_PREFIX}.planning/${PLAN_ID}"; SCOPE="scoped"; EXPLICIT=1
+if [ -n "${PLAN_ID:-}" ]; then
+    # A set PLAN_ID is a BINDING, not a hint (issue #237). This inline resolver
+    # is the one the hooks actually run, so it carries the same rule as
+    # resolve-plan-dir.sh: a selector that names no directory, fails slug
+    # validation, or fails containment refuses instead of falling through to
+    # .active_plan and newest-by-mtime. The fall-through is what let a
+    # one-character typo inject a DIFFERENT plan while attest-plan.sh locked
+    # that same wrong plan at rc=0.
+    #
+    # Unlike the PWF_PLAN_ROOT refusal above, the notice is userprompt-only.
+    # pretool fires per tool call and precompact carries no plan body, so
+    # printing on those would spam the transcript with the same line. The
+    # userprompt fire is also the one plan-doctor.sh drives, so /plan-doctor
+    # still sees and reports the state.
+    if slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
+        RESOLVED="${PLAN_PREFIX}.planning/${PLAN_ID}"; SCOPE="scoped"; EXPLICIT=1
+    else
+        if [ "$CONTEXT" = "userprompt" ]; then
+            echo "[planning-with-files] PLAN_ID does not name a plan directory under .planning: ${PLAN_ID} — nothing injected. Fix or unset the pin; a broken pin fails closed rather than selecting another plan."
+        fi
+        exit 0
+    fi
 elif [ -f "${PLAN_PREFIX}.planning/.active_plan" ]; then
     AP=$(tr -d '\r\n[:space:]' < "${PLAN_PREFIX}.planning/.active_plan" 2>/dev/null)
     if [ -n "$AP" ] && slug_is_valid "$AP" && [ -d "${PLAN_PREFIX}.planning/${AP}" ]; then
@@ -256,9 +297,9 @@ fi
 if [ -z "$RESOLVED" ] && [ -f "${PLAN_PREFIX}task_plan.md" ]; then RESOLVED="${PLAN_PREFIX}."; SCOPE="root"; fi
 [ -z "$RESOLVED" ] && exit 0
 
-# Do not probe or execute any interpreter until a real, contained plan exists.
-# This keeps opt-out and no-plan hook fires side-effect free even when an
-# untrusted PYTHON_BIN or PATH entry points at an executable canary.
+# Do not probe or execute any interpreter until a real plan exists. Before
+# containment, only an explicit PWF_TRUSTED_PYTHON or PYTHON_BIN may be used.
+# PATH discovery remains deferred until containment succeeds.
 if [ "$SCOPE" = "root" ]; then
     PRECHECK_PLAN_FILE="${PLAN_PREFIX}task_plan.md"
 else
@@ -266,8 +307,9 @@ else
 fi
 [ -f "$PRECHECK_PLAN_FILE" ] || exit 0
 [ -L "$PRECHECK_PLAN_FILE" ] && exit 0
+PWF_PYTHON="$(select_explicit_python 2>/dev/null)" || PWF_PYTHON=""
 is_within_root "$PRECHECK_PLAN_FILE" || exit 0
-PWF_PYTHON="$(select_python 2>/dev/null)" || PWF_PYTHON=""
+[ -n "$PWF_PYTHON" ] || PWF_PYTHON="$(select_python 2>/dev/null)" || PWF_PYTHON=""
 
 # Session attachment is evaluated only after plan existence is proven. A
 # stale sessions directory without any plan must not cause interpreter probes.
@@ -454,12 +496,16 @@ if [ "$SCOPE" = "root" ]; then
     PROGRESS_FILE="${PLAN_PREFIX}progress.md"
     ATTEST_FILE="${PLAN_PREFIX}.plan-attestation"
     MODE_FILE="${PLAN_PREFIX}.mode"
+    ROOT_MODE_FILE=""
     NONCE_FILE="${PLAN_PREFIX}.nonce"
 else
     PLAN_FILE="${RESOLVED}/task_plan.md"
     PROGRESS_FILE="${RESOLVED}/progress.md"
     ATTEST_FILE="${RESOLVED}/.attestation"
     MODE_FILE="${RESOLVED}/.mode"
+    # The project's own .mode, when it has one (issue #238). In root scope
+    # MODE_FILE already IS that file, so the second source stays empty.
+    ROOT_MODE_FILE="${PLAN_PREFIX}.mode"
     NONCE_FILE="${RESOLVED}/.nonce"
 fi
 [ -f "$PLAN_FILE" ] || exit 0
@@ -831,11 +877,52 @@ fi
 # gated mode to legacy behavior (platform-critical: per-tool-call injection not
 # suppressed, oracle re-hash skipped, raw progress tail injected). Use a grep
 # token test, the same pattern check-complete.sh guard 1 uses.
+
+# --- Root .mode is a FLOOR, not a default that slug scope replaces (#238). ---
+# A project makes attestation mandatory by committing a root .mode, which is a
+# reviewed project setting. Slug scope used to read ONLY the slug's .mode, and
+# init-session.sh writes no .mode unless --autonomous or --gated was passed, so
+# `init-session.sh <name>` produced a plan with no mode, no attestation
+# requirement and full injection: one agent-invocable command turned the
+# project's policy off.
+#
+# mode_has answers for a strictness-RAISING token: present in EITHER file. A
+# slug may opt into autonomous/gated where the root left it unset; it can no
+# longer opt out of what the root committed.
+#
+# mode_relax_allowed answers for the one strictness-LOWERING token
+# (plan-guard-off): the slug must carry it AND, when the project committed a
+# root .mode, that file must carry it too. A slug alone cannot switch off a
+# protection the project kept on.
+#
+# With no root .mode present ROOT_MODE_FILE is either empty (root scope) or
+# names a missing file, so the effective token set is exactly the slug's and
+# existing projects are byte-identical.
+mode_has() {
+    _mh_token="$1"
+    if [ -f "$MODE_FILE" ] && grep -q "$_mh_token" "$MODE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    if [ -n "$ROOT_MODE_FILE" ] && [ -f "$ROOT_MODE_FILE" ] \
+        && grep -q "$_mh_token" "$ROOT_MODE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    return 1
+}
+
+mode_relax_allowed() {
+    _mr_token="$1"
+    [ -f "$MODE_FILE" ] || return 1
+    grep -q "$_mr_token" "$MODE_FILE" 2>/dev/null || return 1
+    if [ -n "$ROOT_MODE_FILE" ] && [ -f "$ROOT_MODE_FILE" ]; then
+        grep -q "$_mr_token" "$ROOT_MODE_FILE" 2>/dev/null || return 1
+    fi
+    return 0
+}
+
 MODE=""
-if [ -f "$MODE_FILE" ]; then
-    grep -q 'autonomous' "$MODE_FILE" 2>/dev/null && MODE='autonomous'
-    grep -q 'gate' "$MODE_FILE" 2>/dev/null && MODE='gated'
-fi
+mode_has 'autonomous' && MODE='autonomous'
+mode_has 'gate' && MODE='gated'
 
 # In autonomous/gated mode the per-tool-call injection is dropped (recitation
 # policy): strong models do not need the plan re-recited before every tool call,
@@ -859,7 +946,7 @@ fi
 SMART=0
 if [ "${PWF_INJECT:-}" = "smart" ]; then
     SMART=1
-elif [ -f "$MODE_FILE" ] && grep -q 'inject-smart' "$MODE_FILE" 2>/dev/null; then
+elif mode_has 'inject-smart'; then
     SMART=1
 fi
 
@@ -1127,7 +1214,7 @@ esac
 # holding the stale copy. Per-session keying needs PWF_SESSION_ID, which most
 # hosts never set.
 GUARD=1
-[ -f "$MODE_FILE" ] && grep -q 'plan-guard-off' "$MODE_FILE" 2>/dev/null && GUARD=0
+mode_relax_allowed 'plan-guard-off' && GUARD=0
 [ "${PWF_PLAN_GUARD:-}" = "0" ] && GUARD=0
 if [ "$GUARD" = "1" ]; then
     # Same user-private cache root and same absolute-path key as the attestation

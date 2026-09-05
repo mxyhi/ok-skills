@@ -74,27 +74,49 @@ if [ -f "${INJ}" ]; then
             ok "injection: silent because no plan exists here (correct behavior)"
         fi
     else
+        # Classify on the DATA FRAMING first, never on substrings of the whole
+        # blob (issue #236). ${OUT} carries the plan body VERBATIM inside
+        # ===BEGIN-PWF-DATA=== fences, so a bare substring test also matches
+        # plan prose: a phase line reading "fix the false PLAN TAMPERED
+        # warning" made the doctor report a hash mismatch on a correctly
+        # attested plan.
+        #
+        # Every refusal path in inject-plan.sh prints its banner and exits
+        # before frame_file runs, so a frame in the output proves injection
+        # happened and rules out every refusal. Output WITHOUT a frame is by
+        # construction a notice, which is why the banner arms sit under the
+        # else side and the default arm warns instead of passing. A banner
+        # whose wording drifts then degrades to a generic warning rather than
+        # to a silent PASS: that is exactly how the stale
+        # "PWF_PLAN_ROOT is not a directory" literal (which was never a
+        # substring of what inject-plan.sh emits) reported PASS on a fully
+        # dark-hooks state.
         case "${OUT}" in
-            *'PLAN TAMPERED'*)
+            *'===BEGIN-PWF-DATA'*)
+                BYTES="$(printf '%s' "${OUT}" | wc -c | tr -d '[:space:]')"
+                ok "injection: emits plan context (${BYTES} bytes)"
+                ;;
+            *'[PLAN TAMPERED'*)
                 warn "injection: plan is attested but the hash mismatches — run /plan-attest (or scripts/attest-plan.sh) to re-approve the current plan"
                 ;;
             *'requires attested plan'*)
                 warn "injection: v3 mode without attestation — run attest-plan once to arm injection"
                 ;;
             *'Session isolation is armed'*)
-                # Refusal notice, not plan context: reporting its byte count as
-                # PASS told a dark user their hooks were fine.
                 warn "injection: session isolation refuses this session — attach it with PWF_SESSION_ID=<id> plus .planning/sessions/<id>.attached, or delete the .planning/sessions/ dir (stale ones survive earlier Codex use and copied project trees) to turn isolation off"
                 ;;
             *'Ambiguous plan'*)
                 warn "injection: nested-plan ambiguity — a project directly below this cwd carries its own plan, so hooks refuse to guess. Pin the thread with PWF_PLAN_ROOT=<absolute project root> or PLAN_ID=<slug>"
                 ;;
-            *'PWF_PLAN_ROOT is not a directory'*)
-                warn "injection: PWF_PLAN_ROOT points at a missing directory — fix or unset the pin; a broken pin fails closed and injects nothing"
+            *'PWF_PLAN_ROOT is not a supported absolute local directory'*)
+                warn "injection: PWF_PLAN_ROOT points at something that is not an absolute local directory — fix or unset the pin; a broken pin fails closed and injects nothing"
+                ;;
+            *'PLAN_ID does not name a plan directory'*)
+                warn "injection: PLAN_ID names no plan directory under .planning — fix or unset the pin; a set PLAN_ID is a binding and fails closed rather than selecting another plan"
                 ;;
             *)
                 BYTES="$(printf '%s' "${OUT}" | wc -c | tr -d '[:space:]')"
-                ok "injection: emits plan context (${BYTES} bytes)"
+                warn "injection: inject-plan.sh emitted ${BYTES} bytes but no ===BEGIN-PWF-DATA frame, so no plan context reached the model. This is a refusal notice this doctor does not recognize; read it directly with: sh scripts/inject-plan.sh --context=userprompt"
                 ;;
         esac
     fi

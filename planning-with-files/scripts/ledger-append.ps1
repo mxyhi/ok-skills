@@ -55,9 +55,14 @@ $validEvents = @("progress", "phase_complete", "error", "gate_block", "attest", 
 function Resolve-PlanDir {
     $planRoot = Join-Path (Get-Location) ".planning"
 
+    # A set PLAN_ID is a BINDING, not a hint (issue #237). This script WRITES
+    # ledger rows into the directory it picks, so falling through to
+    # .active_plan, newest-by-mtime and finally the cwd after a mistyped pin
+    # files another plan's run history.
     if ($env:PLAN_ID) {
         $candidate = Join-Path $planRoot $env:PLAN_ID
         if (Test-Path -LiteralPath $candidate -PathType Container) { return $candidate }
+        return $null
     }
 
     $activePointer = Join-Path $planRoot ".active_plan"
@@ -136,6 +141,10 @@ if (-not $agentClean) { $agentClean = "main" }
 if ($Summary.Length -gt 200) { $Summary = $Summary.Substring(0, 200) }
 
 $planDir    = Resolve-PlanDir
+if (-not $planDir) {
+    Write-Error "[ledger-append] An explicit PLAN_ID did not resolve to a plan directory; nothing was written and no other plan was substituted."
+    exit 1
+}
 $ledgerFile = Join-Path $planDir ("ledger-" + $agentClean + ".jsonl")
 $lockFile   = Join-Path $planDir ".ledger_lock"
 

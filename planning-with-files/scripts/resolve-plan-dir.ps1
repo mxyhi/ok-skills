@@ -130,6 +130,13 @@ function Test-WithinRoot {
 
 $activeFile = Join-Path $PlanRoot ".active_plan"
 
+# A set PLAN_ID is a BINDING, not a hint (issue #237). A selector that names
+# no directory, fails slug validation, or fails containment terminates
+# resolution instead of falling through to .active_plan and newest-by-mtime:
+# the fall-through let a one-character typo attest and inject a DIFFERENT plan
+# at rc=0. Emptiness is the fail-closed signal on this channel, matching
+# resolve-plan-dir.sh and the PWF_PLAN_ROOT pin. An empty $env:PLAN_ID is
+# falsy here and still means "unset".
 if ($env:PLAN_ID) {
     if (Test-ValidSlug $env:PLAN_ID) {
         $candidate = Join-Path $PlanRoot $env:PLAN_ID
@@ -138,16 +145,20 @@ if ($env:PLAN_ID) {
             exit 0
         }
     }
+    exit 0
 }
 
-if (Test-Path -LiteralPath $activeFile) {
-    $activeItem = Get-Item -LiteralPath $activeFile -Force -ErrorAction SilentlyContinue
-    if ($activeItem -and -not $activeItem.PSIsContainer -and
-        (($activeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0)) {
-        $planId = (Get-Content -LiteralPath $activeFile -Raw).Trim()
-    } else {
-        $planId = $null
+# Get-Item observes the link object even when its target is missing, unlike
+# Test-Path which follows the target. An active pointer that is a directory or
+# reparse point is an unsafe/ambiguous selector and must terminate resolution;
+# falling through would silently select and expose the newest unrelated plan.
+$activeItem = Get-Item -LiteralPath $activeFile -Force -ErrorAction SilentlyContinue
+if ($activeItem) {
+    if ($activeItem.PSIsContainer -or
+        (($activeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)) {
+        exit 0
     }
+    $planId = (Get-Content -LiteralPath $activeFile -Raw).Trim()
     if ($planId -and (Test-ValidSlug $planId)) {
         $candidate = Join-Path $PlanRoot $planId
         if ((Test-Path $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {
