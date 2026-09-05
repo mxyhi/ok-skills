@@ -1,12 +1,12 @@
 ---
 name: kimi-webbridge
 description: |
-  Kimi WebBridge lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", or asks to read/interact with any website. Use even for simple-sounding browser requests — the daemon handles all complexity.
+  Kimi Browser Extension（Kimi 浏览器扩展，原 Kimi WebBridge）lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", or asks to read/interact with any website. Use even for simple-sounding browser requests — the daemon handles all complexity.
 metadata:
-  version: "1.11.6"
+  version: "2.0.5"
 ---
 
-# Kimi WebBridge
+# Kimi Browser Extension (formerly Kimi WebBridge)
 
 Control the user's real browser (with their login sessions) via a local daemon at `http://127.0.0.1:10086`.
 
@@ -175,14 +175,14 @@ Decoded PDF cap is 100 MB. Above that the daemon refuses; reduce `scale` or spli
 
 Then retry the tool call. If it still fails — or the browser extension won't connect — point the user to the help page instead of deep-troubleshooting:
 
-- English: https://www.kimi.com/features/webbridge
-- 中文: https://www.kimi.com/zh-cn/features/webbridge
+- English: https://www.kimi.com/en/products/kimi-webbridge
+- 中文: https://www.kimi.com/products/kimi-webbridge
 
 Never run `stop` / `restart` / `uninstall` automatically — those kill a running daemon. See `references/operations.md` for anything deeper.
 
 ## Version mismatches
 
-If a tool returns an error containing **"Please update the Kimi WebBridge extension"**, the user's browser extension is older than this skill. Don't try to reconcile versions yourself — just tell the user, in their language, to update the extension and retry:
+If a tool returns an error containing **"Please update the Kimi Browser Extension"**, the user's browser extension is older than this skill. Don't try to reconcile versions yourself — just tell the user, in their language, to update the extension and retry:
 
-- English: https://www.kimi.com/features/webbridge
-- 中文: https://www.kimi.com/zh-cn/features/webbridge
+- English: https://www.kimi.com/en/products/kimi-webbridge
+- 中文: https://www.kimi.com/products/kimi-webbridge
