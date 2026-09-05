@@ -130,6 +130,13 @@ function Test-WithinRoot {
 
 $activeFile = Join-Path $PlanRoot ".active_plan"
 
+# A set PLAN_ID is a BINDING, not a hint (issue #237). A selector that names
+# no directory, fails slug validation, or fails containment terminates
+# resolution instead of falling through to .active_plan and newest-by-mtime:
+# the fall-through let a one-character typo attest and inject a DIFFERENT plan
+# at rc=0. Emptiness is the fail-closed signal on this channel, matching
+# resolve-plan-dir.sh and the PWF_PLAN_ROOT pin. An empty $env:PLAN_ID is
+# falsy here and still means "unset".
 if ($env:PLAN_ID) {
     if (Test-ValidSlug $env:PLAN_ID) {
         $candidate = Join-Path $PlanRoot $env:PLAN_ID
@@ -138,6 +145,7 @@ if ($env:PLAN_ID) {
             exit 0
         }
     }
+    exit 0
 }
 
 # Get-Item observes the link object even when its target is missing, unlike

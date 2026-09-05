@@ -297,7 +297,34 @@ resolve_latest_dir() {
     return 1
 }
 
-if resolve_from_env; then exit 0; fi
+# A set PLAN_ID is a BINDING, not a hint (issue #237).
+#
+# resolve_from_env returns 1 both when no selector was set and when the
+# selector was rejected, so continuing the chain after it turned a
+# one-character typo into a silent switch: .active_plan or newest-by-mtime
+# answered instead, attest-plan.sh locked THAT plan at rc=0, and injection
+# followed the attestation onto it. commands/plan-attest.md already promised
+# the opposite ("It never falls back to another plan").
+#
+# Any non-empty PLAN_ID therefore terminates resolution here, whether it was
+# rejected for slug shape (traversal), for naming no directory, or for failing
+# containment. The caller receives an empty result and takes its own
+# fail-closed path rather than a different plan. PWF_PLAN_ROOT, the sibling
+# selector, has failed closed on any bad value since #212; the two selectors
+# now agree.
+#
+# An EMPTY PLAN_ID still means "unset": init-session.sh passes
+# PLAN_ID="${PLAN_ID:-}" into attest-plan.sh on the legacy path and depends on
+# that spelling resolving the root plan.
+#
+# Exit status stays 0 on the refusal (see the header contract). Emptiness is
+# the fail-closed signal on this channel, exactly as the PWF_PLAN_ROOT guard
+# above already does it; a non-zero status would kill callers running under
+# set -e for a condition that is not an internal error.
+if [ -n "${PLAN_ID:-}" ]; then
+    resolve_from_env && exit 0
+    exit 0
+fi
 if resolve_from_active_file; then exit 0; fi
 if resolve_latest_dir; then exit 0; fi
 exit 0

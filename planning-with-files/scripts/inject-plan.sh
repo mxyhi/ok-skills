@@ -254,8 +254,28 @@ SCOPE=""
 EXPLICIT=0
 [ -n "$PLAN_PREFIX" ] && EXPLICIT=1
 [ "$SESSION_ATTACHED" = "1" ] && EXPLICIT=1
-if [ -n "${PLAN_ID:-}" ] && slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
-    RESOLVED="${PLAN_PREFIX}.planning/${PLAN_ID}"; SCOPE="scoped"; EXPLICIT=1
+if [ -n "${PLAN_ID:-}" ]; then
+    # A set PLAN_ID is a BINDING, not a hint (issue #237). This inline resolver
+    # is the one the hooks actually run, so it carries the same rule as
+    # resolve-plan-dir.sh: a selector that names no directory, fails slug
+    # validation, or fails containment refuses instead of falling through to
+    # .active_plan and newest-by-mtime. The fall-through is what let a
+    # one-character typo inject a DIFFERENT plan while attest-plan.sh locked
+    # that same wrong plan at rc=0.
+    #
+    # Unlike the PWF_PLAN_ROOT refusal above, the notice is userprompt-only.
+    # pretool fires per tool call and precompact carries no plan body, so
+    # printing on those would spam the transcript with the same line. The
+    # userprompt fire is also the one plan-doctor.sh drives, so /plan-doctor
+    # still sees and reports the state.
+    if slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
+        RESOLVED="${PLAN_PREFIX}.planning/${PLAN_ID}"; SCOPE="scoped"; EXPLICIT=1
+    else
+        if [ "$CONTEXT" = "userprompt" ]; then
+            echo "[planning-with-files] PLAN_ID does not name a plan directory under .planning: ${PLAN_ID} — nothing injected. Fix or unset the pin; a broken pin fails closed rather than selecting another plan."
+        fi
+        exit 0
+    fi
 elif [ -f "${PLAN_PREFIX}.planning/.active_plan" ]; then
     AP=$(tr -d '\r\n[:space:]' < "${PLAN_PREFIX}.planning/.active_plan" 2>/dev/null)
     if [ -n "$AP" ] && slug_is_valid "$AP" && [ -d "${PLAN_PREFIX}.planning/${AP}" ]; then
@@ -476,12 +496,16 @@ if [ "$SCOPE" = "root" ]; then
     PROGRESS_FILE="${PLAN_PREFIX}progress.md"
     ATTEST_FILE="${PLAN_PREFIX}.plan-attestation"
     MODE_FILE="${PLAN_PREFIX}.mode"
+    ROOT_MODE_FILE=""
     NONCE_FILE="${PLAN_PREFIX}.nonce"
 else
     PLAN_FILE="${RESOLVED}/task_plan.md"
     PROGRESS_FILE="${RESOLVED}/progress.md"
     ATTEST_FILE="${RESOLVED}/.attestation"
     MODE_FILE="${RESOLVED}/.mode"
+    # The project's own .mode, when it has one (issue #238). In root scope
+    # MODE_FILE already IS that file, so the second source stays empty.
+    ROOT_MODE_FILE="${PLAN_PREFIX}.mode"
     NONCE_FILE="${RESOLVED}/.nonce"
 fi
 [ -f "$PLAN_FILE" ] || exit 0
@@ -853,11 +877,52 @@ fi
 # gated mode to legacy behavior (platform-critical: per-tool-call injection not
 # suppressed, oracle re-hash skipped, raw progress tail injected). Use a grep
 # token test, the same pattern check-complete.sh guard 1 uses.
+
+# --- Root .mode is a FLOOR, not a default that slug scope replaces (#238). ---
+# A project makes attestation mandatory by committing a root .mode, which is a
+# reviewed project setting. Slug scope used to read ONLY the slug's .mode, and
+# init-session.sh writes no .mode unless --autonomous or --gated was passed, so
+# `init-session.sh <name>` produced a plan with no mode, no attestation
+# requirement and full injection: one agent-invocable command turned the
+# project's policy off.
+#
+# mode_has answers for a strictness-RAISING token: present in EITHER file. A
+# slug may opt into autonomous/gated where the root left it unset; it can no
+# longer opt out of what the root committed.
+#
+# mode_relax_allowed answers for the one strictness-LOWERING token
+# (plan-guard-off): the slug must carry it AND, when the project committed a
+# root .mode, that file must carry it too. A slug alone cannot switch off a
+# protection the project kept on.
+#
+# With no root .mode present ROOT_MODE_FILE is either empty (root scope) or
+# names a missing file, so the effective token set is exactly the slug's and
+# existing projects are byte-identical.
+mode_has() {
+    _mh_token="$1"
+    if [ -f "$MODE_FILE" ] && grep -q "$_mh_token" "$MODE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    if [ -n "$ROOT_MODE_FILE" ] && [ -f "$ROOT_MODE_FILE" ] \
+        && grep -q "$_mh_token" "$ROOT_MODE_FILE" 2>/dev/null; then
+        return 0
+    fi
+    return 1
+}
+
+mode_relax_allowed() {
+    _mr_token="$1"
+    [ -f "$MODE_FILE" ] || return 1
+    grep -q "$_mr_token" "$MODE_FILE" 2>/dev/null || return 1
+    if [ -n "$ROOT_MODE_FILE" ] && [ -f "$ROOT_MODE_FILE" ]; then
+        grep -q "$_mr_token" "$ROOT_MODE_FILE" 2>/dev/null || return 1
+    fi
+    return 0
+}
+
 MODE=""
-if [ -f "$MODE_FILE" ]; then
-    grep -q 'autonomous' "$MODE_FILE" 2>/dev/null && MODE='autonomous'
-    grep -q 'gate' "$MODE_FILE" 2>/dev/null && MODE='gated'
-fi
+mode_has 'autonomous' && MODE='autonomous'
+mode_has 'gate' && MODE='gated'
 
 # In autonomous/gated mode the per-tool-call injection is dropped (recitation
 # policy): strong models do not need the plan re-recited before every tool call,
@@ -881,7 +946,7 @@ fi
 SMART=0
 if [ "${PWF_INJECT:-}" = "smart" ]; then
     SMART=1
-elif [ -f "$MODE_FILE" ] && grep -q 'inject-smart' "$MODE_FILE" 2>/dev/null; then
+elif mode_has 'inject-smart'; then
     SMART=1
 fi
 
@@ -1149,7 +1214,7 @@ esac
 # holding the stale copy. Per-session keying needs PWF_SESSION_ID, which most
 # hosts never set.
 GUARD=1
-[ -f "$MODE_FILE" ] && grep -q 'plan-guard-off' "$MODE_FILE" 2>/dev/null && GUARD=0
+mode_relax_allowed 'plan-guard-off' && GUARD=0
 [ "${PWF_PLAN_GUARD:-}" = "0" ] && GUARD=0
 if [ "$GUARD" = "1" ]; then
     # Same user-private cache root and same absolute-path key as the attestation

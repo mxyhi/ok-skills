@@ -107,13 +107,27 @@ if (-not $Gate) {
 
 # ---- Gate path (-Gate). Resolves to advisory unless every guard says block. ----
 
-# Guard 1: gated mode. The .mode file must contain "gate".
+# Guard 1: gated mode. A .mode file must contain "gate".
+#
+# The project's root .mode is a FLOOR, not a default that slug scope replaces
+# (issue #238). Reading only <plan-dir>\.mode let a slug plan with no .mode
+# drop a project-committed gate. "gate" from EITHER file arms the gate; a slug
+# may raise strictness, never lower it. In root scope $PlanDir already IS the
+# project root, so the second source is skipped and behavior is unchanged.
 $modeFile = Join-Path $PlanDir ".mode"
+$rootForMode = if ($env:PWF_PLAN_ROOT) { $env:PWF_PLAN_ROOT } else { "." }
+$rootModeFile = $null
+if ($PlanDir -ne $rootForMode -and $PlanDir -ne ".") {
+    $rootModeFile = Join-Path $rootForMode ".mode"
+}
 $gatedMode = $false
-if (Test-Path $modeFile) {
-    $modeContent = Get-Content $modeFile -Raw -ErrorAction SilentlyContinue
+foreach ($candidateMode in @($modeFile, $rootModeFile)) {
+    if (-not $candidateMode) { continue }
+    if (-not (Test-Path $candidateMode)) { continue }
+    $modeContent = Get-Content $candidateMode -Raw -ErrorAction SilentlyContinue
     if ($null -ne $modeContent -and $modeContent -match "gate") {
         $gatedMode = $true
+        break
     }
 }
 if (-not $gatedMode) {

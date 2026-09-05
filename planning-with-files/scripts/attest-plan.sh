@@ -108,7 +108,18 @@ case "${1:-}" in
 esac
 
 plan_file="$(resolve_plan_file)" || {
-    printf "[plan-attest] No task_plan.md found. Create a plan first.\n" >&2
+    # Name the actual cause. "No task_plan.md found" is true but misleading
+    # when the plan exists and an explicit selector was rejected: before #237
+    # a mistyped PLAN_ID attested a DIFFERENT plan at rc=0, and an operator
+    # who now sees a generic not-found is likely to go looking for the wrong
+    # problem. The selectors are bindings, so say which one refused.
+    if [ -n "${PLAN_ID:-}" ]; then
+        printf "[plan-attest] PLAN_ID=%s names no plan directory under .planning. An explicit selector is a binding: nothing was attested and no other plan was substituted.\n" "${PLAN_ID}" >&2
+    elif [ -n "${PWF_PLAN_ROOT:-}" ]; then
+        printf "[plan-attest] PWF_PLAN_ROOT=%s did not resolve to a project root holding a plan. An explicit pin is a binding: nothing was attested and no other plan was substituted.\n" "${PWF_PLAN_ROOT}" >&2
+    else
+        printf "[plan-attest] No task_plan.md found. Create a plan first.\n" >&2
+    fi
     exit 1
 }
 
