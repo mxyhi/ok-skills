@@ -15,8 +15,8 @@ The `kimi-webbridge` binary lives at `~/.kimi-webbridge/bin/kimi-webbridge` (Win
    Then retry the tool call.
 2. **`command not found` / binary missing** → not installed. Point the user to the help page below to install it.
 3. **Extension won't connect, or anything still broken after a `start` + retry** → don't deep-troubleshoot. Point the user to the help page:
-   - English: https://www.kimi.com/features/webbridge
-   - 中文: https://www.kimi.com/zh-cn/features/webbridge
+   - English: https://www.kimi.com/en/products/kimi-webbridge
+   - 中文: https://www.kimi.com/products/kimi-webbridge
 
 ## Do NOT do automatically
 
