@@ -10,7 +10,7 @@
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
-**高频使用场景：** 最新文档查询、浏览器自动化、提示工程、复杂任务规划、代码库理解、前端设计，以及 PDF / Word / PPTX / XLSX 内容处理。
+**高频使用场景：** 最新文档查询、浏览器自动化、提示工程、复杂任务规划、任务管理、代码库理解、前端设计，以及 PDF / Word / PPTX / XLSX 内容处理。
 
 ## 适合谁
 
@@ -91,6 +91,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 规划与提示工程
 
 - [planning-with-files](planning-with-files/SKILL.md)：通过 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。
+- [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md)：为编码 agent 提供仓库内持久任务状态 — 稳定 ID 的看板任务、带证据的状态流转、blocked-by 依赖与 next-ready 选择。
 - [product-decision-agent](product-decision-agent/SKILL.md)：中文优先的产品决策 Agent，用于诊断核心阻塞、需求优先级、增长、指标、运营和跨团队推进。
 - [autoresearch](autoresearch/SKILL.md)：以明确目标、度量、验证循环和保留/丢弃门禁驱动自主迭代。
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md)：面向疑难 bug 与性能回归的严格诊断循环。
@@ -175,6 +176,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。                                                                          | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | 中文优先的产品决策 Agent，用于诊断核心阻塞、需求优先级、增长、指标、运营和跨团队推进。                                                        | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
+| [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md)                     | 为编码 agent 提供仓库内持久任务状态：稳定 ID 的看板任务、带证据的状态流转、blocked-by 依赖与 next-ready 选择。                                                                        | [yylo-dev/yylo-skills](https://github.com/yylo-dev/yylo-skills/tree/main/skills/ledger-tasks-yylo)                             |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 ## 贡献
 

@@ -10,7 +10,7 @@ This repo currently bundles **31 reusable skills**, all maintained as top-level 
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
-**Popular use cases:** docs lookup, browser automation, prompt engineering, planning workflows, codebase understanding, frontend design, PDF/Word/PPTX/XLSX authoring.
+**Popular use cases:** docs lookup, browser automation, prompt engineering, planning workflows, task management, codebase understanding, frontend design, PDF/Word/PPTX/XLSX authoring.
 
 ## Who This Repo Is For
 
@@ -91,6 +91,7 @@ Then ask naturally:
 ### Planning & Prompting
 
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning with `task_plan.md`, `findings.md`, and `progress.md`.
+- [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md): durable in-repo task state for coding agents — Kanban tasks with stable IDs, evidence-backed status marks, blocked-by dependencies, and next-ready selection.
 - [product-decision-agent](product-decision-agent/SKILL.md): Chinese-first product decision support for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.
 - [autoresearch](autoresearch/SKILL.md): autonomous goal-directed iteration with explicit goals, metrics, verify loops, and keep/discard gates.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): disciplined diagnosis loop for hard bugs and performance regressions.
@@ -176,6 +177,7 @@ Then ask naturally:
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.                                                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinese-first product decision support for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.                                                | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                    |
+| [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md)                     | Durable in-repo task state for coding agents: Kanban tasks with stable IDs, evidence-backed status marks, blocked-by dependencies, and next-ready selection.                            | [yylo-dev/yylo-skills](https://github.com/yylo-dev/yylo-skills/tree/main/skills/ledger-tasks-yylo)                             |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 ## Contributing
 
