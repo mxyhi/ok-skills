@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **30 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **31 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -89,6 +89,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): tìm cơ hội architecture deepening giúp tăng locality, leverage, testability và AI navigation.
 - [prototype](prototype/SKILL.md): tao prototype logic hoac UI dung mot lan de tra loi nhanh design question.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): hướng dẫn hành vi coding giúp giảm overcomplication, giả định ẩn và thay đổi không kiểm chứng được.
+- [ponytail](ponytail/SKILL.md): Áp dụng YAGNI, tái sử dụng mã có sẵn và ưu tiên thư viện chuẩn cùng tính năng gốc của nền tảng để giảm thiết kế quá mức; hỗ trợ lite, full và ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migrate `as` type assertions trong test sang `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor cho tính năng, bugfix, refactor và thay đổi hành vi.
 
@@ -156,6 +157,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Tìm cơ hội architecture deepening giúp tăng locality, leverage, testability và AI navigation.                                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | Tao prototype logic hoac UI dung mot lan de tra loi nhanh design question. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Hướng dẫn hành vi coding giúp giảm overcomplication, giả định ẩn và thay đổi không kiểm chứng được.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | Áp dụng YAGNI, tái sử dụng mã có sẵn và ưu tiên thư viện chuẩn cùng tính năng gốc của nền tảng để giảm thiết kế quá mức; hỗ trợ lite, full và ultra. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migrate file test từ `as` type assertions sang `@total-typescript/shoehorn`.                                                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Biến website thành lệnh CLI bằng cách tái sử dụng phiên đăng nhập trình duyệt, truy cập API công khai và sinh adapter bằng AI.                                                             | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |

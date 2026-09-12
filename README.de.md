@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **30 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **31 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -89,6 +89,7 @@ Danach kannst du natürlich formulieren:
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.
 - [prototype](prototype/SKILL.md): Throwaway-Logik- oder UI-Prototypen bauen, um Designfragen schnell zu beantworten.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.
+- [ponytail](ponytail/SKILL.md): YAGNI anwenden, vorhandenen Code wiederverwenden und Standardbibliothek sowie native Plattformfunktionen bevorzugen; mit den Modi lite, full und ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): `as`-Type-Assertions in Tests nach `@total-typescript/shoehorn` migrieren.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor fur Features, Bugfixes, Refactorings und Verhaltensaenderungen.
 
@@ -156,6 +157,7 @@ Danach kannst du natürlich formulieren:
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Architektur-Deepening-Chancen finden, die Locality, Leverage, Testbarkeit und AI-Navigation verbessern.                                                                                                           | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | Baut Throwaway-Logik- oder UI-Prototypen, um Designfragen schnell zu beantworten. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Coding-Verhaltensregeln gegen Overengineering, versteckte Annahmen und nicht verifizierbare Änderungen.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | YAGNI anwenden, vorhandenen Code wiederverwenden und Standardbibliothek sowie native Plattformfunktionen bevorzugen; mit den Modi lite, full und ultra. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Testdateien von `as`-Type-Assertions zu `@total-typescript/shoehorn` migrieren.                                                                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Websites mit wiederverwendeter Browser-Session, Public APIs und KI-generierten Adaptern in CLI-Befehle verwandeln.                                                                                                 | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |

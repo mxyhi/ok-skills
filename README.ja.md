@@ -6,7 +6,7 @@
 
 Codex、Claude Code、Cursor、OpenClaw、Trae、そのほか `SKILL.md` 互換ツール向けに厳選した AI coding agent skills と `CLAUDE.md` / `AGENTS.md` プレイブックをまとめたリポジトリです。
 
-このリポジトリには現在 **30 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
+このリポジトリには現在 **31 個の再利用可能な skills** が含まれ、すべてトップレベルの skill ディレクトリとしてこのリポジトリで直接管理されています。`~/.agents/skills/ok-skills` に clone すれば、内部ディレクトリは `AGENTS.md` ベースの workflow が期待する layout にすでに合っており、[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) は Claude Code 向けの agent playbook を提供します。
 
 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、再利用できる **CLAUDE.md / AGENTS.md** プレイブック、実用的な **SKILL.md** 例を探しているなら、このリポジトリは見つけやすさと導入しやすさを意識して整理しています。
 
@@ -89,6 +89,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality、leverage、testability、AI navigation を高める architecture deepening の機会を見つける
 - [prototype](prototype/SKILL.md): throwaway logic / UI prototype で design question に素早く答える。
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): 過度な複雑化、隠れた前提、検証不能な変更を減らす coding guidelines。
+- [ponytail](ponytail/SKILL.md): YAGNI に従い、既存コードを再利用し、標準ライブラリとプラットフォームの標準機能を優先して過剰設計を減らす。lite・full・ultra モードに対応。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): テスト内の `as` 型アサーションを `@total-typescript/shoehorn` へ移行する
 - [tdd](tdd/SKILL.md): 機能、バグ修正、リファクタリング、振る舞い変更の前に test-first red-green-refactor を徹底する
 
@@ -156,6 +157,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality、leverage、testability、AI navigation を高める architecture deepening の機会を見つける。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | throwaway logic / UI prototype を作り、design question に素早く答える。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 過度な複雑化、隠れた前提、検証不能な変更を減らす coding guidelines。                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | YAGNI に従い、既存コードを再利用し、標準ライブラリとプラットフォームの標準機能を優先して過剰設計を減らす。lite・full・ultra モードに対応。 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files の `as` type assertions を `@total-typescript/shoehorn` へ移行する。                                                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | ブラウザのログイン状態を再利用し、公開 API や AI 生成アダプタで Web サイトを CLI 化する。                                                                                                     | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`、`findings.md`、`progress.md` を使って複雑なタスクをファイルベースで計画する。                                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |

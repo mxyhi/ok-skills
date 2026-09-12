@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **30 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **31 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -89,6 +89,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।
 - [prototype](prototype/SKILL.md): design questions का जल्दी जवाब देने के लिए throwaway logic या UI prototypes बनाएं.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।
+- [ponytail](ponytail/SKILL.md): YAGNI अपनाएँ, मौजूदा कोड का पुनः उपयोग करें और अनावश्यक जटिलता घटाने के लिए standard library व platform की मूल क्षमताओं को प्राथमिकता दें; lite, full और ultra मोड।
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): tests में `as` type assertions को `@total-typescript/shoehorn` में migrate करें।
 - [tdd](tdd/SKILL.md): feature, bugfix, refactor, या behavior change से पहले test-first red-green-refactor लागू करता है।
 
@@ -156,6 +157,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | locality, leverage, testability, और AI navigation सुधारने वाली architecture deepening opportunities खोजें।                                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | Design questions का जल्दी जवाब देने के लिए throwaway logic या UI prototypes बनाता है. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Overcomplication, छिपी assumptions, और unverifiable changes घटाने वाली coding behavior guidelines।                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | YAGNI अपनाएँ, मौजूदा कोड का पुनः उपयोग करें और अनावश्यक जटिलता घटाने के लिए standard library व platform की मूल क्षमताओं को प्राथमिकता दें; lite, full और ultra मोड। | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | test files को `as` type assertions से `@total-typescript/shoehorn` में migrate करें।                                                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Browser login session reuse, public APIs, और AI-generated adapters के साथ websites को CLI commands में बदलने की skill.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |

@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **30 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **31 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -89,6 +89,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): находить architecture deepening opportunities, улучшающие locality, leverage, testability и AI navigation.
 - [prototype](prototype/SKILL.md): строить throwaway logic или UI prototypes для быстрого ответа на design questions.
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): coding guidelines, снижающие overcomplication, скрытые assumptions и неверифицируемые изменения.
+- [ponytail](ponytail/SKILL.md): Применяет YAGNI, повторно использует существующий код и предпочитает стандартную библиотеку и возможности платформы; режимы lite, full и ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): мигрировать `as` type assertions в тестах на `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor для функций, исправлений, рефакторинга и изменений поведения.
 
@@ -156,6 +157,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Находит architecture deepening opportunities, улучшающие locality, leverage, testability и AI navigation.                                                                                       | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | Строит throwaway logic или UI prototypes для быстрого ответа на design questions. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | Coding guidelines, снижающие overcomplication, скрытые assumptions и неверифицируемые изменения.                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | Применяет YAGNI, повторно использует существующий код и предпочитает стандартную библиотеку и возможности платформы; режимы lite, full и ultra. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | Migrates test files from `as` type assertions to `@total-typescript/shoehorn`.                                                                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Превращает сайты в CLI-команды за счет повторного использования браузерной сессии, public API и AI-generated adapters.                                                                       | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                                | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
