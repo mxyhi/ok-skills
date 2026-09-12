@@ -29,7 +29,7 @@
 
 ## 无论何时，你都必须始终查阅最新文档/源码(优先)，因为自从你接受训练以来，某些内容可能已经发生了变化。
 
-## 默认始终使用 `$planning-with-files`、`$karpathy-guidelines` skill；除非用户明确要求关闭，或不可用。
+## 默认始终使用 `$ponytail`、`$planning-with-files`、`$karpathy-guidelines` skill；除非用户明确要求关闭，或不可用。
 
 ## 项目分析原则
 
