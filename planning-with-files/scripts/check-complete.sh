@@ -21,8 +21,9 @@
 #     4. the block counter (<plan-dir>/.stop_blocks) is below cap (PWF_GATE_CAP, default 20)
 #     5. the ledger advanced since the last block (stall → allow stop)
 #   When all hold, it emits a single-line block-decision JSON on stdout and
-#   exits 0. Otherwise it falls back to advisory output and exits 0.
-#   Without --gate, or in non-gated mode, behavior is byte-equivalent to v2.43.
+#   exits 0. Otherwise it reports incomplete plans and exits 0; completed
+#   plans stay silent in --gate mode, including legacy plans without .mode.
+#   Without --gate, the explicit advisory report is unchanged.
 #
 # Stdin handling: the Claude Code Stop hook pipes a JSON payload on stdin. To
 # avoid hanging when nothing is piped, stdin is read ONLY when fd 0 is not a
@@ -119,9 +120,11 @@ if [ "$TOTAL" -eq 0 ]; then
     exit 0
 fi
 
-# advisory_report: the v2.43 status echo. Always exit 0 after calling.
+# Explicit status reports retain completion text. Automatic gate checks have
+# nothing to report on success; keep evaluating all gate guards before here.
 advisory_report() {
     if [ "$COMPLETE" -eq "$TOTAL" ] && [ "$TOTAL" -gt 0 ]; then
+        [ "$GATE" -eq 1 ] && return 0
         echo "[planning-with-files] ALL PHASES COMPLETE ($COMPLETE/$TOTAL). If the user has additional work, add new phases to task_plan.md before starting."
     else
         echo "[planning-with-files] Task in progress ($COMPLETE/$TOTAL phases complete). Update progress.md before stopping."
