@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **19 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **21 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -86,6 +86,8 @@ Danach kannst du natürlich formulieren:
 - [ponytail](ponytail/SKILL.md): Weniger Overengineering durch YAGNI, vorhandenen Code, Standardbibliotheken und native Plattformfunktionen.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor fur Features, Bugfixes, Refactorings und Verhaltensaenderungen.
 - [teamai](teamai/SKILL.md): Team-Skills, Regeln, Dokumente und Umgebung zwischen KI-Coding-Tools synchronisieren; explizit mit `/teamai` aufrufen.
+- [teamai-share-learnings](teamai-share-learnings/SKILL.md): Wiederverwendbare Sitzungserkenntnisse zusammenfassen und zur TeamAI-Wissensbasis beitragen.
+- [team-wiki-codebase](team-wiki-codebase/SKILL.md): Eine überprüfbare Code-Wissensbasis mit Architekturdokumenten und Abhängigkeitsgraphen erstellen.
 
 ### Automatisierung und QA
 
@@ -138,6 +140,8 @@ Danach kannst du natürlich formulieren:
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [tdd](tdd/SKILL.md)                                                 | Vor Features, Bugfixes, Refactorings oder Verhaltensaenderungen verwenden; bevorzugt Integrationstests ueber public interfaces.                                                                                    | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [teamai](teamai/SKILL.md) | Team-Skills, Regeln, Dokumente und Umgebung zwischen KI-Coding-Tools synchronisieren; explizit mit `/teamai` aufrufen. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
+| [teamai-share-learnings](teamai-share-learnings/SKILL.md) | Wiederverwendbare Sitzungserkenntnisse zusammenfassen und zur TeamAI-Wissensbasis beitragen. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai-share-learnings) |
+| [team-wiki-codebase](team-wiki-codebase/SKILL.md) | Eine überprüfbare Code-Wissensbasis mit Architekturdokumenten und Abhängigkeitsgraphen erstellen. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/team-wiki-codebase) |
 ## Mitwirken
 
 Beiträge für neue Skills oder Verbesserungen an bestehenden Skills sind willkommen.

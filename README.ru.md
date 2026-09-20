@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **19 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **21 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -86,6 +86,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [ponytail](ponytail/SKILL.md): Меньше избыточного проектирования благодаря YAGNI, повторному использованию кода, стандартной библиотеке и возможностям платформы.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor для функций, исправлений, рефакторинга и изменений поведения.
 - [teamai](teamai/SKILL.md): Синхронизация навыков, правил, документов и окружения команды между инструментами ИИ; явный вызов через `/teamai`.
+- [teamai-share-learnings](teamai-share-learnings/SKILL.md): Обобщение полезного опыта сессии и сохранение в базе знаний TeamAI.
+- [team-wiki-codebase](team-wiki-codebase/SKILL.md): Создание проверяемой базы знаний кода с описанием архитектуры и графами зависимостей.
 
 ### Automation & QA
 
@@ -138,6 +140,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                                | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [teamai](teamai/SKILL.md) | Синхронизация навыков, правил, документов и окружения команды между инструментами ИИ; явный вызов через `/teamai`. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
+| [teamai-share-learnings](teamai-share-learnings/SKILL.md) | Обобщение полезного опыта сессии и сохранение в базе знаний TeamAI. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai-share-learnings) |
+| [team-wiki-codebase](team-wiki-codebase/SKILL.md) | Создание проверяемой базы знаний кода с описанием архитектуры и графами зависимостей. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/team-wiki-codebase) |
 ## Contributing
 
 Приветствуются новые skills и улучшения существующих.
