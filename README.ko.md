@@ -103,7 +103,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 [`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 `skills-ref` 호환 `SKILL.md` frontmatter와 설치 위치에 독립적인 상대 script path 문서로 제한됩니다.
 
-[`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `356918eba965ee1eac64bd3a7f0dd02108350de5`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 포함하며 형식 호환성을 위해 `argument-hint`를 metadata로 옮겼습니다.
+[`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 포함하며 형식 호환성을 위해 `argument-hint`를 metadata로 옮겼습니다.
 
 ## 공통 전제 조건
 

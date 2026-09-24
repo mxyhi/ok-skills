@@ -117,11 +117,11 @@ Then ask naturally:
 
 [`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) as its upstream baseline. This repository keeps that upstream directory as the canonical baseline for the local skill. Local differences are limited to `skills-ref`-compatible `SKILL.md` frontmatter and install-location-independent relative script paths in docs.
 
-[`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `356918eba965ee1eac64bd3a7f0dd02108350de5`, retaining its MIT license. This standalone skill moves `argument-hint` into metadata for format compatibility.
+[`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`, retaining its MIT license. This standalone skill moves `argument-hint` into metadata for format compatibility.
 
-[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `e10bbcbb23e3040377366c91f282139ae7b2ca18`, preserving the upstream skill, references, and MIT license. Invoke explicitly with `/teamai`.
+[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `a725574b34771309832300ced6ca60d0cb3fa6e8`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
 
-The companion skills [`teamai-share-learnings/`](teamai-share-learnings/) and [`team-wiki-codebase/`](team-wiki-codebase/) track the same upstream revision, including all bundled references, scripts, and MIT licenses. TeamAI CLI is required for contribution and codebase commands; the codebase helper scripts use Python 3. These are repository source copies; TeamAI also deploys built-in copies into individual AI tools.
+The companion skills [`teamai-share-learnings/`](teamai-share-learnings/) and [`team-wiki-codebase/`](team-wiki-codebase/) are locally maintained companion skills; the current TeamAI CLI serves its workflow skills dynamically. TeamAI CLI is required for contribution and codebase commands; the codebase helper scripts use Python 3. These are repository source copies; TeamAI also deploys built-in copies into individual AI tools.
 
 ## Common Prerequisites
 

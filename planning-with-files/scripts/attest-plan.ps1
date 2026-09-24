@@ -116,7 +116,13 @@ public static class PwfAttestationNative {
             handle, FileAttributeTagInfo, out tag,
             (uint)Marshal.SizeOf(typeof(FILE_ATTRIBUTE_TAG_INFO))))
             throw new Win32Exception(Marshal.GetLastWin32Error());
-        if ((tag.FileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) != 0)
+        // Refuse only name-surrogate reparse points (symlinks, junctions, and any
+        // unknown tag with bit 29 set): those are what path parsing follows. A
+        // OneDrive Files On-Demand placeholder (tag 0x9000601A) is a regular file
+        // that every other route reads; refusing it broke attestation, --show
+        // and --clear in every project under OneDrive (#275).
+        if ((tag.FileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) != 0 &&
+            (tag.ReparseTag & 0x20000000) != 0)
             throw new IOException("Refusing a reparse-point file.");
         if ((tag.FileAttributes & (uint)FileAttributes.Directory) != 0)
             throw new IOException("Refusing a directory where a regular file is required.");

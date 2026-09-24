@@ -103,7 +103,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 [`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) làm upstream baseline. Repo này dùng thư mục upstream đó làm baseline canonical cho skill cục bộ. Khac biet cuc bo chi gom frontmatter `SKILL.md` tuong thich `skills-ref` va tai lieu dung duong dan script tuong doi khong phu thuoc vi tri cai dat.
 
-[`ponytail/`](ponytail/) lấy từ [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) tại `356918eba965ee1eac64bd3a7f0dd02108350de5`, giữ nguyên giấy phép MIT. Chỉ bao gồm skill chính độc lập; `argument-hint` được chuyển vào metadata để tương thích định dạng.
+[`ponytail/`](ponytail/) lấy từ [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) tại `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`, giữ nguyên giấy phép MIT. Chỉ bao gồm skill chính độc lập; `argument-hint` được chuyển vào metadata để tương thích định dạng.
 
 ## Các điều kiện tiên quyết phổ biến
 

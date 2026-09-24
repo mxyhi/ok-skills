@@ -272,6 +272,9 @@ list_plans() {
     printf '%s\n' 'Available plans:'
     for _dir in "${PLAN_ROOT}"/*; do
         [ -d "${_dir}" ] || continue
+        # A linked plan directory is never a plan (#270): no resolver selects
+        # it, so listing it would advertise a PLAN_ID every route refuses.
+        [ -L "${_dir}" ] && continue
         _id="${_dir##*/}"
         slug_is_valid "${_id}" || continue
         is_within_root "${_dir}" || continue
@@ -312,7 +315,7 @@ if [ "${1:-}" = '' ]; then
         exit 1
     fi
     plan_id="$(current_active)"
-    if [ -n "${plan_id}" ] && [ -d "${PLAN_ROOT}/${plan_id}" ] && is_within_root "${PLAN_ROOT}/${plan_id}"; then
+    if [ -n "${plan_id}" ] && [ -d "${PLAN_ROOT}/${plan_id}" ] && [ ! -L "${PLAN_ROOT}/${plan_id}" ] && is_within_root "${PLAN_ROOT}/${plan_id}"; then
         printf '%s\n' "Active plan: ${plan_id}" "Path: ${PLAN_ROOT}/${plan_id}"
     elif [ -n "${plan_id}" ]; then
         printf '%s\n' "Active plan pointer: ${plan_id} (directory not found or outside project - stale pointer)"
@@ -331,6 +334,10 @@ PLAN_DIR="${PLAN_ROOT}/${PLAN_ID}"
 if [ ! -d "${PLAN_DIR}" ]; then
     printf '%s\n' "Error: plan directory not found: ${PLAN_DIR}" \
         "Run: init-session.sh \"${PLAN_ID}\" to create it, or use --list to see available plans." >&2
+    exit 1
+fi
+if [ -L "${PLAN_DIR}" ]; then
+    printf '%s\n' "Error: plan directory is a symlink or junction and no route selects it: ${PLAN_DIR}" >&2
     exit 1
 fi
 if ! is_within_root "${PLAN_ROOT}" || ! is_within_root "${PLAN_DIR}"; then

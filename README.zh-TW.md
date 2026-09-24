@@ -103,7 +103,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`planning-with-files/`](planning-with-files/) 對應的上游基線是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本倉將該上游目錄作為本地技能的規範基線；本地差異僅限相容 `skills-ref` 的 `SKILL.md` frontmatter，以及不依賴安裝位置的相對腳本路徑說明。
 
-[`ponytail/`](ponytail/) 來自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `356918eba965ee1eac64bd3a7f0dd02108350de5`，保留 MIT 授權。以獨立主技能形式收錄，僅將 `argument-hint` 移至 metadata 以符合技能格式。
+[`ponytail/`](ponytail/) 來自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`，保留 MIT 授權。以獨立主技能形式收錄，僅將 `argument-hint` 移至 metadata 以符合技能格式。
 
 ## 常見前置條件
 

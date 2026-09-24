@@ -103,7 +103,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 [`planning-with-files/`](planning-with-files/) は [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) を upstream baseline として対応しています。この repository では、その upstream directory を local skill の canonical baseline として扱います。ローカル差分は `skills-ref` 互換の `SKILL.md` frontmatter と、インストール場所に依存しない相対 script path docs に限定します。
 
-[`ponytail/`](ponytail/) は [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) の `356918eba965ee1eac64bd3a7f0dd02108350de5` を取り込み、MIT ライセンスを保持しています。独立したメインスキルのみを収録し、形式互換性のため `argument-hint` を metadata に移しています。
+[`ponytail/`](ponytail/) は [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) の `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156` を取り込み、MIT ライセンスを保持しています。独立したメインスキルのみを収録し、形式互換性のため `argument-hint` を metadata に移しています。
 
 ## よくある前提条件
 

@@ -845,7 +845,10 @@ class Injector(object):
                 )
             raise Bail()
         if plan_id:
-            if slug_is_valid(plan_id) and is_dir(plan_prefix + ".planning/" + plan_id):
+            # A linked plan directory is never selectable (#270): the same
+            # `[ ! -L ]` the reference applies on every branch below.
+            if (slug_is_valid(plan_id) and is_dir(plan_prefix + ".planning/" + plan_id)
+                    and not is_link(plan_prefix + ".planning/" + plan_id)):
                 resolved = plan_prefix + ".planning/" + plan_id
                 scope = "scoped"
                 explicit = True
@@ -864,7 +867,7 @@ class Injector(object):
                 active = b""
             if active and slug_is_valid(active):
                 slug = active.decode("ascii")
-                if is_dir(plan_prefix + ".planning/" + slug):
+                if is_dir(plan_prefix + ".planning/" + slug) and not is_link(plan_prefix + ".planning/" + slug):
                     resolved = plan_prefix + ".planning/" + slug
                     scope = "scoped"
         if not resolved and is_dir(plan_prefix + ".planning"):
@@ -879,6 +882,8 @@ class Injector(object):
                     continue
                 candidate = plan_prefix + ".planning/" + name
                 if not is_dir(candidate):
+                    continue
+                if is_link(candidate):
                     continue
                 if not slug_is_valid(name):
                     continue
@@ -1327,7 +1332,12 @@ def plan_is_ambiguous(plan_root, project_root, plan_id=""):
     except OSError:
         names = []
     for name in names:
-        if slug_is_valid(name) and is_file(plan_root + "/" + name + "/task_plan.md"):
+        candidate_dir = plan_root + "/" + name
+        # A linked plan directory is not selectable, so it never counts (#270):
+        # the reference tests `[ -L "$plan_candidate_dir" ]` before `-f`.
+        if is_link(candidate_dir):
+            continue
+        if slug_is_valid(name) and is_file(candidate_dir + "/task_plan.md"):
             count += 1
             if count > 1:
                 return True
@@ -1364,7 +1374,7 @@ def resolve_plan_dir(env=None):
     if plan_id:
         if slug_is_valid(plan_id):
             candidate = fs_root + "/" + plan_id
-            if is_dir(candidate) and within(candidate):
+            if is_dir(candidate) and not is_link(candidate) and within(candidate):
                 return found(plan_id)
         return ("", "")
 
@@ -1382,7 +1392,7 @@ def resolve_plan_dir(env=None):
         if slug_is_valid(active):
             slug = active.decode("ascii")
             candidate = fs_root + "/" + slug
-            if is_dir(candidate) and within(candidate):
+            if is_dir(candidate) and not is_link(candidate) and within(candidate):
                 return found(slug)
 
     if is_dir(fs_root):
@@ -1397,6 +1407,8 @@ def resolve_plan_dir(env=None):
             if not is_dir(candidate):
                 continue
             if name.startswith("."):
+                continue
+            if is_link(candidate):
                 continue
             if not slug_is_valid(name):
                 continue
