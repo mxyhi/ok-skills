@@ -139,6 +139,24 @@ function Test-WithinRoot {
     return $candNorm.StartsWith($rootNorm + [System.IO.Path]::DirectorySeparatorChar, [System.StringComparison]::OrdinalIgnoreCase)
 }
 
+# A linked plan directory (symlink or junction) is never selectable: not by
+# PLAN_ID, not by the pointer, not by the newest scan, and it never counts
+# (#270). This is `[ -L ]` of resolve-plan-dir.sh and is_link of the Python
+# twin: LinkType names symlinks and junctions only. The ReparsePoint
+# attribute alone would also match OneDrive Files On-Demand placeholders,
+# which every synced directory and file carries and which are not links to
+# sh. The same predicate guards the pointer file below (#275).
+function Test-LinkedDirectory {
+    param($PathOrItem)
+    if ($PathOrItem -is [string]) {
+        $item = Get-Item -LiteralPath $PathOrItem -Force -ErrorAction SilentlyContinue
+    } else {
+        $item = $PathOrItem
+    }
+    if (-not $item) { return $false }
+    return ([string]$item.LinkType) -in @('SymbolicLink', 'Junction')
+}
+
 $activeFile = Join-Path $PlanRoot ".active_plan"
 
 # A set PLAN_ID is a BINDING, not a hint (issue #237). A selector that names
@@ -158,6 +176,9 @@ if (-not $env:PLAN_ID) {
     }
     if (Test-Path -LiteralPath $PlanRoot -PathType Container) {
         foreach ($entry in (Get-ChildItem -LiteralPath $PlanRoot -Directory -ErrorAction SilentlyContinue)) {
+            # A linked plan directory (symlink, junction) is not selectable and
+            # never counts, matching `[ -L ]` in resolve-plan-dir.sh (#270).
+            if (Test-LinkedDirectory $entry) { continue }
             if ((Test-ValidSlug $entry.Name) -and
                 (Test-Path -LiteralPath (Join-Path $entry.FullName "task_plan.md") -PathType Leaf)) {
                 $planCount++
@@ -175,7 +196,7 @@ if ($planCount -gt 1) { exit 0 }
 if ($env:PLAN_ID) {
     if (Test-ValidSlug $env:PLAN_ID) {
         $candidate = Join-Path $PlanRoot $env:PLAN_ID
-        if ((Test-Path -LiteralPath $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {
+        if ((Test-Path -LiteralPath $candidate -PathType Container) -and -not (Test-LinkedDirectory $candidate) -and (Test-WithinRoot $candidate)) {
             Write-Output $candidate
             exit 0
         }
@@ -185,12 +206,14 @@ if ($env:PLAN_ID) {
 
 # Get-Item observes the link object even when its target is missing, unlike
 # Test-Path which follows the target. An active pointer that is a directory or
-# reparse point is an unsafe/ambiguous selector and must terminate resolution;
+# a symlink is an unsafe/ambiguous selector and must terminate resolution;
 # falling through would silently select and expose the newest unrelated plan.
+# LinkType, not the ReparsePoint attribute: OneDrive Files On-Demand marks
+# every synced file as a reparse point, and such a pointer is a plain file
+# to every other route (#275).
 $activeItem = Get-Item -LiteralPath $activeFile -Force -ErrorAction SilentlyContinue
 if ($activeItem) {
-    if ($activeItem.PSIsContainer -or
-        (($activeItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)) {
+    if ($activeItem.PSIsContainer -or (Test-LinkedDirectory $activeItem)) {
         exit 0
     }
     # Get-Content -Raw returns $null for a zero-byte pointer; an empty pointer
@@ -198,7 +221,7 @@ if ($activeItem) {
     $planId = "$(Get-Content -LiteralPath $activeFile -Raw -ErrorAction SilentlyContinue)".Trim()
     if ($planId -and (Test-ValidSlug $planId)) {
         $candidate = Join-Path $PlanRoot $planId
-        if ((Test-Path -LiteralPath $candidate -PathType Container) -and (Test-WithinRoot $candidate)) {
+        if ((Test-Path -LiteralPath $candidate -PathType Container) -and -not (Test-LinkedDirectory $candidate) -and (Test-WithinRoot $candidate)) {
             Write-Output $candidate
             exit 0
         }
@@ -211,6 +234,7 @@ if ($activeItem) {
 if (Test-Path -LiteralPath $PlanRoot -PathType Container) {
     $latest = Get-ChildItem -LiteralPath $PlanRoot -Directory |
         Where-Object { -not $_.Name.StartsWith('.') } |
+        Where-Object { -not (Test-LinkedDirectory $_) } |
         Where-Object { Test-ValidSlug $_.Name } |
         Where-Object { Test-Path -LiteralPath (Join-Path $_.FullName "task_plan.md") -PathType Leaf } |
         Where-Object { Test-WithinRoot $_.FullName } |

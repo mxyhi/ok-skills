@@ -263,8 +263,9 @@ if [ -z "${PLAN_ID:-}" ]; then
         PLAN_COUNT=1
     fi
     for plan_candidate in "${PLAN_PREFIX}".planning/*/task_plan.md; do
-        [ -f "$plan_candidate" ] || continue
         plan_candidate_dir="${plan_candidate%/task_plan.md}"
+        [ -L "$plan_candidate_dir" ] && continue
+        [ -f "$plan_candidate" ] || continue
         slug_is_valid "${plan_candidate_dir##*/}" || continue
         PLAN_COUNT=$((PLAN_COUNT + 1))
         if [ "$PLAN_COUNT" -gt 1 ]; then PLAN_AMBIGUOUS=1; break; fi
@@ -295,7 +296,9 @@ if [ -n "${PLAN_ID:-}" ]; then
     # printing on those would spam the transcript with the same line. The
     # userprompt fire is also the one plan-doctor.sh drives, so /plan-doctor
     # still sees and reports the state.
-    if slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
+    # A linked plan directory is never selectable (#270): same `-L` rule as
+    # the counter above and as resolve-plan-dir.sh, on every branch below.
+    if slug_is_valid "$PLAN_ID" && [ -d "${PLAN_PREFIX}.planning/${PLAN_ID}" ] && [ ! -L "${PLAN_PREFIX}.planning/${PLAN_ID}" ]; then
         RESOLVED="${PLAN_PREFIX}.planning/${PLAN_ID}"; SCOPE="scoped"; EXPLICIT=1
     else
         if [ "$CONTEXT" = "userprompt" ]; then
@@ -305,7 +308,7 @@ if [ -n "${PLAN_ID:-}" ]; then
     fi
 elif [ -f "${PLAN_PREFIX}.planning/.active_plan" ]; then
     AP=$(tr -d '\r\n[:space:]' < "${PLAN_PREFIX}.planning/.active_plan" 2>/dev/null)
-    if [ -n "$AP" ] && slug_is_valid "$AP" && [ -d "${PLAN_PREFIX}.planning/${AP}" ]; then
+    if [ -n "$AP" ] && slug_is_valid "$AP" && [ -d "${PLAN_PREFIX}.planning/${AP}" ] && [ ! -L "${PLAN_PREFIX}.planning/${AP}" ]; then
         RESOLVED="${PLAN_PREFIX}.planning/${AP}"; SCOPE="scoped"
     fi
 fi
@@ -314,6 +317,7 @@ if [ -z "$RESOLVED" ] && [ -d "${PLAN_PREFIX}.planning" ]; then
     for d in "${PLAN_PREFIX}".planning/*/; do
         d="${d%/}"; n="${d##*/}"
         case "$n" in .*) continue;; esac
+        [ -L "$d" ] && continue
         slug_is_valid "$n" || continue
         [ -f "$d/task_plan.md" ] || continue
         m=$(stat -c '%Y' "$d" 2>/dev/null || stat -f '%m' "$d" 2>/dev/null || date -r "$d" +%s 2>/dev/null || echo 0)
