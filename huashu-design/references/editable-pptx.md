@@ -50,66 +50,66 @@ pptx.layout = 'LAYOUT_WIDE';  // 13.333 × 7.5 inch, 无需自定义
 
 ## 4 条硬约束（违反会直接报错）
 
-`html2pptx.js` 把 HTML 的 DOM 逐元素翻译成 PowerPoint 对象。PowerPoint 的格式约束投射到 HTML 上 = 下面 4 条规则。
+`html2pptx.js` 对 DOM 做一次遍历，按标签和 computed style 把每个元素分类成「文本框 / 形状 / 图片 / 忽略」。分类规则背后是 PowerPoint 文件格式本身的限制，投射到 HTML 上就是下面 4 条——写的时候脑子里过一遍，能省掉转出来再逐页返工的时间。
 
-### 规则 1：DIV 里不能直接写文字 — 必须用 `<p>` 或 `<h1>`-`<h6>` 包裹
+### 规则 1：DIV 里不能直接躺文字 — 用 `<p>` 或 `<h1>`-`<h6>` 包一层
 
 ```html
-<!-- ❌ 错误：文字直接在 div 里 -->
-<div class="title">Q3营收增长23%</div>
+<!-- ❌ 错误：文字是 div 的直接子文本节点 -->
+<div class="metric">日活 12.4 万，环比 +8%</div>
 
-<!-- ✅ 正确：文字在 <p> 或 <h1>-<h6> 里 -->
-<div class="title"><h1>Q3营收增长23%</h1></div>
-<div class="body"><p>新用户是主要驱动力</p></div>
+<!-- ✅ 正确：文字包进 <p>/<h1>-<h6>，div 只负责定位/背景 -->
+<div class="metric"><p>日活 12.4 万，环比 +8%</p></div>
 ```
 
-**为什么**：PowerPoint 文本必须存在 text frame 里，text frame 对应 HTML 的段落级元素（p/h*/li）。裸 `<div>` 在 PPTX 里没有对应的文本容器。
+**判定方式**：脚本检查的是 div 的**直接子节点**里有没有非空白的文本节点——嵌套在 `<p>`/`<h1>`-`<h6>` 里的文字不算，只有「字直接贴在 div 上」才算违规。报错里会带上违规文字的前 50 个字（超出用 `...`收尾），方便定位是哪一段。
 
-**也不能用 `<span>` 承载主文字**——span 是行内元素，没法独立对齐成文本框。span 只能**夹在 p/h\* 里**做局部样式（加粗、换色）。
+**span 同理不能单独顶用**：span 是行内元素，脚本只会把它当成 `<p>`/`<h1>`-`<h6>` 内部的一段局部样式覆盖（加粗、换色、下划线），不会把它单独提成一个文本框。想要一段独立可编辑的文字，外面必须有 `<p>`/`<h1>`-`<h6>`。
 
-### 规则 2：不支持 CSS 渐变 — 只能用纯色
+### 规则 2：不支持 CSS 渐变（本质是「不支持 background-image」的一种）
 
 ```css
-/* ❌ 错误 */
-background: linear-gradient(to right, #FF6B6B, #4ECDC4);
+/* ❌ 错误：linear-gradient/radial-gradient 都算 background-image */
+.banner { background: linear-gradient(135deg, #FF6B6B, #4ECDC4); }
 
 /* ✅ 正确：纯色 */
-background: #FF6B6B;
+.banner { background: #FF6B6B; }
 
-/* ✅ 如果必须多色条纹，用 flex 子元素各自纯色 */
-.stripe-bar { display: flex; }
-.stripe-bar div { flex: 1; }
-.red   { background: #FF6B6B; }
-.teal  { background: #4ECDC4; }
+/* ✅ 需要多色过渡观感，用几个纯色 flex 子块错位排列，靠透明度或色阶模拟渐变感 */
+.banner { display: flex; }
+.banner div { flex: 1; }
+.banner .c1 { background: #FF6B6B; }
+.banner .c2 { background: #FF9B6B; }
+.banner .c3 { background: #4ECDC4; }
 ```
 
-**为什么**：PowerPoint 的 shape fill 只支持 solid/gradient-fill 两种，但 pptxgenjs 的 `fill: { color: ... }` 只映射 solid。渐变走 PowerPoint 原生 gradient 需要另写结构，目前工具链不支持。
+**为什么**：脚本对 div 的校验只看 computed `background-image` 是不是 `none`——只要不是 `none`，不管里面是一张图还是一个 CSS 渐变函数，都会被拦下来（渐变本质上就是一种特殊的 background-image）。PowerPoint 的原生 shape fill 只有纯色这一种是 pptxgenjs 稳定支持的，渐变需要单独一套 OOXML 结构，工具链目前没做。
 
-### 规则 3：背景/边框/阴影只能在 DIV 上，不能在文字标签上
+### 规则 3：背景/边框/阴影只能挂在 DIV 上，文字标签（含 `<ul>`/`<ol>`）一概不行
 
 ```html
-<!-- ❌ 错误：<p> 有背景色 -->
-<p style="background: #FFD700; border-radius: 4px;">重点内容</p>
+<!-- ❌ 错误：<h2> 自己带了背景和圆角 -->
+<h2 style="background: #FFD700; border-radius: 6pt; padding: 6pt 10pt;">核心结论</h2>
 
-<!-- ✅ 正确：外层 div 承载背景/边框，<p> 只负责文字 -->
-<div style="background: #FFD700; border-radius: 4px; padding: 8pt 12pt;">
-  <p>重点内容</p>
+<!-- ✅ 正确：外层 div 扛背景/边框，<h2> 只管文字 -->
+<div style="background: #FFD700; border-radius: 6pt; padding: 6pt 10pt;">
+  <h2>核心结论</h2>
 </div>
 ```
 
-**为什么**：PowerPoint 里 shape（方块/圆角矩形）和 text frame 是两个对象。HTML 的 `<p>` 只翻译成 text frame，背景/边框/阴影属于 shape——必须在**包裹 text 的 div** 上写。
+**为什么**：脚本对每一个 `<p>`/`<h1>`-`<h6>`/`<ul>`/`<ol>`（以及它们内部收编的 `<li>`）都会先单独检查一遍自身的 background/border/box-shadow——三者任意一个非空就直接报错，连是不是同时命中"占位符"（`class` 里带 `placeholder`）这类其它规则都不管，直接判定为违规。这条检查发生在所有其它分类之前，因为 PowerPoint 里"能画背景/边框/阴影的 shape"和"能装文字的 text frame"是两种不同对象，`<p>`/`<h*>` 只会被翻成后者，没有地方安放前者的属性。
 
-### 规则 4：DIV 不能用 `background-image` — 用 `<img>` 标签
+### 规则 4：DIV 不能用 `background-image` — 图片一律用 `<img>` 标签
 
 ```html
 <!-- ❌ 错误 -->
-<div style="background-image: url('chart.png')"></div>
+<div style="background-image: url('trend.png'); width: 300pt; height: 200pt;"></div>
 
 <!-- ✅ 正确 -->
-<img src="chart.png" style="position: absolute; left: 50%; top: 20%; width: 300pt; height: 200pt;" />
+<img src="trend.png" style="position: absolute; left: 60pt; top: 80pt; width: 300pt; height: 200pt;" />
 ```
 
-**为什么**：`html2pptx.js` 只从 `<img>` 元素提取图片路径，不解析 CSS 的 `background-image` URL。
+**为什么**：脚本只从 `<img>` 元素读取（浏览器解析后的）绝对 `src` 来生成图片对象；它完全不解析 div 的 `background-image` 属性里那个 `url(...)`。命中这条时脚本不会连累这个 div 的子孙——`div` 自己不产出任何东西，但内部如果还包了 `<p>`/`<img>` 等，仍会各自继续被单独处理，只是这层背景图没了。想要图片和文字叠在一起，就把 `<img>` 和文字层分别摆成两个独立元素，靠定位对齐。
 
 ---
 
@@ -211,13 +211,13 @@ background: #FF6B6B;
 
 | 错误信息 | 原因 | 修复方法 |
 |---------|------|---------|
-| `DIV element contains unwrapped text "XXX"` | div 里有裸文字 | 把文字包进 `<p>` 或 `<h1>`-`<h6>` |
-| `CSS gradients are not supported` | 用了 linear/radial-gradient | 改为纯色，或用 flex 子元素分段 |
-| `Text element <p> has background` | `<p>` 标签加了背景色 | 外套 `<div>` 承载背景，`<p>` 只写文字 |
-| `Background images on DIV elements are not supported` | div 用了 background-image | 改为 `<img>` 标签 |
-| `HTML content overflows body by Xpt vertically` | 内容超出 540pt | 减少内容或缩小字号，或 `overflow: hidden` 截断 |
-| `HTML dimensions don't match presentation layout` | body 尺寸和 pres layout 对不上 | body 用 `960pt × 540pt` 配 `LAYOUT_WIDE`；或 defineLayout 自定义尺寸 |
-| `Text box "XXX" ends too close to bottom edge` | 大字号 `<p>` 距离 body 底边 < 0.5 inch | 往上挪，留足下边距；PPT 底部本身就会被遮住一部分 |
+| `<div> 里直接写了文字「XXX」` | div 里有裸文字 | 把文字包进 `<p>` 或 `<h1>`-`<h6>` |
+| `<div> 背景不能用 CSS 渐变` | 用了 linear/radial-gradient | 改为纯色，或用 flex 子元素分段 |
+| `文字标签 <p> 上设置了 background…` | `<p>` 标签加了背景色 | 外套 `<div>` 承载背景，`<p>` 只写文字 |
+| `<div> 不能用 background-image` | div 用了 background-image | 改为 `<img>` 标签 |
+| `内容纵向超出页面 Xpt` | 内容超出 540pt | 减少内容或缩小字号，或 `overflow: hidden` 截断 |
+| `页面尺寸不一致` | body 尺寸和 pres layout 对不上 | body 用 `960pt × 540pt` 配 `LAYOUT_WIDE`；或 defineLayout 自定义尺寸 |
+| `文本框「XXX」离页面底边只有…` | 大字号 `<p>` 距离 body 底边 < 0.5 inch | 往上挪，留足下边距；PPT 底部本身就会被遮住一部分 |
 
 ---
 
