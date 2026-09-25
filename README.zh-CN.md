@@ -119,7 +119,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`，保留 MIT 许可证。以独立主技能形式收录，仅将 `argument-hint` 移至 metadata 以兼容技能格式。
 
-[`teamai/`](teamai/) 来自 [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) 的 `a725574b34771309832300ced6ca60d0cb3fa6e8`，保留上游 CLI 入口和 MIT 许可证；通过 `teamai skill get` 动态加载当前流程，并通过 `/teamai` 显式调用。
+[`teamai/`](teamai/) 来自 [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) 的 `87a606b727cc37b7a47952f9590f8acdc00b96c8`，保留上游 CLI 入口和 MIT 许可证；通过 `teamai skill get` 动态加载当前流程，并通过 `/teamai` 显式调用。
 
 配套的 [`teamai-share-learnings/`](teamai-share-learnings/) 和 [`team-wiki-codebase/`](team-wiki-codebase/) 作为本地维护的配套技能保留；当前 TeamAI CLI 会动态提供对应流程。经验上传和代码库命令依赖 TeamAI CLI，代码库辅助脚本依赖 Python 3。这些目录是仓库维护源；TeamAI 也会向各 AI 工具部署内置副本。
 

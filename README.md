@@ -119,7 +119,7 @@ Then ask naturally:
 
 [`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`, retaining its MIT license. This standalone skill moves `argument-hint` into metadata for format compatibility.
 
-[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `a725574b34771309832300ced6ca60d0cb3fa6e8`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
+[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `87a606b727cc37b7a47952f9590f8acdc00b96c8`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
 
 The companion skills [`teamai-share-learnings/`](teamai-share-learnings/) and [`team-wiki-codebase/`](team-wiki-codebase/) are locally maintained companion skills; the current TeamAI CLI serves its workflow skills dynamically. TeamAI CLI is required for contribution and codebase commands; the codebase helper scripts use Python 3. These are repository source copies; TeamAI also deploys built-in copies into individual AI tools.
 
