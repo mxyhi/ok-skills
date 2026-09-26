@@ -112,6 +112,7 @@ Then ask naturally:
 - [kimi-webbridge](kimi-webbridge/SKILL.md): control the user's real browser through a local daemon for navigation, forms, screenshots, page reading, and authenticated sessions.
 - [browser-trace](browser-trace/SKILL.md): CDP trace capture for browser automation runs, with screenshots, DOM dumps, and per-page buckets.
 - [opencli](opencli/opencli-usage/SKILL.md): turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.
+- [orca-replay](orca-replay/SKILL.md): answer questions about an earlier agent run from its recording instead of from memory, and replay or fork that run offline.
 
 ### Frontend & Design
 
