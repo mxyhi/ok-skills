@@ -86,8 +86,6 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 - [ponytail](ponytail/SKILL.md): YAGNI, 기존 코드 재사용, 표준 라이브러리와 플랫폼 기본 기능으로 과도한 설계를 줄인다.
 - [tdd](tdd/SKILL.md): 기능, 버그 수정, 리팩터링, 동작 변경 전에 test-first red-green-refactor 적용.
 - [teamai](teamai/SKILL.md): AI 코딩 도구 간 팀 스킬, 규칙, 문서, 환경을 동기화하며 `/teamai`로 명시적으로 호출합니다.
-- [teamai-share-learnings](teamai-share-learnings/SKILL.md): 세션에서 재사용 가능한 경험을 정리해 TeamAI 지식 베이스에 저장합니다.
-- [team-wiki-codebase](team-wiki-codebase/SKILL.md): 아키텍처 문서와 의존성 그래프로 검증 가능한 코드 지식 베이스를 구축합니다.
 
 ### 자동화 및 QA
 
@@ -140,8 +138,6 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [teamai](teamai/SKILL.md) | AI 코딩 도구 간 팀 스킬, 규칙, 문서, 환경을 동기화하며 `/teamai`로 명시적으로 호출합니다. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
-| [teamai-share-learnings](teamai-share-learnings/SKILL.md) | 세션에서 재사용 가능한 경험을 정리해 TeamAI 지식 베이스에 저장합니다. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai-share-learnings) |
-| [team-wiki-codebase](team-wiki-codebase/SKILL.md) | 아키텍처 문서와 의존성 그래프로 검증 가능한 코드 지식 베이스를 구축합니다. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/team-wiki-codebase) |
 ## 기여하기
 
 새 스킬 추가나 기존 스킬 개선 기여를 환영합니다.

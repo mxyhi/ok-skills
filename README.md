@@ -8,7 +8,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **21 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **19 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -100,8 +100,6 @@ Then ask naturally:
 - [ponytail](ponytail/SKILL.md): Minimal coding with YAGNI, code reuse, standard libraries, and native platform features.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor for features, bugfixes, refactors, and behavior changes.
 - [teamai](teamai/SKILL.md): Sync team AI skills, rules, docs, and environment across coding tools; invoke explicitly with `/teamai`.
-- [teamai-share-learnings](teamai-share-learnings/SKILL.md): Summarize reusable session learnings and contribute them to the TeamAI knowledge base.
-- [team-wiki-codebase](team-wiki-codebase/SKILL.md): Build a verifiable codebase knowledge base with architecture documents and dependency graphs.
 
 ### Automation & QA
 
@@ -121,7 +119,7 @@ Then ask naturally:
 
 [`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `128844fe6c4b2007f5bb4eb59988a13bb78f5f82`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
 
-The companion skills [`teamai-share-learnings/`](teamai-share-learnings/) and [`team-wiki-codebase/`](team-wiki-codebase/) are locally maintained companion skills; the current TeamAI CLI serves its workflow skills dynamically. TeamAI CLI is required for contribution and codebase commands; the codebase helper scripts use Python 3. These are repository source copies; TeamAI also deploys built-in copies into individual AI tools.
+TeamAI's share and wiki workflows (formerly the `teamai-share-learnings` and `team-wiki-codebase` companion skills, removed upstream in `ca6e51251f65`) are served by the TeamAI CLI: load them with `teamai skill get share` or `teamai skill get wiki`. TeamAI CLI is required for contribution and codebase commands.
 
 ## Common Prerequisites
 
@@ -158,8 +156,6 @@ The companion skills [`teamai-share-learnings/`](teamai-share-learnings/) and [`
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 | [teamai](teamai/SKILL.md) | Sync team AI skills, rules, docs, and environment across coding tools; invoke explicitly with `/teamai`. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
-| [teamai-share-learnings](teamai-share-learnings/SKILL.md) | Summarize reusable session learnings and contribute them to the TeamAI knowledge base. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai-share-learnings) |
-| [team-wiki-codebase](team-wiki-codebase/SKILL.md) | Build a verifiable codebase knowledge base with architecture documents and dependency graphs. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/team-wiki-codebase) |
 ## Contributing
 
 Contributions are welcome for new skills or improvements to existing ones.

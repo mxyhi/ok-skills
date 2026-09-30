@@ -16,8 +16,8 @@
 ## Skill 使用
 
 - 涉及 skills、rules、docs、env、知识同步或知识沉淀时，默认使用 `teamai` 管理。
-- session 产生可复用经验时，使用 `teamai-share-learnings` 归档。
-- 涉及代码库架构、组件关系、跨模块分析或代码知识库构建时，使用 `team-wiki-codebase`，不限定仓库数量。
+- session 产生可复用经验时，使用 `teamai` 的 share 流程（`teamai skill get share`）归档。
+- 涉及代码库架构、组件关系、跨模块分析或代码知识库构建时，使用 `teamai` 的 wiki 流程（`teamai skill get wiki`），不限定仓库数量。
 - 涉及最小实现、文件化计划、代码质量或领域建模时，按任务需要使用 `ponytail`、`planning-with-files`、`karpathy-guidelines` 和 `domain-modeling`。
 
 ## 代码规范
