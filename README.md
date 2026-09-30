@@ -96,7 +96,7 @@ Then ask naturally:
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): disciplined diagnosis loop for hard bugs and performance regressions.
 - [grilling](grilling/SKILL.md): reusable design-tree interview loop for direct grill sessions.
 - [teach](teach/SKILL.md): run a stateful teaching workspace with missions, resources, lessons, and learning records.
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
+- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md): find deepening opportunities that improve locality, leverage, testability, and AI navigation.
 - [ontoly-software-graph](ontoly-software-graph/SKILL.md): use Ontoly's deterministic Software Graph and MCP capabilities for architecture review, request tracing, dependency analysis, configuration lookup, and impact analysis.
@@ -129,6 +129,11 @@ Then ask naturally:
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) as its upstream baseline. This repository keeps that upstream directory as the canonical baseline for the local skill. Local differences are limited to `skills-ref`-compatible `SKILL.md` frontmatter and install-location-independent relative script paths in docs.
+
+### Upstream Migration Notes (2026-09-30)
+
+- The Matt Pocock engineering skills now use `GLOSSARY.md` and `GLOSSARY-MAP.md` for domain vocabulary. Existing `CONTEXT.md` / `CONTEXT-MAP.md` glossaries need to be renamed and their links updated; ADRs stay under `docs/adr/`.
+- OpenCLI upstream removed sitemap skills, bundled sitemaps, and external CLI passthrough. Use the current browser/adapter skills and site memory; invoke external CLIs directly.
 
 ## Common Prerequisites
 
@@ -165,7 +170,7 @@ Then ask naturally:
 | [get-api-docs](get-api-docs/SKILL.md)                               | Fetch current third-party API or SDK docs before writing code.                                                                                                                          | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grilling](grilling/SKILL.md)                               | Reusable design-tree interview loop for direct grill sessions.                                                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | Teach a user a skill or concept through a stateful workspace of missions, resources, lessons, and learning records. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
+| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | Find deepening opportunities that improve locality, leverage, testability, and AI navigation.                                                                                           | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [ontoly-software-graph](ontoly-software-graph/SKILL.md)         | Use Ontoly's deterministic Software Graph and MCP capabilities for architecture review, request tracing, dependency analysis, configuration lookup, and impact analysis.              | [0xsarwagya/ontoly](https://github.com/0xsarwagya/ontoly/tree/main/skills)                                                      |

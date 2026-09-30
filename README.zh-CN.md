@@ -96,7 +96,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md)：面向疑难 bug 与性能回归的严格诊断循环。
 - [grilling](grilling/SKILL.md)：用于直接 grill 会话的设计树访谈循环。
 - [teach](teach/SKILL.md): 通过 mission、resources、lessons 和 learning records 维护持续教学 workspace。
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
+- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。
 - [ontoly-software-graph](ontoly-software-graph/SKILL.md)：使用 Ontoly 的确定性 Software Graph 和 MCP 能力进行架构审查、请求追踪、依赖分析、配置查询与影响分析。
@@ -129,6 +129,11 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限兼容 `skills-ref` 的 `SKILL.md` frontmatter，以及不依赖安装位置的相对脚本路径说明。
+
+### 上游迁移说明（2026-09-30）
+
+- Matt Pocock 工程技能改用 `GLOSSARY.md` 和 `GLOSSARY-MAP.md` 保存领域词汇。已有 `CONTEXT.md` / `CONTEXT-MAP.md` 词汇表需改名并更新链接；ADR 仍放在 `docs/adr/`。
+- OpenCLI 上游已移除 sitemap 技能、内置 sitemap 和外部 CLI 转发。后续使用当前浏览器/适配器技能与 site memory；外部 CLI 直接调用。
 
 ## 常见前置条件
 
@@ -164,7 +169,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在写第三方 API / SDK 代码前先抓当前文档。                                                                                                      | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grilling](grilling/SKILL.md)                               | 用于直接 grill 会话的设计树访谈循环。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | 通过 mission、resources、lessons 和 learning records 在 workspace 中持续教学。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
+| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 发现能提升 locality、leverage、可测试性和 AI 可导航性的架构 deepening 机会。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [ontoly-software-graph](ontoly-software-graph/SKILL.md)         | 使用 Ontoly 的确定性 Software Graph 和 MCP 能力进行架构审查、请求追踪、依赖分析、配置查询与影响分析。                                         | [0xsarwagya/ontoly](https://github.com/0xsarwagya/ontoly/tree/main/skills)                                                      |
