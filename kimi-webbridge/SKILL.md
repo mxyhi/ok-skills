@@ -1,14 +1,21 @@
 ---
 name: kimi-webbridge
 description: |
-  Kimi Browser Extension（Kimi 浏览器扩展，原 Kimi WebBridge）lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", or asks to read/interact with any website. Use even for simple-sounding browser requests — the daemon handles all complexity.
+  Kimi Browser Extension（Kimi 浏览器扩展，原 Kimi WebBridge）lets AI control the user's real browser — navigate, click, type, read, screenshot, and interact with any website using the user's actual login sessions. Use this skill whenever the user wants to interact with websites, automate browser tasks, scrape web content, or perform any action requiring a real browser. Also use when the user mentions "browser", "webpage", "open URL", "screenshot", asks to read/interact with any website, or wants a reusable CLI tool or script that automates a specific website. Use even for simple-sounding browser requests — the daemon handles all complexity.
 metadata:
-  version: "2.0.5"
+  version: "2.0.22"
 ---
 
 # Kimi Browser Extension (formerly Kimi WebBridge)
 
-Control the user's real browser (with their login sessions) via a local daemon at `http://127.0.0.1:10086`.
+Control the user's real browser (with their login sessions) via a local daemon at `http://127.0.0.1:10086` (the default address — see [If a tool call fails](#if-a-tool-call-fails-daemon-or-extension-not-ready) for when it differs).
+
+When the user asks to build a reusable CLI tool or script for a website (rather than do a one-off task), follow `references/cli-creator/workflow.md`. Its phases say when to read each of these:
+
+- `references/cli-creator/site-exploration.md` — the protocol for finding how each feature gets its data
+- `references/cli-creator/login-handling.md` — when the site requires login
+- `references/cli-creator/go-layout.md` — when the CLI is written in Go
+- `references/cli-creator/companion-skill-template.md` — the template for the skill that tells agents how to use the CLI
 
 ## Tools
 
@@ -19,10 +26,10 @@ Control the user's real browser (with their login sessions) via a local daemon a
 | `snapshot` | — | `{url, title, tree}` with `@e` refs | **Accessibility tree** (text) — use this to read page content and locate elements |
 | `click` | `selector` (@e ref or CSS) | `{success, tag, text}` | Synthetic `el.click()` |
 | `fill` | `selector`, `value` | `{success, tag, mode}` | Works on `<input>`/`<textarea>` AND `[contenteditable]` (ProseMirror/Lexical/Slate). `mode` is `"value"` or `"contenteditable"` |
-| `evaluate` | `code` (supports async/await) | `{type, value}` | |
-| `cdp` | `method`, `params` | raw CDP response | Raw `chrome.debugger` passthrough — what `evaluate` is to JS, `cdp` is to CDP. Low-level escape hatch for cases the tools above don't cover |
+| `evaluate` | `code` (for `await`, wrap it in an async IIFE — top-level `await` is a SyntaxError) | `{type, value}` | |
+| `cdp` | `method`, `params` | raw CDP response | Raw `chrome.debugger` passthrough — what `evaluate` is to JS, `cdp` is to CDP. Low-level escape hatch for cases the tools above don't cover. `Page.bringToFront` is a last resort: while focus emulation is off on a tab, a call turns it on instead of activating the tab (the tab renders and takes real input without being switched to); only a call once emulation is on activates, and it never pulls Chrome over another app the user is in. `Target.activateTarget` is refused |
 | `screenshot` | `format`(png\|jpeg), `quality`(0-100), optional `selector` (@e/CSS), optional `path` | `{format, path, sizeBytes, mimeType}` | Returns a file path, not base64 — see [Screenshots](#screenshots) |
-| `network` | `cmd`(start\|stop\|list\|detail), `filter`, `requestId` | request/response data | |
+| `network` | `cmd`(start\|stop\|list\|detail), `filter`(URL substring, for `list`), `requestId`(for `detail`) | `list`: `{count, requests:[{requestId, url, method, status, mimeType, completed}]}`; `detail`: that request plus `requestHeaders`, `requestBody`, `body` (the response) | Capture is per tab, from `start` on. Call `detail` before `stop` — stopping releases the response bodies, and `detail` then returns `bodyError` instead of `body` |
 | `upload` | `selector`, `files`(string[]) | `{success, fileCount}` | |
 | `save_as_pdf` | `paper_format`, `landscape`, `scale`, `print_background`, optional `path` | `{path, sizeBytes, mimeType, pageTitle}` | Render current page → PDF, returns a file path — see [Save as PDF](#save-the-current-page-as-pdf) |
 | `list_tabs` | — | `{success, tabs:[{tabId, url, title, active, groupTitle}]}` | Inspect tabs in the current session |
@@ -34,7 +41,7 @@ Control the user's real browser (with their login sessions) via a local daemon a
 Single-tab tools (`snapshot`, `click`, `fill`, `screenshot`, `save_as_pdf`) act on the **current tab** — the one you most recently opened with `navigate` or selected with `find_tab`.
 
 - **Opening pages**: use `newTab:true` when pages should coexist (comparing, cross-referencing); omit it to send the current tab to a new URL.
-- **Going back to an earlier tab**: call `find_tab` to make a tab **you opened earlier in this session** the current one again. Pass the tab's **full URL** — take it from `list_tabs` or the earlier `navigate` result. A bare root domain (`kimi.com`) may miss a `www.kimi.com` tab, so prefer the exact URL. By default `find_tab` searches **only this session's own tabs** — it never reaches into the user's other tabs or windows.
+- **Going back to an earlier tab**: call `find_tab` to make a tab **you opened earlier in this session** the current one again. Pass the tab's URL — take it from `list_tabs` or the earlier `navigate` result. Matching is by host: `kimi.com` also finds a `www.kimi.com` tab, and the path is ignored. By default `find_tab` searches **only this session's own tabs** — it never reaches into the user's other tabs or windows.
 - **Acting on a page the user already has open**: pass `active:true` ("use my open X tab" / "the X page I'm viewing"). It **borrows** the tab the user is currently viewing (returns `borrowed:true`); the borrowed tab is operated in place — it is not pulled into the session's tab group.
 - If `find_tab` errors with "no tab matching … in this session", the page isn't open in this session — `navigate` with `newTab:true` instead.
 
@@ -45,7 +52,7 @@ curl -s -X POST http://127.0.0.1:10086/command \
 
 ### Call Format
 
-Every command carries a top-level `session` naming the current task — see [Sessions](#sessions) below. The examples in later sections omit it only for brevity; in real calls always include it. The command format depends on the user's OS.
+Every command carries a top-level `session` naming the current task — see [Sessions](#sessions) below. The examples in later sections omit it only for brevity; in real calls always include it. Every reply is an envelope: `{"ok":true,"data":…}` on success (the **Returns** column above describes `data`) or `{"ok":false,"error":{"code","message"}}` on failure. The command format depends on the user's OS.
 
 **macOS / Linux** — inline JSON is fine:
 
@@ -154,31 +161,25 @@ Decoded PDF cap is 100 MB. Above that the daemon refuses; reduce `scale` or spli
 
 ## Known limitations
 
-- **Sites that strictly check `event.isTrusted`** (some banking portals, captchas) ignore `click` / `fill` because those fire DOM-level synthetic events (`isTrusted=false`). For these, tell the user the page needs manual interaction. (Trusted input is possible at the protocol level via the `cdp` escape hatch, but treat that as advanced.)
-- **Cross-origin iframes**: `fill`, `click`, `evaluate`, and `snapshot` operate on the top frame. If a target element lives in a same-page iframe from a different origin (e.g. embedded sandbox demos), navigate to the iframe's URL directly instead.
+- **Sites that strictly check `event.isTrusted`** (some banking portals, captchas) ignore `click` / `fill` because those fire DOM-level synthetic events (`isTrusted=false`). For these, tell the user the page needs manual interaction. (Trusted input is possible at the protocol level via the `cdp` escape hatch, but treat that as advanced: your tabs are background tabs, and real input only reaches a background tab while focus emulation is on — send `Emulation.setFocusEmulationEnabled` `{"enabled":true}` before the input and `{"enabled":false}` when done with the tab. If input still does not land, `Page.bringToFront` is the last resort; see the `cdp` row.)
+- **Content inside iframes**: `snapshot`, `fill`, `click` and `evaluate` see only the top document — an embedded document (preview pane, sandbox preview, embedded app) is a separate page and its nodes are not in the tree. When a snapshot lists `frames` after the tree (`frames: [{frame:"#f1", url, size, …}]`, biggest first), read one with `read_page` `{"frame":"#f1"}`, using a handle from that list. A frame read echoes `frame` in its result; if it does not, the extension is older than this skill and returned the top page instead — see Version mismatches below. A preview frame often appears many seconds after the page itself loads — `wait` `{"frame":"any"}` returns the moment one filling a large part of the screen is readable, instead of re-snapshotting. A PDF preview is read through the viewer's own document, so every page comes back without scrolling. Acting on elements inside a frame is still not supported — navigating to the frame's URL directly sometimes works, but an authenticated preview stream usually loads nothing on its own.
 
 ## If a tool call fails (daemon or extension not ready)
 
-**If a tool call can't reach the daemon (connection refused), start it yourself — don't ask the user. This is safe to run anytime: it no-ops if the daemon is already up.**
+**If a tool call can't reach the daemon (connection refused), or the reply isn't the `ok` envelope above (another program is answering on that port), run `start` yourself, don't ask the user. It is safe anytime: it no-ops if the daemon is already up.** The binary is not on PATH: `~/.kimi-webbridge/bin/kimi-webbridge` (Windows: `%USERPROFILE%\.kimi-webbridge\bin\kimi-webbridge.exe`).
 
-**macOS / Linux:**
+Where the daemon listens is always in `start`'s output, or in `kimi-webbridge status` (`port` when it is running, `addr` when it is not). If it isn't `127.0.0.1:10086`, use that address for every call in this task. The config file is only for moving the daemon, never for finding it. Then retry the tool call.
 
-```bash
-~/.kimi-webbridge/bin/kimi-webbridge start
-```
+**If the reply is `ok:false` with code `extension_not_connected`**, the daemon is fine and the browser side isn't — `start` won't change that. The message names what the user has to do; relay it in their language and carry on once they confirm.
 
-**Windows (PowerShell):**
+**`start` fails with "did not come up … held by another program"** → another program owns the port. Move the daemon: write `{"addr":"127.0.0.1:<port>"}` (a free port of your choice) to the config file the error names, run `start` again, then ask the user to point the extension at the new port once (Kimi side panel → Settings → Local agent remote control → Connection address → `ws://127.0.0.1:<port>/ws`; it remembers).
 
-```powershell
-& "$env:USERPROFILE\.kimi-webbridge\bin\kimi-webbridge.exe" start
-```
-
-Then retry the tool call. If it still fails — or the browser extension won't connect — point the user to the help page instead of deep-troubleshooting:
+If it still fails, the binary is missing (`command not found` means kimi-webbridge isn't installed), or the browser extension won't connect — point the user to the help page instead of deep-troubleshooting:
 
 - English: https://www.kimi.com/en/products/kimi-webbridge
 - 中文: https://www.kimi.com/products/kimi-webbridge
 
-Never run `stop` / `restart` / `uninstall` automatically — those kill a running daemon. See `references/operations.md` for anything deeper.
+Never run `stop` / `restart` / `upgrade` / `uninstall` automatically — those kill a running daemon. When `status` shows `version_mismatch`, `update_available` or `skill_mismatch`, or a `kimi-webbridge` command prints a `==> … Run: <command>` line (the same notices, on stderr), tell the user and hand them the command verbatim to run — the `command` field, or what follows `Run:`; that is what it is for. When the user asks about kimi-webbridge itself (install, start/stop/upgrade, "is it running", what `status` means, moving it to another port), read `references/operations.md` first.
 
 ## Version mismatches
 
