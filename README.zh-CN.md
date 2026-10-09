@@ -112,6 +112,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [kimi-webbridge](kimi-webbridge/SKILL.md)：通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。
 - [browser-trace](browser-trace/SKILL.md)：采集浏览器自动化运行的 CDP trace、截图和 DOM dump，并按页面拆分以便调试。
 - [opencli](opencli/opencli-usage/SKILL.md)：将网站变成 CLI，复用浏览器登录态，支持公共 API 访问和 AI 生成适配器。
+- [orca-replay](orca-replay/SKILL.md)：用录像而不是记忆回答「上一次那次运行做了什么」，并可离线重放或从检查点分叉该次运行。
 
 ### 前端与设计
 
