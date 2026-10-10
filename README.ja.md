@@ -72,6 +72,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 - [find-docs](find-docs/SKILL.md): 最新 docs lookup に特化した Context7 CLI ワークフロー
 - [exa-search](exa-search/SKILL.md): Exa ツールを使った web、code、company research
+- [reverse-engineer-anything](reverse-engineer-anything/SKILL.md): ソースコードだけでは動作が分からない配布済みアプリやバイナリを調査し、REA の CLI/MCP で根拠を集めてバージョンを比較する。
 - [get-api-docs](get-api-docs/SKILL.md): コーディング前に外部 API / SDK の最新ドキュメントを取得
 - [find-skills](find-skills/SKILL.md): ユーザーが欲しい機能に対して既存 skill を探す
 - [ax](ax/SKILL.md): AI 時代の curl — ページ取得、構造発見、構造化抽出。使い捨てパーススクリプト不要。
@@ -145,6 +146,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [diagram-design](diagram-design/SKILL.md)                           | 44 種の図を単体 HTML/SVG/PNG の編集品質ダイアグラムとして作成。draw.io / Mermaid の再描画にも対応。                                                               | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design/tree/main/skills/diagram-design)                 |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI を使って最新 docs、API reference、コード例を調べる。                                                                                                                            | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Exa を使って web、code、company research を行う。                                                                                                                                             | Custom                                                                                                                         |
+| [reverse-engineer-anything](reverse-engineer-anything/SKILL.md) | ソースコードだけでは動作が分からない配布済みアプリやバイナリを調査し、REA の CLI/MCP で根拠を集めてバージョンを比較する。 | [morluto/rea](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything) |
 | [find-skills](find-skills/SKILL.md)                                 | ユーザーが必要とする specialized capability に対して既存 skill を見つける。                                                                                                                   | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 高品質な HTML プロトタイプ、インタラクティブデモ、スライド、motion design、デザイン variants、動画書き出し、design critique を作る。                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | frontend 向けの高品質な参照画像を、section ごとに 1 枚の横長画像として生成する。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
