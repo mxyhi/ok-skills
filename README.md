@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **32 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **33 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -125,6 +125,7 @@ Then ask naturally:
 ### Utilities & Authoring
 
 - [bopomofo-rescue](bopomofo-rescue/SKILL.md): recover Chinese typed on a Taiwanese Bopomofo (注音) keyboard while the IME was stuck in English mode, e.g. su3cl3a8 → 你好嗎.
+- [deed-page](deed-page/SKILL.md): publish a generated HTML file or static folder to a permanent `https://<slug>.deed.page/` URL with one `curl` request, no account needed.
 - [huashu-design](huashu-design/SKILL.md): create HTML decks, editable PPTX exports, MP4/GIF motion pieces, and narrated design videos.
 
 ## Vendored Skill Packs
@@ -167,6 +168,7 @@ Then ask naturally:
 | [browser-trace](browser-trace/SKILL.md)                             | Capture CDP traces, screenshots, and DOM dumps for browser automation debugging.                                                                                                        | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | Disciplined diagnosis loop for hard bugs and performance regressions.                                                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [deep-research](deep-research/SKILL.md)                                       | Professional deep research reports with multi-agent parallel writing, current-data targeting, multilingual output, and built-in quality checks.                                      | [hoolulu/deep-research](https://github.com/hoolulu/deep-research/tree/main)                                                        |
+| [deed-page](deed-page/SKILL.md) | Publish a file or static folder to a permanent `https://<slug>.deed.page/` URL with one curl request; no account, API key, or claim link. | [f-o-x11/deed-page-skill](https://github.com/f-o-x11/deed-page-skill/tree/main/skills/deed-page) |
 | [find-docs](find-docs/SKILL.md)                                     | Use the Context7 CLI for current documentation lookup, API references, and code examples.                                                                                              | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | Use Exa for web, code, and company research.                                                                                                                                            | Custom                                                                                                                         |
 | [reverse-engineer-anything](reverse-engineer-anything/SKILL.md) | Investigate shipped applications and binaries when source code does not explain behavior; use REA's CLI/MCP to gather evidence and compare versions. | [morluto/rea](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything) |
