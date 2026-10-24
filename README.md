@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **32 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **33 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -94,6 +94,7 @@ Then ask naturally:
 - [planning-with-files](planning-with-files/SKILL.md): persistent markdown planning with `task_plan.md`, `findings.md`, and `progress.md`.
 - [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md): durable in-repo task state for coding agents — Kanban tasks with stable IDs, evidence-backed status marks, blocked-by dependencies, and next-ready selection.
 - [product-decision-agent](product-decision-agent/SKILL.md): Chinese-first product decision support for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.
+- [pro-launch](pro-launch/SKILL.md): taste-first 0-to-1 product workflow with phase gates for references, naming and trademark checks, style frames, UI build loop, GTM, and shipping.
 - [autoresearch](autoresearch/SKILL.md): autonomous goal-directed iteration with explicit goals, metrics, verify loops, and keep/discard gates.
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md): disciplined diagnosis loop for hard bugs and performance regressions.
 - [grilling](grilling/SKILL.md): reusable design-tree interview loop for direct grill sessions.
@@ -186,6 +187,7 @@ Then ask naturally:
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | Turn websites into CLI commands with browser session reuse, public API access, and AI-generated adapters.                                                                               | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinese-first product decision support for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.                                                | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                    |
+| [pro-launch](pro-launch/SKILL.md) | Product lifecycle skill that builds an app or product from zero to one, taste-first, with phase gates from references and naming to style frames, UI loop, GTM, and shipping. | [https://github.com/jack-reson8/pro-launch](https://github.com/jack-reson8/pro-launch) |
 | [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md)                     | Durable in-repo task state for coding agents: Kanban tasks with stable IDs, evidence-backed status marks, blocked-by dependencies, and next-ready selection.                            | [yylo-dev/yylo-skills](https://github.com/yylo-dev/yylo-skills/tree/main/skills/ledger-tasks-yylo)                             |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
 ## Contributing
