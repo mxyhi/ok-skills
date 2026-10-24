@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **32 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **33 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -120,6 +120,7 @@ Then ask naturally:
 - [ai-elements](ai-elements/SKILL.md): build AI chat UI components for the `ai-elements` library.
 - [huashu-design](huashu-design/SKILL.md): produce high-fidelity HTML prototypes, slide decks, motion demos, design variants, video exports, and design critiques.
 - [imagegen-frontend-web](imagegen-frontend-web/SKILL.md): generate premium frontend reference images, one horizontal image per section, with strong art direction.
+- [pro-motion](pro-motion/SKILL.md): audio-first motion-graphics launch, brand, and TVC films rendered in code (canvas to MP4) and cut to the music.
 - [better-icons](better-icons/SKILL.md): search, browse, and retrieve SVG icons from 200+ Iconify libraries via CLI or MCP.
 
 ### Utilities & Authoring
@@ -173,6 +174,7 @@ Then ask naturally:
 | [find-skills](find-skills/SKILL.md)                                 | Discover existing skills when users need specialized capabilities.                                                                                                                      | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | Create high-fidelity HTML prototypes, interactive demos, slide decks, motion design, design variants, video exports, and critiques.                                                       | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | Generate premium frontend reference images, one horizontal image per section, with strong art direction. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
+| [pro-motion](pro-motion/SKILL.md) | Make a motion-graphics launch, brand, or promo film audio first: plan the music, then render the film in code (canvas to MP4) cut to the track, with a motion library and verification scripts. | [https://github.com/jack-reson8/pro-motion](https://github.com/jack-reson8/pro-motion) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | Fetch current third-party API or SDK docs before writing code.                                                                                                                          | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
 | [grilling](grilling/SKILL.md)                               | Reusable design-tree interview loop for direct grill sessions.                                                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | Teach a user a skill or concept through a stateful workspace of missions, resources, lessons, and learning records. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
