@@ -1,25 +1,19 @@
 ---
 name: bopomofo-rescue
 description: >-
-  Detect and recover text that was accidentally typed with the Taiwanese
-  Bopomofo / Zhuyin (注音) keyboard while the input method (IME) was stuck in
-  English/ASCII mode — what Taiwanese users call 注音亂碼 or 注音文 —
-  producing meaningless-looking letter+digit sequences such as
-  "su3cl3a8", "cl3", "g4", "2k7", "vu,4", or such garbled runs embedded in an
-  otherwise normal request (e.g. "help me fix su3cl3a8", "看看這個 PR qk4ru.6",
-  "幫我改 su3cl3a8xk7"). Use this skill whenever a user message contains short
-  ASCII tokens that look like keyboard gibberish, do not form real English
-  words, and cannot be understood normally — especially tokens with digits
-  interspersed among letters (tone keys 3/4/6/7 or vowel keys 8/9/0), which are
-  a strong sign of Mandarin phonetic keystrokes typed in the wrong input mode.
-  Run scripts/decode_bopomofo.py to deterministically map the keystrokes back
-  to 注音 symbols with a confidence score, then interpret the intended
-  Traditional Chinese in context and continue the user's original request
-  without making them retype. Do NOT trigger on genuine technical strings —
-  code, file paths, URLs, git hashes, CLI flags, package names, version numbers
-  — the script's exclusion rules and confidence tiers already filter these out.
-  Especially valuable for Taiwanese developers who forget to switch input
-  methods when prompting AI coding agents.
+  Detect and recover text accidentally typed on the Taiwanese Bopomofo / Zhuyin
+  (注音) keyboard while the IME was stuck in English/ASCII mode (注音亂碼, 注音文),
+  producing letter+digit gibberish such as "su3cl3a8", "cl3", "g4", "2k7",
+  "vu,4", alone or embedded in a normal request (e.g. "help me fix su3cl3a8",
+  "看看這個 PR qk4ru.6", "幫我改 su3cl3a8xk7"). Use whenever a user message contains
+  short ASCII tokens that look like keyboard gibberish and are not real English
+  words, especially tokens with digits among letters (tone keys 3/4/6/7 or vowel
+  keys 8/9/0). Run scripts/decode_bopomofo.py to map the keystrokes back to 注音
+  symbols with a confidence score, then interpret the intended Traditional
+  Chinese in context and continue the request without making the user retype. Do
+  NOT trigger on genuine technical strings (code, file paths, URLs, git hashes,
+  CLI flags, package names, version numbers); the script's exclusion rules and
+  confidence tiers filter these out.
 allowed-tools: Bash(python "${CLAUDE_SKILL_DIR}/scripts/decode_bopomofo.py" *)
 ---
 
