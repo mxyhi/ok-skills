@@ -3,12 +3,12 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@e9c3b0126a3373eb1aeaca162e84d0791ff4c7f7`
+- Official repo: `exa-labs/exa-mcp-server@55cc85c7305117aea538ea0b9dc7d19523be0c6a`
 - npm package: `exa-mcp-server@3.4.2`
 - npm tarball SHA-256: `a7d76442a45d809393eae6ec439ac4ebbbfa9f89e30789008069f8c5236b3f97`
 - npm package `gitHead`: `f2bdda713e9368a8db8854929faf4fd277e5a1c9`
 - Hosted MCP `serverInfo.version`: `3.5.0` (hosted `web_search_exa` adds required `objective`, not yet in official source or npm)
-- Date checked: 2026-10-18
+- Date checked: 2026-10-29
 
 ## Base URL
 
@@ -33,6 +33,8 @@ Snapshot checked against:
 | --- | --- | --- |
 | `web_search_advanced_exa` | Advanced search with filters and content controls | See detailed schema below |
 
+Official source also registers `agent_run` for research-agent runs. Selecting it on the hosted endpoint requires OAuth or a user-provided API key; anonymous `tools/list` returned HTTP 401 on 2026-10-29. Fetch its authenticated schema before constructing a request. This snapshot did not execute an agent run.
+
 ## Deprecated Tools
 
 | Tool | Use Instead | Current Parameters |
@@ -54,7 +56,7 @@ Required:
 
 Optional:
 
-- Search tuning: `numResults`, `type` (`auto` | `fast` | `instant`)
+- Search tuning: `numResults`, `type` (`auto` | `lite` | `fast` | `instant`)
 - Category: `company`, `publication`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`
 - Domain filters: `includeDomains`, `excludeDomains`
 - Date filters: `startPublishedDate`, `endPublishedDate`, `startCrawlDate`, `endCrawlDate`
@@ -67,6 +69,7 @@ Optional:
 
 Deprecated/compat details:
 
+- `auto` is the recommended default and accepts every parameter. `lite` serves cached content and supports only `query`, `numResults`, `category`, `includeDomains`, `excludeDomains`, `startPublishedDate`, `endPublishedDate`, `userLocation`, `moderation`, `textMaxCharacters`, and highlights parameters. Use `auto` for other controls, including summaries, crawl-date/text filters, additional queries, context output, freshness and subpages. `fast` and `instant` are legacy types; prefer `lite`, or `auto` when the required parameters exceed `lite` support.
 - `highlightsNumSentences` and `highlightsPerUrl` are deprecated; the hosted schema explicitly says `highlightsPerUrl` is ignored. Prefer `highlightsMaxCharacters`.
 - `livecrawl` is not a direct exposed parameter on current hosted `web_search_exa`; use advanced freshness controls (`maxAgeHours`, `livecrawlTimeout`) when needed.
 - Old local docs mentioning `tokensNum` for `get_code_context_exa` are obsolete.

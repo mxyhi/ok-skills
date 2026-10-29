@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 18개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 19개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -101,7 +101,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 [`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 설치 위치에 독립적인 상대 script path 문서뿐입니다.
 
-[`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `09c434ab73ca43761c5d8b0c5d341926c2fba710`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 변경 없이 포함합니다.
+[`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 변경 없이 포함합니다.
 
 ## 공통 전제 조건
 

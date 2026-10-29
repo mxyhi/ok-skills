@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **18 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **19 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -101,7 +101,7 @@ Danach kannst du natürlich formulieren:
 
 [`planning-with-files/`](planning-with-files/) verwendet [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) als Upstream-Basis. Dieses Repository nutzt dieses Upstream-Verzeichnis als kanonische Basis für den lokalen Skill. Der einzige lokale Unterschied sind install-location-unabhaengige relative Skriptpfade in der Dokumentation.
 
-[`ponytail/`](ponytail/) stammt aus [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), Stand `09c434ab73ca43761c5d8b0c5d341926c2fba710`, unter Beibehaltung der MIT-Lizenz. Enthalten ist nur der eigenständige Hauptskill, unverändert.
+[`ponytail/`](ponytail/) stammt aus [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), Stand `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, unter Beibehaltung der MIT-Lizenz. Enthalten ist nur der eigenständige Hauptskill, unverändert.
 
 ## Häufige Voraussetzungen
 

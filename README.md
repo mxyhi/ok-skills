@@ -8,7 +8,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **18 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **19 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -115,9 +115,9 @@ Then ask naturally:
 
 [`planning-with-files/`](planning-with-files/) tracks [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) as its upstream baseline. This repository keeps that upstream directory as the canonical baseline for the local skill. The only local difference is install-location-independent relative script paths in docs.
 
-[`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `09c434ab73ca43761c5d8b0c5d341926c2fba710`, retaining its MIT license. Only the standalone main skill is included, unchanged.
+[`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, retaining its MIT license. Only the standalone main skill is included, unchanged.
 
-[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `58706fe251ec73e203a3a2802266f411a513a5d9`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
+[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `2ee2087b0cc223a05e0a85e6547c5716be95d342`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
 
 TeamAI's share and wiki workflows (formerly the `teamai-share-learnings` and `team-wiki-codebase` companion skills, removed upstream in `ca6e51251f65`) are served by the TeamAI CLI: load them with `teamai skill get share` or `teamai skill get wiki`. TeamAI CLI is required for contribution and codebase commands.
 

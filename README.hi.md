@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **18 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **19 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -101,7 +101,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 [`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) है। यह repository local skill के लिए उसी upstream directory को canonical baseline मानती है। एकमात्र local difference install-location-independent relative script path docs है।
 
-[`ponytail/`](ponytail/) को [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) के `09c434ab73ca43761c5d8b0c5d341926c2fba710` से लिया गया है और MIT license रखा गया है। केवल standalone मुख्य skill बिना बदलाव के शामिल है।
+[`ponytail/`](ponytail/) को [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) के `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` से लिया गया है और MIT license रखा गया है। केवल standalone मुख्य skill बिना बदलाव के शामिल है।
 
 ## सामान्य prerequisites
 

@@ -8,7 +8,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **18 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **19 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -115,9 +115,9 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限不依赖安装位置的相对脚本路径说明。
 
-[`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `09c434ab73ca43761c5d8b0c5d341926c2fba710`，保留 MIT 许可证。以独立主技能形式原样收录。
+[`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 许可证。以独立主技能形式原样收录。
 
-[`teamai/`](teamai/) 来自 [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) 的 `58706fe251ec73e203a3a2802266f411a513a5d9`，保留上游 CLI 入口和 MIT 许可证；通过 `teamai skill get` 动态加载当前流程，并通过 `/teamai` 显式调用。
+[`teamai/`](teamai/) 来自 [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) 的 `2ee2087b0cc223a05e0a85e6547c5716be95d342`，保留上游 CLI 入口和 MIT 许可证；通过 `teamai skill get` 动态加载当前流程，并通过 `/teamai` 显式调用。
 
 TeamAI 的 share 与 wiki 流程（原 `teamai-share-learnings`、`team-wiki-codebase` 配套技能，上游已在 `ca6e51251f65` 移除）改由 TeamAI CLI 内置提供：通过 `teamai skill get share` 或 `teamai skill get wiki` 加载。经验上传和代码库命令依赖 TeamAI CLI。
 

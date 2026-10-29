@@ -6,7 +6,7 @@
 
 這是一個面向 Codex、Claude Code、Cursor、OpenClaw、Trae 以及其他相容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的 AI coding agent skills 倉庫。
 
-目前倉庫共收錄 **18 個可重用技能**，全部作為頂層技能目錄由本倉直接維護。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
+目前倉庫共收錄 **19 個可重用技能**，全部作為頂層技能目錄由本倉直接維護。將它 clone 到 `~/.agents/skills/ok-skills` 即可，倉庫內部目錄已符合 `AGENTS.md` 所需的 skills 佈局，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 則提供面向 Claude Code 的 agent playbook。
 
 如果你正在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可重用的 **CLAUDE.md / AGENTS.md** 範本，或一套能直接落地的 **SKILL.md** 範例倉庫，這個專案就是為了搜尋可發現性與開箱即用而整理的。
 
@@ -101,7 +101,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`planning-with-files/`](planning-with-files/) 對應的上游基線是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本倉將該上游目錄作為本地技能的規範基線；本地差異僅限不依賴安裝位置的相對腳本路徑說明。
 
-[`ponytail/`](ponytail/) 來自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `09c434ab73ca43761c5d8b0c5d341926c2fba710`，保留 MIT 授權。以獨立主技能形式原樣收錄。
+[`ponytail/`](ponytail/) 來自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 授權。以獨立主技能形式原樣收錄。
 
 ## 常見前置條件
 
