@@ -13,6 +13,15 @@
 - 完成任务后自动判断是否产生了可复用的经验、命令、坑点或验证方式；有价值时自动更新 memory，没有新增经验时跳过。
 - 当前源码和运行状态优先于历史 session、memory 或截图。
 
+## 历史上下文与经验
+
+- 非平凡任务开始前，先检查当前源码、配置、日志和运行状态，再做一次定向历史检索；简单问题或当前文件已给出完整答案时可跳过。
+- 优先用仓库名、模块名、路径、请求 ID、错误文本和决策关键词检索 `/Users/langhuam/.codex/memories/MEMORY.md`；只有命中条目指向具体记录时，才读取 1–2 个相关的 `/Users/langhuam/.codex/memories/rollout_summaries/` 文件。
+- 需要恢复 Codex 之前的具体对话时，在 `/Users/langhuam/.codex/sessions/` 按项目路径和关键词定向查找；需要恢复 Claude Code 上下文时，在 `~/.claude/projects/` 查找对应项目目录，并按需查看 `~/.claude/tasks/`、`~/.claude/plans/`。禁止无目标地扫描全部会话记录。
+- 历史记录、memory、截图和旧结论都可能过期；只能用它们补充背景，不能覆盖当前源码、配置、运行状态或新验证结果。冲突时记录冲突并以当前证据为准。
+- 不复制或输出 token、密码、私钥、DSN、原始凭据 URL、完整会话内容等敏感数据；历史记录只提取与当前任务相关的最小事实。
+- 完成任务后，在 `progress.md` 或 `findings.md` 记录可复用的决策、命令、坑点、验证方式和未决风险；没有新增经验时跳过。
+
 ## Skill 使用
 
 - 涉及最小实现、文件化计划、代码质量或领域建模时，按任务需要使用 `ponytail`、`planning-with-files`、`karpathy-guidelines` 和 `domain-modeling`。
