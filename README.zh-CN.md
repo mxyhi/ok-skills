@@ -8,7 +8,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **19 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **18 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -100,7 +100,6 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md)：减少过度复杂、隐藏假设和不可验证改动的编码行为准则。
 - [ponytail](ponytail/SKILL.md): 以 YAGNI、复用现有代码、标准库和平台原生能力减少过度设计。
 - [tdd](tdd/SKILL.md)：功能、修复、重构或行为变更前执行 test-first red-green-refactor。
-- [teamai](teamai/SKILL.md): 跨 AI 编程工具同步团队技能、规则、文档与环境；通过 `/teamai` 显式调用。
 
 ### 自动化与 QA
 
@@ -117,9 +116,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 许可证。以独立主技能形式原样收录。
 
-[`teamai/`](teamai/) 来自 [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) 的 `2ee2087b0cc223a05e0a85e6547c5716be95d342`，保留上游 CLI 入口和 MIT 许可证；通过 `teamai skill get` 动态加载当前流程，并通过 `/teamai` 显式调用。
 
-TeamAI 的 share 与 wiki 流程（原 `teamai-share-learnings`、`team-wiki-codebase` 配套技能，上游已在 `ca6e51251f65` 移除）改由 TeamAI CLI 内置提供：通过 `teamai skill get share` 或 `teamai skill get wiki` 加载。经验上传和代码库命令依赖 TeamAI CLI。
 
 ## 常见前置条件
 
@@ -153,7 +150,6 @@ TeamAI 的 share 与 wiki 流程（原 `teamai-share-learnings`、`team-wiki-cod
 | [ponytail](ponytail/SKILL.md) | 以 YAGNI、复用现有代码、标准库和平台原生能力减少过度设计。 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 用 `task_plan.md`、`findings.md`、`progress.md` 管理复杂任务。                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修复、重构或行为变更前使用；优先通过 public interface 做 integration-style 测试。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
-| [teamai](teamai/SKILL.md) | 跨 AI 编程工具同步团队技能、规则、文档与环境；通过 `/teamai` 显式调用。 | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
 ## 贡献
 
 欢迎为现有技能改进或新增技能。

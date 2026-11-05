@@ -8,7 +8,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **19 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **18 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -100,7 +100,6 @@ Then ask naturally:
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md): behavioral coding guidelines that reduce overcomplication, hidden assumptions, and unverifiable changes.
 - [ponytail](ponytail/SKILL.md): Minimal coding with YAGNI, code reuse, standard libraries, and native platform features.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor for features, bugfixes, refactors, and behavior changes.
-- [teamai](teamai/SKILL.md): Sync team AI skills, rules, docs, and environment across coding tools; invoke explicitly with `/teamai`.
 
 ### Automation & QA
 
@@ -117,9 +116,7 @@ Then ask naturally:
 
 [`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, retaining its MIT license. Only the standalone main skill is included, unchanged.
 
-[`teamai/`](teamai/) tracks [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) at `2ee2087b0cc223a05e0a85e6547c5716be95d342`, preserving the upstream CLI entry and MIT license; the CLI serves the current workflow with `teamai skill get`. Invoke explicitly with `/teamai`.
 
-TeamAI's share and wiki workflows (formerly the `teamai-share-learnings` and `team-wiki-codebase` companion skills, removed upstream in `ca6e51251f65`) are served by the TeamAI CLI: load them with `teamai skill get share` or `teamai skill get wiki`. TeamAI CLI is required for contribution and codebase commands.
 
 ## Common Prerequisites
 
@@ -154,7 +151,6 @@ TeamAI's share and wiki workflows (formerly the `teamai-share-learnings` and `te
 | [ponytail](ponytail/SKILL.md) | Minimal coding with YAGNI, code reuse, standard libraries, and native platform features. | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                           | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
-| [teamai](teamai/SKILL.md) | Sync team AI skills, rules, docs, and environment across coding tools; invoke explicitly with `/teamai`. | [Tencent/teamai-cli](https://github.com/Tencent/teamai-cli/tree/main/skills/teamai) |
 ## Contributing
 
 Contributions are welcome for new skills or improvements to existing ones.
