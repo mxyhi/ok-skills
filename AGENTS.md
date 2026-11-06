@@ -22,6 +22,15 @@
 - 不复制或输出 token、密码、私钥、DSN、原始凭据 URL、完整会话内容等敏感数据；历史记录只提取与当前任务相关的最小事实。
 - 完成任务后，在 `progress.md` 或 `findings.md` 记录可复用的决策、命令、坑点、验证方式和未决风险；没有新增经验时跳过。
 
+## 历史检索与性能（优先 rg）
+
+- 优先使用 ripgrep（`rg`）检索；无 `rg` 或确有特殊需要时才用 `grep`，且不要用系统 `grep -r` 全量扫描：本机历史语料约 8.4G（`~/.codex/sessions` 7.2G/3168 文件、`~/.codex/memories` 28M、`~/.dsh` 425M、`~/.claude/projects` 711M），macOS BSD grep 单线程、长行慢，实测 >20s 未跑完。
+- 命令模板：`rg -F -l -m1 -e 'kw1' -e 'kw2' <范围>`；固定串加 `-F`，多关键词用 `-e`。实测全量 7.2G：`-F` 0.53s、正则交替 1.01s、`~/.codex/memories` 0.03s。工具自带的 Grep 工具底层即 ripgrep，优先用它。
+- 检索顺序：先 `~/.codex/memories`（命中具体条目再读 1–2 个 rollout），再按日期限定 `~/.codex/sessions/2026/11/**`，最后才全量；严禁无目标扫描全部会话文件。
+- 单会话最大 1.2G、单行最长 ~384KB：加 `--max-filesize 20M`，先 `-l` 定位文件再按行号定点读，不要 cat 或整行输出。
+- 毫秒级反复全量查询才考虑建索引（SQLite FTS5 trigram/专用搜索引擎），不要每次现扫；冷缓存瓶颈是磁盘（~3GB/s），可用 `vmtouch` 常驻。
+- 同类任务先 rg 内部文档与历史记录，确认接口、命名等约定后再执行；有明确接口时批量调 API，不要边点 UI 边摸索。
+
 ## Skill 使用
 
 - 涉及最小实现、文件化计划、代码质量或领域建模时，按任务需要使用 `ponytail`、`planning-with-files`、`karpathy-guidelines` 和 `domain-modeling`。
