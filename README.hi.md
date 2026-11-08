@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **18 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **19 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -95,12 +95,15 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 ### Frontend & Design
 
 - [better-icons](better-icons/SKILL.md): CLI या MCP के जरिए 200+ Iconify libraries में icons खोजें, browse करें, और SVG प्राप्त करें।
+- [unslop](unslop/SKILL.md): AI से बने इंटरफ़ेस की समीक्षा और सुधार करें: उत्पाद के अनुरूप डिज़ाइन दिशा, दृश्य संदर्भ, वेब पेज स्नैपशॉट और वैकल्पिक सुधार-प्रक्रिया वीडियो।
 
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) का upstream baseline [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) है। यह repository local skill के लिए उसी upstream directory को canonical baseline मानती है। एकमात्र local difference install-location-independent relative script path docs है।
 
 [`ponytail/`](ponytail/) को [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) के `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` से लिया गया है और MIT license रखा गया है। केवल standalone मुख्य skill बिना बदलाव के शामिल है।
+
+[`unslop/`](unslop/) में [Damir Sokolovsky](https://x.com/heydamir) द्वारा बनाया गया [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) संस्करण `a6f121eee5f29c2f74976b75456feae8b66afb3a` बिना बदलाव के शामिल है, साथ में मूल [CC BY 4.0 लाइसेंस](unslop/LICENSE) भी है।
 
 ## सामान्य prerequisites
 
@@ -121,6 +124,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents के लिए browser automation CLI: navigation, form filling, screenshots, extraction, और web testing.                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [deep-research](deep-research/SKILL.md)                             | Parallel chapter writing, latest-data targeting, multilingual output aur built-in quality checks ke saath professional deep research report generation.                              | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI या MCP tools के जरिए 200+ Iconify libraries खोजें और SVG icons प्राप्त करें।                                                                                                             | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [unslop](unslop/SKILL.md) | AI से बने इंटरफ़ेस की समीक्षा और सुधार करें: उत्पाद के अनुरूप डिज़ाइन दिशा, दृश्य संदर्भ, वेब पेज स्नैपशॉट और वैकल्पिक सुधार-प्रक्रिया वीडियो। | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।                                                       | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | कठिन bugs और performance regressions के लिए disciplined diagnosis loop.                                                                             | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | current documentation, API references, और code examples के लिए Context7 CLI का उपयोग करें।                                                                                                   | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |

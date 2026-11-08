@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **18 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **19 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -95,12 +95,15 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 ### Frontend & Design
 
 - [better-icons](better-icons/SKILL.md): искать, просматривать и получать SVG-иконки из более чем 200 библиотек Iconify через CLI или MCP.
+- [unslop](unslop/SKILL.md): Анализ и улучшение интерфейсов, созданных ИИ: дизайн с учётом продукта, визуальные примеры, снимки веб-страниц и необязательные видео процесса.
 
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) использует [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) как upstream baseline. В этом репозитории этот upstream-каталог используется как canonical baseline для локального skill. Единственное локальное отличие — не зависящие от места установки относительные пути к scripts в документации.
 
 [`ponytail/`](ponytail/) взят из [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), коммит `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, с сохранением лицензии MIT. Включён только самостоятельный основной навык, без изменений.
+
+[`unslop/`](unslop/) содержит [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) автора [Damir Sokolovsky](https://x.com/heydamir) в версии `a6f121eee5f29c2f74976b75456feae8b66afb3a` без изменений, с исходной [лицензией CC BY 4.0](unslop/LICENSE).
 
 ## Общие предварительные требования
 
@@ -121,6 +124,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                                    | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [deep-research](deep-research/SKILL.md)                             | Профессиональная генерация глубоких исследовательских отчётов с параллельным написанием глав, новейшими данными, многоязычным выводом и встроенными проверками качества.                  | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons via CLI or MCP tools.                                                                                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [unslop](unslop/SKILL.md) | Анализ и улучшение интерфейсов, созданных ИИ: дизайн с учётом продукта, визуальные примеры, снимки веб-страниц и необязательные видео процесса. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | Управляет реальным браузером пользователя через локальный daemon для навигации, форм, скриншотов, чтения страниц и авторизованных сессий.                                                    | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | Disciplined diagnosis loop для сложных bugs и performance regressions.                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Use the Context7 CLI for current documentation lookup, API references, and code examples.                                                                                                     | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |

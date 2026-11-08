@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **18 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **19 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -95,12 +95,15 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 ### Frontend và thiết kế
 
 - [better-icons](better-icons/SKILL.md): tìm kiếm, duyệt và lấy icon SVG từ hơn 200 bộ Iconify qua CLI hoặc MCP.
+- [unslop](unslop/SKILL.md): Đánh giá và cải thiện giao diện do AI tạo với định hướng thiết kế riêng cho sản phẩm, tài liệu hình ảnh, bản chụp trang web và video quá trình tùy chọn.
 
 ## Gói skill vendored
 
 [`planning-with-files/`](planning-with-files/) dùng [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files) làm upstream baseline. Repo này dùng thư mục upstream đó làm baseline canonical cho skill cục bộ. Khac biet cuc bo duy nhat la tai lieu dung duong dan script tuong doi khong phu thuoc vi tri cai dat.
 
 [`ponytail/`](ponytail/) lấy từ [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) tại `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, giữ nguyên giấy phép MIT. Chỉ bao gồm skill chính độc lập, giữ nguyên không chỉnh sửa.
+
+[`unslop/`](unslop/) giữ nguyên [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) của [Damir Sokolovsky](https://x.com/heydamir) tại phiên bản `a6f121eee5f29c2f74976b75456feae8b66afb3a`, kèm [giấy phép CC BY 4.0](unslop/LICENSE) từ nguồn.
 
 ## Các điều kiện tiên quyết phổ biến
 
@@ -121,6 +124,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [agent-browser](agent-browser/SKILL.md)                             | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web.                                                                           | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [deep-research](deep-research/SKILL.md)                             | Tạo báo cáo nghiên cứu chuyên sâu với viết chương song song, nhắm dữ liệu mới nhất, đầu ra đa ngôn ngữ và kiểm tra chất lượng tích hợp.             | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP.                                                                                                                     | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [unslop](unslop/SKILL.md) | Đánh giá và cải thiện giao diện do AI tạo với định hướng thiết kế riêng cho sản phẩm, tài liệu hình ảnh, bản chụp trang web và video quá trình tùy chọn. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | Điều khiển trình duyệt thật của người dùng qua daemon cục bộ để điều hướng, điền biểu mẫu, chụp màn hình, đọc trang và dùng phiên đã đăng nhập.                                           | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | Vong lap chan doan co ky luat cho bug kho va regression hieu nang.                                                                                 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Dùng Context7 CLI để tra cứu tài liệu mới nhất, tham chiếu API và ví dụ mã.                                                                                                                | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |

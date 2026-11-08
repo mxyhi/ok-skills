@@ -8,7 +8,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **18 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **19 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -109,12 +109,15 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 前端与设计
 
 - [better-icons](better-icons/SKILL.md)：通过 CLI 或 MCP 搜索、浏览并获取 200+ Iconify 图标库中的 SVG 图标。
+- [unslop](unslop/SKILL.md)：审查并改善 AI 生成界面，结合产品特征确定设计方向，提供视觉参考、网页快照和可选的改造过程视频。
 
 ## Vendored Skill Packs
 
 [`planning-with-files/`](planning-with-files/) 对应的上游基线是 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)。本仓将该上游目录作为本地技能的规范基线；本地差异仅限不依赖安装位置的相对脚本路径说明。
 
 [`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 许可证。以独立主技能形式原样收录。
+
+[`unslop/`](unslop/) 原样收录 [Damir Sokolovsky](https://x.com/heydamir) 创作的 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)，版本为 `a6f121eee5f29c2f74976b75456feae8b66afb3a`，并补入上游 [CC BY 4.0 许可证](unslop/LICENSE)。
 
 
 
@@ -136,6 +139,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的浏览器自动化：导航、表单、截图、数据提取、网页测试。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [deep-research](deep-research/SKILL.md)                             | 生成专业深度调研报告，支持并行章节撰写、最新数据定向、多语言输出和内置质量检查。                                                            | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [unslop](unslop/SKILL.md) | 审查并改善 AI 生成界面，结合产品特征确定设计方向，提供视觉参考、网页快照和可选的改造过程视频。 | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。                                                          | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 面向疑难 bug 与性能回归的严格诊断循环。                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查询最新文档、API 参考和代码示例。                                                                                           | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |

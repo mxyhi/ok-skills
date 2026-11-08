@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 18개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 19개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -95,12 +95,15 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 ### 프런트엔드 및 디자인
 
 - [better-icons](better-icons/SKILL.md): CLI 또는 MCP로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.
+- [unslop](unslop/SKILL.md): AI가 생성한 화면을 검토하고 제품에 맞는 디자인 방향, 시각 자료, 웹페이지 스냅샷과 선택적인 개선 과정 영상으로 다듬습니다.
 
 ## 벤더링된 스킬 팩
 
 [`planning-with-files/`](planning-with-files/)는 [`OthmanAdi/planning-with-files/.codex/skills/planning-with-files`](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)를 upstream baseline으로 사용합니다. 이 저장소는 해당 upstream directory를 local skill의 canonical baseline으로 사용합니다. 로컬 차이는 설치 위치에 독립적인 상대 script path 문서뿐입니다.
 
 [`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 변경 없이 포함합니다.
+
+[`unslop/`](unslop/)은 [Damir Sokolovsky](https://x.com/heydamir)가 만든 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)의 `a6f121eee5f29c2f74976b75456feae8b66afb3a` 버전을 변경 없이 포함하며, 원본 [CC BY 4.0 라이선스](unslop/LICENSE)를 함께 제공합니다.
 
 ## 공통 전제 조건
 
@@ -121,6 +124,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [deep-research](deep-research/SKILL.md)                             | 병렬 장 작성, 최신 데이터 타기팅, 다국어 출력, 내장 품질 검사를 지원하는 전문 심층 연구 보고서 생성.                                      | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
+| [unslop](unslop/SKILL.md) | AI가 생성한 화면을 검토하고 제품에 맞는 디자인 방향, 시각 자료, 웹페이지 스냅샷과 선택적인 개선 과정 영상으로 다듬습니다. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.                                    | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 어려운 bug와 performance regression을 위한 엄격한 진단 루프.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
 | [find-docs](find-docs/SKILL.md)                                     | Context7 CLI를 사용해 최신 문서, API 레퍼런스, 코드 예제를 조회.                                                                                 | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
