@@ -93,6 +93,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [ponytail](ponytail/SKILL.md)：遵循 YAGNI，重用現有程式碼，優先標準函式庫與平台原生能力，減少過度設計；支援 lite、full、ultra 三種模式。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：將測試中的 `as` 型別斷言遷移到 `@total-typescript/shoehorn`。
 - [tdd](tdd/SKILL.md)：功能、修復、重構或行為變更前執行 test-first red-green-refactor。
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md)：為既有 Python 程式碼補寫 pytest 測試，涵蓋專案慣例探查、fixture、parametrize、mock、浮點與陣列斷言，以及不穩定測試的排查。
 
 ### 自動化與 QA
 
@@ -161,6 +162,7 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | 中文優先的產品決策 Agent，用於診斷核心阻塞、需求優先級、成長、指標、營運與跨團隊推進。                                                      | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | 功能、修復、重構或行為變更前使用；優先透過 public interface 做 integration-style 測試。                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | 為既有 Python 程式碼撰寫或補充 pytest 測試；與 tdd（測試先行）和 diagnosing-bugs（定位根因）互補。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## 貢獻
 
 歡迎為現有技能提出改進，或新增新的技能。

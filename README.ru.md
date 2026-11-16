@@ -93,6 +93,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 - [ponytail](ponytail/SKILL.md): Применяет YAGNI, повторно использует существующий код и предпочитает стандартную библиотеку и возможности платформы; режимы lite, full и ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): мигрировать `as` type assertions в тестах на `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor для функций, исправлений, рефакторинга и изменений поведения.
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): добавление pytest-тестов к существующему Python-коду: соглашения проекта, fixtures, parametrize, mock, сравнение float и массивов, нестабильные тесты.
 
 ### Automation & QA
 
@@ -160,6 +161,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | [planning-with-files](planning-with-files/SKILL.md)                 | File-based planning for complex tasks using `task_plan.md`, `findings.md`, and `progress.md`.                                                                                                | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Китаеязычный агент продуктовых решений для диагностики узких мест, приоритизации, роста, метрик, операций и межкомандной работы.                                                          | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | Написание и расширение pytest-тестов для существующего Python-кода; дополняет tdd (test-first) и diagnosing-bugs (поиск причины). | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Contributing
 
 Приветствуются новые skills и улучшения существующих.

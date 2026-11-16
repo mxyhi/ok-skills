@@ -6,7 +6,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **33 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **34 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -106,6 +106,7 @@ Then ask naturally:
 - [ponytail](ponytail/SKILL.md): Apply YAGNI, reuse existing code, and prefer standard-library and native-platform solutions to reduce over-engineering; supports lite, full, and ultra modes.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migrate test `as` assertions to `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor for features, bugfixes, refactors, and behavior changes.
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): add pytest tests to existing Python code: project discovery, fixtures, parametrize, mocking, float/array asserts, and flaky-test fixes.
 
 ### Automation & QA
 
@@ -196,6 +197,7 @@ Then ask naturally:
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinese-first product decision support for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.                                                | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                    |
 | [ledger-tasks-yylo](ledger-tasks-yylo/SKILL.md)                     | Durable in-repo task state for coding agents: Kanban tasks with stable IDs, evidence-backed status marks, blocked-by dependencies, and next-ready selection.                            | [yylo-dev/yylo-skills](https://github.com/yylo-dev/yylo-skills/tree/main/skills/ledger-tasks-yylo)                             |
 | [tdd](tdd/SKILL.md)                                                 | Use before any feature, bugfix, refactor, or behavior change; prefers public-interface integration tests.                                                                                | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | Write or extend pytest tests for existing Python code; complements tdd (test-first) and diagnosing-bugs (root cause). | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Contributing
 
 Contributions are welcome for new skills or improvements to existing ones.

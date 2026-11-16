@@ -93,6 +93,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 - [ponytail](ponytail/SKILL.md): Áp dụng YAGNI, tái sử dụng mã có sẵn và ưu tiên thư viện chuẩn cùng tính năng gốc của nền tảng để giảm thiết kế quá mức; hỗ trợ lite, full và ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): migrate `as` type assertions trong test sang `@total-typescript/shoehorn`.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor cho tính năng, bugfix, refactor và thay đổi hành vi.
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): thêm test pytest cho code Python có sẵn: tìm hiểu quy ước dự án, fixture, parametrize, mock, so sánh số thực và mảng, xử lý flaky test.
 
 ### Tự động hóa và QA
 
@@ -160,6 +161,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | [planning-with-files](planning-with-files/SKILL.md)                 | Lập kế hoạch dựa trên file cho các tác vụ phức tạp bằng `task_plan.md`, `findings.md` và `progress.md`.                                                                                    | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Agent ra quyết định sản phẩm ưu tiên tiếng Trung cho chẩn đoán nút thắt, ưu tiên, tăng trưởng, chỉ số, vận hành và phối hợp liên nhóm.                                                   | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | Dùng trước tính năng, bugfix, refactor hoặc thay đổi hành vi; ưu tiên integration-style tests qua public interface.                                                                          | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | Viết hoặc bổ sung test pytest cho code Python có sẵn; bổ trợ cho tdd (test-first) và diagnosing-bugs (tìm nguyên nhân gốc). | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Đóng góp
 
 Chúng tôi hoan nghênh đóng góp cho các skill mới hoặc cải tiến skill hiện có.

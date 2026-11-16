@@ -93,6 +93,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 - [ponytail](ponytail/SKILL.md): YAGNI 원칙에 따라 기존 코드를 재사용하고 표준 라이브러리와 플랫폼 기본 기능을 우선하여 과도한 설계를 줄입니다. lite, full, ultra 모드를 지원합니다.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): 테스트의 `as` 타입 단언을 `@total-typescript/shoehorn`으로 마이그레이션.
 - [tdd](tdd/SKILL.md): 기능, 버그 수정, 리팩터링, 동작 변경 전에 test-first red-green-refactor 적용.
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): 기존 Python 코드에 pytest 테스트 추가. 프로젝트 규칙 파악, fixture, parametrize, mock, 부동소수점·배열 비교, flaky test 대응.
 
 ### 자동화 및 QA
 
@@ -160,6 +161,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, `progress.md`를 활용해 복잡한 작업을 파일 기반으로 계획.                                                          | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | 중국어 우선 제품 의사결정 Agent로 핵심 병목, 우선순위, 성장, 지표, 운영 및 협업을 진단.                                                       | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | 기능, 버그 수정, 리팩터링, 동작 변경 전에 사용. public interface 기반 integration-style test를 우선한다.                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | 기존 Python 코드에 pytest 테스트를 작성하거나 보강. tdd(test-first) 및 diagnosing-bugs(원인 규명)와 상호 보완. | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## 기여하기
 
 새 스킬 추가나 기존 스킬 개선 기여를 환영합니다.

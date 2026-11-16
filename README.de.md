@@ -93,6 +93,7 @@ Danach kannst du natürlich formulieren:
 - [ponytail](ponytail/SKILL.md): YAGNI anwenden, vorhandenen Code wiederverwenden und Standardbibliothek sowie native Plattformfunktionen bevorzugen; mit den Modi lite, full und ultra.
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): `as`-Type-Assertions in Tests nach `@total-typescript/shoehorn` migrieren.
 - [tdd](tdd/SKILL.md): test-first red-green-refactor fur Features, Bugfixes, Refactorings und Verhaltensaenderungen.
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): pytest-Tests für bestehenden Python-Code ergänzen: Projektkonventionen, Fixtures, parametrize, Mocking, Float-/Array-Vergleiche und instabile Tests.
 
 ### Automatisierung und QA
 
@@ -160,6 +161,7 @@ Danach kannst du natürlich formulieren:
 | [planning-with-files](planning-with-files/SKILL.md)                 | Dateibasierte Planung für komplexe Aufgaben mit `task_plan.md`, `findings.md` und `progress.md`.                                                                                                                   | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinesischsprachiger Product-Decision-Agent für Engpassdiagnose, Priorisierung, Wachstum, Kennzahlen, Betrieb und teamübergreifende Umsetzung.                                                                 | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | Vor Features, Bugfixes, Refactorings oder Verhaltensaenderungen verwenden; bevorzugt Integrationstests ueber public interfaces.                                                                                    | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | pytest-Tests für bestehenden Python-Code schreiben oder erweitern; ergänzt tdd (test-first) und diagnosing-bugs (Ursachensuche). | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Mitwirken
 
 Beiträge für neue Skills oder Verbesserungen an bestehenden Skills sind willkommen.
