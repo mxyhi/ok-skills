@@ -93,6 +93,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 - [ponytail](ponytail/SKILL.md): YAGNI に従い、既存コードを再利用し、標準ライブラリとプラットフォームの標準機能を優先して過剰設計を減らす。lite・full・ultra モードに対応。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): テスト内の `as` 型アサーションを `@total-typescript/shoehorn` へ移行する
 - [tdd](tdd/SKILL.md): 機能、バグ修正、リファクタリング、振る舞い変更の前に test-first red-green-refactor を徹底する
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): 既存の Python コードに pytest テストを追加する。プロジェクト規約の確認、fixture、parametrize、mock、浮動小数点・配列の比較、flaky test 対策
 
 ### Automation & QA
 
@@ -160,6 +161,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`、`findings.md`、`progress.md` を使って複雑なタスクをファイルベースで計画する。                                                                                                 | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | 中国語優先のプロダクト意思決定 Agent。ボトルネック診断、優先順位付け、成長、指標、運用、部門横断の推進に対応。                                                                             | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | 機能、バグ修正、リファクタリング、振る舞い変更の前に使う。public interface 経由の integration-style test を優先する。                                                                        | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | 既存の Python コードに pytest テストを書く・追加する。tdd（test-first）と diagnosing-bugs（原因特定）を補完する。 | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Contributing
 
 新しい skills の追加や、既存 skills の改善に対する contribution を歓迎します。

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Writing pytest Tests"
+  short_description: "Add pytest tests to existing Python code"

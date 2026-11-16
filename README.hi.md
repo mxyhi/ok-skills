@@ -93,6 +93,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 - [ponytail](ponytail/SKILL.md): YAGNI अपनाएँ, मौजूदा कोड का पुनः उपयोग करें और अनावश्यक जटिलता घटाने के लिए standard library व platform की मूल क्षमताओं को प्राथमिकता दें; lite, full और ultra मोड।
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md): tests में `as` type assertions को `@total-typescript/shoehorn` में migrate करें।
 - [tdd](tdd/SKILL.md): feature, bugfix, refactor, या behavior change से पहले test-first red-green-refactor लागू करता है।
+- [writing-pytest-tests](writing-pytest-tests/SKILL.md): मौजूदा Python code में pytest tests जोड़ता है: project conventions, fixtures, parametrize, mocking, float/array तुलना, और flaky tests को ठीक करना।
 
 ### Automation & QA
 
@@ -160,6 +161,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | [planning-with-files](planning-with-files/SKILL.md)                 | `task_plan.md`, `findings.md`, और `progress.md` का उपयोग करके complex tasks के लिए file-based planning.                                                                                      | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
 | [product-decision-agent](product-decision-agent/SKILL.md)           | Chinese-first product decision agent for bottleneck diagnosis, prioritization, growth, metrics, operations, and cross-team delivery.                                                   | [atdy/maoxuan-product-agent](https://github.com/atdy/maoxuan-product-agent/tree/main/product-decision-agent)                      |
 | [tdd](tdd/SKILL.md)                                                 | किसी भी feature, bugfix, refactor, या behavior change से पहले उपयोग करें; public interface integration-style tests को प्राथमिकता देता है।                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)                                                        |
+| [writing-pytest-tests](writing-pytest-tests/SKILL.md) | मौजूदा Python code के लिए pytest tests लिखने या बढ़ाने में उपयोग करें; tdd (test-first) और diagnosing-bugs (root cause) का पूरक है। | [mxyhi/ok-skills](https://github.com/mxyhi/ok-skills/tree/main/writing-pytest-tests) |
 ## Contributing
 
 नई skills या existing skills में improvements के लिए contributions का स्वागत है।
