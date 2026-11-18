@@ -1,3 +1,5 @@
+DO NOT send optional commentary
+
 ## 核心原则
 
 - 从第一性原理出发,遵循 KISS，优先选择简单、可维护的方案。
