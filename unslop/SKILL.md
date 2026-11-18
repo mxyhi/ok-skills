@@ -33,10 +33,10 @@ Which visual styles tend to work, and which fail, is in [references/visuals.md](
 ## Run it
 
 1. **Look at the screen.** Find the files that render it. If you can run the app or open the file in a browser and take a screenshot, do it, so you judge what people see and not only the code.
-   - Only a link to a live site, no code? Save the page with `node <skill folder>/scripts/snapshot.mjs <url> unslop/original.html` and work on a copy of that file. Add `--dark` or `--light` to match the theme the user sees. It also saves `original.live.png`, a screenshot of the live page, so render the saved copy and compare the two before you start. Animated backgrounds drawn by scripts do not survive, so describe them in the audit from the live page.
+   - Only a link to a live site, no code? Save the page with `node <skill folder>/scripts/snapshot.mjs <url> unslop/original.html` and work on a copy of that file. A local HTML file works in place of the URL. Add `--dark` or `--light` to match the theme the user sees. It also saves `original.live.png`, a screenshot of the live page, so render the saved copy and compare the two before you start. The script scrolls through the page first, so lazy-loaded sections and images are captured. Animated backgrounds drawn by scripts do not survive, so describe them in the audit from the live page.
    - Only a screenshot? Rebuild the screen as one static HTML file first, matching it closely, and treat that as the original.
    - In both cases the result is a redesigned page in code that the user can hand to whoever owns the real site, so say that in the report.
-2. **Audit.** Go through [references/signs.md](references/signs.md) and list every sign you find, one line each with where it lives.
+2. **Audit.** Go through [references/signs.md](references/signs.md) and list every sign you find, one line each with where it lives. If the screen is in Arabic, Persian, Urdu or Hebrew, or should be, read [references/rtl.md](references/rtl.md) first. Its rules win where they differ from the passes.
 3. **Decide how much to change.** Read the audit honestly before planning anything.
    - **Heavy slop**, many signs across color, type, icons and copy. Run the full process below.
    - **Light slop**, a screen that is mostly designed with a few signs left. Polish mode. Fix only what the audit found, take the direction from the existing brand instead of inventing a new one, and keep the palette, type, layout and visual. Bigger ideas, like a moment that is missing or a scene for the hero, go into the report as suggestions, not changes.
@@ -224,9 +224,12 @@ It adds a few minutes, so make it only when the user wants it.
 - [ ] No emoji left in the interface
 - [ ] One icon set at one size and stroke
 - [ ] Type chosen for the character, weights 400 to 600, no uppercase tracked labels, no italic, no negative tracking on small text
+- [ ] Right to left screens follow [references/rtl.md](references/rtl.md): `dir` and `lang` set, logical properties, the layout mirrored, directional icons flipped, mixed text isolated, one digit system, zero letter spacing on Arabic
 - [ ] No exclamation marks, no trailing periods on short strings, no greeting headline, no unverified claims
 - [ ] Numbers in one format with tabular figures
 - [ ] Nested radii add up
+- [ ] Table row states read apart: header, value in use, selection and keyboard focus are each recognizable
+- [ ] Buttons share the control radius, no square corners against the component style
 - [ ] A hero has a real visual or a product preview with at least one moment, never filler and never a labeled placeholder
 - [ ] The first screen is composed as a whole with no dead empty band
 - [ ] No looping or bouncy motion, one easing curve, no animated layout properties

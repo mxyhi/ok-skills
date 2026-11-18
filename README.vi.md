@@ -109,7 +109,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 [`ponytail/`](ponytail/) lấy từ [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) tại `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, giữ nguyên giấy phép MIT. Chỉ bao gồm skill chính độc lập, giữ nguyên không chỉnh sửa.
 
-[`unslop/`](unslop/) giữ nguyên [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) của [Damir Sokolovsky](https://x.com/heydamir) tại phiên bản `a6f121eee5f29c2f74976b75456feae8b66afb3a`, kèm [giấy phép CC BY 4.0](unslop/LICENSE) từ nguồn.
+[`unslop/`](unslop/) giữ nguyên [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) của [Damir Sokolovsky](https://x.com/heydamir) tại phiên bản `620163eedb3529d9cd23a3994ed8d287d06f760d`, kèm [giấy phép CC BY 4.0](unslop/LICENSE) từ nguồn.
 
 Sáu skill này được lấy từ [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). Mỗi skill đều kèm giấy phép [Apache-2.0](agent-desktop/LICENSE) của dự án gốc.
 

@@ -11,6 +11,44 @@ returned inline. When complete `inspect_binary_layout` or
 `inspect_analysis_view` for a summary, one section/symbol/module, or a stable
 page instead of repeating the producer.
 
+For any logical Evidence source that advertises retained references, pass
+`{kind: "retained-evidence", evidence_id}` instead of copying the complete
+record back into a call. The same contract covers individual, optional, array
+and nested sources across native, process, JavaScript, managed, mobile and WASM
+workflows. Sources can independently mix inline records and exact references.
+Resolution preserves the source's identity, provenance, coverage, partial facts
+and unknowns; it neither reruns analysis nor makes incomplete facts complete.
+Keep domain role and identity requirements: a native dossier cannot substitute
+for a managed member observation, for example.
+
+When starting from a summary or inspection page, use its
+`normalized_result.parent_evidence_id` to reference the complete source.
+The view's own `evidence_id` names
+only that view. `compare_artifacts` explicitly supports artifact summary inputs
+and resolves their parents; do not assume every consumer does. When a workflow
+follows source links, keep those linked records available too.
+
+MCP references belong to the current connection's ledger. If the ID is known,
+pass it directly; no discovery call or provider setup is needed. If it is missing,
+import the exported bundle or supply complete inline Evidence. Do not retry an
+unchanged reference or rerun a producer merely to move an existing record.
+Export before closing the session when the source must survive it. For CLI JSON
+workflows that advertise `--evidence-bundle`, the same reference JSON resolves
+against one explicitly selected authenticated bundle:
+
+```bash
+rea trace-application-feature request.json --evidence-bundle /absolute/path/evidence.json --json
+```
+
+This includes JavaScript traces/comparisons and runtime reconciliation, managed
+reconstruction/native verification/graph projection, Android/Apple/Harmony graph
+projection, WASM interface comparison and retained analysis views. The managed
+member comparison CLI still takes two assembly paths; process comparison takes
+two capture Evidence JSON paths. Check command help for the installed version.
+An input bundle grants no implicit file lookup: `evidence-file` and historical
+graph file selectors are accepted only by contracts advertising them. See the
+[CLI reuse guide](https://github.com/morluto/rea/blob/main/docs/getting-started/cli.md#import-export-and-compare-evidence).
+
 Completed `inspect_artifact` inventory also supports a summary and
 `view: {kind: "inventory", collection: "occurrences", logical_paths: ["package.json", "main.js"]}`.
 Omit `logical_paths` to page all available occurrences; `[]` selects none.
@@ -35,6 +73,14 @@ Parent Evidence ID plus source index preserves same-address
 alternatives. Follow `coverage.next_offset` only as far as the question needs;
 exhausting retained rows does not establish complete program discovery.
 
+`batch_decompile` returns every body unless you select `detail: "summary"` when
+the connected tool advertises it. Use its parent Evidence ID with
+`view: {kind: "batch-decompile", collection: "items"}` for body-free rows and
+exact `where.indices`, `addresses`, `procedure_addresses` or `statuses`. Add
+`include_pseudocode: true` for several chosen bodies, or use
+`collection: "pseudocode"` with one row's `index` to page a large body. Batch
+limitations aggregate every item, so do not attribute them to one successful row.
+
 Use `record_unknown` to track unresolved questions in the user's investigation
 and name the authority or environment still required. Supply supporting and
 contradicting evidence IDs. It updates the session registry directly.
@@ -56,11 +102,12 @@ or absence:
   the complete dossier.
 - `compare_bundles` compares canonical bundle membership and unknown history.
 - `find_changed_behavior` combines existing comparisons; static differences
-  remain candidates, not causal proof.
+  remain candidates, not causal proof. Its `comparisons` accept exact references.
 - `build_call_path` needs explicit function dossiers from one artifact/provider;
-  an incomplete frontier makes absence unknown.
+  pass complete parent IDs in `functions`. An incomplete frontier makes absence
+  unknown.
 - `correlate_static_and_runtime` uses explicit mappings; matching patterns are
-  hypotheses, not causality.
+  hypotheses, not causality. Both comparison arrays accept exact references.
 - `verify_reconstruction` evaluates a finite typed specification. A pass covers
   only declared comparable claims, not global equivalence.
 
@@ -127,3 +174,20 @@ coverage describes selected retained rows; `summary.coverage` or `exports.covera
 still describes the source table, so an empty partial page does not prove absence.
 CLI `inspect-native-exports --detail summary --evidence_output PATH` saves the
 complete bundle for later `inspect-analysis-view --evidence-bundle PATH` requests.
+
+For an ELF load-time dependency question, `inspect_elf_dependencies` accepts
+`detail: "summary"` and retains the complete inventory. Query
+`inspect_analysis_view` with `view: {kind: "elf-dependencies", collection:
+"needed" | "versions" | "definitions" | "maxima" | "imports", names:
+["selected_name"], fields: ["name"], offset: 0, limit: 32}` and the reported
+parent Evidence ID. Collection `"maxima"` matches `names` against namespaces
+such as `GLIBC` and selects `fields` from `namespace`, `maximum`, and
+`evidence_kind`, for example `fields: ["namespace", "maximum"]`. Collection
+`"issues"` takes only `indices`, `offset`, and `limit`.
+Duplicate `DT_NEEDED` names survive; use `source_index` with the parent ID for
+stable identity. Page coverage describes selected retained rows;
+`summary.coverage` or `dependencies.coverage` still describes the source
+tables, so an empty partial page does not prove absence. CLI
+`inspect-elf-dependencies --detail summary --evidence_output PATH` saves the
+complete bundle for later `inspect-analysis-view --evidence-bundle PATH`
+requests.

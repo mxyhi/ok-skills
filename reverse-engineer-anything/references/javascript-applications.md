@@ -6,7 +6,7 @@ For captured or bundled JavaScript that needs readable source recovery, use
 `additional_paths` when advertised, then analyze the returned `analysis_input`
 directory together. Each input retains its own snapshot, digest and byte-range
 provenance; inputs and recovered code are never executed. Recovery requires a
-caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/morluto/rea/blob/main/docs/javascript-recovery.md).
+caller-supplied Wakaru on Linux x64; see [the recovery guide](https://github.com/morluto/rea/blob/main/docs/guides/javascript/javascript-recovery.md).
 
 Use `analyze_javascript_application` directly on the operator-supplied ASAR or
 extracted tree. When the question concerns known source paths and the connected
@@ -169,7 +169,10 @@ leaving it, and `both` when the question needs both. Trace traversal includes
 containment relationships, so even a narrow seed can expand many nodes; a
 bidirectional trace can reach unrelated sibling modules. A module item or page
 is preferable when its observations already answer the question. Do not treat
-all reached nodes as participants in the feature.
+all reached nodes as participants in the feature. For a broad trace, pass
+`view: {"kind": "feature-trace", "collection": "paths"}` (or `summary`) to
+retain the complete trace and read terminal paths first; page `nodes` or `edges`
+with exact `where.node_ids` through `inspect_analysis_view` as needed.
 
 Reuse retained parent Evidence when the server advertises it, or supply complete
 Evidence inline. Include Hopper or Ghidra Evidence only when its artifact digest
@@ -236,10 +239,19 @@ This notation is
 a template: replace it with the actual returned ID. Versions before 4.1.0 accept only full
 inline Evidence. Use the exact ID
 returned by the producer on the same MCP connection. Resolution does not run
-analysis or select a provider; findings remain inline. Native observation
-arrays still take full Evidence. `close_binary` clears retained references;
-export a bundle before closing, or supply portable inline Evidence in another
-connection. A missing reference includes its ID and recovery guidance.
+analysis or select a provider; findings remain inline. For summary or inspection
+replies, select the complete `normalized_result.parent_evidence_id`. Native
+observation arrays and runtime reconciliation's `static_layers[].analysis` and
+`runtime_observations[]` also accept exact references where advertised. Each
+source can independently be inline or retained, preserving identity, coverage
+and unknowns. CLI workflows advertising `--evidence-bundle` resolve these inputs
+from the explicitly selected bundle. `close_binary` releases the engine while
+retaining references and complete Unknown history on the same MCP connection.
+`reset_investigation` explicitly clears them; optional `save_path` checkpoints the
+complete bundle before clearing. Import that bundle in another connection to
+restore its original references. Retention is bounded, in-memory and never silently
+evicted; `binary_session.investigation` reports the budget. A missing reference
+includes its ID and recovery guidance.
 
 For exact file/native metadata or processing gaps, use
 `view: {kind: "javascript-facts", where: {paths: ["package.json"]}, property_keys: ["name", "operation", "analysis_status"], limit: 32}`.

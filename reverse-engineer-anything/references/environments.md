@@ -8,7 +8,9 @@ confirmed. The workflow records the application once with
 again if a hint names a gap, then writes the bundle with
 `export_environment_bundle`. For a HAR the user already has, skip to
 [export](#export-and-hand-off) through `inspect_web_network_capture`, or use
-`rea environment-build <capture.har> <dir>`.
+`rea environment-build <capture.har> <dir>`. For a task in a desktop
+application's exported environment, read
+[its section](#tasks-for-a-desktop-application-environment).
 
 ## Before recording
 
@@ -285,3 +287,113 @@ See
 [agent environments](https://github.com/morluto/rea/blob/main/docs/agent-environments.md)
 for what the state, replay and the bundle establish, and
 [evidence workflows](evidence-workflows.md) for the manifest and state views.
+
+## Tasks for a desktop application environment
+
+Use this when the user has a folder from `rea capture-desktop-application` and
+wants a task for the environment `rea export-desktop-application` makes from
+it: a prompt for a computer-use agent and checks that grade what the agent
+left in the app's files. You write the prompt and the checks; REA validates
+the task against the capture and exports it. These commands are CLI only. To
+build the environment and its task from a request instead, follow
+[desktop builds](desktop-build.md).
+
+### Describe the change
+
+Run `rea describe-desktop-application-task CAPTURE --format json`. Read:
+
+- `owned_paths`: the only paths whose files the app serves, so the only files
+  a check can read.
+- `files`: each file there whose state differs between the capture's first
+  and last version, with its `role`, the `baseline` and `final` versions and
+  the net `change`. Text changes list each added and removed line once, and
+  `line_counts` gives lines found at both ends whose count changed.
+- `values` in each of those files: what the change added, changed and
+  removed, `before` and `after`, at the pointer a check names it by, with
+  `refers_to` naming the element a key such as `category="44"` stands for.
+  Skip entries noted `by_position` or as noise. Only XML files, archives,
+  JSON and key files have values: a text file's or database's change
+  already lists its lines and rows.
+- `task`: a draft whose `checks` are suggestions from the net change of the
+  documents the user worked on, or of the app's own state when no document
+  changed.
+- `guards`: optional checks that the rest kept its seed values, such as a
+  like sibling's field or a text file's neighbouring lines; add one or two
+  to show the rest is untouched.
+- `notes`: why `files` is empty, or why a file's suggestions are thin, such
+  as `by_position` when no attribute names the changed element.
+
+### Write the prompt
+
+Say what the user wants done, in their words and the app's terms, naming the
+app: "In Mousepad, add buy milk to my to-do list and save it". A solving
+agent's own shell cannot see the computer's files; the app's name sends it to
+the screen. Never say how the file stores it: no
+paths the user would not name, line formats, XML, keys or SQL, and never the
+checks. Replace the draft's placeholder; the export refuses it.
+
+### Pick the checks
+
+Checks must express only the observed change:
+
+- Keep a suggestion only if it says what the user did. Drop those that follow
+  from how the app saves: a format rewrite, renumbered lines, counters. A
+  LibreCAD drawing gaining four holes was rewritten from DXF R12 to 2007, and
+  the draft suggests counts of `SECTION`, `ENDSEC` and `CIRCLE`; only
+  `CIRCLE` equals 9 is the user's change.
+- Never check unchanged content, whole files, or values the app stamps:
+  times, ids it assigns, window sizes. REA refuses ISO 8601 and `asctime`
+  date-times (`Thu Nov  5 09:20:31 2026`); the
+  rest is your judgment.
+- Prefer a few robust checks: whole lines over positions, rows by meaningful
+  columns over generated ids, `at_least` when the user may add more.
+
+Kinds: `file_present` and `file_absent`; `lines_present` and `lines_absent`
+(`lines`); `line_count` (`exact` or `contains`, and `equals`, `at_least` or
+`at_most`); `value_equals` and `value_absent` (a JSON `pointer` into the view,
+such as `/groups/GROUP/KEY` for a key file); `text_equals` and
+`text_contains` (an XML element's whole text at a `pointer`, optional
+`normalize_whitespace`); `row_present` and `row_absent` (`table`, `where` by
+column) and `row_count`. Each names its `file` as a path under the home. A
+document saved as a zip archive, such as FreeCAD's `.FCStd`, reads as its
+entries: point into an entry's view, and name array members by selector
+rather than position, as
+`/entries/[name=Document.xml]/view/root/children/[name=Object][@name=Hole]`,
+so the check survives an app version that writes them in another order. A
+gzip-compressed document, such as Gnumeric's `.gnumeric`, reads as the
+document inside: point into it as into the same document uncompressed. Give
+`value_equals` a `tolerance` to compare a number the app writes as text, such
+as `"5.0000000000000000"`, with a number. Check what the user wrote in a
+document with `text_equals` on its paragraph element, not `value_equals` on a
+text node: apps such as AbiWord and Writer split a paragraph into runs as they
+save, so its first text node holds only part of it; use `text_contains` for a
+value within a sentence, such as a time. A binary document, such as GIMP's
+`.xcf`, has no view: give the task a `readers` entry, the app's own headless
+command printing `REA ` lines, and a check naming it in `reader`, as
+[desktop builds](desktop-build.md#read-a-binary-file-with-a-reader) shows. The
+[desktop application tasks](https://github.com/morluto/rea/blob/main/docs/desktop-application-tasks.md)
+guide has the exact rules.
+
+### Export the task
+
+Write the task as JSON with a `name`, the `prompt` and the `checks`, then run
+`rea export-desktop-application CAPTURE DIRECTORY --task TASK.json`. REA keeps
+the task only when its checks fail on the seed and all pass on the captured
+end state. A refusal names the check: one that fails on the end state does not
+match what the user left; "every check already passes on the seed" means no
+check captures the change. For several tasks from one capture, repeat
+`--task` and name each later task's end with `--task-end NAME=CHECKPOINT`.
+
+When the export refuses an application that no apt repository installs, ask
+the user for the `.deb` file they installed it from and capture with
+`--package-file`, then ask where the computer may download that file and pass
+it as `--package-url`. Never fetch a vendor's download page yourself: such
+sites often refuse automated downloads, and the copy and its licence are the
+user's to choose.
+
+Tell the user the task's name, prompt and checks, and how to measure a solve
+rate: run `agent-env run DIRECTORY --task NAME --agent claude-code` with
+`--model MODEL` three times and count the runs reported `passed`. The runs
+need a model endpoint: `LITELLM_BASE_URL` and `LITELLM_API_KEY`, or
+`base_url` and `api_key` under `[model]` in `.agentenv/config.toml`. Do not run
+agents unless asked. The bundle's seed is the user's real data: keep it local.

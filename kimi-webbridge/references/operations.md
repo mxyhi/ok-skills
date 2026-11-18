@@ -1,6 +1,6 @@
 # Operations: running the kimi-webbridge daemon
 
-Read this when the user asks about kimi-webbridge itself — install, start, stop, restart, upgrade, "is it running", "why isn't the extension connected", moving it to another port. Mid-task recovery (the daemon becomes unreachable while you are driving the browser) is covered in SKILL.md and needs nothing from here.
+Read this when the user asks about kimi-webbridge itself — install, start, stop, restart, upgrade, "is it running", "why isn't the extension connected", moving it to another port — or when a CLI/status update notice appears. Mid-task recovery (the daemon becomes unreachable while you are driving the browser) is covered in SKILL.md and needs nothing from here.
 
 Installing the binary or the browser extension is done by the user from the help page — send them there rather than scripting it:
 
@@ -49,10 +49,18 @@ Always present:
 - `extension_connected` (bool), `extension_id`, `extension_version` — empty strings when no extension is attached. Not connected means the extension isn't installed, the browser is closed, or — after a port move — the extension is still pointed at the old address (Settings → Local agent remote control → Connection address). The first two are for the user via the help page.
 - `skills` — every place this skill is installed: `[{agent, path, version}]`
 
-Present only when something needs doing — each carries a `command` that is the exact next step, and CLI commands also print them on stderr as `==> … Run: <command>` lines. Relay the command to the user to run; don't run it yourself — `upgrade` restarts the daemon, and a skill reinstall only takes effect once the user restarts their agent:
+Present only when something needs doing — each carries a `command` that is the exact next step, and CLI commands also print them on stderr as `==> … Run: <command>` lines. Handle them using [Update notices](#update-notices):
 
 - `version_mismatch` `{daemon, extension, message, command}` — daemon and extension differ in major.minor. `command` is the `upgrade <version>` that pairs them. While this is set, `update_available` is suppressed: pairing with the extension comes before chasing the newest release.
 - `skill_mismatch` `{extension_version, outdated: [...], command}` — installed skill copies out of step with the extension; `command` reinstalls the matching version.
 - `update_available` `{current, latest, command}` — a newer release exists and the extension's major.minor allows it; `command` is `kimi-webbridge upgrade`.
 
 Anything else answering on the port (a bare 200, HTML, JSON without `running`) is not this daemon; the CLI reports `running:false` with a note saying so.
+
+## Update notices
+
+A notice is maintenance information, not a failed task or permission to upgrade. For a non-blocking notice, finish the user's current request first; if still relevant, append one short note after the result with the exact `command` field (or text after `Run:`). Consolidate repeated notices during the task, and omit ones already resolved or dismissed. Routine update availability needs no choice card or extra user reply.
+
+If an actual tool failure prevents progress because an update is required, explain the blocker and its prescribed update step immediately. A version notice alone does not establish a blocker. When the user's request is about versions or updates, answer it directly rather than deferring it.
+
+Run upgrades only when the user asks: `upgrade` restarts the daemon and can interrupt other tasks. Relay an unsolicited notice's command for the user to run; a skill reinstall takes effect after restarting their agent. Keep maintenance advice separate from tab cleanup: choosing to close pages does not authorize an upgrade.

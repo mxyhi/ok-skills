@@ -109,7 +109,7 @@ Claude Code または Codex のグローバル指示は [`CLAUDE_AGENTS.md`](CLA
 
 [`ponytail/`](ponytail/) は [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) の `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` を取り込み、MIT ライセンスを保持しています。独立したメインスキルのみを変更せずに収録しています。
 
-[`unslop/`](unslop/) は [Damir Sokolovsky](https://x.com/heydamir) 作の [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) の `a6f121eee5f29c2f74976b75456feae8b66afb3a` を変更せず収録し、上流の [CC BY 4.0 ライセンス](unslop/LICENSE) を同梱しています。
+[`unslop/`](unslop/) は [Damir Sokolovsky](https://x.com/heydamir) 作の [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) の `620163eedb3529d9cd23a3994ed8d287d06f760d` を変更せず収録し、上流の [CC BY 4.0 ライセンス](unslop/LICENSE) を同梱しています。
 
 この 6 つのスキルは [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills) から取り込み、それぞれに上流の [Apache-2.0](agent-desktop/LICENSE) ライセンスを同梱しています。
 

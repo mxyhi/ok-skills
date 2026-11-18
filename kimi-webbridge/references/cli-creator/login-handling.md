@@ -16,8 +16,8 @@ It must:
 
 ### 2. Find the auth check endpoint
 
-Run the protocol in `references/cli-creator/site-exploration.md` on the site's home page: start network capture, reload, and look for a call that returns the user's identity (`user_id`, `username`, `is_guest`, …) — typically named like `/me`, `/user/profile`, `/session` or `/auth/status`.
+Follow [Site exploration](site-exploration.md) on the site's home page to find a lightweight call that returns the user's identity (`user_id`, `username`, `is_guest`, …).
 
 ### 3. The command
 
-Open the site's tab (see the CLI contract in `references/cli-creator/workflow.md`), then `evaluate` the call found in step 2 and map its response to `logged_in` / `user`. Take the field names from the exploration findings; a guest response and a failed request both mean "not logged in".
+Open the site's tab using the [CLI contract](workflow.md#phase-3-implement), then evaluate the identity call and map the observed fields to `logged_in` / `user`. Only a confirmed guest or unauthenticated response means `not_logged_in`. Preserve network failures, rate limits and server errors as request errors; they do not establish login state.

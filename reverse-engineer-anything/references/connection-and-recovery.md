@@ -11,7 +11,7 @@ main and an older release expose the same arguments. Tool-name prefixes belong
 to the client: find the canonical REA operation in its actual tool listing and
 server association before concluding that it is absent. A shared prefix alone
 does not establish which server an approval wildcard covers. See
-[client tool names and discovery](https://github.com/morluto/rea/blob/main/docs/client-configuration.md#client-tool-names-and-discovery).
+[client tool names and discovery](https://github.com/morluto/rea/blob/main/docs/getting-started/client-configuration.md#client-tool-names-and-discovery).
 
 ## Choose the remedy from the observed failure
 
@@ -108,29 +108,34 @@ is not a recommendation to change it. Do not invent a setting. Host memory and
 - Capacity, when the result is `resource_constraint` and `retryable` is true:
   wait for the active admission to finish, then retry within the reported
   limits. Do not restart REA to free the slot.
-- `configuration_invalid`: correct the named setting in the environment that
-  starts REA (the shell or the MCP registration), then restart REA. Run
-  `rea doctor` to see the `runtime-configuration:` check. Re-run `rea setup`
-  for that client when the registration must carry the new setting, then
-  reconnect.
+- `configuration_invalid`: when the error reports `update_mode: "runtime"`,
+  call `update_analysis_settings` for that setting. When it reports
+  `update_mode: "parameter"`, change that call's argument; the setter does not
+  accept it. Otherwise correct the named setting in the environment that starts
+  REA (the shell or the MCP registration) and start REA again. Run `rea doctor`
+  to see the `runtime-configuration:` check. Re-run `rea setup` for that client
+  when the registration must carry the new setting, then reconnect.
 - `invalid_request`: correct the reported fields from the current schema. Do
   not repeat the unchanged call.
 
 ## REA installed as a client plugin
 
-A Claude Code or Codex plugin owns its `rea` server and this skill. Doctor's
-`--client` and `--skill` checks and `rea setup` read and write only
-setup-owned state, so for a plugin-only install they report `missing`, and
-applying setup would add a second `rea` server. If this skill was loaded from
-a plugin, or the client lists a `rea` plugin, do not prepare a setup plan for
-missing tools. Instead:
+A Claude Code, Codex, or Cursor Marketplace plugin owns its `rea` server and
+this skill. Doctor's `--client` and `--skill` checks and `rea setup` read and
+write only setup-owned state, so for a plugin-only install they report
+`missing`, and applying setup would add a second `rea` server. If this skill
+was loaded from a plugin, or the client lists a `rea` plugin, do not prepare a
+setup plan for missing tools. Instead:
 
 - Check that the plugin is installed and enabled with the client's own
   listing: `claude plugin list` and `/mcp` in Claude Code, `codex plugin list`
-  in Codex.
+  in Codex, and Cursor's plugin settings for a Marketplace install.
 - Restart or reconnect the client, then read its launch error for the `rea`
-  server if tools are still absent. The plugin starts its bundled runtime; a missing build or version mismatch
-  requires a reinstall, or a fresh build when developing from source.
+  server if tools are still absent. Claude Code and Codex start the plugin's
+  bundled runtime; a missing build or version mismatch requires a reinstall,
+  or a fresh build when developing from source. A Cursor Marketplace install
+  starts `npx` at the version pinned in the plugin's `mcp.json`. A failed
+  download needs network access to that published version.
 - Check analysis engines through the connected server's
   `binary_session.result.tool_availability`. `rea doctor --provider <id> --json`
   from a shell reports that shell's environment, which can differ from the
@@ -152,9 +157,12 @@ rea setup --client codex --dry-run --json
 ```
 
 Use the current supported client's ID: `claude_code`, `claude_desktop`, `codex`,
-`cursor`, `gemini_cli`, `windsurf`, `devin`, `opencode`, `antigravity`,
-`copilot_cli`, `commandcode`, `qwen_code`, `vscode`, `trae`, `grok_build`, `omp`, `pi`,
-`hermes`, `qoder`, `droid`, `zcode`, `dsh`, `freebuff`, or `grok_bot`. If unknown, inspect `doctor --json` before choosing a
+`cursor`, `codebuddy`, `cline`, `gemini_cli`, `windsurf`, `devin`, `opencode`,
+`antigravity`, `copilot_cli`, `commandcode`, `qwen_code`, `kimi`, `vscode`, `trae`,
+`workbuddy`, `lm_studio`, `grok_build`, `omp`, `pi`, `hermes`, `qoder`, `droid`,
+`zcode`, `dsh`, `freebuff`, `cline_vscode`, `cline_vscode_insiders`, `cline_vscodium`,
+`cline_cursor`, `cline_windsurf`, `kiro`, `mastracode`, `zed`, `amp`, `mcporter`, `fx`, `junie`, `goose`,
+`kilo`, or `grok_bot`. If unknown, inspect `doctor --json` before choosing a
 scope. `grok_bot` uses a chat registration step rather than local `mcp.json`.
 For unsupported clients, use manual stdio registration with the selected
 installation’s absolute runtime and entry script, or continue through the CLI.

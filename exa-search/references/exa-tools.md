@@ -3,18 +3,19 @@
 Snapshot checked against:
 
 - Hosted endpoint: `https://mcp.exa.ai/mcp`
-- Official repo: `exa-labs/exa-mcp-server@55cc85c7305117aea538ea0b9dc7d19523be0c6a`
-- npm package: `exa-mcp-server@3.4.2`
-- npm tarball SHA-256: `a7d76442a45d809393eae6ec439ac4ebbbfa9f89e30789008069f8c5236b3f97`
-- npm package `gitHead`: `f2bdda713e9368a8db8854929faf4fd277e5a1c9`
-- Hosted MCP `serverInfo.version`: `3.5.0` (hosted `web_search_exa` adds required `objective`, not yet in official source or npm)
-- Date checked: 2026-10-29
+- Official repo: `exa-labs/exa-mcp-server@a02cd621534313b8f01dbb03b829dac448decb8b`
+- npm package: `exa-mcp-server@3.4.3`
+- npm tarball SHA-256: `b6366fc84097732847096e48d2118864310738d380aabf4f37d308f14f48f81f`
+- npm package `gitHead`: `93c0d5e1fecfc1ec9bf70fa9f3633962a1f2fa8a`
+- Hosted MCP `serverInfo.version`: `3.5.1` (hosted `web_search_exa` adds required `objective`, not yet in official source or npm)
+- Date checked: 2026-11-18
 
 ## Base URL
 
 - Base: `https://mcp.exa.ai/mcp`
 - Select tools: `?tools=tool_a,tool_b,...`
 - API key: `?exaApiKey=YOUR_EXA_API_KEY`, `Authorization: Bearer ...`, or `EXA_API_KEY` for local npm.
+- Dynamic highlights (beta): `?dynamicHighlights=true` (`DYNAMIC_HIGHLIGHTS=true` for local npm) makes `web_search_exa` and `web_search_advanced_exa` share one highlight budget across all results. The server then rejects `highlightsMaxCharacters`.
 - Anonymous hosted use works but has rate limits and may not register API-key-only tools.
 - Streamable HTTP flow: `initialize`, `notifications/initialized`, then `tools/list` or `tools/call`. Include `Mcp-Session-Id` if initialization returned one; the hosted service may operate without it.
 - Hosted responses usually use `text/event-stream`; extract JSON from `data:` lines before parsing.
@@ -33,7 +34,7 @@ Snapshot checked against:
 | --- | --- | --- |
 | `web_search_advanced_exa` | Advanced search with filters and content controls | See detailed schema below |
 
-Official source also registers `agent_run` for research-agent runs. Selecting it on the hosted endpoint requires OAuth or a user-provided API key; anonymous `tools/list` returned HTTP 401 on 2026-10-29. Fetch its authenticated schema before constructing a request. This snapshot did not execute an agent run.
+Official source also registers `agent_run` for research-agent runs. Selecting it on the hosted endpoint requires OAuth or a user-provided API key; anonymous `tools/list` returned HTTP 401 on 2026-11-18. Fetch its authenticated schema before constructing a request. This snapshot did not execute an agent run.
 
 ## Deprecated Tools
 
@@ -71,7 +72,7 @@ Deprecated/compat details:
 
 - `auto` is the recommended default and accepts every parameter. `lite` serves cached content and supports only `query`, `numResults`, `category`, `includeDomains`, `excludeDomains`, `startPublishedDate`, `endPublishedDate`, `userLocation`, `moderation`, `textMaxCharacters`, and highlights parameters. Use `auto` for other controls, including summaries, crawl-date/text filters, additional queries, context output, freshness and subpages. `fast` and `instant` are legacy types; prefer `lite`, or `auto` when the required parameters exceed `lite` support.
 - `highlightsNumSentences` and `highlightsPerUrl` are deprecated; the hosted schema explicitly says `highlightsPerUrl` is ignored. Prefer `highlightsMaxCharacters`.
-- `livecrawl` is not a direct exposed parameter on current hosted `web_search_exa`; use advanced freshness controls (`maxAgeHours`, `livecrawlTimeout`) when needed.
+- `livecrawl` is not a direct exposed parameter on current hosted `web_search_exa`; use advanced freshness controls (`maxAgeHours`, `livecrawlTimeout`) when needed. `maxAgeHours:0` returns live content fetched within the last 60 seconds.
 - Old local docs mentioning `tokensNum` for `get_code_context_exa` are obsolete.
 
 ## Minimal MCP Schema Check
@@ -177,4 +178,10 @@ Rechecked on 2026-10-18:
 - Official repo `main` remains `e9c3b0126a3373eb1aeaca162e84d0791ff4c7f7`; npm latest remains `exa-mcp-server@3.4.2`, with the same `gitHead` and package integrity.
 - Hosted `initialize` reports `serverInfo.version=3.5.0`. It returns no session header; anonymous `notifications/initialized` and `tools/list` succeed without one.
 - All eight explicitly requested tools register, including `linkedin_search_exa`. The parameter names, types, and required fields of the seven previously checked tools are unchanged. Advanced highlight descriptions now mark `highlightsPerUrl` as ignored and remove the old character conversion claim for `highlightsNumSentences`.
+- This check covers initialization and schema discovery; search, fetch, and authenticated research calls were not repeated.
+
+Rechecked on 2026-11-18:
+- Official repo `main` advanced to `a02cd621534313b8f01dbb03b829dac448decb8b`; npm latest is `exa-mcp-server@3.4.3` with the package metadata above. The source adds the `dynamicHighlights` beta option, blank numeric inputs treated as unset, and new advanced-search page-text defaults. It still does not define `objective` on `web_search_exa`.
+- Hosted `initialize` reports `serverInfo.version=3.5.1`. All eight explicitly requested tools register. Parameter names, types and required fields are unchanged. The `maxAgeHours` description now defines `0` as live content fetched within the last 60 seconds, and the `get_code_context_exa` description is now marked deprecated.
+- Hosted `?dynamicHighlights=true` is live: the `highlightsMaxCharacters` description changes to "Not supported on this server". Anonymous `agent_run` still returns HTTP 401.
 - This check covers initialization and schema discovery; search, fetch, and authenticated research calls were not repeated.

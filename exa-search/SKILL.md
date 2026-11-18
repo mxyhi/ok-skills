@@ -10,10 +10,10 @@ Use this skill when online search, page fetch, code/docs lookup, company researc
 ## Current Source Of Truth
 
 - Hosted MCP endpoint: `https://mcp.exa.ai/mcp`
-- Official source: `exa-labs/exa-mcp-server@55cc85c7305117aea538ea0b9dc7d19523be0c6a`
-- Current npm package checked: `exa-mcp-server@3.4.2`; verified tarball SHA-256 `a7d76442a45d809393eae6ec439ac4ebbbfa9f89e30789008069f8c5236b3f97`
-- Hosted MCP `serverInfo.version` reports `3.5.0`; tool schemas below are from live `tools/list` on 2026-10-29. The npm package remains at `3.4.2`.
-- Hosted schema is ahead of the open-source code: hosted `web_search_exa` requires `objective`, which official source and npm 3.4.2 do not define yet
+- Official source: `exa-labs/exa-mcp-server@a02cd621534313b8f01dbb03b829dac448decb8b`
+- Current npm package checked: `exa-mcp-server@3.4.3`; verified tarball SHA-256 `b6366fc84097732847096e48d2118864310738d380aabf4f37d308f14f48f81f`
+- Hosted MCP `serverInfo.version` reports `3.5.1`; tool schemas below are from live `tools/list` on 2026-11-18. The npm package is `3.4.3`.
+- Hosted schema is ahead of the open-source code: hosted `web_search_exa` requires `objective`, which official source and npm 3.4.3 do not define yet
 - Tool schemas can change. Before adding new parameters, verify with `tools/list` through a normal HTTP client.
 
 Direct MCP HTTP is the required invocation model for this skill. `curl` is fine, but keep the session and SSE parsing in small shell helpers instead of repeating low-level flags at every call site.
@@ -49,6 +49,8 @@ Direct MCP HTTP is the required invocation model for this skill. `curl` is fine,
 - `auto` is the recommended default and supports every parameter. `lite` uses cached content for lower cost and latency; it supports only `query`, `numResults`, `category`, domain and publication-date filters, `userLocation`, `moderation`, `textMaxCharacters`, and highlights parameters. Use `auto` for summaries, crawl-date or text filters, additional queries, context output, freshness controls, or subpages. `fast` and `instant` are legacy types; prefer `lite`, or `auto` when a needed parameter is unsupported by `lite`.
 - Content controls: `textMaxCharacters`, `contextMaxCharacters`, `enableSummary`, `summaryQuery`, `enableHighlights`, `highlightsMaxCharacters`, `highlightsQuery`, `maxAgeHours`, `livecrawlTimeout`, `subpages`, `subpageTarget`.
 - Deprecated highlight controls: `highlightsNumSentences`, `highlightsPerUrl` (ignored); prefer `highlightsMaxCharacters`.
+- `maxAgeHours:0` returns live content fetched within the last 60 seconds; omit it to use cached content with fresh-fetch fallback.
+- Optional beta: add `dynamicHighlights=true` to the MCP URL to share one highlight budget across all results. On such a server, leave `highlightsMaxCharacters` unset.
 - Categories include `company`, `publication`, `news`, `pdf`, `github`, `personal site`, `people`, `financial report`.
 
 ```json
@@ -80,7 +82,7 @@ Direct MCP HTTP is the required invocation model for this skill. `curl` is fine,
 - `crawling_exa`: use `web_fetch_exa` instead.
 - `deep_search_exa`: use `web_search_advanced_exa` instead; current hosted MCP requires OAuth or an API key when this tool is requested.
 - `deep_researcher_start` / `deep_researcher_check`: deprecated; use Exa Research API directly when needed.
-- Official source also provides `agent_run` for research-agent runs. The hosted endpoint requires OAuth or a user-provided API key when selected (anonymous `tools/list` returned HTTP 401 on 2026-10-29). Inspect its authenticated schema before use; no agent run was executed for this snapshot.
+- Official source also provides `agent_run` for research-agent runs. The hosted endpoint requires OAuth or a user-provided API key when selected (anonymous `tools/list` returned HTTP 401 on 2026-11-18). Inspect its authenticated schema before use; no agent run was executed for this snapshot.
 
 ## Curl Pattern
 

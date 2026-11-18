@@ -89,6 +89,25 @@ Go through every group and note each sign you find with where it lives. Each lin
 - Parallax, floating loops and elements that move on scroll → static layout
 - Animating width, height, top or left → transform and opacity
 
+## Right to left
+
+The fixes are explained in [rtl.md](rtl.md).
+
+- Arabic or Hebrew text aligned left, or a page without `dir="rtl"` and `lang` → set both on the root and align to the start
+- The sidebar, logo and back arrow still on the left of an Arabic screen → mirror the layout with logical properties
+- `ml-*`, `mr-*`, `left-*` and `text-left` in an RTL screen → `ms-*`, `me-*`, `start-*` and `text-start`
+- Next and back arrows or chevrons pointing the left to right way → mirror directional icons only, keep media controls and objects as they are
+- Progress bars filling from the left → fill from the right
+- Letter spacing or `tracking-*` on Arabic, often from uppercase label styles → 0
+- Fake italic or fake bold on Arabic, or a Latin font falling back to a system Arabic font → a family drawn for Arabic with real weights
+- Cairo or Tajawal on everything with nobody choosing it → a family picked for the character
+- Western and Arabic-Indic digits mixed on one screen, like `٣` next to `3` → one digit system
+- Latin words or numbers pushing punctuation to the wrong side, or a sign jumping to the end, like `12%+` → `<bdi>` or `unicode-bidi: isolate`, `<bdi dir="ltr">` for signed numbers
+- Tight Latin line height clipping dots and vowel marks → 1.6 to 1.8 for body, 1.3 to 1.4 for headings
+- Latin punctuation in Arabic, like `,` and `?` → `،` and `؟`
+- Arabic hype and greetings, like `تجربة ثورية!` or `أهلاً بعودتك! 👋` → what the product does, the page name as the title
+- Gradient text, glow or animation on Quranic or other quoted text → plain text in a reading face, exact from a verified source
+
 ## Template look
 
 These are not slop, but they are what a cleaned up screen falls back to when nobody made a decision. Watch for them after the passes.

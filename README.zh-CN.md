@@ -123,7 +123,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 许可证。以独立主技能形式原样收录。
 
-[`unslop/`](unslop/) 原样收录 [Damir Sokolovsky](https://x.com/heydamir) 创作的 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)，版本为 `a6f121eee5f29c2f74976b75456feae8b66afb3a`，并补入上游 [CC BY 4.0 许可证](unslop/LICENSE)。
+[`unslop/`](unslop/) 原样收录 [Damir Sokolovsky](https://x.com/heydamir) 创作的 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)，版本为 `620163eedb3529d9cd23a3994ed8d287d06f760d`，并补入上游 [CC BY 4.0 许可证](unslop/LICENSE)。
 
 这 6 个技能来自[vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)，每个技能均附有上游的[Apache-2.0](agent-desktop/LICENSE)。
 

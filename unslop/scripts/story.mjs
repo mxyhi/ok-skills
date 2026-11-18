@@ -2,7 +2,8 @@ import { createRequire } from "node:module";
 import { createServer } from "node:http";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
-import { dirname, extname, join, normalize, resolve } from "node:path";
+import { dirname, extname, join, resolve } from "node:path";
+import { resolveStoryFile } from "./story-path.mjs";
 
 const usage = "usage: node story.mjs <story.html> <out.mp4> [--wide], or node story.mjs <story.html> --play to watch it live in a browser window";
 const args = process.argv.slice(2);
@@ -27,17 +28,31 @@ async function browserKit() {
   process.exit(1);
 }
 
-try {
-  execFileSync("ffmpeg", ["-version"], { stdio: "ignore" });
-} catch {
-  console.error("ffmpeg is not installed. Install it to render the video, for example `brew install ffmpeg`.");
-  process.exit(1);
+if (!play) {
+  try {
+    execFileSync("ffmpeg", ["-version"], { stdio: "ignore" });
+  } catch {
+    console.error("ffmpeg is not installed. Install it to render the video, for example `brew install ffmpeg`.");
+    process.exit(1);
+  }
 }
 
 const file = resolve(input);
 const root = dirname(file);
 const html = readFileSync(file, "utf8");
-const meta = (name) => new RegExp(`<meta\\s+name="${name}"\\s+content="([^"]*)"`, "i").exec(html)?.[1];
+// A meta tag is valid HTML whatever order its attributes are in and
+// whichever quotes they use, so read the tag first, then its attributes.
+const meta = (name) => {
+  for (const [, attrs] of html.matchAll(/<meta\s+([^>]*)>/gi)) {
+    const get = (attr) =>
+      new RegExp(`(?:^|\\s)${attr}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i")
+        .exec(attrs)
+        ?.slice(1)
+        .find((value) => value !== undefined);
+    if (get("name")?.toLowerCase() === name) return get("content");
+  }
+  return undefined;
+};
 const steps = (meta("unslop-steps") ?? "")
   .split(",")
   .map((step) => step.trim())
@@ -46,7 +61,28 @@ if (steps.length === 0) {
   console.error('story.html needs <meta name="unslop-steps" content="Spacing, Color, Type"> listing the steps in order');
   process.exit(1);
 }
-const [frameX = 0, frameY = 0, frameWidth = 960] = (meta("unslop-frame") ?? "0 0 960").split(/\s+/).map(Number);
+const frameRaw = meta("unslop-frame") ?? "0 0 960";
+const frame = frameRaw.split(/\s+/).filter(Boolean);
+const [frameX, frameY, frameWidth] = frame.map(Number);
+if (frame.length !== 3 || frame.some((value) => !Number.isFinite(Number(value))) || frameWidth <= 0) {
+  console.error(`unslop-frame must be three numbers, like "0 0 960", with a width above 0 — got "${frameRaw}"`);
+  process.exit(1);
+}
+const count = (pattern) => html.match(pattern)?.length ?? 0;
+const warn = (text) => console.warn(`warning: ${text}`);
+const swaps = count(/class="(?:[^"]*\s)?swap(?:\s[^"]*)?"/g);
+if (swaps > 8) warn(`${swaps} swaps, use swaps sparingly, only where the words change, at most eight in a story`);
+if (/border-radius\s*:[^;}"]*\b9{3,4}px/i.test(html)) warn("pills: write their radius as half the height, like 23px, not 9999px, or the corner only changes in the last frame");
+if (/\b100vh\b/i.test(html)) warn("the story page renders 1440 wide and at least 900 tall, so do not size things from 100vh");
+const slops = count(/\sdata-slop\b/g);
+if (slops > 5) warn(`${slops} data-slop marks, at most five, on the clearest examples that sit apart from each other`);
+const radii = count(/\sdata-radius\b/g);
+if (radii && (radii < 2 || radii > 4)) warn(`${radii} data-radius marks, data-radius goes on two to four buttons and cards whose corners change`);
+const stacks = new Map();
+for (const [, name] of html.matchAll(/\sdata-gap(?:\s*=\s*"([^"]*)")?/g)) stacks.set(name || "main", (stacks.get(name || "main") ?? 0) + 1);
+stacks.forEach((blocks, name) => {
+  if (blocks < 5 || blocks > 7) warn(`data-gap="${name}" has ${blocks} blocks, ${blocks - 1} gaps, aim for four to six measured gaps per stack`);
+});
 const kindOf = (text) => (/spac/i.test(text) ? "spacing" : /detail|radius|corner/i.test(text) ? "details" : null);
 
 const FRAME = wide ? { width: 1920, height: 1080 } : { width: 1080, height: 1080 };
@@ -197,7 +233,8 @@ const runtime = `
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(el);
     });
-    const stageWidth = window.parent.innerWidth;
+    // In --play the stage is scaled down to fit the window, so take its layout width, not the window's.
+    const stageWidth = window.parent.document.body.offsetWidth;
     const several = groups.size > 1;
     const pairs = [];
     groups.forEach((list) => {
@@ -349,8 +386,8 @@ const server = createServer((request, response) => {
     response.writeHead(200, { "content-type": "text/html" });
     return response.end(stage);
   }
-  const target = normalize(join(root, path.replace(/^\/__story\//, "/")));
-  if (!target.startsWith(root) || !existsSync(target)) {
+  const target = resolveStoryFile(root, path);
+  if (target === null) {
     response.writeHead(404);
     return response.end();
   }
@@ -449,13 +486,20 @@ try {
     }
   }
 } catch (error) {
-  if (!play) throw error;
+  if (!play) {
+    rmSync(frames, { recursive: true, force: true });
+    throw error;
+  }
+  if (browser.isConnected()) console.error(error);
 } finally {
   await browser.close().catch(() => {});
   server.close();
 }
 if (play) process.exit(0);
 
-execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", String(FPS), "-i", join(frames, "f-%05d.jpg"), "-vf", `scale=${FRAME.width * 2}:${FRAME.height * 2}:flags=lanczos`, "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "slow", "-movflags", "+faststart", resolve(out)]);
-rmSync(frames, { recursive: true, force: true });
+try {
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-framerate", String(FPS), "-i", join(frames, "f-%05d.jpg"), "-vf", `scale=${FRAME.width * 2}:${FRAME.height * 2}:flags=lanczos`, "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-preset", "slow", "-movflags", "+faststart", resolve(out)]);
+} finally {
+  rmSync(frames, { recursive: true, force: true });
+}
 console.log(`saved ${resolve(out)}, ${steps.length} steps, ${total.toFixed(1)}s`);

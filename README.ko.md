@@ -109,7 +109,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 [`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 변경 없이 포함합니다.
 
-[`unslop/`](unslop/)은 [Damir Sokolovsky](https://x.com/heydamir)가 만든 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)의 `a6f121eee5f29c2f74976b75456feae8b66afb3a` 버전을 변경 없이 포함하며, 원본 [CC BY 4.0 라이선스](unslop/LICENSE)를 함께 제공합니다.
+[`unslop/`](unslop/)은 [Damir Sokolovsky](https://x.com/heydamir)가 만든 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)의 `620163eedb3529d9cd23a3994ed8d287d06f760d` 버전을 변경 없이 포함하며, 원본 [CC BY 4.0 라이선스](unslop/LICENSE)를 함께 제공합니다.
 
 이 스킬 6개는 [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)에서 가져왔으며 각각 원본 [Apache-2.0](agent-desktop/LICENSE) 라이선스를 포함합니다.
 

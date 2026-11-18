@@ -22,7 +22,7 @@ Preserve slot/relocation provenance and source coverage: matched means observed
 candidate presence; partial scans do not establish uniqueness or absence.
 This reads DEX/ELF bytes without loading the APK into the decompiler or executing
 target code. Runtime registration and loading remain unknown. See the
-[JNI guide](https://github.com/morluto/rea/blob/main/docs/android-analysis.md#link-native-declarations-to-jni-candidates).
+[JNI guide](https://github.com/morluto/rea/blob/main/docs/guides/android/android-analysis.md#link-native-declarations-to-jni-candidates).
 
 For an R8/ProGuard release build with its `mapping.txt`, pass the absolute
 `mapping_path` to `inspect_android_class` or `inspect_android_method`. Prefer

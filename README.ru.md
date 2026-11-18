@@ -109,7 +109,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 [`ponytail/`](ponytail/) взят из [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), коммит `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, с сохранением лицензии MIT. Включён только самостоятельный основной навык, без изменений.
 
-[`unslop/`](unslop/) содержит [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) автора [Damir Sokolovsky](https://x.com/heydamir) в версии `a6f121eee5f29c2f74976b75456feae8b66afb3a` без изменений, с исходной [лицензией CC BY 4.0](unslop/LICENSE).
+[`unslop/`](unslop/) содержит [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) автора [Damir Sokolovsky](https://x.com/heydamir) в версии `620163eedb3529d9cd23a3994ed8d287d06f760d` без изменений, с исходной [лицензией CC BY 4.0](unslop/LICENSE).
 
 Эти шесть навыков взяты из [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). В каждый включена исходная лицензия [Apache-2.0](agent-desktop/LICENSE).
 

@@ -109,7 +109,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 [`ponytail/`](ponytail/) को [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) के `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` से लिया गया है और MIT license रखा गया है। केवल standalone मुख्य skill बिना बदलाव के शामिल है।
 
-[`unslop/`](unslop/) में [Damir Sokolovsky](https://x.com/heydamir) द्वारा बनाया गया [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) संस्करण `a6f121eee5f29c2f74976b75456feae8b66afb3a` बिना बदलाव के शामिल है, साथ में मूल [CC BY 4.0 लाइसेंस](unslop/LICENSE) भी है।
+[`unslop/`](unslop/) में [Damir Sokolovsky](https://x.com/heydamir) द्वारा बनाया गया [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) संस्करण `620163eedb3529d9cd23a3994ed8d287d06f760d` बिना बदलाव के शामिल है, साथ में मूल [CC BY 4.0 लाइसेंस](unslop/LICENSE) भी है।
 
 ये छह skills [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills) से ली गई हैं। हर skill में मूल [Apache-2.0](agent-desktop/LICENSE) लाइसेंस शामिल है।
 

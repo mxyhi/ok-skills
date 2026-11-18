@@ -66,9 +66,14 @@ while [ $# -gt 0 ]; do
             MODE="gated"
             shift
             ;;
-        --help|-h)
+        --help|-h|-Help)
             usage
             exit 0
+            ;;
+        -*)
+            echo "Unknown option: $1" >&2
+            usage >&2
+            exit 1
             ;;
         *)
             if [ -z "$PROJECT_NAME" ]; then

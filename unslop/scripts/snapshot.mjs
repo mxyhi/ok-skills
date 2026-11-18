@@ -1,18 +1,45 @@
 import { createRequire } from "node:module";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
-const usage = "usage: node snapshot.mjs <url of the screen> <out.html> [pass label] [--dark | --light] [--width=1440] [--height=810]";
+const usage = "usage: node snapshot.mjs <url or local file> <out.html> [pass label] [--dark | --light] [--width 1440] [--height 810]";
 const args = process.argv.slice(2);
-const flag = (name) => args.find((arg) => arg.startsWith(`--${name}=`))?.split("=")[1];
-const [url, out, label] = args.filter((arg) => !arg.startsWith("--"));
-const width = flag("width") ?? "1440";
-const height = flag("height") ?? "810";
+const positionals = [];
+let width = 1440;
+let height = 810;
+const size = (name, value) => {
+  const n = Number(value);
+  if (!Number.isInteger(n) || n <= 0) {
+    console.error(`--${name} must be a whole number above 0, got "${value}"`);
+    process.exit(1);
+  }
+  return n;
+};
+for (let i = 0; i < args.length; i++) {
+  const arg = args[i];
+  const match = /^--(width|height)(?:=(.*))?$/.exec(arg);
+  if (match) {
+    const value = match[2] ?? args[++i];
+    if (value === undefined || value.startsWith("--")) {
+      console.error(`--${match[1]} needs a value, like --${match[1]} 1440`);
+      process.exit(1);
+    }
+    if (match[1] === "width") width = size("width", value);
+    else height = size("height", value);
+  } else if (!arg.startsWith("--")) {
+    positionals.push(arg);
+  }
+}
+const [url, out, label] = positionals;
 const scheme = args.includes("--dark") ? "dark" : args.includes("--light") ? "light" : "no-preference";
 if (!url || !out) {
   console.error(usage);
   process.exit(1);
 }
+// A path on disk is a page too: a bare file path is not a URL, and
+// Playwright rejects it with a protocol error, so turn it into one.
+const target = statSync(url, { throwIfNoEntry: false })?.isFile() ? pathToFileURL(resolve(url)).href : url;
 
 async function browserKit() {
   for (const name of ["playwright", "playwright-core"]) {
@@ -32,9 +59,29 @@ const { chromium } = await browserKit();
 const browser = await chromium.launch(chrome ? { executablePath: chrome } : {});
 try {
   const page = await browser.newPage({ viewport: { width: Number(width), height: Number(height) }, colorScheme: scheme });
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(target, { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(600);
+  await page.evaluate(async () => {
+    const pause = (ms) => new Promise((done) => setTimeout(done, ms));
+    const root = document.scrollingElement || document.documentElement;
+    let last = root.scrollHeight;
+    for (let step = 0; step < 30 && root.scrollTop < 20_000; step++) {
+      window.scrollBy(0, window.innerHeight);
+      await pause(150);
+      const grown = root.scrollHeight;
+      if (grown <= last && root.scrollTop + window.innerHeight >= grown) break;
+      last = grown;
+    }
+    window.scrollTo(0, 0);
+    const loaded = (image) =>
+      new Promise((done) => {
+        image.addEventListener("load", done, { once: true });
+        image.addEventListener("error", done, { once: true });
+      });
+    const pending = [...document.images].filter((image) => !image.complete);
+    await Promise.race([Promise.all(pending.map(loaded)), pause(5000)]);
+  });
   const html = await page.evaluate(async ([label, scheme]) => {
     const LIMIT = 3_000_000;
     const absolute = (value, base = location.href) => {
