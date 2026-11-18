@@ -8,7 +8,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **19 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **25 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -104,6 +104,12 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 自动化与 QA
 
 - [agent-browser](agent-browser/SKILL.md)：浏览器导航、表单、截图、抓取和网页测试。
+- [agent-desktop](agent-desktop/SKILL.md)：用 `agent-desktop` CLI 读取系统无障碍树并操作桌面应用。
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md)：检查 macOS 辅助功能权限，操作菜单、对话框和弹出窗口。
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md)：通过 Windows UI Automation 操作桌面，排查交互会话和窗口权限问题。
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md)：读取 AT-SPI 无障碍树，检查 X11 和 Wayland 的输入与截屏支持。
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md)：通过 C ABI 在其他编程语言中调用桌面自动化功能。
+- [jev-desktop](jev-desktop/SKILL.md)：用自然语言目标驱动桌面任务，需要上游仓库的 `scripts/jev/` 和 `TYPESAFE_API_KEY`。
 - [kimi-webbridge](kimi-webbridge/SKILL.md)：通过本地守护进程控制用户真实浏览器，用于导航、表单填写、截图、页面读取和登录态会话。
 
 ### 前端与设计
@@ -118,6 +124,8 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 [`ponytail/`](ponytail/) 来自 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) 的 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`，保留 MIT 许可证。以独立主技能形式原样收录。
 
 [`unslop/`](unslop/) 原样收录 [Damir Sokolovsky](https://x.com/heydamir) 创作的 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)，版本为 `a6f121eee5f29c2f74976b75456feae8b66afb3a`，并补入上游 [CC BY 4.0 许可证](unslop/LICENSE)。
+
+这 6 个技能来自[vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)，每个技能均附有上游的[Apache-2.0](agent-desktop/LICENSE)。
 
 
 
@@ -137,6 +145,12 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 时代的 curl：抓取 URL、发现页面结构、提取结构化数据，替代临时解析脚本。                                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的浏览器自动化：导航、表单、截图、数据提取、网页测试。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | 用 `agent-desktop` CLI 读取系统无障碍树并操作桌面应用。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | 检查 macOS 辅助功能权限，操作菜单、对话框和弹出窗口。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | 通过 Windows UI Automation 操作桌面，排查交互会话和窗口权限问题。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | 读取 AT-SPI 无障碍树，检查 X11 和 Wayland 的输入与截屏支持。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | 通过 C ABI 在其他编程语言中调用桌面自动化功能。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | 用自然语言目标驱动桌面任务，需要上游仓库的 `scripts/jev/` 和 `TYPESAFE_API_KEY`。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | 生成专业深度调研报告，支持并行章节撰写、最新数据定向、多语言输出和内置质量检查。                                                            | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | 通过 CLI 或 MCP 工具搜索 200+ Iconify 图标库并获取 SVG 图标。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | 审查并改善 AI 生成界面，结合产品特征确定设计方向，提供视觉参考、网页快照和可选的改造过程视频。 | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |

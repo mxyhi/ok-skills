@@ -8,7 +8,7 @@ English | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [�
 
 Curated AI coding agent skills and `CLAUDE.md` / `AGENTS.md` playbooks for Codex, Claude Code, Cursor, OpenClaw, Autohand Code, Trae, and other `SKILL.md`-compatible tools.
 
-This repo currently bundles **19 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
+This repo currently bundles **25 reusable skills**, all maintained as top-level skill directories in this repo. Clone it into `~/.agents/skills/ok-skills`; the directories inside already match the layout expected by `AGENTS.md`-driven workflows, and [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) provides a Claude Code-oriented agent playbook.
 
 If you are looking for **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, or practical **SKILL.md** examples, this repository is designed to be both searchable and immediately usable.
 
@@ -104,6 +104,12 @@ Then ask naturally:
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): browser automation for navigation, forms, screenshots, and scraping.
+- [agent-desktop](agent-desktop/SKILL.md): Operate desktop apps through the native accessibility tree with the `agent-desktop` CLI.
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md): Inspect macOS accessibility permissions, menus, sheets and popovers.
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md): Work with Windows UI Automation, interactive sessions and elevated windows.
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md): Inspect the AT-SPI tree and check input and capture support on X11 and Wayland.
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md): Call the desktop adapter from another language through its C ABI.
+- [jev-desktop](jev-desktop/SKILL.md): Run a desktop task from a natural-language goal using the upstream `scripts/jev/` and `TYPESAFE_API_KEY`.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): control the user's real browser through a local daemon for navigation, forms, screenshots, page reading, and authenticated sessions.
 
 ### Frontend & Design
@@ -118,6 +124,8 @@ Then ask naturally:
 [`ponytail/`](ponytail/) tracks [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, retaining its MIT license. Only the standalone main skill is included, unchanged.
 
 [`unslop/`](unslop/) vendors [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) at `a6f121eee5f29c2f74976b75456feae8b66afb3a`, created by [Damir Sokolovsky](https://x.com/heydamir). The skill is unchanged; the upstream [CC BY 4.0 license](unslop/LICENSE) is included.
+
+These six skills come from [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). Each includes the upstream [Apache-2.0](agent-desktop/LICENSE).
 
 
 
@@ -138,6 +146,12 @@ Then ask naturally:
 | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI-era curl for agents: fetch URLs, discover page structure, and extract structured data without throwaway parsers.                                                                  | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                               | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | Operate desktop apps through the native accessibility tree with the `agent-desktop` CLI. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Inspect macOS accessibility permissions, menus, sheets and popovers. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Work with Windows UI Automation, interactive sessions and elevated windows. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | Inspect the AT-SPI tree and check input and capture support on X11 and Wayland. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | Call the desktop adapter from another language through its C ABI. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | Run a desktop task from a natural-language goal using the upstream `scripts/jev/` and `TYPESAFE_API_KEY`. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | Professional deep research report generation with parallel chapter writing, latest-data targeting, multilingual output, and built-in quality checks.                                 | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons through CLI or MCP tools.                                                                                                          | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | Audit and refine AI-generated interfaces with a product-specific design direction, visual references, live-page snapshots, and optional story videos. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |

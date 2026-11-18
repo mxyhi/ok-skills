@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **19 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **25 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -90,6 +90,12 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 ### Tự động hóa và QA
 
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho điều hướng, biểu mẫu, ảnh chụp màn hình và scraping.
+- [agent-desktop](agent-desktop/SKILL.md): Dùng CLI `agent-desktop` để đọc cây trợ năng của hệ điều hành và điều khiển ứng dụng máy tính.
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md): Kiểm tra quyền trợ năng và thao tác với menu, hộp thoại và cửa sổ bật lên trên macOS.
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md): Sử dụng Windows UI Automation và chẩn đoán lỗi liên quan đến phiên tương tác hoặc quyền truy cập cửa sổ.
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md): Đọc cây AT-SPI và kiểm tra khả năng nhập liệu, chụp màn hình trên X11 và Wayland.
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md): Gọi bộ điều khiển máy tính từ các ngôn ngữ khác qua C ABI.
+- [jev-desktop](jev-desktop/SKILL.md): Thực hiện tác vụ trên máy tính theo mục tiêu bằng ngôn ngữ tự nhiên. Cần `scripts/jev/` từ kho gốc và `TYPESAFE_API_KEY`.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): điều khiển trình duyệt thật của người dùng qua daemon cục bộ để điều hướng, điền biểu mẫu, chụp màn hình, đọc trang và dùng phiên đã đăng nhập.
 
 ### Frontend và thiết kế
@@ -104,6 +110,8 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 [`ponytail/`](ponytail/) lấy từ [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) tại `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, giữ nguyên giấy phép MIT. Chỉ bao gồm skill chính độc lập, giữ nguyên không chỉnh sửa.
 
 [`unslop/`](unslop/) giữ nguyên [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) của [Damir Sokolovsky](https://x.com/heydamir) tại phiên bản `a6f121eee5f29c2f74976b75456feae8b66afb3a`, kèm [giấy phép CC BY 4.0](unslop/LICENSE) từ nguồn.
+
+Sáu skill này được lấy từ [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). Mỗi skill đều kèm giấy phép [Apache-2.0](agent-desktop/LICENSE) của dự án gốc.
 
 ## Các điều kiện tiên quyết phổ biến
 
@@ -122,6 +130,12 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | curl thời AI: fetch URL, khám phá cấu trúc trang và trích xuất dữ liệu có cấu trúc mà không cần parser dùng một lần.                                                                   | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web.                                                                           | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | Dùng CLI `agent-desktop` để đọc cây trợ năng của hệ điều hành và điều khiển ứng dụng máy tính. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Kiểm tra quyền trợ năng và thao tác với menu, hộp thoại và cửa sổ bật lên trên macOS. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Sử dụng Windows UI Automation và chẩn đoán lỗi liên quan đến phiên tương tác hoặc quyền truy cập cửa sổ. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | Đọc cây AT-SPI và kiểm tra khả năng nhập liệu, chụp màn hình trên X11 và Wayland. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | Gọi bộ điều khiển máy tính từ các ngôn ngữ khác qua C ABI. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | Thực hiện tác vụ trên máy tính theo mục tiêu bằng ngôn ngữ tự nhiên. Cần `scripts/jev/` từ kho gốc và `TYPESAFE_API_KEY`. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | Tạo báo cáo nghiên cứu chuyên sâu với viết chương song song, nhắm dữ liệu mới nhất, đầu ra đa ngôn ngữ và kiểm tra chất lượng tích hợp.             | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | Tìm trong hơn 200 bộ Iconify và lấy icon SVG qua CLI hoặc công cụ MCP.                                                                                                                     | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | Đánh giá và cải thiện giao diện do AI tạo với định hướng thiết kế riêng cho sản phẩm, tài liệu hình ảnh, bản chụp trang web và video quá trình tùy chọn. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |

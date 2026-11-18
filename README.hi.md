@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **19 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **25 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -90,6 +90,12 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): navigation, forms, screenshots, और scraping के लिए browser automation.
+- [agent-desktop](agent-desktop/SKILL.md): `agent-desktop` CLI से सिस्टम की accessibility tree पढ़ें और desktop apps चलाएँ।
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md): macOS में accessibility permissions जाँचें और menus, dialogs व popovers चलाएँ।
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md): Windows UI Automation का उपयोग करें और interactive session व window permissions की समस्याएँ जाँचें।
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md): AT-SPI tree पढ़ें और X11 व Wayland पर input तथा screen capture का समर्थन जाँचें।
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md): C ABI के ज़रिए दूसरी भाषाओं से desktop adapter का उपयोग करें।
+- [jev-desktop](jev-desktop/SKILL.md): सामान्य भाषा में लक्ष्य देकर desktop task चलाएँ। इसके लिए मूल repo के `scripts/jev/` और `TYPESAFE_API_KEY` की ज़रूरत होती है।
 - [kimi-webbridge](kimi-webbridge/SKILL.md): local daemon के जरिए user के real browser को navigation, forms, screenshots, page reading और authenticated sessions के लिए control करें।
 
 ### Frontend & Design
@@ -104,6 +110,8 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 [`ponytail/`](ponytail/) को [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) के `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` से लिया गया है और MIT license रखा गया है। केवल standalone मुख्य skill बिना बदलाव के शामिल है।
 
 [`unslop/`](unslop/) में [Damir Sokolovsky](https://x.com/heydamir) द्वारा बनाया गया [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) संस्करण `a6f121eee5f29c2f74976b75456feae8b66afb3a` बिना बदलाव के शामिल है, साथ में मूल [CC BY 4.0 लाइसेंस](unslop/LICENSE) भी है।
+
+ये छह skills [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills) से ली गई हैं। हर skill में मूल [Apache-2.0](agent-desktop/LICENSE) लाइसेंस शामिल है।
 
 ## सामान्य prerequisites
 
@@ -122,6 +130,12 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI-era curl: URL fetch, page structure discover, structured data extract — throwaway parsers की जरूरत नहीं।                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents के लिए browser automation CLI: navigation, form filling, screenshots, extraction, और web testing.                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | `agent-desktop` CLI से सिस्टम की accessibility tree पढ़ें और desktop apps चलाएँ। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | macOS में accessibility permissions जाँचें और menus, dialogs व popovers चलाएँ। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Windows UI Automation का उपयोग करें और interactive session व window permissions की समस्याएँ जाँचें। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | AT-SPI tree पढ़ें और X11 व Wayland पर input तथा screen capture का समर्थन जाँचें। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | C ABI के ज़रिए दूसरी भाषाओं से desktop adapter का उपयोग करें। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | सामान्य भाषा में लक्ष्य देकर desktop task चलाएँ। इसके लिए मूल repo के `scripts/jev/` और `TYPESAFE_API_KEY` की ज़रूरत होती है। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | Parallel chapter writing, latest-data targeting, multilingual output aur built-in quality checks ke saath professional deep research report generation.                              | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI या MCP tools के जरिए 200+ Iconify libraries खोजें और SVG icons प्राप्त करें।                                                                                                             | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | AI से बने इंटरफ़ेस की समीक्षा और सुधार करें: उत्पाद के अनुरूप डिज़ाइन दिशा, दृश्य संदर्भ, वेब पेज स्नैपशॉट और वैकल्पिक सुधार-प्रक्रिया वीडियो। | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |

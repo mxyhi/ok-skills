@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **19 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **25 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -90,6 +90,12 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): browser automation для навигации, форм, скриншотов и scraping.
+- [agent-desktop](agent-desktop/SKILL.md): Управление приложениями через системное дерево доступности с помощью CLI `agent-desktop`.
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md): Проверка разрешений универсального доступа и работа с меню, диалогами и всплывающими панелями в macOS.
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md): Работа с Windows UI Automation и диагностика проблем с интерактивными сеансами и правами доступа к окнам.
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md): Чтение дерева AT-SPI и проверка поддержки ввода и снимков экрана в X11 и Wayland.
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md): Вызов адаптера рабочего стола из других языков через C ABI.
+- [jev-desktop](jev-desktop/SKILL.md): Выполнение задач на рабочем столе по цели на естественном языке. Нужны `scripts/jev/` из исходного репозитория и `TYPESAFE_API_KEY`.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): Управляет реальным браузером пользователя через локальный daemon для навигации, форм, скриншотов, чтения страниц и авторизованных сессий.
 
 ### Frontend & Design
@@ -104,6 +110,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 [`ponytail/`](ponytail/) взят из [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), коммит `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, с сохранением лицензии MIT. Включён только самостоятельный основной навык, без изменений.
 
 [`unslop/`](unslop/) содержит [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) автора [Damir Sokolovsky](https://x.com/heydamir) в версии `a6f121eee5f29c2f74976b75456feae8b66afb3a` без изменений, с исходной [лицензией CC BY 4.0](unslop/LICENSE).
+
+Эти шесть навыков взяты из [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). В каждый включена исходная лицензия [Apache-2.0](agent-desktop/LICENSE).
 
 ## Общие предварительные требования
 
@@ -122,6 +130,12 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | curl эры AI: fetch URL, обнаружение структуры страницы и извлечение структурированных данных без одноразовых парсеров.                                                              | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                                    | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | Управление приложениями через системное дерево доступности с помощью CLI `agent-desktop`. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Проверка разрешений универсального доступа и работа с меню, диалогами и всплывающими панелями в macOS. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Работа с Windows UI Automation и диагностика проблем с интерактивными сеансами и правами доступа к окнам. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | Чтение дерева AT-SPI и проверка поддержки ввода и снимков экрана в X11 и Wayland. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | Вызов адаптера рабочего стола из других языков через C ABI. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | Выполнение задач на рабочем столе по цели на естественном языке. Нужны `scripts/jev/` из исходного репозитория и `TYPESAFE_API_KEY`. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | Профессиональная генерация глубоких исследовательских отчётов с параллельным написанием глав, новейшими данными, многоязычным выводом и встроенными проверками качества.                  | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | Search 200+ Iconify libraries and retrieve SVG icons via CLI or MCP tools.                                                                                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | Анализ и улучшение интерфейсов, созданных ИИ: дизайн с учётом продукта, визуальные примеры, снимки веб-страниц и необязательные видео процесса. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |

@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 19개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 25개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -90,6 +90,12 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 ### 자동화 및 QA
 
 - [agent-browser](agent-browser/SKILL.md): 탐색, 폼, 스크린샷, 스크래핑을 위한 브라우저 자동화.
+- [agent-desktop](agent-desktop/SKILL.md): `agent-desktop` CLI로 시스템 접근성 트리를 읽고 데스크톱 앱을 조작합니다.
+- [agent-desktop-macos](agent-desktop-macos/SKILL.md): macOS 접근성 권한을 확인하고 메뉴, 대화상자, 팝오버를 조작합니다.
+- [agent-desktop-windows](agent-desktop-windows/SKILL.md): Windows UI Automation을 사용하고 대화형 세션 및 창 권한 문제를 진단합니다.
+- [agent-desktop-linux](agent-desktop-linux/SKILL.md): AT-SPI 트리를 읽고 X11과 Wayland에서 입력 및 화면 캡처 지원 여부를 확인합니다.
+- [agent-desktop-ffi](agent-desktop-ffi/SKILL.md): C ABI를 통해 다른 언어에서 데스크톱 어댑터를 호출합니다.
+- [jev-desktop](jev-desktop/SKILL.md): 자연어로 목표를 지정해 데스크톱 작업을 실행합니다. 원본 저장소의 `scripts/jev/`와 `TYPESAFE_API_KEY`가 필요합니다.
 - [kimi-webbridge](kimi-webbridge/SKILL.md): 로컬 데몬으로 사용자의 실제 브라우저를 제어해 탐색, 폼 입력, 스크린샷, 페이지 읽기, 로그인 세션을 처리합니다.
 
 ### 프런트엔드 및 디자인
@@ -104,6 +110,8 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 [`ponytail/`](ponytail/)은 [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail)의 `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`를 따르며 MIT 라이선스를 유지합니다. 독립적인 메인 스킬만 변경 없이 포함합니다.
 
 [`unslop/`](unslop/)은 [Damir Sokolovsky](https://x.com/heydamir)가 만든 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)의 `a6f121eee5f29c2f74976b75456feae8b66afb3a` 버전을 변경 없이 포함하며, 원본 [CC BY 4.0 라이선스](unslop/LICENSE)를 함께 제공합니다.
+
+이 스킬 6개는 [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)에서 가져왔으며 각각 원본 [Apache-2.0](agent-desktop/LICENSE) 라이선스를 포함합니다.
 
 ## 공통 전제 조건
 
@@ -122,6 +130,12 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 시대의 curl. URL 가져오기, 페이지 구조 탐색, 구조화 데이터 추출을 일회성 파서 없이 수행.                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [agent-desktop](agent-desktop/SKILL.md) | `agent-desktop` CLI로 시스템 접근성 트리를 읽고 데스크톱 앱을 조작합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
+| [agent-desktop-macos](agent-desktop-macos/SKILL.md) | macOS 접근성 권한을 확인하고 메뉴, 대화상자, 팝오버를 조작합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
+| [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Windows UI Automation을 사용하고 대화형 세션 및 창 권한 문제를 진단합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
+| [agent-desktop-linux](agent-desktop-linux/SKILL.md) | AT-SPI 트리를 읽고 X11과 Wayland에서 입력 및 화면 캡처 지원 여부를 확인합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-linux) |
+| [agent-desktop-ffi](agent-desktop-ffi/SKILL.md) | C ABI를 통해 다른 언어에서 데스크톱 어댑터를 호출합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-ffi) |
+| [jev-desktop](jev-desktop/SKILL.md) | 자연어로 목표를 지정해 데스크톱 작업을 실행합니다. 원본 저장소의 `scripts/jev/`와 `TYPESAFE_API_KEY`가 필요합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/jev-desktop) |
 | [deep-research](deep-research/SKILL.md)                             | 병렬 장 작성, 최신 데이터 타기팅, 다국어 출력, 내장 품질 검사를 지원하는 전문 심층 연구 보고서 생성.                                      | [hoolulu/deep-research](https://github.com/hoolulu/deep-research)                                                               |
 | [better-icons](better-icons/SKILL.md)                               | CLI 또는 MCP 도구로 200개 이상의 Iconify 아이콘 라이브러리를 검색하고 SVG 아이콘을 가져옵니다.                                                   | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [unslop](unslop/SKILL.md) | AI가 생성한 화면을 검토하고 제품에 맞는 디자인 방향, 시각 자료, 웹페이지 스냅샷과 선택적인 개선 과정 영상으로 다듬습니다. | [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) |
