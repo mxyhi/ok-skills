@@ -6,7 +6,7 @@
 
 Кураторская коллекция AI coding agent skills и playbook-файлов `CLAUDE.md` / `AGENTS.md` для Codex, Claude Code, Cursor, OpenClaw, Trae и других инструментов, совместимых с `SKILL.md`.
 
-Сейчас в этом репозитории собрано **25 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
+Сейчас в этом репозитории собрано **26 переиспользуемых skills**, все они поддерживаются прямо здесь как каталоги skills верхнего уровня. Достаточно клонировать репозиторий в `~/.agents/skills/ok-skills`; внутренняя структура уже соответствует layout, который ожидают workflows на базе `AGENTS.md`, а [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) содержит agent playbook для Claude Code.
 
 Если вы ищете **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, переиспользуемые playbook-файлы **CLAUDE.md / AGENTS.md** или практичные примеры **SKILL.md**, этот репозиторий специально оформлен так, чтобы его было легко найти и сразу использовать.
 
@@ -90,6 +90,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): browser automation для навигации, форм, скриншотов и scraping.
+- [security-audit](security-audit/SKILL.md): Проверка механизмов защиты в коде, привязка выводов к исходникам и валидация структурированных отчётов.
 - [agent-desktop](agent-desktop/SKILL.md): Управление приложениями через системное дерево доступности с помощью CLI `agent-desktop`.
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md): Проверка разрешений универсального доступа и работа с меню, диалогами и всплывающими панелями в macOS.
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md): Работа с Windows UI Automation и диагностика проблем с интерактивными сеансами и правами доступа к окнам.
@@ -111,6 +112,8 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 
 [`unslop/`](unslop/) содержит [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) автора [Damir Sokolovsky](https://x.com/heydamir) в версии `620163eedb3529d9cd23a3994ed8d287d06f760d` без изменений, с исходной [лицензией CC BY 4.0](unslop/LICENSE).
 
+[`security-audit/`](security-audit/) адаптирует руководство Cloudflare по проверке кода и схему отчёта и включает валидатор журнала охвата. [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 Эти шесть навыков взяты из [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). В каждый включена исходная лицензия [Apache-2.0](agent-desktop/LICENSE).
 
 ## Общие предварительные требования
@@ -130,6 +133,7 @@ git clone https://github.com/mxyhi/ok-skills.git ok-skills
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | curl эры AI: fetch URL, обнаружение структуры страницы и извлечение структурированных данных без одноразовых парсеров.                                                              | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser automation CLI for AI agents: navigation, form filling, screenshots, extraction, and web testing.                                                                                    | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | Проверка механизмов защиты в коде, привязка выводов к исходникам и валидация структурированных отчётов. | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | Управление приложениями через системное дерево доступности с помощью CLI `agent-desktop`. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Проверка разрешений универсального доступа и работа с меню, диалогами и всплывающими панелями в macOS. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Работа с Windows UI Automation и диагностика проблем с интерактивными сеансами и правами доступа к окнам. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |

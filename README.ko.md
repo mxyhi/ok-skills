@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae 및 기타 `SKILL.md` 호환 도구를 위한 큐레이션된 AI 코딩 에이전트 스킬과 `CLAUDE.md` / `AGENTS.md` 플레이북 저장소입니다.
 
-이 저장소에는 현재 **재사용 가능한 스킬 25개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
+이 저장소에는 현재 **재사용 가능한 스킬 26개**가 포함되어 있으며, 모두 루트 레벨 스킬 디렉터리로 이 저장소에서 직접 관리됩니다. `~/.agents/skills/ok-skills`에 clone 하면 되고, 내부 디렉터리 구조는 이미 `AGENTS.md` 기반 워크플로가 기대하는 형태와 맞춰져 있으며, [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md)는 Claude Code용 agent playbook을 제공합니다.
 
 **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, 재사용 가능한 **CLAUDE.md / AGENTS.md** 플레이북, 바로 적용할 수 있는 **SKILL.md** 예제를 찾고 있다면 이 저장소는 검색성과 즉시 사용성을 모두 고려해 정리되어 있습니다.
 
@@ -90,6 +90,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 ### 자동화 및 QA
 
 - [agent-browser](agent-browser/SKILL.md): 탐색, 폼, 스크린샷, 스크래핑을 위한 브라우저 자동화.
+- [security-audit](security-audit/SKILL.md): 소스 코드의 보안 통제를 검토하고 근거를 제시하며 구조화된 보고서를 검증합니다.
 - [agent-desktop](agent-desktop/SKILL.md): `agent-desktop` CLI로 시스템 접근성 트리를 읽고 데스크톱 앱을 조작합니다.
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md): macOS 접근성 권한을 확인하고 메뉴, 대화상자, 팝오버를 조작합니다.
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md): Windows UI Automation을 사용하고 대화형 세션 및 창 권한 문제를 진단합니다.
@@ -111,6 +112,8 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 
 [`unslop/`](unslop/)은 [Damir Sokolovsky](https://x.com/heydamir)가 만든 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)의 `620163eedb3529d9cd23a3994ed8d287d06f760d` 버전을 변경 없이 포함하며, 원본 [CC BY 4.0 라이선스](unslop/LICENSE)를 함께 제공합니다.
 
+[`security-audit/`](security-audit/)은 Cloudflare의 소스 검토 지침과 보고서 형식을 조정한 버전으로, 검토 범위 기록을 확인하는 도구도 포함합니다. [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 이 스킬 6개는 [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)에서 가져왔으며 각각 원본 [Apache-2.0](agent-desktop/LICENSE) 라이선스를 포함합니다.
 
 ## 공통 전제 조건
@@ -130,6 +133,7 @@ Claude Code 또는 Codex의 전역 지침은 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 시대의 curl. URL 가져오기, 페이지 구조 탐색, 구조화 데이터 추출을 일회성 파서 없이 수행.                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI 에이전트를 위한 브라우저 자동화 CLI: 탐색, 폼 입력, 스크린샷, 추출, 웹 테스트.                                                                | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | 소스 코드의 보안 통제를 검토하고 근거를 제시하며 구조화된 보고서를 검증합니다. | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | `agent-desktop` CLI로 시스템 접근성 트리를 읽고 데스크톱 앱을 조작합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | macOS 접근성 권한을 확인하고 메뉴, 대화상자, 팝오버를 조작합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Windows UI Automation을 사용하고 대화형 세션 및 창 권한 문제를 진단합니다. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |

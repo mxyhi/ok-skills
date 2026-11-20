@@ -8,7 +8,7 @@
 
 这是一个面向 Codex、Claude Code、Cursor、OpenClaw、Autohand Code、Trae 以及其他兼容 `SKILL.md` / `CLAUDE.md` / `AGENTS.md` 工作流工具的技能仓库。
 
-当前仓库共收录 **25 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
+当前仓库共收录 **26 个可复用技能**，全部作为顶层技能目录由本仓直接维护。把它 clone 到 `~/.agents/skills/ok-skills` 即可，仓库内部目录已经符合 `AGENTS.md` 所需的 skills 规范，[`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 则提供面向 Claude Code 的 agent playbook。
 
 如果你在找 **Codex skills**、**Claude Code skills**、**Cursor skills**、**OpenClaw skills**、可复用的 **CLAUDE.md / AGENTS.md** 模板，或者一套能直接落地的 **SKILL.md** 示例仓库，这个项目就是为搜索可发现性和开箱即用而整理的。
 
@@ -104,6 +104,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 ### 自动化与 QA
 
 - [agent-browser](agent-browser/SKILL.md)：浏览器导航、表单、截图、抓取和网页测试。
+- [security-audit](security-audit/SKILL.md)：审查源码中的安全控制，引用证据并校验结构化报告。
 - [agent-desktop](agent-desktop/SKILL.md)：用 `agent-desktop` CLI 读取系统无障碍树并操作桌面应用。
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md)：检查 macOS 辅助功能权限，操作菜单、对话框和弹出窗口。
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md)：通过 Windows UI Automation 操作桌面，排查交互会话和窗口权限问题。
@@ -125,6 +126,8 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 [`unslop/`](unslop/) 原样收录 [Damir Sokolovsky](https://x.com/heydamir) 创作的 [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop)，版本为 `620163eedb3529d9cd23a3994ed8d287d06f760d`，并补入上游 [CC BY 4.0 许可证](unslop/LICENSE)。
 
+[`security-audit/`](security-audit/)改编自 Cloudflare 的源码审查指南和报告格式，并收录覆盖记录校验器。 [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 这 6 个技能来自[vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills)，每个技能均附有上游的[Apache-2.0](agent-desktop/LICENSE)。
 
 
@@ -145,6 +148,7 @@ Claude Code 或 Codex 的全局指令可以从 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI 时代的 curl：抓取 URL、发现页面结构、提取结构化数据，替代临时解析脚本。                                                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的浏览器自动化：导航、表单、截图、数据提取、网页测试。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | 审查源码中的安全控制，引用证据并校验结构化报告。 | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | 用 `agent-desktop` CLI 读取系统无障碍树并操作桌面应用。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | 检查 macOS 辅助功能权限，操作菜单、对话框和弹出窗口。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | 通过 Windows UI Automation 操作桌面，排查交互会话和窗口权限问题。 | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |

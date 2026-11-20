@@ -6,7 +6,7 @@
 
 Codex, Claude Code, Cursor, OpenClaw, Trae और अन्य `SKILL.md`-compatible टूल्स के लिए चुनी हुई AI coding agent skills और `CLAUDE.md` / `AGENTS.md` playbooks का यह curated repository है।
 
-इस repo में अभी **25 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
+इस repo में अभी **26 reusable skills** शामिल हैं, और सभी इस repo में top-level skill directories के रूप में सीधे maintain की जाती हैं। इसे `~/.agents/skills/ok-skills` में clone करें; अंदर की directories पहले से ही `AGENTS.md`-driven workflows के अपेक्षित layout के अनुसार हैं, और [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) Claude Code-oriented agent playbook देता है。
 
 अगर आप **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, reusable **CLAUDE.md / AGENTS.md** playbooks, या practical **SKILL.md** examples खोज रहे हैं, तो यह repository खोजने में आसान और clone करते ही उपयोग योग्य होने के लिए व्यवस्थित की गई है।
 
@@ -90,6 +90,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 ### Automation & QA
 
 - [agent-browser](agent-browser/SKILL.md): navigation, forms, screenshots, और scraping के लिए browser automation.
+- [security-audit](security-audit/SKILL.md): स्रोत कोड में सुरक्षा नियंत्रणों की समीक्षा करें, साक्ष्य दें और संरचित निष्कर्षों की जाँच करें।
 - [agent-desktop](agent-desktop/SKILL.md): `agent-desktop` CLI से सिस्टम की accessibility tree पढ़ें और desktop apps चलाएँ।
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md): macOS में accessibility permissions जाँचें और menus, dialogs व popovers चलाएँ।
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md): Windows UI Automation का उपयोग करें और interactive session व window permissions की समस्याएँ जाँचें।
@@ -111,6 +112,8 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 
 [`unslop/`](unslop/) में [Damir Sokolovsky](https://x.com/heydamir) द्वारा बनाया गया [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) संस्करण `620163eedb3529d9cd23a3994ed8d287d06f760d` बिना बदलाव के शामिल है, साथ में मूल [CC BY 4.0 लाइसेंस](unslop/LICENSE) भी है।
 
+[`security-audit/`](security-audit/) में Cloudflare की स्रोत कोड समीक्षा मार्गदर्शिका और रिपोर्ट प्रारूप को अनुकूलित किया गया है। इसमें कवरेज रिकॉर्ड का सत्यापन टूल भी शामिल है। [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 ये छह skills [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills) से ली गई हैं। हर skill में मूल [Apache-2.0](agent-desktop/LICENSE) लाइसेंस शामिल है।
 
 ## सामान्य prerequisites
@@ -130,6 +133,7 @@ Claude Code या Codex की global instructions के लिए [`CLAUDE_AG
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | AI-era curl: URL fetch, page structure discover, structured data extract — throwaway parsers की जरूरत नहीं।                                                                        | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | AI agents के लिए browser automation CLI: navigation, form filling, screenshots, extraction, और web testing.                                                                                  | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | स्रोत कोड में सुरक्षा नियंत्रणों की समीक्षा करें, साक्ष्य दें और संरचित निष्कर्षों की जाँच करें। | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | `agent-desktop` CLI से सिस्टम की accessibility tree पढ़ें और desktop apps चलाएँ। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | macOS में accessibility permissions जाँचें और menus, dialogs व popovers चलाएँ। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Windows UI Automation का उपयोग करें और interactive session व window permissions की समस्याएँ जाँचें। | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |

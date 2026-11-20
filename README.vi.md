@@ -6,7 +6,7 @@
 
 Bộ sưu tập AI coding agent skills và playbook `CLAUDE.md` / `AGENTS.md` được tuyển chọn cho Codex, Claude Code, Cursor, OpenClaw, Trae và các công cụ khác tương thích với `SKILL.md`.
 
-Kho này hiện gồm **25 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
+Kho này hiện gồm **26 skill có thể tái sử dụng**, tất cả được duy trì trực tiếp dưới dạng thư mục skill cấp cao nhất trong repo này. Chỉ cần clone vào `~/.agents/skills/ok-skills`; các thư mục bên trong đã khớp với bố cục mà workflow dựa trên `AGENTS.md` mong đợi, và [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) cung cấp agent playbook hướng tới Claude Code.
 
 Nếu bạn đang tìm **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, các playbook **CLAUDE.md / AGENTS.md** có thể tái dùng, hoặc các ví dụ **SKILL.md** thực dụng, repo này được tổ chức để vừa dễ tìm kiếm vừa có thể dùng ngay.
 
@@ -90,6 +90,7 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 ### Tự động hóa và QA
 
 - [agent-browser](agent-browser/SKILL.md): tự động hóa trình duyệt cho điều hướng, biểu mẫu, ảnh chụp màn hình và scraping.
+- [security-audit](security-audit/SKILL.md): Rà soát các biện pháp bảo mật trong mã nguồn, dẫn chứng và kiểm tra báo cáo có cấu trúc.
 - [agent-desktop](agent-desktop/SKILL.md): Dùng CLI `agent-desktop` để đọc cây trợ năng của hệ điều hành và điều khiển ứng dụng máy tính.
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md): Kiểm tra quyền trợ năng và thao tác với menu, hộp thoại và cửa sổ bật lên trên macOS.
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md): Sử dụng Windows UI Automation và chẩn đoán lỗi liên quan đến phiên tương tác hoặc quyền truy cập cửa sổ.
@@ -111,6 +112,8 @@ Sau đó bạn có thể yêu cầu một cách tự nhiên:
 
 [`unslop/`](unslop/) giữ nguyên [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) của [Damir Sokolovsky](https://x.com/heydamir) tại phiên bản `620163eedb3529d9cd23a3994ed8d287d06f760d`, kèm [giấy phép CC BY 4.0](unslop/LICENSE) từ nguồn.
 
+[`security-audit/`](security-audit/) điều chỉnh hướng dẫn rà soát mã nguồn và lược đồ báo cáo của Cloudflare, đồng thời giữ lại công cụ kiểm tra nhật ký phạm vi rà soát. [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 Sáu skill này được lấy từ [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills). Mỗi skill đều kèm giấy phép [Apache-2.0](agent-desktop/LICENSE) của dự án gốc.
 
 ## Các điều kiện tiên quyết phổ biến
@@ -130,6 +133,7 @@ Cột `Source URL` trỏ tới upstream chính thức khi một skill được v
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | curl thời AI: fetch URL, khám phá cấu trúc trang và trích xuất dữ liệu có cấu trúc mà không cần parser dùng một lần.                                                                   | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | CLI tự động hóa trình duyệt cho AI agents: điều hướng, điền biểu mẫu, chụp màn hình, trích xuất và kiểm thử web.                                                                           | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | Rà soát các biện pháp bảo mật trong mã nguồn, dẫn chứng và kiểm tra báo cáo có cấu trúc. | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | Dùng CLI `agent-desktop` để đọc cây trợ năng của hệ điều hành và điều khiển ứng dụng máy tính. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Kiểm tra quyền trợ năng và thao tác với menu, hộp thoại và cửa sổ bật lên trên macOS. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Sử dụng Windows UI Automation và chẩn đoán lỗi liên quan đến phiên tương tác hoặc quyền truy cập cửa sổ. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |

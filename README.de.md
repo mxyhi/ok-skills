@@ -6,7 +6,7 @@
 
 Kuratiertes Repository für AI Coding Agent Skills und `CLAUDE.md` / `AGENTS.md`-Playbooks für Codex, Claude Code, Cursor, OpenClaw, Trae und andere Tools, die mit `SKILL.md`-Workflows kompatibel sind.
 
-Dieses Repository bündelt aktuell **25 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
+Dieses Repository bündelt aktuell **26 wiederverwendbare Skills**, alle als Top-Level-Skill-Verzeichnisse direkt in diesem Repository gepflegt. Klone es nach `~/.agents/skills/ok-skills`; die enthaltenen Verzeichnisse entsprechen bereits dem Layout, das `AGENTS.md`-gesteuerte Workflows erwarten, und [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) bietet ein auf Claude Code ausgerichtetes Agent-Playbook.
 
 Wenn du nach **Codex skills**, **Claude Code skills**, **Cursor skills**, **OpenClaw skills**, wiederverwendbaren **CLAUDE.md / AGENTS.md**-Playbooks oder praxistauglichen **SKILL.md**-Beispielen suchst, ist dieses Repository bewusst auf Auffindbarkeit und sofortige Nutzbarkeit ausgelegt.
 
@@ -90,6 +90,7 @@ Danach kannst du natürlich formulieren:
 ### Automatisierung und QA
 
 - [agent-browser](agent-browser/SKILL.md): Browser-Automatisierung für Navigation, Formulare, Screenshots und Scraping.
+- [security-audit](security-audit/SKILL.md): Sicherheitskontrollen im Quellcode prüfen, Belege anführen und strukturierte Befunde validieren.
 - [agent-desktop](agent-desktop/SKILL.md): Desktop-Anwendungen über den nativen Barrierefreiheitsbaum mit der CLI `agent-desktop` bedienen.
 - [agent-desktop-macos](agent-desktop-macos/SKILL.md): Zugriffsrechte für Bedienungshilfen prüfen und Menüs sowie Dialoge unter macOS bedienen.
 - [agent-desktop-windows](agent-desktop-windows/SKILL.md): Windows UI Automation nutzen und Probleme mit interaktiven Sitzungen und erhöhten Rechten untersuchen.
@@ -111,6 +112,8 @@ Danach kannst du natürlich formulieren:
 
 [`unslop/`](unslop/) übernimmt [heydamir/unslop](https://github.com/heydamir/unslop/tree/main/skills/unslop) von [Damir Sokolovsky](https://x.com/heydamir) unverändert auf Stand `620163eedb3529d9cd23a3994ed8d287d06f760d`; die ursprüngliche [CC-BY-4.0-Lizenz](unslop/LICENSE) ist enthalten.
 
+[`security-audit/`](security-audit/) enthält eine angepasste Anleitung zur Quellcodeprüfung, ein angepasstes Berichtsschema und den Prüfer für das Abdeckungsprotokoll von Cloudflare. [Cloudflare @ c1c8a8c](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) · [MIT](security-audit/LICENSE)
+
 Diese sechs Skills stammen aus [vercel-labs/agent-desktop@e8934a5](https://github.com/vercel-labs/agent-desktop/tree/e8934a5e95e1d212c74ead95cd3e4701c04eca31/skills) und enthalten jeweils die Upstream-Lizenz [Apache-2.0](agent-desktop/LICENSE).
 
 ## Häufige Voraussetzungen
@@ -130,6 +133,7 @@ Diese sechs Skills stammen aus [vercel-labs/agent-desktop@e8934a5](https://githu
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
 | [ax](ax/SKILL.md)                                                   | curl für das AI-Zeitalter: URLs holen, Seitenstruktur entdecken, strukturierte Daten extrahieren ohne Wegwerf-Parser.                                                               | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                              |
 | [agent-browser](agent-browser/SKILL.md)                             | Browser-Automatisierungs-CLI für AI Agents: Navigation, Formularausfüllung, Screenshots, Extraktion und Web-Tests.                                                                                                 | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
+| [security-audit](security-audit/SKILL.md) | Sicherheitskontrollen im Quellcode prüfen, Belege anführen und strukturierte Befunde validieren. | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill/tree/c1c8a8c1471069fb0e188eeaff69b8e8db6564a8/skills/security-audit) |
 | [agent-desktop](agent-desktop/SKILL.md) | Desktop-Anwendungen über den nativen Barrierefreiheitsbaum mit der CLI `agent-desktop` bedienen. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop) |
 | [agent-desktop-macos](agent-desktop-macos/SKILL.md) | Zugriffsrechte für Bedienungshilfen prüfen und Menüs sowie Dialoge unter macOS bedienen. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-macos) |
 | [agent-desktop-windows](agent-desktop-windows/SKILL.md) | Windows UI Automation nutzen und Probleme mit interaktiven Sitzungen und erhöhten Rechten untersuchen. | [vercel-labs/agent-desktop](https://github.com/vercel-labs/agent-desktop/tree/main/skills/agent-desktop-windows) |
